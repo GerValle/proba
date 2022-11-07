@@ -1,0 +1,8 @@
+*.pdf
+*.dvi
+*.aux
+*.ps
+*.synctex.gz
+*.log
+*.html
+scratch/
