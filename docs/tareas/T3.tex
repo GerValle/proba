@@ -1,0 +1,57 @@
+\documentclass{report}
+    \usepackage[utf8]{inputenc}
+    \usepackage[spanish]{babel}
+    \usepackage{amsmath}
+    \usepackage{graphics}
+    \usepackage{amssymb}
+    \setlength{\oddsidemargin}{0.5cm}
+    \setlength{\evensidemargin}{0.5cm}
+    \setlength{\textwidth}{15cm}
+    \setlength{\topmargin}{-2cm}
+\begin{document}
+\begin{center}
+    \textsf{\Large Probabilidad 1}
+    \par\medskip
+    \textsf{\large Tarea 3}
+    \end{center}
+    \hrule
+    \par\bigskip
+
+\begin{enumerate}
+    \item Un dado justo tiene las caras 1, 2 y 3 pintadas de verde y las caras 4,5 y 6 coloreadas de rojo. Después de lanzar el dado:
+    \begin{enumerate}
+        \item ¿Cuál es la probabilidad de que el número sea par?
+        \item Si lo único que logras ver, es que la cara que muestra el dado es verde. ¿Cuál es la probabilidad de que la cara sea par?
+    \end{enumerate}
+    Supongamos que el dado esta cargado  de modo que:
+    \begin{equation*}
+        P(1)=P(3)=P(5)=\frac{1}{9} \text{ y } P(1)=P(3)=P(5)=\frac{2}{9.}
+    \end{equation*}
+    \begin{enumerate}
+        \item ¿Cuál es la probabilidad de que el número sea par?
+        \item Si lo único que logras ver, es que la cara que muestra el dado es verde. ¿Cuál es la probabilidad de que la cara sea par?
+    \end{enumerate}
+    \item Dos dados justos son lanzados y el resultado es mantenido en secreto. 
+    \begin{enumerate}
+        \item ¿Cuál es la probabilidad de que la suma sea al menos 5?
+        \item Si se sabe que al menos uno de los dados es 1. ¿Cuál es la probabilidad de que la suma sea al menos 5?
+    \end{enumerate}
+    \item Tomás entra a su cuarto a oscuras y selecciona aleatoriamente una prenda de una cómoda con dos cajones. Uno de los cajones tiene 6 calcetines y 6 camisetas y el otro cajón tiene 2 calcetines y tres calzones. ¿Cuál es la probabilidad de que la prenda que ha seleccionado sea un calcetín?   
+    \item Muestra que las siguientes condiciones son equivalentes:
+    \begin{enumerate}
+        \item $A$ es independiente de cualquier evento $B\subset \Omega$.
+        \item $P(A)=0$ o $P(A)=1$. 
+    \end{enumerate}
+    \item Lanzamos una moneda justa tres veces. Considera los siguientes eventos:
+    \begin{align*}
+        A & = \text{El lanzamiento 1 y el lanzamiento 2 producen diferentes resultados}\\
+        B & = \text{El lanzamiento 2 y el lanzamiento 3 producen diferentes resultados}\\
+        C & = \text{El lanzamiento 3 y el lanzamiento 1 producen diferentes resultados}\\
+    \end{align*}
+    Muestra que $P(A)=P(A\vert B)$ y $P(A)=P(A\vert C)$ sin embargo $P(A)\neq P(A\vert B\cap C)$.
+
+    Este problema muestra que $A, B$ y $C$ son independientes dos a dos, sin embargo si consideramos a los tres juntos no podemos asegurar independencia.
+
+    En general:  $A_1,\ldots, A_n$ son independientes si $P(A_1\cap\cdots\cap A_n)=P(A_1)\cdots P(A_n)$.
+\end{enumerate} 
+\end{document}
