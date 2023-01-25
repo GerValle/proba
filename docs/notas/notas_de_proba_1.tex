@@ -12,7 +12,7 @@
 % Preface
 \pagenumbering{roman}
 \chapter*{Prefacio}
-The necessity for writing this book was felt long back ...
+The necessity for writing este book was felt long back ...
 \cleardoublepage
 % Contents
 \tableofcontents
@@ -20,11 +20,33 @@ The necessity for writing this book was felt long back ...
 % Starting chapters
 \pagenumbering{arabic}
 \chapter{Introducción}
-Existen multitud de fenómenos en la realidad que difícilmente pueden ser modelados con certeza. Ya sea por la complejidad de su naturaleza o porque efectivamente es imposible establecer algún modelo determinístico para el mismo. Ejemplos que nos vienen a la mente provienen directamente de juegos de azar tales como, El lanzamiento de una moneda, el lanzamiento de un par de dados,el resultado de seleccionar 5 cartas a partir de un mazo de 52 cartas, y un largo etcétera...
+Existen multitud de fenómenos en la realidad que difícilmente pueden ser modelados con certeza. Ya sea por la complejidad de su naturaleza o porque efectivamente es imposible establecer algún modelo determinístico para el mismo. Ejemplos que nos vienen a la mente provienen directamente de juegos de azar tales como, 
 
-%
-\chapter{Fonts Selection}
-There are three modes for processing texts in \LaTeX\ ...
+\begin{itemize}
+	\item El lanzamiento de una moneda,
+	\item el lanzamiento de un par de dados
+	\item el resultado de seleccionar 5 cartas a partir de un mazo de 52 cartas
+\end{itemize}
+
+y un largo etcétera...
+
+Si bien estos ejemplos son perfectamente válidos para ejemplificar un fenómeno aleatorio, la teoría de probabilidad puede ir mucho mas lejos. A decir verdad su rango de aplicabilidad solo esta sujeto a nuestra creatividad e imaginación.
+
+Aplicaciones en economía, finanzas, biología, física... abundan.
+
+También es importante notar que la Probabilidad es fundamento de muchas otras disciplinas, lo cual le confiere aun mayor relevancia.
+
+
+\chapter{Axiomas de Probabilidad}
+
+\section{Espacio Muestral} 
+
+Empecemos por lo más básico... Al momento de modelar un fenómeno aleatorio, debemos empezar por delimitar las posibilidades. El ejemplo mas simple sería el lanzamiento de una moneda, típicamente podemos pensar que las únicas dos posibilidades es que la moneda caiga en una cara u otra...
+
+Esto lo podemos traducir diciendo que la moneda cae en ``sol''($S$) o bien cae en ``águila''($A$). Es decir el posible resultado de este sencillo experimento es alguno de los elementos del conjunto: $\Omega = {A, S}$
+
+En el caso del lanzamiento de un par de dados, el conjunto $\Omega$ podría ser: $\Omega = \left\{(i , j), i , j = 1,\ldots , 6\right\}$
+
 
 \appendix
 \chapter{Appendix}
@@ -34,23 +56,6 @@ There are three modes for processing texts in \LaTeX\ ...
 %\printindex
 \end{document}
 
-Introducción
-
-Si bien estos ejemplos son perfectamente válidos para ejemplificar un fenómeno aleatorio, la teoría de probabilidad puede ir mucho mas lejos. A decir verdad su rango de aplicabilidad solo esta sujeto a nuestra creatividad e imaginación.
-
-Aplicaciones en economía, finanzas, biología, física... abundan.
-
-También es importante notar que la Probabilidad es fundamento de muchas otras disciplinas, lo cual le confiere aun mayor relevancia.
-
-Espacio Muestral
-
-Empecemos por lo más básico... Al momento de modelar un fenómeno aleatorio, debemos empezar por delimitar las posibilidades. El ejemplo mas simple sería el lanzamiento de una moneda, típicamente podemos pensar que las únicas dos posibilidades es que la moneda caiga en una cara u otra...
-
-Esto lo podemos traducir diciendo que la moneda cae en ”sol”(S) o bien cae en ”águila”(A). Es decir el posible resultado de este sencillo experimento es alguno de los elementos del conjunto: Ω = {A, S}
-
-En el caso del lanzamiento de un par de dados, el conjunto Ω podría ser: Ω = {(i , j), i , j = 1, . . . , 6}
-
-Espacio Muestral
 
 En general. . .
 
@@ -58,9 +63,9 @@ Espacio Muestral
 
 El espacio muestral de un fenómeno aleatorio, es el conjunto de resultados que consideramos posibles.
 
-No es imperativo pero si muy común, denotar al espacio muestral con Ω, nosotros seguiremos esta costumbre.
+No es imperativo pero si muy común, denotar al espacio muestral con Ω, nosotros seguiremos esta costumbre.
 
-De acuerdo con esta definición, cualquier cosa que este fuera de Ω es para todos los fines de nuestro modelo, algo completamente imposible. Si. . . en el conjunto Ω que propusimos para el lanzamiento de una moneda, dejamos fuera la posibilidad de que la moneda caiga de canto. . .
+De acuerdo con esta definición, cualquier cosa que este fuera de Ω es para todos los fines de nuestro modelo, algo completamente imposible. Si. . . en el conjunto Ω que propusimos para el lanzamiento de una moneda, dejamos fuera la posibilidad de que la moneda caiga de canto. . .
 
 Espacio Muestral
 
@@ -112,17 +117,17 @@ El problema es que no sabemos cual de ellos tomará. No importa, podemos modelar
 
 Espacio Muestral
 
-No es la única posibilidad, pero una buen idea seria definir el espacio muestral en términos de las alzas y bajas del activo: Ω = {w = (x1, x2, x3) ∶ xi ∈ {u, d}, i = 1, 2, 3}
+No es la única posibilidad, pero una buen idea seria definir el espacio muestral en términos de las alzas y bajas del activo: Ω = {w = (x1, x2, x3) ∶ xi ∈ {u, d}, i = 1, 2, 3}
 
-Asi por ejemplo si w = (u, u, d) entonces sabemos que en t + 3 el precio del activo es u2dSt. Pero si w = (d, d, d) entonces St+3 = d3St En resumen, el conjunto Ω, reúne todos los escenarios posibles. De acuerdo con nuestro modelo, solo las alternativas que están en Ω pueden ocurrir. Cualquier otra cosa es imposible. Aun que no sabemos cual w ∈ Ω
+Asi por ejemplo si w = (u, u, d) entonces sabemos que en t + 3 el precio del activo es u2dSt. Pero si w = (d, d, d) entonces St+3 = d3St En resumen, el conjunto Ω, reúne todos los escenarios posibles. De acuerdo con nuestro modelo, solo las alternativas que están en Ω pueden ocurrir. Cualquier otra cosa es imposible. Aun que no sabemos cual w ∈ Ω
 
 ocurrirá, al menos hemos delimitado las posibilidades.
 
 Espacio Muestral
 
-El modelo que hemos propuesto, si bien simple, es un modelo muy popular en el medio financiero. En la práctica se usa tal cual lo describimos, usualmente con un mayor número de periodos, pero fuera de ello sin cambio alguno. Por muy simple que parezca de primera instancia, es un modelo muy adecuado para resolver algunos tipos de problemas en finanzas. Claro esta que no es el único modelo de uso extendido para modelar precios de activos. Una alternativa quizás mas ambiciosa seria suponer que a lo largo de los tres días de operación, el activo puede tomar cualquier valor no negativo. En este caso: Ω = R+
+El modelo que hemos propuesto, si bien simple, es un modelo muy popular en el medio financiero. En la práctica se usa tal cual lo describimos, usualmente con un mayor número de periodos, pero fuera de ello sin cambio alguno. Por muy simple que parezca de primera instancia, es un modelo muy adecuado para resolver algunos tipos de problemas en finanzas. Claro esta que no es el único modelo de uso extendido para modelar precios de activos. Una alternativa quizás mas ambiciosa seria suponer que a lo largo de los tres días de operación, el activo puede tomar cualquier valor no negativo. En este caso: Ω = R+
 
-Sirva esto para hacer notar que Ω puede tomar formas muy variadas, desde conjuntos sencillos, peque˜
+Sirva esto para hacer notar que Ω puede tomar formas muy variadas, desde conjuntos sencillos, peque˜
 
 nos y finitos, hasta conjuntos infinitos no numerables.
 
@@ -178,7 +183,7 @@ Seleccionamos la cortina 3. Chabelo abre la cortina 2. Cambiamos por la 1. ganam
 
 Espacio Muestral
 
-Ante estas circunstancias, parece razonable el siguiente espacio muestral: Ω = {(1, 2, 3, P), (1, 3, 2, P), (2, 3, 1, G ), (3, 2, 1, G )}
+Ante estas circunstancias, parece razonable el siguiente espacio muestral: Ω = {(1, 2, 3, P), (1, 3, 2, P), (2, 3, 1, G ), (3, 2, 1, G )}
 
 Efectivamente, si seleccionamos la cortina 2, es equivalente en nuestro espacio muestral a haber seleccionado: ω = (2, 3, 1, G )
 
@@ -206,11 +211,11 @@ Una vez que hemos comprendido la idea de espacio muestral, debemos trabajar en e
 
 Para este fin retomemos el ejemplo de los precios de activos. Habíamos propuesto el espacio de estados:
 
-Ω = {w = (x1, x2, x3) ∶ xi ∈ {u, d}, i = 1, 2, 3}
+Ω = {w = (x1, x2, x3) ∶ xi ∈ {u, d}, i = 1, 2, 3}
 
 Para lo que intentamos exponer a continuación, conviene escribir este espacio de manera explícita:
 
-Ω = {(uuu), (uud), (udu), (udd)
+Ω = {(uuu), (uud), (udu), (udd)
 
 (ddd), (ddu), (dud), (duu)}
 
@@ -264,7 +269,7 @@ Fundamentos
 
 Lo primero que debemos notar es que el espacio de probabilidad que hemos propuesto describe cada una de las rutas en el árbol. Bien nos podríamos preguntar si es que es necesario tanto detalle. A final de cuentas solo estamos interesados en el resultado final, el precio al término de los tres días.
 
-De acuerdo con los parámetros seleccionados, el precio del activo al tiempo t + 3 solo puede tomar uno de los cuatro valores: 64, 16, 4 o 1. En este sentido, podríamos proponer un espacio de estados alternativo: Ω = {64, 16, 4, 1}
+De acuerdo con los parámetros seleccionados, el precio del activo al tiempo t + 3 solo puede tomar uno de los cuatro valores: 64, 16, 4 o 1. En este sentido, podríamos proponer un espacio de estados alternativo: Ω = {64, 16, 4, 1}
 
 ¿Cuál es mejor? En realidad los dos pueden ser correctos, todo depende del problema que deseamos resolver. Sin embargo lo que si es claro es que el primer espacio que propusimos, contiene mayor información que el segundo.
 
@@ -298,7 +303,7 @@ Aquí viene algo interesante, notemos que decir que St+2 = 8 es equivalente a de
 
 Fundamentos
 
-Tomemos ahora un ejemplo diferente, pesemos en el lanzamiento de dos dados. En este caso el espacio muestral parece muy natural; la colección de pares (i , j) donde i , j = 1, . . . , 6. Es decir: Ω = {(1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6) (2, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2, 6) (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6) (4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6) (5, 1), (5, 2), (5, 3), (5, 4), (5, 5), (5, 6) (6, 1), (6, 2), (6, 3), (6, 4), (6, 5), (6, 6)}
+Tomemos ahora un ejemplo diferente, pesemos en el lanzamiento de dos dados. En este caso el espacio muestral parece muy natural; la colección de pares (i , j) donde i , j = 1, . . . , 6. Es decir: Ω = {(1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6) (2, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2, 6) (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6) (4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6) (5, 1), (5, 2), (5, 3), (5, 4), (5, 5), (5, 6) (6, 1), (6, 2), (6, 3), (6, 4), (6, 5), (6, 6)}
 
 Fundamentos
 
@@ -334,13 +339,13 @@ A ∖ B = Obtuvimos 3 en el primer dado pero no en el segundo Observemos que en 
 
 Fundamentos
 
-Todas estas divagaciones nos conducen a conclusiones interesantes. Por un lado como vimos, no existe una única forma de definir un espacio muestral, la forma adecuada dependerá en gran medida de las preguntas que necesitemos resolver. Por otro lado, debemos estar ya convencidos, que al reunir los elementos de Ω en subconjuntos, en realidad lo que logramos es organizar la información que eventualmente podamos extraer del experimento aleatorio. Estas ideas nos conducen a la siguiente definición.
+Todas estas divagaciones nos conducen a conclusiones interesantes. Por un lado como vimos, no existe una única forma de definir un espacio muestral, la forma adecuada dependerá en gran medida de las preguntas que necesitemos resolver. Por otro lado, debemos estar ya convencidos, que al reunir los elementos de Ω en subconjuntos, en realidad lo que logramos es organizar la información que eventualmente podamos extraer del experimento aleatorio. Estas ideas nos conducen a la siguiente definición.
 
 σ-álgebra
 
-Una colección F de subconjuntos de Ω se conoce como σ-álgebra de Ω si: 1
+Una colección F de subconjuntos de Ω se conoce como σ-álgebra de Ω si: 1
 
-Ω ∈ F
+Ω ∈ F
 
 2
 
@@ -356,19 +361,19 @@ Fundamentos
 
 Ejemplos
 
-Si A ∈ F entonces se dice que A es un evento. Decimos que un evento A ocurre siempre y cuando el elemento ω ∈ Ω que resulta después de ejecutado el experimento aleatorio es un elemento de A esto es ω ∈ A.
+Si A ∈ F entonces se dice que A es un evento. Decimos que un evento A ocurre siempre y cuando el elemento ω ∈ Ω que resulta después de ejecutado el experimento aleatorio es un elemento de A esto es ω ∈ A.
 
-Ejemplos de σ-álgebra. Dado un espacio muestral Ω, la σ-álgebra más simple y peque˜
+Ejemplos de σ-álgebra. Dado un espacio muestral Ω, la σ-álgebra más simple y peque˜
 
-na que podemos definir es F = {Ω, ∅}. Otro ejemplo simple lo conseguimos como sigue: si A ⊂ Ω entonces: F = {Ω, ∅, A, Ac } es una σ-álgebra. Y claro está, la σ-álgebra mas grande de todas 2Ω. El conjunto potencia es una σ-álgebra que es útil en algunas aplicaciones, por ejemplo en el caso del lanzamiento de dos dados bien podemos usar al conjunto potencia como la σ-álgebra en nuestro experimento.
+na que podemos definir es F = {Ω, ∅}. Otro ejemplo simple lo conseguimos como sigue: si A ⊂ Ω entonces: F = {Ω, ∅, A, Ac } es una σ-álgebra. Y claro está, la σ-álgebra mas grande de todas 2Ω. El conjunto potencia es una σ-álgebra que es útil en algunas aplicaciones, por ejemplo en el caso del lanzamiento de dos dados bien podemos usar al conjunto potencia como la σ-álgebra en nuestro experimento.
 
-En el ejemplo del precio de un activo también podríamos usar la potencia, sin embargo, podríamos jugar con algunas alternativas. Por ejemplo; para el tiempo t donde desconocemos cualquier cosa que pueda ocurrir en el futuro, podríamos seleccionar la σ-álgebra: F = {Ω, ∅}.
+En el ejemplo del precio de un activo también podríamos usar la potencia, sin embargo, podríamos jugar con algunas alternativas. Por ejemplo; para el tiempo t donde desconocemos cualquier cosa que pueda ocurrir en el futuro, podríamos seleccionar la σ-álgebra: F = {Ω, ∅}.
 
 Fundamentos
 
 Ejemplos
 
-Ahora bien, si ya transcurrió un periodo, entonces tenemos conocimiento de lo ocurrido con el precio en el primer dia. Es decir, ya sabemos si ω ∈ Au o si ω ∈ Ad . Podemos jugar con esta información y generar una σ-álgebra que denote el hecho que conocemos la historia del primer dia: F = {∅, Ω, Au, Ad }
+Ahora bien, si ya transcurrió un periodo, entonces tenemos conocimiento de lo ocurrido con el precio en el primer dia. Es decir, ya sabemos si ω ∈ Au o si ω ∈ Ad . Podemos jugar con esta información y generar una σ-álgebra que denote el hecho que conocemos la historia del primer dia: F = {∅, Ω, Au, Ad }
 
 Notemos que en este caso F efectivamente es una σ-álgebra. Esto es fácil de ver dado que Au = Ac .
 
@@ -376,7 +381,7 @@ d
 
 Transcurridos dos días tenemos conocemos aín mas información, por lo pronto sabemos si ω pertenece a alguno de los cuatro conjuntos: Auu, Aud , Adu o Add . Sin embargo:
 
-C = {∅, Ω, Auu, Aud , Adu, Add }
+C = {∅, Ω, Auu, Aud , Adu, Add }
 
 no es una σ-álgebra.
 
@@ -390,7 +395,7 @@ De acuerdo con la definición de σ-álgebra ambos deberían estar incluídos.
 
 En ejemplos como este , no es difícil resolver la situación, basta con tomar al conjunto C y enriquecerlo con los conjuntos que le hagan falta para completar una σ-álgebra. A˜
 
-nadimos todas las uniones y complementos que hagan falta y listo. Este mecanismo sin embargo sirve solo para casos sencillos, donde el conjunto Ω es peque˜
+nadimos todas las uniones y complementos que hagan falta y listo. Este mecanismo sin embargo sirve solo para casos sencillos, donde el conjunto Ω es peque˜
 
 no y podemos ser exhaustivos al
 
@@ -400,11 +405,11 @@ Fundamentos
 
 Ejemplos
 
-Es importante hacer notar sin embargo que en general la potencia de Ω es demasiado grande y puede dar lugar a problemas serios, asimismo cuando Ω es muy grande, no es posible ser explícitos al momento de construir una σ-álgebra, en cambio, debemos optar por algún argumento mas descriptivo que constructivo al momento de determinar la σ-álgebra de nuestro experimento.
+Es importante hacer notar sin embargo que en general la potencia de Ω es demasiado grande y puede dar lugar a problemas serios, asimismo cuando Ω es muy grande, no es posible ser explícitos al momento de construir una σ-álgebra, en cambio, debemos optar por algún argumento mas descriptivo que constructivo al momento de determinar la σ-álgebra de nuestro experimento.
 
 Fundamentos
 
-El primer inciso de la definición, básicamente se asegura de que la σ-álgebra sea una colección no vacía. De hecho podríamos sustituirlo por el requerimiento de que F sea una colección no vacía. Notemos además que decir que ω ∈ Ω es equivalente a “no decir nada”, una afirmación asi no nos provee de información adicional.
+El primer inciso de la definición, básicamente se asegura de que la σ-álgebra sea una colección no vacía. De hecho podríamos sustituirlo por el requerimiento de que F sea una colección no vacía. Notemos además que decir que ω ∈ Ω es equivalente a “no decir nada”, una afirmación asi no nos provee de información adicional.
 
 En cambio, decir que ω ∈ Ac es un tipo de negación, negamos el hecho de que A haya ocurrido.
 
@@ -412,11 +417,11 @@ Asimismo, podemos parafrasear ω ∈ A ∪ B diciendo que “ocurrió A u ocurri
 
 Fundamentos
 
-En general, podemos concebir a una σ-álgebra como un mecanismo para ordenar la información contenida en el espacio muestral. Por lo pronto, el primer inciso en la definición de σ-álgebra garantiza que Ω es siempre un elemento de la misma, el segundo inciso implica que la σ-álgebra es cerrada bajo complementos, es decir; si sabemos que algo ocurrió también debemos saber si es que esto mismo, no ocurrió. El tercer inciso es el mas controvertido. La axiomática de la probabilidad que estudiaremos es la propuesta por Kolmogorov y no esta exenta de controversia. Hay probabilistas que afirman que una teoría de probabilidad debería considerar únicamente la cerradura bajo uniones finitas y no extenderlo al caso numerable. Lo cierto es que este último inciso es de vital importancia en la construcción de eventos que tienen que ver con algún comportamiento límite. No abundaremos más al respecto dado que es un tema correspondiente a un curso avanzado de probabilidad. Baste notar que el inciso tres implica no solo que una σ-álgebra es cerrada bajo uniones numerables, también es cerrada bajo uniones finitas.
+En general, podemos concebir a una σ-álgebra como un mecanismo para ordenar la información contenida en el espacio muestral. Por lo pronto, el primer inciso en la definición de σ-álgebra garantiza que Ω es siempre un elemento de la misma, el segundo inciso implica que la σ-álgebra es cerrada bajo complementos, es decir; si sabemos que algo ocurrió también debemos saber si es que esto mismo, no ocurrió. El tercer inciso es el mas controvertido. La axiomática de la probabilidad que estudiaremos es la propuesta por Kolmogorov y no esta exenta de controversia. Hay probabilistas que afirman que una teoría de probabilidad debería considerar únicamente la cerradura bajo uniones finitas y no extenderlo al caso numerable. Lo cierto es que este último inciso es de vital importancia en la construcción de eventos que tienen que ver con algún comportamiento límite. No abundaremos más al respecto dado que es un tema correspondiente a un curso avanzado de probabilidad. Baste notar que el inciso tres implica no solo que una σ-álgebra es cerrada bajo uniones numerables, también es cerrada bajo uniones finitas.
 
 Fundamentos
 
-Para probar la cerradura bajo uniones finitas antes observemos que de los dos primeros incisos se concluye que ∅ ∈ Ω. De este modo, si A y B son dos eventos en F entonces A ∪ B = ∪nAn con A = A1 y B = A2, mientras que Ai = ∅ para i ≥ 3. Usando el inciso tres se sigue que A ∪ B = ∪Ai ∈ F.
+Para probar la cerradura bajo uniones finitas antes observemos que de los dos primeros incisos se concluye que ∅ ∈ Ω. De este modo, si A y B son dos eventos en F entonces A ∪ B = ∪nAn con A = A1 y B = A2, mientras que Ai = ∅ para i ≥ 3. Usando el inciso tres se sigue que A ∪ B = ∪Ai ∈ F.
 
 Ahora bien, si {An} es una colección numerable de eventos en F entonces
 
@@ -426,15 +431,15 @@ Fundamentos
 
 Podemos continuar con propiedades del estilo de las que acabamos de exponer, dejemos algunas para los ejercicios. Lo importante que debemos recordar es que si bien una σ-álgebra es cerrada bajo uniones e intersecciones numerables, no lo es bajo uniones o intersecciones arbitrarias.
 
-Al par (Ω, F), se le conoce como espacio medible. En un espacio medible es que tiene sentido nuestra siguiente definición: Medida de probabilidad
+Al par (Ω, F), se le conoce como espacio medible. En un espacio medible es que tiene sentido nuestra siguiente definición: Medida de probabilidad
 
-Dado un espacio medible (Ω, F),decimos que una función P ∶ F → [0, 1]
+Dado un espacio medible (Ω, F),decimos que una función P ∶ F → [0, 1]
 
 es una medida de probabilidad si:
 
 1
 
-P(Ω) = 1
+P(Ω) = 1
 
 2
 
@@ -442,9 +447,9 @@ Si {An} es una sucesión de eventos disjuntos, entonces P(∪nAn) = ∑n P(An).
 
 Fundamentos
 
-A la tercia (Ω, F, P) se le conoce como espacio de probabilidad.
+A la tercia (Ω, F, P) se le conoce como espacio de probabilidad.
 
-Observemos el importantísimo papel de la σ-álgebra, no sólo es útil para definir cierto orden a la información que podemos extraer en un experimento aleatorio, también funciona como el dominio de una medida de probabilidad. Debemos ser enfáticos en esto; seremos capaces de calcular probabilidades sobre elementos F y nada mas. Si A ⊂ Ω pero A ∉ F entonces P es incapaz de trabajar con A. Algunas propiedades de la probabilidad vienen bien en este momento: P(∅) = 0
+Observemos el importantísimo papel de la σ-álgebra, no sólo es útil para definir cierto orden a la información que podemos extraer en un experimento aleatorio, también funciona como el dominio de una medida de probabilidad. Debemos ser enfáticos en esto; seremos capaces de calcular probabilidades sobre elementos F y nada mas. Si A ⊂ Ω pero A ∉ F entonces P es incapaz de trabajar con A. Algunas propiedades de la probabilidad vienen bien en este momento: P(∅) = 0
 
 Efectivamente, consideremos la sucesión {An} donde An = ∅ para todo n.
 
@@ -488,7 +493,7 @@ P(Ac) = 1 − P(A)
 
 Este resultado se sigue de que:
 
-1 = P(Ω) = P(A ∪ Ac) = P(A) + P(Ac)
+1 = P(Ω) = P(A ∪ Ac) = P(A) + P(Ac)
 
 Fundamentos
 
@@ -526,11 +531,11 @@ Retomemos el ejercicio que consiste en el lanzamiento de dos dados.
 
 Sabemos que
 
-Ω = {(1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6) (2,1),(2,2),(2, 3), (2, 4),(2, 5),(2, 6) (3,1),(3,2),(3, 3), (3, 4),(3, 5),(3, 6) (4,1),(4,2),(4, 3), (4, 4),(4, 5),(4, 6) (5,1),(5,2),(5, 3), (5, 4),(5, 5),(5, 6) (6,1),(6,2),(6, 3), (6, 4),(6, 5),(6, 6)}
+Ω = {(1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6) (2,1),(2,2),(2, 3), (2, 4),(2, 5),(2, 6) (3,1),(3,2),(3, 3), (3, 4),(3, 5),(3, 6) (4,1),(4,2),(4, 3), (4, 4),(4, 5),(4, 6) (5,1),(5,2),(5, 3), (5, 4),(5, 5),(5, 6) (6,1),(6,2),(6, 3), (6, 4),(6, 5),(6, 6)}
 
 Fundamentos
 
-Si ambos dados son justos, si ninguno de ellos esta cargado y todas las caras son igualmente probables entonces cada cara tiene un sexto de probabilidad de aparecer. Derivado de Ω de deducimos que cada combinación en el lanzamiento de los dados tiene 1/36 de probabilidad de ocurrir.
+Si ambos dados son justos, si ninguno de ellos esta cargado y todas las caras son igualmente probables entonces cada cara tiene un sexto de probabilidad de aparecer. Derivado de Ω de deducimos que cada combinación en el lanzamiento de los dados tiene 1/36 de probabilidad de ocurrir.
 
 Retomando los ejemplos anteriores, si A = evento de obtener un 3 en el primer dado entonces P(A) = 6/36 = 1/6. De manera análoga, si B = evento de obtener un 3 en el segundo dado entonces P(B) = 1/6.
 
@@ -608,7 +613,7 @@ A △ B = {(3, 1), (3, 2), (3, 4), (3, 5), (3, 6), (1,3),(2,3),(4, 3), (5, 3),(6
 
 Fundamentos
 
-La siguiente tabla puede ser de utilidad: Ω
+La siguiente tabla puede ser de utilidad: Ω
 
 Espacio Muestral. Evento seguro
 
@@ -726,7 +731,7 @@ Finalmente, un ejemplo un poco mas complejo: C = La suma de los dados es par
 
 Fundamentos
 
-Podemos seguir dos rutas para encontrar la probabilidad de C . Una es la de “fuerza bruta” y enlistar todos los elementos de Ω que cumplen con la condición. La otra es tratar de razonar la lógica del conjunto y expresarlo en términos de otros mas simples.
+Podemos seguir dos rutas para encontrar la probabilidad de C . Una es la de “fuerza bruta” y enlistar todos los elementos de Ω que cumplen con la condición. La otra es tratar de razonar la lógica del conjunto y expresarlo en términos de otros mas simples.
 
 Sigamos la segunda ruta y notemos que para que la suma de los dados sea par, es necesario que se cumpla que ambos dados sean pares o bien que ambos dados sean impares. Esto es:
 
@@ -1788,7 +1793,7 @@ Observemos que el conocimiento de B afecta considerablemente la probabilidad de 
 
 Con esta idea a la mano, podemos regresar al problema del rey.
 
-originalmente sabemos que los padres del rey tuvieron dos hijos, con lo cual podemos pensar en el espacio muestral: Ω = {(B, B), (B, G ), (G , B), (G , G )}
+originalmente sabemos que los padres del rey tuvieron dos hijos, con lo cual podemos pensar en el espacio muestral: Ω = {(B, B), (B, G ), (G , B), (G , G )}
 
 Probabilida condicional
 
@@ -1830,7 +1835,7 @@ Porbabilidad Condicional
 
 La probabilidad condicional P(⋅ ∣ B) es una probabilidad. Esto es: 1
 
-P(Ω ∣ B) = 1
+P(Ω ∣ B) = 1
 
 2
 
@@ -1850,9 +1855,9 @@ Va otro ejemplo interesante. . . El problema que veremos a continuación es tan 
 
 Probabilidad Condicional
 
-Primero tratemos de razonar como lo hizo el guardia. Dado que de inicio afirmó que el prisionero A tenía 2/3 de probabilidad de ser liberado, en realidad esta dando por hecho que el espacio muestral del experimento es: Ω = {(A, B), (A, C ), (B, C )}
+Primero tratemos de razonar como lo hizo el guardia. Dado que de inicio afirmó que el prisionero A tenía 2/3 de probabilidad de ser liberado, en realidad esta dando por hecho que el espacio muestral del experimento es: Ω = {(A, B), (A, C ), (B, C )}
 
-Donde las parejas en Ω son pares no ordenados. Luego supone que es igualmente probable la liberación de cualquiera de estas parejas. Su estimación inicial de 2/3 en este contexto , es correcta.
+Donde las parejas en Ω son pares no ordenados. Luego supone que es igualmente probable la liberación de cualquiera de estas parejas. Su estimación inicial de 2/3 en este contexto , es correcta.
 
 Si segunda afirmación la escribiríamos como sigue: P(A sea liberado ∣ el guardia dijo que B será liberado) = 12
 
@@ -2332,7 +2337,7 @@ P(A ∣ Jc
 
 0
 
-Esto nos permite usar una estrategia muy útil, notemos que: Ω = (J1 ∩ J2) ∪ (Jc
+Esto nos permite usar una estrategia muy útil, notemos que: Ω = (J1 ∩ J2) ∪ (Jc
 
 )
 
@@ -2394,7 +2399,7 @@ Probabilidad Condicional
 
 Fórmula de Probabilidad Total
 
-Sea Bi una partición del espacio de probabilidad Ω, entonces: P(A) = ∑ P(A ∩ Bi)
+Sea Bi una partición del espacio de probabilidad Ω, entonces: P(A) = ∑ P(A ∩ Bi)
 
 i
 
@@ -2532,15 +2537,15 @@ Por ejemplo; si n = 5 y p = 1/2, entonces P(B ∣ A) = 5/6.
 
 Variables Aleatorias
 
-La teoría que hemos desarrollado hasta el momento, tiene como fundamento, la construcción de un espacio de probabilidad (Ω, F, P).
+La teoría que hemos desarrollado hasta el momento, tiene como fundamento, la construcción de un espacio de probabilidad (Ω, F, P).
 
-Sabemos bien que el conjunto Ω contiene todos los posibles resultados del experimento. Esto, claro esta, es útil por si mismo, sin embargo lo mas común en la práctica es que estemos interesados no en elementos de Ω
+Sabemos bien que el conjunto Ω contiene todos los posibles resultados del experimento. Esto, claro esta, es útil por si mismo, sin embargo lo mas común en la práctica es que estemos interesados no en elementos de Ω
 
 directamente, si no en alguna función de estos. Esto nos conduce a la siguiente definición1:
 
 Variable Aleatoria
 
-Dado un espacio de probabilidad (Ω, F, P), una función: X ∶ Ω → R
+Dado un espacio de probabilidad (Ω, F, P), una función: X ∶ Ω → R
 
 Es conocida como variable aleatoria.
 
@@ -2550,7 +2555,7 @@ Variables Aleatorias
 
 Consideremos por ejemplo el lanzamiento de tres monedas. El espacio muestral sería:
 
-Ω = {ω1 = (AAA), ω2 = (AAS), ω3 = (ASA), ω4 = (ASS) ω5 = (SSS), ω6 = (SSA), ω7 = (SAS), ω8 = (SAA)}
+Ω = {ω1 = (AAA), ω2 = (AAS), ω3 = (ASA), ω4 = (ASS) ω5 = (SSS), ω6 = (SSA), ω7 = (SAS), ω8 = (SAA)}
 
 Esto es correcto y describe satisfactoriamente al experimento aleatorio.
 
@@ -2564,7 +2569,7 @@ X (ω4) = 1 X (ω8) = 2
 
 Variables Aleatorias
 
-Observemos como X mapea cada elemento de Ω en algún real. Notemos de hecho que:
+Observemos como X mapea cada elemento de Ω en algún real. Notemos de hecho que:
 
 X (ω) = 0 si y solo si ω ∈ {ω5}
 
@@ -2574,7 +2579,7 @@ X (ω) = 2 si y solo si ω ∈ {ω2, ω3, ω8}
 
 X (ω) = 3 si y solo si ω ∈ {ω1}
 
-Este ejemplo nos conduce a nueva notación: X −1(x) = {ω ∈ Ω ∶ X (ω) = x}
+Este ejemplo nos conduce a nueva notación: X −1(x) = {ω ∈ Ω ∶ X (ω) = x}
 
 X −1(x) es conocida como la preimagen de x bajo X . Notemos que esta preimagen no es una función.
 
@@ -2590,7 +2595,7 @@ X −1(0) = {ω5}
 
 Una notación más compacta y de uso mas frecuente es la siguiente2:
 
-{X = x} = {w ∈ Ω ∶ X(ω) = x}
+{X = x} = {w ∈ Ω ∶ X(ω) = x}
 
 Siguiendo el ejemplo anterior:
 
@@ -2604,7 +2609,7 @@ y
 
 Variables Aleatorias
 
-Ejemplo. En el lanzamiento de dos dados, estamos interesados en la variable X que denota al máximo de las dos caras. Observemos que X ∶ Ω → {1, 2, 3, 4, 5, 6} ⊂ R y tenemos por ejemplo que:
+Ejemplo. En el lanzamiento de dos dados, estamos interesados en la variable X que denota al máximo de las dos caras. Observemos que X ∶ Ω → {1, 2, 3, 4, 5, 6} ⊂ R y tenemos por ejemplo que:
 
 {X = 3} = {(1,3),(2,3),(3, 3),(3, 2),(3, 1)} .
 
@@ -2612,7 +2617,7 @@ o
 
 {X = 4} = {(1,4),(2,4),(3, 4), (4, 4),(4, 3),(4, 2), (4, 1)} .
 
-usando nuestra nueva notación, podemos calcular probabilidades como: P(X = x) = P({ω ∈ Ω ∶ X (ω) = x})
+usando nuestra nueva notación, podemos calcular probabilidades como: P(X = x) = P({ω ∈ Ω ∶ X (ω) = x})
 
 Variables Aleatorias
 
@@ -2752,13 +2757,13 @@ i =1 X = i }) = p [ 1 − (1 − p)n−1
 
 = 1
 
-El desarrollo anterior sugiere la idea de que una variable aleatoria induce cierta medida de probabilidad. La idea de manera superficial es como sigue3; Sabemos que una variable aleatoria es una función que mapea al conjunto de Ω en los reales, esto es: X ∶ Ω → R
+El desarrollo anterior sugiere la idea de que una variable aleatoria induce cierta medida de probabilidad. La idea de manera superficial es como sigue3; Sabemos que una variable aleatoria es una función que mapea al conjunto de Ω en los reales, esto es: X ∶ Ω → R
 
 3El desarrollo formal requiere de conceptos de teoría de la medida, temas que exceden el nivel de este curso, sin embargo se ofrece aquí al menos un tratamiento superficial del tema.
 
 Variables Aleatorias
 
-Pero no olvidemos que todo modelo de probabilidad esta definido en un espacio de probabilidad (Ω, F, P), de algún modo, la variable X , también mapea a la σ-álgebra F en una nueva σ-álgebra B: X
+Pero no olvidemos que todo modelo de probabilidad esta definido en un espacio de probabilidad (Ω, F, P), de algún modo, la variable X , también mapea a la σ-álgebra F en una nueva σ-álgebra B: X
 
 F Ð→ B
 
@@ -2770,7 +2775,7 @@ P Ð→ PX
 
 Esto lo logramos del siguiente modo; si A ∈ B entonces: PX (A) = P(X ∈ A)
 
-= P({ω ∈ Ω ∶ X(ω) ∈ A})
+= P({ω ∈ Ω ∶ X(ω) ∈ A})
 
 Variables Aleatorias
 
@@ -2788,9 +2793,9 @@ es discreta:
 
 PX (A) = P(X ∈ A)
 
-= P({ω ∈ Ω ∶ X(ω) ∈ A})
+= P({ω ∈ Ω ∶ X(ω) ∈ A})
 
-= ∑ P({ω ∈ Ω ∶ X(ω) = a})
+= ∑ P({ω ∈ Ω ∶ X(ω) = a})
 
 a∈A
 
@@ -2804,7 +2809,7 @@ a∈A
 
 Variables Aleatorias
 
-Si S el rango de una variable aleatoria X , es decir X ∶ Ω → S ⊂ R y X es una variable aleatoria discreta, definimos la función de probabilidad o función de probabilidad de masa p(a) de X como:
+Si S el rango de una variable aleatoria X , es decir X ∶ Ω → S ⊂ R y X es una variable aleatoria discreta, definimos la función de probabilidad o función de probabilidad de masa p(a) de X como:
 
 ⎧⎪P(X = a) a ∈ S
 
