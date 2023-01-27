@@ -4,4 +4,7 @@
 \RequirePackage[spanish]{babel}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{amsmath, amssymb}
-\RequirePackage[skip=10pt plus1pt, indent=15pt]{parskip}
+\setlength{\parskip}{10pt plus1pt}
+%\RequirePackage{parskip}
+%\setlength{\parskip}{10pt} % 1ex plus 0.5ex minus 0.2ex}
+%\setlength{\parindent}{10pt}

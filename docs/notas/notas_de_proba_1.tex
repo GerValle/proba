@@ -1,6 +1,10 @@
 \documentclass[a4paper,12pt,twoside]{libro}
+%\usepackage[10pt]{parskip}
 %\usepackage[spanish]{babel}
 %\usepackage[utf8]{inputenc}
+%\setlength{\parskip}{10pt}
+%\setlength{\parskip}{10pt plus1pt}
+
 \begin{document}
 % Cover page
 \thispagestyle{empty}
@@ -8,7 +12,7 @@
 {\Huge\bf Probabilidad}%\\[5mm]
 %{\Large\bf }
 \end{center}
-\cleardoublepage
+	\cleardoublepage
 % Preface
 \pagenumbering{roman}
 \chapter*{Prefacio}
@@ -42,7 +46,7 @@ También es importante notar que la probabilidad es fundamento de muchas otras d
 Empecemos por lo más básico... Al momento de modelar un fenómeno aleatorio, debemos empezar por delimitar las posibilidades. El ejemplo mas simple  y tradicional sería el lanzamiento de una moneda, típicamente asumimos que las únicas dos posibilidades es que la moneda caiga en alguna de sus dos caras.
 
 Esto lo podemos traducir diciendo que la moneda cae en ``sol''($S$) o bien cae en ``águila''($A$). Es decir el posible resultado de este sencillo experimento es alguno de los elementos del conjunto: 
-$$\Omega = {A, S}$$
+$$\Omega = \{A, S\}$$
 %
 En el caso del lanzamiento de un par de dados, el conjunto $\Omega$ podría ser: 
 $$\Omega = \left\{(i , j), i , j = 1,\ldots , 6\right\}$$
@@ -55,8 +59,20 @@ El \emph{espacio muestral} de un fenómeno aleatorio, es el conjunto de resultad
 
 No es imperativo pero si muy común, denotar al espacio muestral con $\Omega$, nosotros seguiremos esta costumbre.
 
-De acuerdo con esta definición, cualquier cosa que este fuera de Ω es para todos los fines de nuestro modelo, algo completamente imposible. Si. . . en el conjunto Ω que propusimos para el lanzamiento de una moneda, dejamos fuera la posibilidad de que la moneda caiga de canto. . .
+De acuerdo con esta definición, cualquier cosa que este fuera de $\Omega$ es para todos los fines de nuestro modelo, algo completamente imposible. Si. . . en el conjunto $\Omega$ que propusimos para el lanzamiento de una moneda, dejamos fuera la posibilidad de que la moneda caiga de canto. . .
 
+
+Debemos hacer énfasis en que el espacio muestral que definamos es válido en un contexto muy específico. Es decir, estamos modelando y cualquier modelo tiene imperfecciones. Ningún modelo es un reflejo fiel de la realidad y en general no se espera que sea asi. Lo importante es que cuando proponemos un modelo para describir algún fenómeno social, natural o de cualquier índole, debemos hacer supuestos simplificadores que permitan atacar el problema de manera eficiente. Mas aun, podemos proponer mas de un modelo perfectamente válido para atacar un problema desde enfoques diferentes.
+
+Pensemos en la Ciudad de México, si queremos determinar una ruta aérea de la CDMX a Mérida, sería perfectamente válido y útil pensar que ambas ciudades son ``puntos'' en el mapa. Sin embargo seria una muy mala idea pensar del mismo modo si lo que deseamos es proponer un modelo que busque resolver el problema del tráfico en la ciudad.
+
+En un contexto de orden mas probabilístico; supongamos que un inversionista esta interesado en el comportamiento que tendrá el precio de un activo a lo largo de los tres días siguientes.
+
+Es claro que al dia de hoy conocemos el precio del activo. Pero desconocemos el precio que tendrá en los días subsecuentes. Este precio es aleatorio. Sin embargo aunque desconocemos los precios de los días venideros si podemos intentar definir algún modelo.
+
+¿Que valores podrá tomar el activo? La primera observación es que el precio del activo es siempre no negativo. Además de ello ¿que podemos suponer con respecto del precio que tomara mañana o pasado mañana?
+
+Un modelo simple, pero de ningún modo despreciable supone que de un día a otro el precio solo puede tomar uno de dos valores. Uno de estos corresponde a un alza y el otro a una baja. Asi de simple
 
 \appendix
 \chapter{Appendix}
@@ -66,27 +82,7 @@ De acuerdo con esta definición, cualquier cosa que este fuera de Ω es para tod
 %\printindex
 \end{document}
 
-
-
-Espacio Muestral
-
-Debemos hacer énfasis en que el espacio muestral que definamos es válido en un contexto muy específico. Es decir, estamos modelando y cualquier modelo tiene imperfecciones. Ningún modelo es un reflejo fiel de la realidad y en general no se espera que sea asi. Lo importante es que cuando proponemos un modelo para describir algún fenómeno social, natural o de cualquier índole, debemos hacer supuestos simplificadores que permitan atacar el problema de manera eficiente. Mas aun, podemos proponer mas de un modelo perfectamente válido para atacar un problema desde enfoques diferentes.
-
-Pensemos en la Ciudad de México, si queremos determinar una ruta aérea de la CDMX a Mérida, sería perfectamente válido y útil pensar que ambas ciudades son “puntos” en el mapa. Sin embargo seria una muy mala idea pensar del mismo modo si lo que deseamos es proponer un modelo que busque resolver el problema del tráfico en la ciudad.
-
-Espacio Muestral
-
-En un contexto de orden mas probabilístico; supongamos que un inversionista esta interesado en el comportamiento que tendrá el precio de un activo a lo largo de los tres días siguientes.
-
-Es claro que al dia de hoy conocemos el precio del activo. Pero desconocemos el precio que tendrá en los días subsecuentes. Este precio es aleatorio. Sin embargo aunque desconocemos los precios de los días venideros si podemos intentar definir algún modelo.
-
-¿Que valores podrá tomar el activo? La primera observación es que el precio del activo es siempre no negativo. Además de ello ¿que podemos suponer con respecto del precio que tomara ma˜
-
-nana o pasado ma˜
-
-nana?
-
-Un modelo simple, pero de ningún modo despreciable supone que de un día a otro el precio solo puede tomar uno de dos valores. Uno de estos corresponde a un alza y el otro a una baja. Asi de simple 
+ 
 
 Espacio Muestral
 
