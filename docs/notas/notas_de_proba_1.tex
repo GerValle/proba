@@ -5,6 +5,11 @@
 %\setlength{\parskip}{10pt}
 %\setlength{\parskip}{10pt plus1pt}
 
+\usepackage{amsthm}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[chapter]
+
 \begin{document}
 % Cover page
 \thispagestyle{empty}
@@ -23,7 +28,7 @@ The necessity for writing este book was felt long back ...
 \cleardoublepage
 % Starting chapters
 \pagenumbering{arabic}
-\chapter{Introducción}
+\chapter*{Introducción}
 Existen multitud de fenómenos en la vida diaria, que difícilmente pueden ser modelados con certeza. Ya sea por la complejidad de su naturaleza o porque efectivamente es imposible establecer algún modelo determinístico para el mismo. Ejemplos que vienen a la mente provienen directamente de juegos de azar tales como, 
 
 \begin{itemize}
@@ -53,9 +58,9 @@ $$\Omega = \left\{(i , j), i , j = 1,\ldots , 6\right\}$$
 %
 En general definimos:
 
-Espacio Muestral
-
+\begin{definition} [Espacio Muestral]
 El \emph{espacio muestral} de un fenómeno aleatorio, es el conjunto de resultados que consideramos posibles.
+\end{definition} 
 
 No es imperativo pero si muy común, denotar al espacio muestral con $\Omega$, nosotros seguiremos esta costumbre.
 
