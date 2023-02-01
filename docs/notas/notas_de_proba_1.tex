@@ -79,6 +79,31 @@ Es claro que al dia de hoy conocemos el precio del activo. Pero desconocemos el 
 
 Un modelo simple, pero de ningún modo despreciable supone que de un día a otro el precio solo puede tomar uno de dos valores. Uno de estos corresponde a un alza y el otro a una baja. Asi de simple
 
+Matemáticamente; si denotamos con $S_t$ al precio del activo al tiempo $t$ entonces proponemos el modelo:
+
+
+$$
+S_{t+1} = \begin{cases}
+	uS_t & u >1 \\
+	dS_t & 0 < d < 1
+\end{cases}
+$$
+
+Si todo ``empieza'' al tiempo $t$ entonces $S_{t+3}$ es desconocida al tiempo $t$ pero sabemos que puede tomar cualquiera de los valores: $S_{t+3} = u^id^{3-i}S_t$, $i = 0,\ldots,3$.
+
+El problema es que no sabemos cual de ellos tomará. Sin embargo, podemos modelar el precio del activo al tiempo $t+3$ como un experimento aleatorio. ¿cual sería en este caso el espacio muestral?
+
+
+No es la única posibilidad, pero una buen idea seria definir el espacio muestral en términos de las alzas y bajas del activo: 
+
+$$\Omega = \left\{w = (x_1, x_2, x_3):x_i \in\{u,d\}, i=1, 2, 3\right\}$$
+
+
+Asi por ejemplo si $w = (u, u, d)$ entonces sabemos que en $t + 3$ el precio del activo es $u^2dS_t$. Pero si $w = (d, d, d)$ entonces $S_{t+3} = d^3S_t$ En resumen, el conjunto $\Omega$, reúne todos los escenarios posibles. De acuerdo con nuestro modelo, solo las alternativas que están en $\Omega$ pueden ocurrir. Cualquier otra cosa es imposible. Aunque no sabemos cual $w \in\Omega$ ocurrirá, al menos hemos delimitado las posibilidades.
+
+El modelo que hemos propuesto, si bien simple, es un modelo muy popular en el medio financiero. En la práctica se usa tal cual lo describimos, usualmente con un mayor número de periodos, pero fuera de ello sin cambio alguno. Por muy simple que parezca de primera instancia, es un modelo muy adecuado para resolver algunos tipos de problemas en finanzas. Claro esta que no es el único modelo de uso extendido para modelar precios de activos. Una alternativa quizás mas ambiciosa seria suponer que a lo largo de los tres días de operación, el activo puede tomar cualquier valor no negativo. En este caso: $\Omega= R^+$.  Sirva esto para hacer notar que $\Omega$ puede tomar formas muy variadas, desde conjuntos sencillos, pequeños y finitos, hasta conjuntos infinitos no numerables.
+
+
 \appendix
 \chapter{Appendix}
 
@@ -87,53 +112,6 @@ Un modelo simple, pero de ningún modo despreciable supone que de un día a otro
 %\printindex
 \end{document}
 
- 
-
-Espacio Muestral
-
-Matemáticamente; si denotamos con St al precio del activo al tiempo t entonces proponemos el modelo:
-
-⎧
-
-⎪
-
-⎪uSt
-
-u > 1
-
-St+1 = ⎨
-
-⎪
-
-⎪
-
-⎩dSt
-
-0 < d < 1
-
-Si todo ‘empieza” al tiempo t entonces St+3 es desconocida al tiempo t pero sabemos que puede tomar cualquiera de los valores: St+3 = ui d3−i St,
-
-i = 0, . . . , 3.
-
-El problema es que no sabemos cual de ellos tomará. No importa, podemos modelar el precio del activo al tiempo t + 3 como un experimento aleatorio. ¿cual sería en este caso el espacio muestral?
-
-Espacio Muestral
-
-No es la única posibilidad, pero una buen idea seria definir el espacio muestral en términos de las alzas y bajas del activo: Ω = {w = (x1, x2, x3) ∶ xi ∈ {u, d}, i = 1, 2, 3}
-
-Asi por ejemplo si w = (u, u, d) entonces sabemos que en t + 3 el precio del activo es u2dSt. Pero si w = (d, d, d) entonces St+3 = d3St En resumen, el conjunto Ω, reúne todos los escenarios posibles. De acuerdo con nuestro modelo, solo las alternativas que están en Ω pueden ocurrir. Cualquier otra cosa es imposible. Aun que no sabemos cual w ∈ Ω
-
-ocurrirá, al menos hemos delimitado las posibilidades.
-
-Espacio Muestral
-
-El modelo que hemos propuesto, si bien simple, es un modelo muy popular en el medio financiero. En la práctica se usa tal cual lo describimos, usualmente con un mayor número de periodos, pero fuera de ello sin cambio alguno. Por muy simple que parezca de primera instancia, es un modelo muy adecuado para resolver algunos tipos de problemas en finanzas. Claro esta que no es el único modelo de uso extendido para modelar precios de activos. Una alternativa quizás mas ambiciosa seria suponer que a lo largo de los tres días de operación, el activo puede tomar cualquier valor no negativo. En este caso: Ω = R+
-
-Sirva esto para hacer notar que Ω puede tomar formas muy variadas, desde conjuntos sencillos, peque˜
-
-nos y finitos, hasta conjuntos infinitos no numerables.
-
-Espacio Muestral
 
 Ejemplo
 
