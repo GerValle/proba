@@ -1,5 +1,4 @@
 \babel@toc {spanish}{}\relax 
-\contentsline {chapter}{\numberline {1}Introducción}{1}{}%
-\contentsline {chapter}{\numberline {2}Axiomas de Probabilidad}{3}{}%
-\contentsline {section}{\numberline {2.1}Espacio Muestral}{3}{}%
-\contentsline {chapter}{\numberline {A}Appendix}{5}{}%
+\contentsline {chapter}{\numberline {1}Axiomas de Probabilidad}{3}{}%
+\contentsline {section}{\numberline {1.1}Espacio Muestral}{3}{}%
+\contentsline {chapter}{\numberline {A}Appendix}{7}{}%

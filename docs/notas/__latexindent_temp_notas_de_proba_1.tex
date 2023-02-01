@@ -14,10 +14,10 @@
 % Cover page
 \thispagestyle{empty}
 \begin{center}
-	{\Huge\bf Probabilidad}%\\[5mm]
-	%{\Large\bf }
+{\Huge\bf Probabilidad}%\\[5mm]
+%{\Large\bf }
 \end{center}
-\cleardoublepage
+	\cleardoublepage
 % Preface
 \pagenumbering{roman}
 \chapter*{Prefacio}
@@ -29,7 +29,7 @@ The necessity for writing este book was felt long back ...
 % Starting chapters
 \pagenumbering{arabic}
 \chapter*{Introducción}
-Existen multitud de fenómenos en la vida diaria, que difícilmente pueden ser modelados con certeza. Ya sea por la complejidad de su naturaleza o porque efectivamente es imposible establecer algún modelo determinístico para el mismo. Ejemplos que vienen a la mente provienen directamente de juegos de azar tales como,
+Existen multitud de fenómenos en la vida diaria, que difícilmente pueden ser modelados con certeza. Ya sea por la complejidad de su naturaleza o porque efectivamente es imposible establecer algún modelo determinístico para el mismo. Ejemplos que vienen a la mente provienen directamente de juegos de azar tales como, 
 
 \begin{itemize}
 	\item El lanzamiento de una moneda,
@@ -46,21 +46,21 @@ También es importante notar que la probabilidad es fundamento de muchas otras d
 
 \chapter{Axiomas de Probabilidad}
 
-\section{Espacio Muestral}
+\section{Espacio Muestral} 
 
 Empecemos por lo más básico... Al momento de modelar un fenómeno aleatorio, debemos empezar por delimitar las posibilidades. El ejemplo mas simple  y tradicional sería el lanzamiento de una moneda, típicamente asumimos que las únicas dos posibilidades es que la moneda caiga en alguna de sus dos caras.
 
-Esto lo podemos traducir diciendo que la moneda cae en ``sol''($S$) o bien cae en ``águila''($A$). Es decir el posible resultado de este sencillo experimento es alguno de los elementos del conjunto:
+Esto lo podemos traducir diciendo que la moneda cae en ``sol''($S$) o bien cae en ``águila''($A$). Es decir el posible resultado de este sencillo experimento es alguno de los elementos del conjunto: 
 $$\Omega = \{A, S\}$$
 %
-En el caso del lanzamiento de un par de dados, el conjunto $\Omega$ podría ser:
+En el caso del lanzamiento de un par de dados, el conjunto $\Omega$ podría ser: 
 $$\Omega = \left\{(i , j), i , j = 1,\ldots , 6\right\}$$
 %
 En general definimos:
 
 \begin{definition} [Espacio Muestral]
-	El \emph{espacio muestral} de un fenómeno aleatorio, es el conjunto de resultados que consideramos posibles.
-\end{definition}
+El \emph{espacio muestral} de un fenómeno aleatorio, es el conjunto de resultados que consideramos posibles.
+\end{definition} 
 
 No es imperativo pero si muy común, denotar al espacio muestral con $\Omega$, nosotros seguiremos esta costumbre.
 
@@ -83,10 +83,10 @@ Matemáticamente; si denotamos con $S_t$ al precio del activo al tiempo $t$ ento
 
 
 $$
-	S_{t+1} = \begin{cases}
-		uS_t & u >1      \\
-		dS_t & 0 < d < 1
-	\end{cases}
+S_{t+1} = \begin{cases}
+	uS_t & u >1 \\
+	dS_t & 0 < d < 1
+\end{cases}
 $$
 
 Si todo ``empieza'' al tiempo $t$ entonces $S_{t+3}$ es desconocida al tiempo $t$ pero sabemos que puede tomar cualquiera de los valores: $S_{t+3} = u^id^{3-i}S_t$, $i = 0,\ldots,3$.
@@ -94,10 +94,10 @@ Si todo ``empieza'' al tiempo $t$ entonces $S_{t+3}$ es desconocida al tiempo $t
 El problema es que no sabemos cual de ellos tomará. Sin embargo, podemos modelar el precio del activo al tiempo $t+3$ como un experimento aleatorio. ¿cual sería en este caso el espacio muestral?
 
 
-No es la única posibilidad, pero una buen idea seria definir el espacio muestral en términos de las alzas y bajas del activo:
+No es la única posibilidad, pero una buen idea seria definir el espacio muestral en términos de las alzas y bajas del activo: 
 
 $$
-	\Omega = \left\{w = (x_1, x_2, x_3):x_i \in\{u,d\}, i=1, 2, 3\right\}
+\Omega = \left\{w = (x_1, x_2, x_3):x_i \in\{u,d\}, i=1, 2, 3\right\}
 $$
 
 
@@ -297,7 +297,7 @@ B = {(1, 3), (2, 3), (3, 3), (4, 3), (5, 3), (6, 3)}
 
 representa los casos donde hubo un tres en el segundo dado. Algo un poco mas complejo, de forma coloquial decimos: A ∪ B = sale 3 en primer dado o sale 3 en el segundo a diferencia de
 
-A ∩ B = sale 3 en el primer dado y sale 3 en el segundo dado
+A ∩ B = sale 3 en el primer dado y sale 3 en el segundo dado 
 
 Las dos aseveraciones anteriores podemos escribirlas de manera equivalente como:
 
@@ -311,13 +311,13 @@ En términos de conjuntos ¿cómo podríamos expresar la frase “obtuvimos exac
 
 Observemos que A ∪ B no es útil pues contiene a (3, 3), en este elemento tenemos mas ocurrencias del 3 de las que necesitamos. A ∩ B = {(3, 3)}
 
-nos sirve aun menos, En realidad es el elemento que desearíamos eliminar de A ∪ B para obtener lo que estamos buscando. Esto es: (A ∪ B) ∖ (A ∩ B) = Obtenemos exactamente un tres
+nos sirve aun menos, En realidad es el elemento que desearíamos eliminar de A ∪ B para obtener lo que estamos buscando. Esto es: (A ∪ B) ∖ (A ∩ B) = Obtenemos exactamente un tres 
 
 Fundamentos
 
 Recordemos que la diferencia simétrica de A y B se define como: A △ B = (A ∖ B) ∪ (B ∖ A) = (A ∪ B) ∖ (A ∩ B) Por lo tanto, en el ejemplo que estamos estudiando A △ B es el conjunto donde “obtenemos exactamente un tres”. ¿Que podemos decir entonces de la diferencia usual de conjuntos?
 
-A ∖ B = Obtuvimos 3 en el primer dado pero no en el segundo Observemos que en esta última expresión estamos negando la ocurrencia de un 3 en el segundo dado, es decir: B c = No obtuvimos 3 en el segundo dado
+A ∖ B = Obtuvimos 3 en el primer dado pero no en el segundo Observemos que en esta última expresión estamos negando la ocurrencia de un 3 en el segundo dado, es decir: B c = No obtuvimos 3 en el segundo dado 
 
 Fundamentos
 
@@ -407,7 +407,7 @@ Para probar la cerradura bajo uniones finitas antes observemos que de los dos pr
 
 Ahora bien, si {An} es una colección numerable de eventos en F entonces
 
-	{Acn} también es una colección numerable en F. Usando de manera conjunta el inciso 2 y el inciso 3 y echando mano de la ley de Morgan tenemos que ∩nAn = (∪nAcn)c ∈ F. Esto es, una σ-álgebra también es cerrada bajo intersecciones numerables. Con un argumento similar al que usamos para probar la cerradura bajo uniones finitas, podemos probar la cerradura bajo intersecciones finitas.
+{Acn} también es una colección numerable en F. Usando de manera conjunta el inciso 2 y el inciso 3 y echando mano de la ley de Morgan tenemos que ∩nAn = (∪nAcn)c ∈ F. Esto es, una σ-álgebra también es cerrada bajo intersecciones numerables. Con un argumento similar al que usamos para probar la cerradura bajo uniones finitas, podemos probar la cerradura bajo intersecciones finitas.
 
 Fundamentos
 
@@ -1059,7 +1059,7 @@ Hemos hecho un selección de tres elementos tomados de un conjunto de cinco elem
 
 ¿que pasa con el orden?
 
-Supongamos que seleccionamos a Hulk a Ironman y a Wolverine. Notemos que en la forma en que realizamos la cuenta, dado que lo hicimos con orden, hemos considerado los siguientes equipos como si fueran diferentes:
+Supongamos que seleccionamos a Hulk a Ironman y a Wolverine. Notemos que en la forma en que realizamos la cuenta, dado que lo hicimos con orden, hemos considerado los siguientes equipos como si fueran diferentes: 
 
 Combinatoria
 
@@ -1829,7 +1829,7 @@ Si {An} es una sucesión de eventos disjuntos entonces: P (∪nAn ∣ B) = ∑ P
 
 n
 
-La prueba de estos tres incisos, quedará como tarea... :-)
+La prueba de estos tres incisos, quedará como tarea... :-) 
 
 Probabilidad Condicional
 
@@ -1879,9 +1879,9 @@ Antes de calcular P(E ∩ F ) y P(F ) observemos lo siguiente:
 
 {ω1} = Evento de que A y B sean liberados
 
-	{ω2} = Evento de que A y C sean liberados
+{ω2} = Evento de que A y C sean liberados
 
-	{ω3,ω4} = Evento de que A y B sean liberados Esto se debe al hecho de que cuando A y B son liberados el guardia no tiene mas alternativa que revelar a B como el prisionero que será liberado, del mismo modo, cuando A y C son liberados el guardia no tiene opción, debe revelar a C como el prisionero a ser liberado. En cambio, cuando B y C son liberados, el guardia puede decidir revelar a B o revelar a C como el prisionero a ser liberado. Esto nos conduce a lo siguiente: P(E ∩ F ) = P({ω1}) = 13
+{ω3,ω4} = Evento de que A y B sean liberados Esto se debe al hecho de que cuando A y B son liberados el guardia no tiene mas alternativa que revelar a B como el prisionero que será liberado, del mismo modo, cuando A y C son liberados el guardia no tiene opción, debe revelar a C como el prisionero a ser liberado. En cambio, cuando B y C son liberados, el guardia puede decidir revelar a B o revelar a C como el prisionero a ser liberado. Esto nos conduce a lo siguiente: P(E ∩ F ) = P({ω1}) = 13
 
 Probabilidad Condicional
 
@@ -1889,15 +1889,15 @@ Probabilidad Condicional
 
 P(F ) = P({ω1, ω3}) = P({ω1}) + P({ω3}) = 1 + P({ω
 
-		3
+3
 
-		3})
+3})
 
 ¿que pasa con P({ω3})? con los elementos que tenemos a la mano no tenemos forma clara de calcularlo, por lo pronto sabemos que; 1 = P({ω
 
-		3
+3
 
-		3, ω4}) = P ({ω3}) + P ({ω4})
+3, ω4}) = P ({ω3}) + P ({ω4})
 
 en este caso una suposición natural sería suponer que P({ω3}) = P({ω4}) = 16
 
@@ -1915,13 +1915,13 @@ En este caso:
 
 P(F ) = 1 + P({ω
 
-		+
++
 
-		= 1
+= 1
 
-		3
+3
 
-		3}) = 1
+3}) = 1
 
 3
 
@@ -1949,9 +1949,9 @@ Hay dos cosas muy importantes que debemos notar aquí, primero esta estimación 
 
 aquí dijimos que el guardia tiraba una moneda para decidir si decía B o decía C cuando B y C eran liberados. Pero lo que es cierto es que 1 = P({ω
 
-		3
+3
 
-		3, ω4}) = P ({ω3}) + P ({ω4})
+3, ω4}) = P ({ω3}) + P ({ω4})
 
 Probabilidad Condicional
 
@@ -1963,9 +1963,9 @@ y
 
 P(ω4) = 1 − P({ω
 
-		3
+3
 
-		3})
+3})
 
 Esto nos conduciría a conclusiones muy diferentes en función del valor seleccionado, para P({ω3}), por ejemplo si P({ω3}) = 1/3 entonces: P(E ∣ F ) = P(E ∩ F )
 
@@ -2059,7 +2059,7 @@ Independencia
 
 Decimos que A1, A2, . . . , An es una colección de eventos independientes si para toda r ≤ n
 
-P(A1 ∩ A2 ∩ ⋯ ∩ Ar ) = P(A1)P(A2)⋯P(Ar )
+P(A1 ∩ A2 ∩ ⋯ ∩ Ar ) = P(A1)P(A2)⋯P(Ar ) 
 
 Probabilidad Condicional
 
@@ -2157,7 +2157,7 @@ La prueba de la regla de la multiplicación no es particularmente difícil, note
 
 P(A1, A2, ⋯, An) = P(An ∣ A1, A2, ⋯, An−1)P(A1, A2, ⋯, An−1)
 
-“Reciclando” este argumento obtenemos que: P(A1, A2, ⋯, An−1) = P(An−1 ∣ A1, A2, ⋯, An−2)P(A1, A2, ⋯, An−2)
+“Reciclando” este argumento obtenemos que: P(A1, A2, ⋯, An−1) = P(An−1 ∣ A1, A2, ⋯, An−2)P(A1, A2, ⋯, An−2) 
 
 Probabilidad Condicional
 
@@ -2171,7 +2171,7 @@ Ejemplo. Un mazo convencional de 52 cartas es barajado con cuidado.
 
 Las 52 cartas son repartidas entre cuatro jugadores, de modo que cada jugador tenga 13 cartas. ¿Cuál es la probabilidad de que cada jugador tenga exactamente un As?
 
-Para resolver este problema consideremos los eventos:
+Para resolver este problema consideremos los eventos: 
 
 A1 = {El As de espadas lo tiene cualquier jugador}
 
@@ -2185,7 +2185,7 @@ Dados estos eventos, la probabilidad que buscamos es: P(A1, A2, A3, A4)
 
 Para calcularla usaremos la regla de la multiplicación. Primero el más fácil: P(A1) = 1
 
-Creo que esto esta claro, pues en realidad no hemos puesto ninguna restricción en la repartición del mazo. ¿Cómo calculamos P(A2 ∣ A1)? en este caso debemos asegurarnos de que el As de espadas y el de corazones sean repartidos a jugadores diferentes:
+Creo que esto esta claro, pues en realidad no hemos puesto ninguna restricción en la repartición del mazo. ¿Cómo calculamos P(A2 ∣ A1)? en este caso debemos asegurarnos de que el As de espadas y el de corazones sean repartidos a jugadores diferentes: 
 
 Probabilidad Condicional
 
@@ -2401,7 +2401,7 @@ Covid 19. La prueba es buena si detecta el virus con una probabilidad alta en un
 
 Existen sin embargo dos casos donde la prueba nos puede conducir a conclusiones erróneas:
 
-P(la prueba es negativa ∣ la enfermedad esta presente) falso negativo P(la prueba es positiva ∣ la enfermedad esta ausente) falso positivo
+P(la prueba es negativa ∣ la enfermedad esta presente) falso negativo P(la prueba es positiva ∣ la enfermedad esta ausente) falso positivo 
 
 Probabilidad condicional
 
@@ -2427,7 +2427,7 @@ Entonces:
 
 P(A ∣ B) = 0.95 P(Ac ∣ B) = 0.05 = P(A ∣ Bc) Hasta aqui todo bien. . . si la prueba es efectiva y nos detecta Covid. . . casi seguro que tenemos la enfermedad. ¿o no?
 
-Somos muy desconfiados y nos preguntamos por al probabilidad: P(B ∣ A) = P(La enfermedad esta presente ∣ La prueba es positiva)
+Somos muy desconfiados y nos preguntamos por al probabilidad: P(B ∣ A) = P(La enfermedad esta presente ∣ La prueba es positiva) 
 
 Probablidad Condicional
 
@@ -2585,7 +2585,7 @@ Siguiendo el ejemplo anterior:
 
 y
 
-	{X = 3} = {ω1}
+{X = 3} = {ω1}
 
 2Es una costumbre extendida usar mayúsculas para denotar variables aleatorias (la función) y minúsculas para denotar escalares.
 
@@ -2597,7 +2597,7 @@ Ejemplo. En el lanzamiento de dos dados, estamos interesados en la variable X qu
 
 o
 
-	{X = 4} = {(1,4),(2,4),(3, 4), (4, 4),(4, 3),(4, 2), (4, 1)} .
+{X = 4} = {(1,4),(2,4),(3, 4), (4, 4),(4, 3),(4, 2), (4, 1)} .
 
 usando nuestra nueva notación, podemos calcular probabilidades como: P(X = x) = P({ω ∈ Ω ∶ X (ω) = x})
 
@@ -2733,7 +2733,7 @@ P ( n
 
 i =1 X = i }) = p [ 1 − (1 − p)n−1
 
-		1 − (1 − p) ] + (1 − p)n−1
+1 − (1 − p) ] + (1 − p)n−1
 
 = 1 − (1 − p)n−1 + (1 − p)n−1
 
@@ -3187,7 +3187,7 @@ E [X 2] = 1 ⋅ p + (1 − p) ⋅ 0 = p
 
 Por lo tanto:
 
-Var (X ) = E [X 2] − E [X ]2 = p − p2 = p(1 − p)
+Var (X ) = E [X 2] − E [X ]2 = p − p2 = p(1 − p) 
 
 Variables Aleatorias
 
@@ -3323,7 +3323,7 @@ j =0
 
 = λ
 
-Para estimar la varianza, calculamos primero el segundo momento:
+Para estimar la varianza, calculamos primero el segundo momento: 
 
 Variables Aleatorias
 
@@ -3595,7 +3595,7 @@ límb→−∞ F (b) = 0
 
 4
 
-F es continua por la derecha. Esto es, si bn es una sucesión decreciente tal que bn → b, entonces límn→∞ F (bn) = F (b)
+F es continua por la derecha. Esto es, si bn es una sucesión decreciente tal que bn → b, entonces límn→∞ F (bn) = F (b) 
 
 Variables Aleatorias Continuas
 
@@ -3743,7 +3743,7 @@ De hecho para B ⊂ R, tendríamos que6: P(X ∈ B) = ∫ f (x)dx
 
 B
 
-6De manera formal deberíamos pedir que B fuera un conjunto medible, sin embargo no entraremos en esas complicaciones en este curso
+6De manera formal deberíamos pedir que B fuera un conjunto medible, sin embargo no entraremos en esas complicaciones en este curso 
 
 Variables Aleatorias continuas
 
@@ -3841,7 +3841,7 @@ es decir:
 
 C [2x2 −
 
-	]∣ = 1
+]∣ = 1
 
 3
 
@@ -4115,7 +4115,7 @@ b − a
 
 b − a
 
-De donde se sigue inmediatamente que F (x) = x para X ∼ Unif (0, 1)
+De donde se sigue inmediatamente que F (x) = x para X ∼ Unif (0, 1) 
 
 Variables Aleatorias Continuas
 
