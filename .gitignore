@@ -5,4 +5,6 @@
 *.synctex.gz
 *.log
 *.html
+*.fdb_latexmk
+*.fls
 scratch/
