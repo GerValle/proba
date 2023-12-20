@@ -1,0 +1,85 @@
+\documentclass{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage[a4paper, total={6in, 10in}]{geometry}
+\begin{document}
+\begin{center}
+  \textsf{\Large Probabilidad 1}
+  \par\medskip
+  \textsf{\large Tarea 4}
+\end{center}
+\hrule
+\par\bigskip
+
+\begin{enumerate}
+  \item Tiramos dos dados justos. Sea $X$ igual al producto de los dos dados. Calcula $P\left(X=i\right)$, para $i=1, 2, \ldots, 36.$
+  \item Lanzamos un dado dos veces. ¿Cuales son los posibles valores que las siguientes variables aleatorias pueden tomar?
+        \begin{enumerate}
+          \item El valor máximo que puede salir en los dos lanzamientos.
+          \item El valor mínimo que puede salir en los dos lanzamientos.
+          \item La suma de los dos lanzamientos.
+          \item El valor del primer lanzamiento menos el valor del segundo.
+        \end{enumerate}
+  \item Supongamos que la función de distribución de $X$ esta dada por
+        \begin{equation*}
+          F(b)=
+          \begin{cases}
+            0                         & b < 0      \\
+            \frac{b}{4}               & 0\leq b <1 \\
+            \frac{1}{2}+\frac{b-1}{4} & 1\leq b <2 \\
+            \frac{11}{12}             & 2\leq b <3 \\
+            1                         & 3\leq b
+          \end{cases}
+        \end{equation*}
+        \begin{enumerate}
+          \item Encuentra $P\left(X=i\right)$ para i=1,2,3.
+          \item Encuentra $P\left(\frac{1}{2}<X<\frac{3}{2}\right)$.
+        \end{enumerate}
+  \item Si $E\left[X\right]=1$ y $Var\left(X\right)=5$, encuentra:
+        \begin{enumerate}
+          \item $E\left[(2+X)^2\right]$.
+          \item $Var\left(4+3X\right)$
+        \end{enumerate}
+  \item Tiramos dos dados. Si $X$ es el número mas grande en las caras mostradas, calcula $P\left(\left\{X\in[2,4]\right\}\right)$ .
+  \item Muestra que si $X$ es una variable aleatoria con función de probabilidad de masa:
+        $$
+          P(X =i) = p(i), \quad i = 0, 1, 2,\ldots
+        $$
+        es decir $S = \left\{0, 1, 2, \ldots\right\}$. Entonces:
+        $$
+          E[X] = \sum_{i=1}^\infty P(X\geq i).
+        $$
+        De manera mas general, para valores no negativos $a_j$, $j\geq 1$, muestra que:
+        $$
+        \sum_{j=1}^\infty(a_1+\ldots + a_j)P(X=j) = \sum_{j=1}^\infty a_jP(X\geq j).
+        $$
+        adicionalmente muestra que:
+        $$
+        E[X(X+1)] = 2\sum_{i=1}^\infty iP(X\geq i).
+        $$
+
+  \item Tiramos dos dados. Si $X$ es la diferencias de sus caras:
+        \begin{enumerate}
+          \item Exhibe la función de probabilidad de masa de $X$.
+          \item Calcula $E\left[X\right]$.
+          \item Calcula $Var\left(X\right)$.
+          \item Calcula $P(\vert X\vert > 2)$.
+          \item Calcula $P(\vert X\vert > 2\vert X>0)$.
+          \item Calcula la probabilidad de que $X$ sea par.
+        \end{enumerate}
+  \item Una urna contiene 7 bolas blancas numeradas: $1,2,\ldots, 7$ y 3 bolas negras numeradas $8,9,10$. Seleccionamos 5 bolas aleatoriamente, (a) con reemplazo, (b) sin reemplazo. Para cada uno de los casos (a) y (b), da la función de probabilidad de masa de:
+        \begin{enumerate}
+          \item El número de bolas blancas seleccionadas.
+          \item El número mínimo en la muestra.
+          \item El número máximo en la muestra.
+        \end{enumerate}
+        \textbf{Hints:} En cada uno de los incisos identifica bien los valores que puede tomar la variable aleatoria correspondiente. Para el inciso (b) define $X_{min}$ como el número mínimo en la muestra, calcula $P(X_{min} > k)$ y prueba que 
+        $$
+        P(X_{min} = k) = P(X_{min} > k-1) - P(X_{min} > k).
+        $$
+        Para el inciso (c) define $X_{max}$ como el número máximo en la muestra, calcula $P(X_{max} \leq k)$ y determina $P(X_{max} = k)$ en términos de $P(X_{max} \leq k)$ y $P(X_{max} \leq k-1)$..
+  \item Con los datos del problema anterior, calcula la función de probabilidad de masa del número mínimo de selecciones necesarias para obtener una bola blanca.
+\end{enumerate}
+
+\end{document}

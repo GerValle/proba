@@ -1,0 +1,63 @@
+\documentclass[12pt]{report}
+    \usepackage[utf8]{inputenc}
+    \usepackage[spanish]{babel}
+    \usepackage{amsmath}
+    \usepackage{graphics}
+    \usepackage{amssymb}
+    \setlength{\oddsidemargin}{0.5cm}
+    \setlength{\evensidemargin}{0.5cm}
+    \setlength{\textwidth}{15cm}
+    \setlength{\topmargin}{-2cm}
+\begin{document}
+\begin{center}
+    \textsf{\Large Probabilidad 1}
+    \par\medskip
+    \textsf{\large Reposición 2}
+\end{center}
+\hrule
+\par\bigskip
+
+\begin{enumerate}
+    \item Un dado justo tiene las caras 1, 2 y 3 pintadas de verde y las caras 4,5 y 6 coloreadas de rojo. 
+
+    Supongamos que el dado esta cargado  de modo que:
+    \begin{equation*}
+        P(1)=P(3)=P(5)=\frac{1}{9} \text{ y } P(1)=P(3)=P(5)=\frac{2}{9.}
+    \end{equation*}
+    Después de lanzar el dado:
+    \begin{enumerate}
+        \item ¿Cuál es la probabilidad de que el número sea par?
+        \item Si lo único que logras ver, es que la cara que muestra el dado es verde. ¿Cuál es la probabilidad de que la cara sea par?
+    \end{enumerate}
+
+    \item Suponiendo que $P(B)\neq 0$ y $P(B^c)\neq 0$, muestra que si $P(A\vert B) \geq P(A)$ entonces $P(A\vert B^c) \leq P(A)$
+    \item Supongamos que la función de distribución de $X$ esta dada por
+          \begin{equation*}
+              F(b)=
+              \begin{cases}
+                  0                         & b < 0      \\
+                  \frac{b}{4}               & 0\leq b <1 \\
+                  \frac{1}{2}+\frac{b-1}{4} & 1\leq b <2 \\
+                  \frac{11}{12}             & 2\leq b <3 \\
+                  1                         & 3\leq b
+              \end{cases}
+          \end{equation*}
+          \begin{enumerate}
+              \item Encuentra $P\left(X=i\right)$ para i=1,2,3.
+              \item Encuentra $P\left(\frac{1}{2}<X<\frac{3}{2}\right)$.
+          \end{enumerate}
+    \item Si $E\left[X\right]=1$ y $Var\left(X\right)=5$, encuentra:
+          \begin{enumerate}
+              \item $E\left[(2+X)^2\right]$.
+              \item $Var\left(4+3X\right)$
+          \end{enumerate}
+    \item Tiramos dos dados. Si $X$ es el producto de sus caras:
+          \begin{enumerate}
+              \item Exhibe la función de probabilidad de masa de $X$.
+              \item Calcula $Var\left(X\right)$.
+              \item Calcula $P(\vert X\vert > 2)$.
+              \item Calcula $P(\vert X\vert > 4\vert X>2)$.
+
+          \end{enumerate}
+\end{enumerate}
+\end{document}
