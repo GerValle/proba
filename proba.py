@@ -13,3 +13,4 @@ history = Tickers.history('500d')['Close']
 returns = history.pct_change()
 
 returns.plot()
+
