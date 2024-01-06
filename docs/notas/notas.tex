@@ -15,5 +15,37 @@ La teoría de probabilidad tiene sus fundamentos en la teoría de conjuntos. Es 
 No pretendemos dar una definición formal de conjunto, sin embargo usaremos el concepto libremente. 
 
 
+Usualmente usaremos mayúsculas para referirnos a conjuntos y minúsculas para dentar elementos. Escribimos por ejemplo
+$$
+a \in A 
+$$
+para decir que $a$ es un elemento del conjunto $A$. Asimismo, usaremos mayúsculas caligráficas para denotar colecciones de conjuntos. Por ejemplo:
+$$
+A\in \mathcal{A}
+$$
+indica que el conjunto $A$ es un elemento de la colección $\mathcal{A}$.
+Particularmente, dado un conjunto $A$ denotamos con $2^A$ a la \emph{potencia} de $A$, recordemos que la potencia de un conjunto es la colección de todos los posibles subconjuntos del mismo, de modo que $2^A$ es la colección de todos los posibles subconjuntos de $A$. Por otro lado, dado un conjunto $A$ denotaremos con $\vert A \vert$ a la cardinalidad de $A$ y con $2^{\vert A \vert}$ a la cardinalidad de su potencia.
+
+
+Decimos que un conjunto $A$ esta \emph{contenido} en un conjunto $B$ si $x\in A$ entonces $x \in B$, escribimos entonces que:
+$$
+A\subset B
+$$
+
+Dos conjuntos son iguales si y solo si contienen los mismos elementos. Podemos expresarlo de otro modo; $A = B$ si y solo si $A\subset B$ y $B \subset A$.
+
+La \emph{union} de los conjuntos $A$ y $B$ es el conjunto de todos los elementos que pertenecen a $A$ o pertenecen a $B$:
+$$
+A\cup B := \left\{x: x \in A \text{ o } x \in B\right\}
+$$
+de manera general, dada la colección $\mathcal{A} = \left\{A_i\right\}_{i\in I}$, donde $I$ es un conjunto de indices, entonces:
+$$
+\bigcup_{i\in I}A_i := \left\{x: x \in A_i \text{ para algún } i\in I \right\}
+$$
+$$
+\bigcup_{i\in I}A_i := \left\{x: x \in A \text{ para algún } A\in \mathcal{A} \right\}
+$$
+o bien:
+
 
 \end{document}

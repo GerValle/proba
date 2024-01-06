@@ -1,16 +1,9 @@
-#%% 
-
-import yfinance as yf
-
-
-symbols = ["AAPL", "TWTR", "MSFT"]
+import pandas
+from pathlib import Path
+import openpyxl
 
 
-Tickers = yf.Tickers(symbols)
+for i, fo in enumerate(Path.cwd().iterdir()):
+	print(i, fo.name)
 
-history = Tickers.history('500d')['Close']
-
-returns = history.pct_change()
-
-returns.plot()
 
