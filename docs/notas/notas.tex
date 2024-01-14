@@ -34,18 +34,72 @@ $$
 
 Dos conjuntos son iguales si y solo si contienen los mismos elementos. Podemos expresarlo de otro modo; $A = B$ si y solo si $A\subset B$ y $B \subset A$.
 
+En los sucesivo, es conveniente suponer que existe un conjunto $X$ \emph{universal}, de modo que todo elemento que consideremos, será elemento de $X$ y todo conjunto será subconjunto de $X$.
+
 La \emph{union} de los conjuntos $A$ y $B$ es el conjunto de todos los elementos que pertenecen a $A$ o pertenecen a $B$:
 $$
-A\cup B := \left\{x: x \in A \text{ o } x \in B\right\}
+A\cup B := \left\{x \in X: x \in A \text{ o } x \in B\right\}
 $$
 de manera general, dada la colección $\mathcal{A} = \left\{A_i\right\}_{i\in I}$, donde $I$ es un conjunto de indices, entonces:
 $$
-\bigcup_{i\in I}A_i := \left\{x: x \in A_i \text{ para algún } i\in I \right\}
+\bigcup_{i\in I}A_i := \left\{x \in X: x \in A_i \text{ para algún } i\in I \right\}
 $$
-$$
-\bigcup_{i\in I}A_i := \left\{x: x \in A \text{ para algún } A\in \mathcal{A} \right\}
-$$
+\noindent
 o bien:
+\noindent
+$$
+\bigcup_{A\in \mathcal{A}}A := \left\{x\in X: x \in A \text{ para algún } A\in \mathcal{A} \right\}
+$$
+si el conjunto $I$ es a lo mas numerable entonces la union es una union numerable. 
+
+La \emph{intersección} de los conjuntos $A$ y $B$ es el conjunto:
+$$
+A\cap B = \left\{x\in X: x \in A \text{ y } x \in B\right\}
+$$
+es decir $A\cap B$ es el conjunto de todos los elementos que pertenecen a $A$ y pertenecen a $B$. Análogamente a como hicimos con la union, dada la colección $\mathcal{A} = \left\{A_i\right\}_{i\in I}$:
+$$
+\bigcap_{i\in I}A_i := \left\{x\in X: x \in A_i \text{ para todo } i\in I \right\}
+$$
+\noindent
+o bien:
+\noindent
+$$
+\bigcap_{A\in \mathcal{A}}A := \left\{x\in X: x \in A \text{ para todo } A\in \mathcal{A} \right\}
+$$
+del mismo modo, si $I$ es a lo mas numerable entonces la intersección es numerable.
+
+Definimos la \emph{diferencia} de los conjuntos $A$ y $B$ como:
+$$
+A\setminus B = \left\{x\in X: x  \in A \text{ y } x\notin B\right\}
+$$
+$A\setminus B$ también es conocido como el \emph{complemento relativo} de $B$ con respecto a $A$. De manera particular al conjunto 
+$$
+A^c = X\setminus A = \left\{x\in X: x\notin A\right\}
+$$
+lo conocemos como el \emph{complemento} de $A$.
+Observemos de la definición de $A\setminus B$ que:
+$$
+A\setminus B = A \cap B^c
+$$
+Un derivado inmediato es la definición de la \emph{diferencia simétrica} de $A$ y $B$:
+$$
+A\triangle B = (A\setminus B) \cup (B\setminus A)
+$$
+la diferencia simétrica no es mas que el conjunto de todo aquellos elementos que pertenecen a $A$ o pertenecen a $B$ pero no a ambos. En este sentido, podemos reescribir:
+
+$$
+A\triangle B = (A\cup B) \setminus (B\cap A)
+$$
+La prueba de la equivalencia de las dos igualdades que hemos exhibido para $A\triangle B$ no la daremos, quedará como ejercicio, sin embargo la prueba tiene fundamento en la distribución de la unión e intersección de conjuntos:
+
+
+
+
+
+
+
+
 
 
 \end{document}
+
