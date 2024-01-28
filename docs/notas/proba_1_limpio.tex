@@ -32,7 +32,7 @@ Debemos hacer énfasis en que el espacio muestral que definamos es válido en un
 
 En un contexto de orden mas probabilístico; supongamos que un inversionista esta interesado en el comportamiento que tendrá el precio de un activo a lo largo de los tres días siguientes. Es claro que al dia de hoy conocemos el precio del activo. Pero desconocemos el precio que tendrá en los días subsecuentes. Este precio es aleatorio. Sin embargo aunque desconocemos los precios de los días venideros si podemos intentar definir algún modelo. ¿Que valores podrá tomar el activo? La primera observación es que el precio del activo es siempre no negativo. Además de ello ¿que podemos suponer con respecto del precio que tomara mañana o pasado mañana? Un modelo simple, pero de ningún modo despreciable supone que de un día a otro el precio solo puede tomar uno de dos valores. Uno de estos corresponde a un alza y el otro a una baja. Asi de simple
 
-Matemáticamente; si denotamos con St al precio del activo al tiempo t entonces proponemos el modelo:
+Matemáticamente; si denotamos con $S_t$ al precio del activo al tiempo $t$ entonces proponemos el modelo:
 $$
 S_{t+1} = \begin{cases}
   uSt & u > 1 \\
@@ -40,64 +40,22 @@ S_{t+1} = \begin{cases}
 \end{cases}
 $$
 
-Una gráfica de este modelo se muestra a continuación:
+Si todo ``empieza'' al tiempo $t$ entonces $S_{t+3}$ es desconocida al tiempo $t$ pero sabemos que puede tomar cualquiera de los valores:  $S_{t+3}= u^id^{3-i}$, $i = 0,\ldots, 3$.
 
-\begin{tikzpicture}
-  \foreach \x in {1,2,...,5,7,8,...,12}
-    \foreach \y in {1,...,5}
-    {
-      \draw (\x,\y) +(-.5,-.5) rectangle ++(.5,.5);
-      \draw (\x,\y) node{\x,\y};
-    }
-\end{tikzpicture}
+El problema es que no sabemos cual de ellos tomará. No importa, podemos modelar el precio del activo al tiempo $t + 3$ como un experimento aleatorio. ¿cual sería en este caso el espacio muestral?
 
-y ponemos otra gráfica:
+No es la única posibilidad, pero una buen idea sería definir el espacio muestral en términos de las alzas y bajas del activo: $\Omega = \{w = (x_1 , x_2, x_3 ):x_i \in \{u, d\}, i = 1, 2, 3\}$. Así por ejemplo si $w = (u, u, d)$ entonces sabemos que en $t + 3$ el 
+precio del activo es $u^2dSt$ . Pero si $w = (d, d, d)$ entonces $S_{t+3} = d^3St$ En resumen, el conjunto $\Omega$, reúne
+todos los escenarios posibles. De acuerdo con nuestro modelo, solo las alternativas que están en $\Omega$ pueden ocurrir. Cualquier otra cosa es imposible. Aun que no sabemos cual $w \in \Omega$ ocurrirá, al menos hemos
+delimitado las posibilidades.
 
-
-\begin{tikzpicture}[thick]
-  \node at ( 0,2) [circle,draw=blue!50,fill=blue!20] {1};
-  \node at ( 0,1) [circle,draw=blue!50,fill=blue!20] {2};
-  \node at ( 0,0) [circle,draw=blue!50,fill=blue!20] {3};
-  \node at ( 1,1) [rectangle,draw=black!50,fill=black!20] {4};
-  \node at (-1,1) [rectangle,draw=black!50,fill=black!20] {$S_2$};
-\end{tikzpicture}
+El modelo que hemos propuesto, si bien simple, es un modelo muy popular en el medio financiero. En la práctica se usa tal cual lo describimos, usualmente con un mayor número de periodos, pero fuera de ello sin cambio alguno. Por muy simple que parezca de primera instancia, es un modelo muy adecuado para resolver algunos tipos de problemas en finanzas. Claro esta que no es el único modelo de uso extendido para modelar precios de activos. Una alternativa quizás mas ambiciosa seria suponer que a lo largo de los tres días de operación, el activo puede tomar cualquier valor no negativo, en tal caso: $\Omega = R^+$. Sirva esto para hacer notar que $\Omega$ puede tomar formas muy variadas, desde conjuntos sencillos, pequeños y finitos, hasta conjuntos infinitos no numerables. 
 
 
 \end{document}
 
 
-Si todo `empieza'' al tiempo t entonces St+3 es desconocida al tiempo t
-pero sabemos que puede tomar cualquiera de los valores: St+3 = u i d 3−i
-St ,
 
-i = 0, . . . , 3.
-
-El problema es que no sabemos cual de ellos tomará. No importa, podemos
-modelar el precio del activo al tiempo t + 3 como un experimento
-aleatorio. ¿cual sería en este caso el espacio muestral?
-
-No es la única posibilidad, pero una buen idea seria definir el espacio
-muestral en términos de las alzas y bajas del activo: \Omega = \{w = (x1 , x2
-, x3 ) ∶ xi ∈ \{u, d\}, i = 1, 2, 3\} Asi por ejemplo si w = (u, u, d)
-entonces sabemos que en t + 3 el precio del activo es u 2 dSt . Pero si
-w = (d, d, d) entonces St+3 = d 3 St En resumen, el conjunto \Omega, reúne
-todos los escenarios posibles. De acuerdo con nuestro modelo, solo las
-alternativas que están en \Omega pueden ocurrir. Cualquier otra cosa es
-imposible. Aun que no sabemos cual w ∈ \Omega ocurrirá, al menos hemos
-delimitado las posibilidades.
-
-El modelo que hemos propuesto, si bien simple, es un
-modelo muy popular en el medio financiero. En la práctica se usa tal
-cual lo describimos, usualmente con un mayor número de periodos, pero
-fuera de ello sin cambio alguno. Por muy simple que parezca de primera
-instancia, es un modelo muy adecuado para resolver algunos tipos de
-problemas en finanzas. Claro esta que no es el único modelo de uso
-extendido para modelar precios de activos. Una alternativa quizás mas
-ambiciosa seria suponer que a lo largo de los tres días de operación, el
-activo puede tomar cualquier valor no negativo. En este caso: \Omega = R+
-Sirva esto para hacer notar que \Omega puede tomar formas muy variadas, desde
-conjuntos sencillos, pequeños y finitos, hasta conjuntos infinitos no
-numerables. 
 
 Ejemplo En ciertas circunstancias una adecuada
 definición del espacio muestral, puede ser la diferencia entre resolver
@@ -3300,3 +3258,27 @@ Por último: P(∣X − 3∣ \textgreater{} 6) = P(X \textgreater{} 9) + P(X
 \textless{} −2) ≈ 0.0456
 
 \end{document}
+
+\begin{tikzpicture}
+  \foreach \x in {1,2,...,5,7,8,...,12}
+    \foreach \y in {1,...,5}
+    {
+      \draw (\x,\y) +(-.5,-.5) rectangle ++(.5,.5);
+      \draw (\x,\y) node{\x,\y};
+    }
+\end{tikzpicture}
+
+y ponemos otra gráfica:
+
+
+\begin{tikzpicture}[thick]
+  \node at ( 0,2) [circle,draw=blue!50,fill=blue!20] {1};
+  \node at ( 0,1) [circle,draw=blue!50,fill=blue!20] {2};
+  \node at ( 0,0) [circle,draw=blue!50,fill=blue!20] {3};
+  \node at ( 1,1) [rectangle,draw=black!50,fill=black!20] {4};
+  \node at (-1,1) [rectangle,draw=black!50,fill=black!20] {$S_2$};
+\end{tikzpicture}
+
+
+
+
