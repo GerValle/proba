@@ -1,7 +1,15 @@
-cadena = 'esta es un\t cadena'
+import datetime
+from dateutil.relativedelta import relativedelta, MO, TU
 
-print(cadena)
+dt = datetime.datetime.today().date()
 
-cadena = cadena.replace('\t', '')
 
-print(cadena)
+#delta = relativedelta(weekday = MO(-1))
+
+for i in range(1, 13):
+	
+	delta = relativedelta(month= i, day = 32, weekday = MO(-1))
+	print(dt + delta)
+
+
+
