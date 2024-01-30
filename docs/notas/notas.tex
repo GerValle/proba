@@ -1,8 +1,14 @@
 \documentclass[14pt]{extbook}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
-\usepackage{amsmath, amssymb}
+\usepackage{microtype}
+\setlength{\parskip}{1em}
+%\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
 \usepackage{mathpazo}
+\usepackage{tikz}
+\usetikzlibrary{babel}
+\usetikzlibrary {positioning}
 
 
 \begin{document}
@@ -34,47 +40,49 @@ $$
 
 Dos conjuntos son iguales si y solo si contienen los mismos elementos. Podemos expresarlo de otro modo; $A = B$ si y solo si $A\subset B$ y $B \subset A$.
 
-En los sucesivo, es conveniente suponer que existe un conjunto $X$ \emph{universal}, de modo que todo elemento que consideremos, será elemento de $X$ y todo conjunto será subconjunto de $X$.
+En los sucesivo, es conveniente suponer que existe un conjunto $\Omega$ \emph{universal}, de modo que todo elemento que consideremos, será elemento de $\Omega$ y todo conjunto será subconjunto de $\Omega$.
 
 La \emph{union} de los conjuntos $A$ y $B$ es el conjunto de todos los elementos que pertenecen a $A$ o pertenecen a $B$:
 $$
-A\cup B := \left\{x \in X: x \in A \text{ o } x \in B\right\}
+A\cup B := \left\{x \in \Omega: x \in A \text{ o } x \in B\right\}
 $$
 de manera general, dada la colección $\mathcal{A} = \left\{A_i\right\}_{i\in I}$, donde $I$ es un conjunto de indices, entonces:
 $$
-\bigcup_{i\in I}A_i := \left\{x \in X: x \in A_i \text{ para algún } i\in I \right\}
+\bigcup_{i\in I}A_i := \left\{x \in \Omega: x \in A_i \text{ para algún } i\in I \right\}
 $$
 \noindent
 o bien:
 \noindent
 $$
-\bigcup_{A\in \mathcal{A}}A := \left\{x\in X: x \in A \text{ para algún } A\in \mathcal{A} \right\}
+\bigcup_{A\in \mathcal{A}}A := \left\{x\in \Omega: x \in A \text{ para algún } A\in \mathcal{A} \right\}
 $$
-si el conjunto $I$ es a lo mas numerable entonces la union es una union numerable. 
+si el conjunto $I$ es a lo mas numerable entonces la union es una union numerable en otro caso la union es no numerable\footnote{Habitualmente, cuando la colección es numerable, $I\subset \mathbb{N}$ o bien $I\subset \mathbb{Z}$. Si $I$es no numerable entonces lo común es que $I\subset\mathbb{R}$ aunque en ciertas aplicaciones este conjunto podría ser bastante mas complejo.} . 
 
 La \emph{intersección} de los conjuntos $A$ y $B$ es el conjunto:
 $$
-A\cap B = \left\{x\in X: x \in A \text{ y } x \in B\right\}
+A\cap B = \left\{x\in \Omega: x \in A \text{ y } x \in B\right\}
 $$
-es decir $A\cap B$ es el conjunto de todos los elementos que pertenecen a $A$ y pertenecen a $B$. Análogamente a como hicimos con la union, dada la colección $\mathcal{A} = \left\{A_i\right\}_{i\in I}$:
+es decir $A\cap B$ es el conjunto de todos los elementos que pertenecen a $A$ y pertenecen a $B$. Análogamente, tal como hicimos con la union, dada la colección $\mathcal{A} = \left\{A_i\right\}_{i\in I}$:
 $$
-\bigcap_{i\in I}A_i := \left\{x\in X: x \in A_i \text{ para todo } i\in I \right\}
+\bigcap_{i\in I}A_i := \left\{x\in \Omega: x \in A_i \text{ para todo } i\in I \right\}
 $$
 \noindent
 o bien:
 \noindent
 $$
-\bigcap_{A\in \mathcal{A}}A := \left\{x\in X: x \in A \text{ para todo } A\in \mathcal{A} \right\}
+\bigcap_{A\in \mathcal{A}}A := \left\{x\in \Omega: x \in A \text{ para todo } A\in \mathcal{A} \right\}
 $$
 del mismo modo, si $I$ es a lo mas numerable entonces la intersección es numerable.
 
+El \emph{conjunto vacío} es el conjunto que no contiene elementos y lo denotamos con $\emptyset$. Es claro que $\emptyset \subset A$ para cualquier conjunto $A$. Por otro lado decimos que $A$ y $B$ son \emph{disjuntos} si $A\cap B = \emptyset$. En general decimos que una colección de conjuntos $\mathcal{A} = \left\{A_i\right\}_{i\in I}$ es una colección de disjuntos \emph{dos a dos} si $A_i\cap A_j = \emptyset$ para todo $i, j\in I$ tales que $i\neq j$. Será en general una colección de disjuntos si $\cap_{j\in J} A_j = \emptyset$ para todo $J \subset I$ donde los elementos de $\left\{A_j\right\}_{j\in J}$ no son todos iguales.
+
 Definimos la \emph{diferencia} de los conjuntos $A$ y $B$ como:
 $$
-A\setminus B = \left\{x\in X: x  \in A \text{ y } x\notin B\right\}
+A\setminus B = \left\{x\in \Omega: x  \in A \text{ y } x\notin B\right\}
 $$
 $A\setminus B$ también es conocido como el \emph{complemento relativo} de $B$ con respecto a $A$. De manera particular al conjunto 
 $$
-A^c = X\setminus A = \left\{x\in X: x\notin A\right\}
+A^c = \Omega\setminus A = \left\{x\in \Omega: x\notin A\right\}
 $$
 lo conocemos como el \emph{complemento} de $A$.
 Observemos de la definición de $A\setminus B$ que:
@@ -92,7 +100,17 @@ A\triangle B = (A\cup B) \setminus (B\cap A)
 $$
 La prueba de la equivalencia de las dos igualdades que hemos exhibido para $A\triangle B$ no la daremos, quedará como ejercicio, sin embargo la prueba tiene fundamento en la distribución de la unión e intersección de conjuntos:
 
+\noindent\hrulefill
 
+Una realación $R$ es un subconjunto del producto cartesiano $A\times B$ de dos conjuntos $A$ y $B$. Si $(a,b)\in R$ entonces decimos que $a$ esta relacionado con $b$ y escribimos $aRb$. Una \emph{función de $A$ a $B$} denotada con: $f:A\to B$ es una relación en la cual para cada $a\in A$ existe un único $b\in B$ tal que $aRb$. En este caso escribimos $f(a) = b$.
+
+El conjunto:
+
+$$
+f(E) := \left\{f(x)\in B: x\in E\subset A\right\} 
+$$
+
+se conoce como \emph{imagen} de $E$ bajo $f$.
 
 
 
