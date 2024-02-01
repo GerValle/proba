@@ -10,6 +10,14 @@
 \usetikzlibrary{babel}
 \usetikzlibrary {positioning}
 
+\usepackage[pdftex,
+            pdfauthor={German Valle Trujillo},
+            pdftitle={Probabilidad},
+            pdfsubject={Probabilidad}]{hyperref}
+
+\newtheorem{teo}{Teorema}
+
+
 
 \begin{document}
 
@@ -98,26 +106,52 @@ la diferencia simétrica no es mas que el conjunto de todo aquellos elementos qu
 $$
 A\triangle B = (A\cup B) \setminus (B\cap A)
 $$
-La prueba de la equivalencia de las dos igualdades que hemos exhibido para $A\triangle B$ no la daremos, quedará como ejercicio, sin embargo la prueba tiene fundamento en la distribución de la unión e intersección de conjuntos:
+La prueba de la equivalencia de las dos igualdades que hemos exhibido para $A\triangle B$ no la daremos, quedará como ejercicio, sin embargo la prueba tiene fundamento en la distribución de la unión e intersección de conjuntos, es decir, dados los conjuntos: $A$, $B$ y $C$ tenemos que:
+$$
+A \cap (B\cup C) = (A\cap B) \cup (A\cap C)
+$$
+y 
+$$
+A \cup (B\cap C) = (A\cup B) \cap (A\cup C)
+$$
+de hecho, esta propiedad puede generalizarse para colecciones mas grandes de conjuntos. Si $\left\{B_i\right\}_{i\in I}$ es una colección de conjuntos, entonces:
+$$
+A\cap \left(\cup_{i\in I} B_i\right) = \cup_{i\in I}\left(A\cap B_i\right)
+$$
+y 
+$$
+A\cup \left(\cap_{i\in I} B_i\right) = \cap_{i\in I}\left(A\cup B_i\right)
+$$
 
-\noindent\hrulefill
+El siguiente resultado es sin duda es uno de los más útiles de la teoría de conjuntos:
+\begin{teo}[Ley de De Morgan]
+Dada una colección de conjuntos $\left\{A_i\right\}_{i\in I}$ tenemos que:
+$$
+\left(\bigcup_{i\in I} A_i\right)^c =\bigcap_{i\in I} A_i^c
+$$
+y 
+$$
+\left(\bigcap_{i\in I} A_i\right)^c =\bigcup_{i\in I} A_i^c
+$$
+\end{teo}
 
-Una realación $R$ es un subconjunto del producto cartesiano $A\times B$ de dos conjuntos $A$ y $B$. Si $(a,b)\in R$ entonces decimos que $a$ esta relacionado con $b$ y escribimos $aRb$. Una \emph{función de $A$ a $B$} denotada con: $f:A\to B$ es una relación en la cual para cada $a\in A$ existe un único $b\in B$ tal que $aRb$. En este caso escribimos $f(a) = b$.
+\section{Funciones.}
+Una relación $R$ es un subconjunto del producto cartesiano $A\times B$ de los conjuntos $A$ y $B$. Si $(a,b)\in R$ entonces decimos que $a$ esta relacionado con $b$ y escribimos $aRb$. Una \emph{función de $A$ a $B$} denotada con: $f:A\to B$ es una relación en la cual para cada $a\in A$ existe un único $b\in B$ tal que $aRb$. En este caso escribimos $f(a) = b$.
 
 El conjunto:
-
 $$
 f(E) := \left\{f(x)\in B: x\in E\subset A\right\} 
 $$
+se conoce como \emph{imagen} de $E$ bajo $f$. Es claro que $f(E) \subset B$.
 
-se conoce como \emph{imagen} de $E$ bajo $f$.  Es claro que $f(E) \subset B$ 
+Decimos que una función es \emph{inyectiva} o ``\emph{uno a uno}'' si $f(a) = f(b)$ implica que $a=b$. Equivalentemente, si $a\neq b$ entonces $f(a)\neq f(b)$. Por otro lado, decimos que una función $f:A\rightarrow B$ es \emph{sobre} si para todo $b\in B$ existe $a\in A$ tal que $f(a)=b$. Notemos que en general si $f:A\rightarrow B$ entonces $f(A)\subset B$, pero si $f$ es sobre, entonces $f(A) = B$. Al conjunto $f(A)$ se le conoce como \emph{rango} de $f$. Por lo tanto una función $f:A\rightarrow B$ es sobre si $B$ es igual a su rango.
 
+Otro concepto igualmente importante es de algún modo el opuesto a la imagen de un conjunto. Dada una función $f:A\rightarrow B$ definimos la \emph{preimagen} de un conjunto $Y \subset B$ como:
+$$
+f^{-1}(Y) = \left\{x\in A: f(x) \in Y\right\}
+$$
+de forma coloquial, el conjunto $f^{-1}(Y)\subset A$ son todos aquellos elementos de $A$ que bajo la función ``van a dar'' a $Y$. Hacemos énfasis en que $f^{-1}(Y)$ es un subconjunto de $A$ y no un elemento. Decimos que una función es \emph{biyectiva} si es a la vez uno a uno y sobre.
 
-
-
-
-
-
-
+Decimos que un conjunto $I$ es \emph{a lo mas numerable}\footnote{Un conjunto numerable también se conoce como conjunto \emph{contable}} si es posible definir una función inyectiva, de los elementos de $I$ a algún subconjunto de los naturales. Si esto no es posible, entonces decimos que $I$ es \emph{no numerable}. Esta idea de algún modo se extiende si consideramos una colección $\left\{A_i\right\}_{i\in I}$. Esta colección sera a lo mas numerable si y solo si el índice $I$ es a lo mas numerable. Observemos que por definición, un conjunto finito es a lo mas numerable.
 \end{document}
 
