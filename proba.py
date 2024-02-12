@@ -11,7 +11,7 @@ hoy = dt.datetime.today().date()
 rng = pd.bdate_range(start='1/22/2024', end='2/08/2024')
 
 
-s = pd.Series(index = rng, name='cupones')
+s = pd.Series(index = rng, name='cupones', dtype=float)
 
 
 
