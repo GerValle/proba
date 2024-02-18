@@ -65,12 +65,6 @@ Hasta el momento el único concepto de probabilidad que conocemos es el de Espac
 premio mayor se encuentra detrás de la cortina uno. ¿Como seria una elección típica en este juego? En realidad,depende... depende de la elección que tomemos, cuando llegue el momento ¿cambiamos de cortina? Hasta el momento, la conclusión ``obvia'' es que el cambio es
 irrelevante. Bueno, pensemos que pasaría si hacemos el cambio. Pase lo que pase, llegado el momento, nuestra estrategia es la de cambiar la cortina seleccionada. En este caso ¿como se vería nuestro espacio muestral?
 
-\end{document}
-
-
-
-
-
 
 Para encontrar una respuesta satisfactoria, partamos
 del hecho, de que pase lo que pase, hemos decidido que llegado el momento cambiaremos nuestra
@@ -78,61 +72,114 @@ selección . Luego, sabemos que en primera instancia,
 tenemos tres posibilidades a elegir, puerta 1, puerta 2 o puerta 3. Esta
 primera selección la hacemos de forma completamente aleatoria. En este
 momento no tenemos ninguna razón para seleccionar una cortina sobre
-otra. Después de esta primera selección, puede ocurrir una de las
-siguientes cosas 1 Seleccionamos la cortina 1. 1 2
+otra. Después de esta primera selección, puede ocurrir una de las siguientes cosas
 
-Chabelo abre la cortina 2. Cambiamos por la 3. Perdemos Chabelo abre la
+\begin{enumerate}
+	\item Seleccionamos la cortina 1. 
+	\begin{enumerate}
+		\item Chabelo abre la cortina 2. Cambiamos por la 3. Perdemos
+		\item Chabelo abre la
 cortina 3. Cambiamos por la 2. Perdemos
-
-2
-
-Seleccionamos la cortina 2. Chabelo abre la cortina 3. Cambiamos por la
+	\end{enumerate}
+	\item Seleccionamos la cortina 2. Chabelo abre la cortina 3. Cambiamos por la
 1. ganamos
-
-3
-
-Seleccionamos la cortina 3. Chabelo abre la cortina 2. Cambiamos por la
+	\item Seleccionamos la cortina 3. Chabelo abre la cortina 2. Cambiamos por la
 1. ganamos
-
+\end{enumerate}
+ 
 Ante estas circunstancias, parece razonable el
-siguiente espacio muestral: \Omega = \{(1, 2, 3, P), (1, 3, 2, P), (2, 3, 1,
-G ), (3, 2, 1, G )\} Efectivamente, si seleccionamos la cortina 2, es
-equivalente en nuestro espacio muestral a haber seleccionado: \Omega = (2, 3,
-1, G ) Es decir seleccionamos la cortina 2, nos abren la 3, cambiamos a
+siguiente espacio muestral: 
+$$\Omega = \{(1, 2, 3, P), (1, 3, 2, P), (2, 3, 1,
+G ), (3, 2, 1, G )\}$$
+ Efectivamente, si seleccionamos la cortina 2, es
+equivalente en nuestro espacio muestral a haber seleccionado: $\omega = (2, 3,
+1, G )$ Es decir seleccionamos la cortina 2, nos abren la 3, cambiamos a
 la 1 y en consecuencia ganamos! Notemos que si seleccionamos la uno,
 entonces se derivan dos posibilidades, en función de la cortina que nos
 abran en segunda instancia.
 
 Bueno pues el problema esta resuelto, si estamos
-convencidos del espacio muestral elegido, entonces ganamos en dos de
-cuatro resultados posibles. En consecuencia, la probabilidad de ganar
-siguiendo nuestra estrategia de cambio de elección, es igual a 2/4 =
-1/2. Lo cual confirma nuestra hipótesis inicial. mmm Un momento. . .
-regresemos al principio. . . Antes del cambio seleccionamos la puerta 1,
-2 o 3 de forma completamente aleatoria. Asi que cada una tiene 1/3 de
-probabilidad de ser seleccionada. Notemos también que de acuerdo con
-nuestra elección de espacio muestral, perdemos si el resultado del
-concurso es (1, 2, 3, P) o (1, 3, 2, P). Pero esto es equivalente al
-haber elegido la cortina 1 desde un principio. Lo cual lo hacemos con
-probabilidad 1/3.
+convencidos del espacio muestral elegido, entonces ganamos en dos de cuatro resultados posibles. En consecuencia, la probabilidad de ganar siguiendo nuestra estrategia de cambio de elección, es igual a $2/4 = 1/2$. Lo cual confirma nuestra hipótesis inicial. mmm Un momento... regresemos al principio... Antes del cambio seleccionamos la puerta 1, 2 o 3 de forma completamente aleatoria. Asi que cada una tiene $1/3$ de probabilidad de ser seleccionada. Notemos también que de acuerdo con
+nuestra elección de espacio muestral, perdemos si el resultado del concurso es $(1, 2, 3, P)$ o $(1, 3, 2, P)$. Pero esto es equivalente al haber elegido la cortina 1 desde un principio. Lo cual lo hacemos con
+probabilidad $1/3$.
 
 Por otro lado, ganamos si el resultado del concurso es
-(2, 3, 1, G ) o (3, 2, 1, G ). Pero esto es equivalente al haber
-seleccionado la cortina 2 o la cortina 3 desde un principio.
-Seleccionamos alguna de estas dos cortinas con probabilidad 1/3 + 1/3 =
-2/3. Conclusión: Si seguimos la estrategia de cambio, la probabilidad de
-ganar aumente de uno a dos tercios!!! :-)
+$(2, 3, 1, G )$ o $(3, 2, 1, G )$. Pero esto es equivalente al haber seleccionado la cortina 2 o la cortina 3 desde un principio.
+Seleccionamos alguna de estas dos cortinas con probabilidad $1/3 + 1/3 = 2/3$. Conclusión: Si seguimos la estrategia de cambio, la probabilidad de ganar aumente de uno a dos tercios!!! :-)
 
-Fundamentos Una vez que hemos comprendido la idea de espacio muestral,
+\noindent\hrulefill
+
+Una vez que hemos comprendido la idea de espacio muestral,
 debemos trabajar en establecer cierto orden sobre el mismo. Un orden que
 nos permita extraer información valiosa. Información que nos conduzca a
 cálculos mas precisos. Para este fin retomemos el ejemplo de los precios
-de activos. Habíamos propuesto el espacio de estados: \Omega = \{w = (x1 , x2
-, x3 ) ∶ xi ∈ \{u, d\}, i = 1, 2, 3\} Para lo que intentamos exponer a
-continuación, conviene escribir este espacio de manera explícita: \Omega =
-\{(uuu), (uud), (udu), (udd ) (ddd), (ddu), (dud), (duu)\}
+de activos. Habíamos propuesto el espacio de estados: 
+$$
+\Omega = \{w = (x_1, x_2, x_3 ) : x_i \in \{u, d\}, i = 1, 2, 3\} 
+$$
 
+Para lo que intentamos exponer a continuación, conviene escribir este espacio de manera explícita: 
+$$
+\Omega =\{(uuu), (uud), (udu), (udd), (ddd), (ddu),(dud), (duu)\}
+$$
 Una representación gráfica de este problema la tenemos a continuación:
+\begin{center}	
+\begin{tikzpicture}
+  [nodo/.style={}]
+  \node (o) at (0, 0)[nodo] {$S_t$};
+  
+  \node (u) at (2, 2)[nodo] {$uS_t$};
+  \node (d) at (2,-2)[nodo] {$dS_t$};
+  
+  \node (uu) at (4, 3) [nodo] {$uuS_t$};
+  \node (ud) at (4, 1) [nodo] {$udS_t$};
+  \node (du) at (4,-1) [nodo] {$duS_t$};
+  \node (dd) at (4,-3) [nodo] {$ddS_t$};
+
+  \node (uuu) at (7, 3.5) [nodo] {$uuuS_t$};
+  \node (uud) at (7, 2.5) [nodo] {$uudS_t$};
+  \node (udu) at (7, 1.5) [nodo] {$uduS_t$};
+  \node (udd) at (7,  .5) [nodo] {$uddS_t$};
+  
+  \node (duu) at (7, -.5) [nodo] {$duuS_t$};
+  \node (dud) at (7,-1.5) [nodo] {$dudS_t$};
+  \node (ddu) at (7,-2.5) [nodo] {$dduS_t$};
+  \node (ddd) at (7,-3.5) [nodo] {$dddS_t$};
+  
+  \draw[->] (o)--(u);
+  \draw[->] (o)--(d);  
+  
+  \draw[->] (u)--(uu);
+  \draw[->] (u)--(ud);  
+  \draw[->] (d)--(du);
+  \draw[->] (d)--(dd);  
+
+  \draw[->] (uu)--(uuu);
+  \draw[->] (uu)--(uud);  
+  \draw[->] (ud)--(udu);
+  \draw[->] (ud)--(udd);
+  \draw[->] (du)--(duu);
+  \draw[->] (du)--(dud);  
+  \draw[->] (dd)--(ddu);
+  \draw[->] (dd)--(ddd);
+  
+  \node (t)   at (0,-4.5) [nodo]{$S_t$};  
+  \node (t+1) at (2,-4.5) [nodo]{$S_{t+1}$};  
+  \node (t+2) at (4,-4.5) [nodo]{$S_{t+2}$};      
+  \node (t+3) at (7,-4.5) [nodo]{$S_{t+3}$};
+  \draw[-] (t)--(t+1)--(t+2) --(t+3);
+\end{tikzpicture}
+\end{center}
+\end{document}
+
+
+
+
+
+
+
+
+
 
 8
 
