@@ -9,11 +9,23 @@
 \usetikzlibrary{babel}
 \usetikzlibrary {positioning}
 
+\newcounter{ejemplo}[chapter] % Define a new counter tied to the chapter
+
+\newenvironment{ejemplo}{%
+  \refstepcounter{ejemplo}% Increment the example counter
+  \textbf{Ejemplo \theexample.}
+  \begin{quote}%
+}{%
+  \end{quote}%
+  \medskip
+}
+
+
 \begin{document}
 
 Facultad de Ciencias. UNAM
 
-\chapter*{Introducción}
+\chapter{Introducción}
 
 Existen multitud de fenómenos en la realidad que difícilmente pueden ser modelados con certeza. Ya sea por la complejidad de su naturaleza o
 porque efectivamente es imposible establecer algún modelo determinístico para el mismo. Ejemplos que nos vienen a la mente provienen directamente
@@ -119,10 +131,17 @@ $$
 $$
 
 Para lo que intentamos exponer a continuación, conviene escribir este espacio de manera explícita: 
-$$
-\Omega =\{(uuu), (uud), (udu), (udd), (ddd), (ddu),(dud), (duu)\}
-$$
+
+\begin{equation*}
+\begin{split}
+\Omega = & \left\{(uuu), (uud), (udu), (udd), \right.\\
+         & \phantom{\{}\left.(ddd), (ddu),(dud), (duu)\right\}
+\end{split}
+\end{equation*}
+
+
 Una representación gráfica de este problema la tenemos a continuación:
+
 \begin{center}	
 \begin{tikzpicture}
   [nodo/.style={}]
@@ -170,6 +189,82 @@ Una representación gráfica de este problema la tenemos a continuación:
   \draw[-] (t)--(t+1)--(t+2) --(t+3);
 \end{tikzpicture}
 \end{center}
+
+
+Consideremos el ejemplo donde $S_t = 4$, $u = 2$ y $d = 1/2$, con estos números el arbol resultante  Sería el siguiente:
+
+\begin{center}	
+\begin{tikzpicture}
+  [nodo/.style={}]
+  \node (o) at (0, 0)[nodo] {$4$};
+  
+  \node (u) at (2, 2)[nodo] {$8$};
+  \node (d) at (2,-2)[nodo] {$2$};
+  
+  \node (uu) at (4, 3) [nodo] {$16$};
+  \node (ud) at (4, 1) [nodo] {$4$};
+  \node (du) at (4,-1) [nodo] {$4$};
+  \node (dd) at (4,-3) [nodo] {$1$};
+
+  \node (uuu) at (7, 3.5) [nodo] {$32$};
+  \node (uud) at (7, 2.5) [nodo] {$8$};
+  \node (udu) at (7, 1.5) [nodo] {$8$};
+  \node (udd) at (7,  .5) [nodo] {$2$};
+  
+  \node (duu) at (7, -.5) [nodo] {$8$};
+  \node (dud) at (7,-1.5) [nodo] {$2$};
+  \node (ddu) at (7,-2.5) [nodo] {$2$};
+  \node (ddd) at (7,-3.5) [nodo] {$1/2$};
+  
+  \draw[->] (o)--(u);
+  \draw[->] (o)--(d);  
+  
+  \draw[->] (u)--(uu);
+  \draw[->] (u)--(ud);  
+  \draw[->] (d)--(du);
+  \draw[->] (d)--(dd);  
+
+  \draw[->] (uu)--(uuu);
+  \draw[->] (uu)--(uud);  
+  \draw[->] (ud)--(udu);
+  \draw[->] (ud)--(udd);
+  \draw[->] (du)--(duu);
+  \draw[->] (du)--(dud);  
+  \draw[->] (dd)--(ddu);
+  \draw[->] (dd)--(ddd);
+  
+  \node (t)   at (0,-4.5) [nodo]{$S_t$};  
+  \node (t+1) at (2,-4.5) [nodo]{$S_{t+1}$};  
+  \node (t+2) at (4,-4.5) [nodo]{$S_{t+2}$};      
+  \node (t+3) at (7,-4.5) [nodo]{$S_{t+3}$};
+  \draw[-] (t)--(t+1)--(t+2) --(t+3);
+\end{tikzpicture}
+\end{center}
+
+Lo primero que debemos notar es que el espacio de probabilidad que hemos propuesto describe cada una de las rutas en el árbol. Bien nos podríamos preguntar si es que es necesario tanto detalle. A final de cuentas solo estamos interesados en el resultado final, el precio al término de los tres días. De acuerdo con los parámetros seleccionados, el precio del activo al tiempo t + 3 solo puede tomar uno de los cuatro valores: 64, 16, 4 o 1. En este sentido, podríamos proponer un espacio de estados alternativo: 
+$$
+\Omega = \{32, 16, 8, 4, 2, 1, 1/2\} 
+$$
+¿Cuál es mejor? En realidad los dos pueden ser correctos, todo depende del problema que deseamos resolver. Sin embargo lo que si es claro es que el primer espacio que propusimos, contiene mayor información que el segundo. 
+
+Pensemos por ejemplo, que ocurre si después de transcurridos los tres días, lo que ocurrió fueron tres alzas: $\omega = (u,
+u, u)$. En términos de los precios, estamos diciendo que $St+3 = 64$. Si lo que ocurre es $\omega = (u, d, u )$entonces $S_{t+3} = 16$. De hecho observemos que
+si $\omega \in \{(u, u, d), (u, d, u), (d, u, u)\}$ entonces $S_{t+3} = 16$. De manera
+análoga, si $\omega \in \{(d, d, u), (d, u, d), (u, d, d)\}$ entonces $S_{t+3} = 4$.
+Pero podemos hacer aún mas; Consideremos por ejemplo los conjuntos: 
+\begin{equation*}
+	\begin{split}
+		A_u & = \{(u, u, u), (u, u, d), (u, d, u), (u, d, d)\} \\
+      A_d & = \{(d, d, d), (d, d,u), (d, u, d), (d, u, u)\} 
+	\end{split}
+\end{equation*}
+El conjunto Au contiene la información del primer dia. Si $\Omega \in A_u$ sabemos que el primer dia hubo una alza en el precio del activo, si $\Omega \in A_d$ entonces hubo una baja. Observemos sin embargo que ni $A_u$ , ni $A_d$ proporcionan información de lo que ocurrirá en el segundo o tercer día, aunque si acotan las posibilidades. Si sabemos que $\omega \in A_u$ automáticamente descartamos la posibilidad de que $\omega = (d, d,
+d)$ por ejemplo. 
+
+\begin{ejemplo}
+	Este es un primer ejemplo
+\end{ejemplo}
+
 \end{document}
 
 
@@ -181,53 +276,10 @@ Una representación gráfica de este problema la tenemos a continuación:
 
 
 
-8
 
-u d
 
-16 4
 
-u d u d
-
-32 8 2
-
-u d u d u d
-
-64 16 4 1
-
-Hemos dado valores a las variables. Por lo pronto St = 8, mientras que u
-= 2 y d = 1/2.
-
-Fundamentos Lo primero que debemos notar es que el espacio de
-probabilidad que hemos propuesto describe cada una de las rutas en el
-árbol. Bien nos podríamos preguntar si es que es necesario tanto
-detalle. A final de cuentas solo estamos interesados en el resultado
-final, el precio al término de los tres días. De acuerdo con los
-parámetros seleccionados, el precio del activo al tiempo t + 3 solo
-puede tomar uno de los cuatro valores: 64, 16, 4 o 1. En este sentido,
-podríamos proponer un espacio de estados alternativo: \Omega = \{64, 16, 4,
-1\} ¿Cuál es mejor? En realidad los dos pueden ser correctos, todo
-depende del problema que deseamos resolver. Sin embargo lo que si es
-claro es que el primer espacio que propusimos, contiene mayor
-información que el segundo. 
-
-Fundamentos Pensemos por ejemplo, que ocurre si después de
-transcurridos los tres días, lo que ocurrió fueron tres alzas: \Omega = (u,
-u, u). En términos de los precios, estamos diciendo que St+3 = 64. Si lo
-que ocurre es \Omega = (u, d, u) entonces St+3 = 16. De hecho observemos que
-si \Omega ∈ \{(u, u, d), (u, d, u), (d, u, u)\} entonces St+3 = 16. De manera
-análoga, si \Omega ∈ \{(d, d, u), (d, u, d), (u, d, d)\} entonces St+3 = 4.
-Pero podemos hacer aún mas; Consideremos por ejemplo los conjuntos: Au =
-\{(u, u, u), (u, u, d), (u, d, u), (u, d, d)\} Ad = \{(d, d, d), (d, d,
-u), (d, u, d), (d, u, u)\} El conjunto Au contiene la información del
-primer dia. Si \Omega ∈ Au sabemos que el primer dia hubo una alza en el
-precio del activo, si \Omega ∈ Ad entonces hubo una baja. Observemos sin
-embargo que ni Au , ni Ad proporcionan información de lo que ocurrirá en
-el segundo o tercer día, aunque si acotan las posibilidades. Si sabemos
-que \Omega ∈ Au automáticamente descartamos la posibilidad de que \Omega = (d, d,
-d) por ejemplo. 
-
-Fundamentos Continuando con el ejemplo; tomemos ahora los conjuntos:
+Continuando con el ejemplo; tomemos ahora los conjuntos:
 Auu = \{(u, u, u), (u, u, d)\} Adu = \{(d, u, u), (d, u, d)\} Aud =
 \{(u, d, u), (u, d, d)\} Add = \{(d, d, u), (d, d, d)\} La información
 que obtenemos de estos conjuntos esta relacionada con lo que ocurre en
