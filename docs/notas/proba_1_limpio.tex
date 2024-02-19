@@ -6,26 +6,36 @@
 %\usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{tikz}
+
+%\newcounter{ejemplo}[chapter] % Define a new counter tied to the chapter
+
+
+
 \usetikzlibrary{babel}
 \usetikzlibrary {positioning}
 
-\newcounter{ejemplo}[chapter] % Define a new counter tied to the chapter
-
-\newenvironment{ejemplo}{%
-  \refstepcounter{ejemplo}% Increment the example counter
-  \textbf{Ejemplo \theexample.}
-  \begin{quote}%
-}{%
-  \end{quote}%
-  \medskip
-}
+\newcounter{ejemplo}[chapter]
+\newenvironment{ejemplo}
+   {%
+    \par\medskip
+    \refstepcounter{ejemplo}%
+  \noindent
+  \textbf{Ejemplo \theejemplo.}
+  \par%
+  %\begin{quote}%
+   }{%
+   %\end{quote}%
+   \medskip
+   }
 
 
 \begin{document}
 
-Facultad de Ciencias. UNAM
 
 \chapter{Introducción}
+
+
+%\end{document}
 
 Existen multitud de fenómenos en la realidad que difícilmente pueden ser modelados con certeza. Ya sea por la complejidad de su naturaleza o
 porque efectivamente es imposible establecer algún modelo determinístico para el mismo. Ejemplos que nos vienen a la mente provienen directamente
@@ -262,8 +272,9 @@ El conjunto Au contiene la información del primer dia. Si $\Omega \in A_u$ sabe
 d)$ por ejemplo. 
 
 \begin{ejemplo}
-	Este es un primer ejemplo
+	Este es un primer ejemplo Este es un primer ejemploEste es un primer ejemploEste es un primer ejemploEste es un primer ejemploEste es un primer ejemploEste es un primer ejemploEste es un primer ejemplo
 \end{ejemplo}
+
 
 \end{document}
 
