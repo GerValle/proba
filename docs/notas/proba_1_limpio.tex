@@ -360,39 +360,18 @@ Una colección $\mathcal{F}$ de subconjuntos de $\Omega$ se conoce como $\sigma$
 \end{enumerate}
 \end{definition}
 
+Si $A \in F$ entonces se dice que $A$ es un evento. Decimos que un evento $A$ ocurre siempre y cuando el elemento $\omega \in \Omega$ que resulta después de ejecutado el experimento aleatorio es un elemento de $A$ esto es $\Omega \in A$. 
+
+Ejemplos de $\sigma$-álgebra. 
+
+Dado un espacio muestral $\Omega$, la $\sigma$-álgebra más simple y pequeña que podemos definir es $\mathcal{F}=\{\Omega, \emptyset\}$. Otro ejemplo simple lo conseguimos como sigue: si $A \subset \Omega$ entonces: $F = \{\Omega,\emptyset, A, A^c\}$ es una $\sigma$-álgebra. Y claro está, la $\sigma$-álgebra mas grande de todas $2^\Omega$. El conjunto potencia es una $\sigma$-álgebra que es útil en algunas aplicaciones, por ejemplo en el caso del lanzamiento de dos dados bien podemos usar al conjunto potencia como la $\sigma$-álgebra en nuestro experimento. En el ejemplo del precio de un activo también podríamos usar la potencia, sin embargo, podríamos jugar con algunas alternativas. Por ejemplo; para el tiempo $t$ donde desconocemos cualquier cosa que pueda ocurrir en el futuro, podríamos seleccionar la $\sigma$-álgebra: $\mathcal{F} = \{\Omega,\emptyset\}$.
+
+	Ahora bien, si ya transcurrió un periodo, entonces tenemos conocimiento de lo ocurrido con el precio en el primer dia. Es decir, ya sabemos si $\omega \in A_u$ o si $\omega \in A_d$ . Podemos jugar con esta información y generar una $\sigma$-álgebra que denote el hecho que conocemos la historia del primer dia: $F = \{\emptyset, \Omega, A_u , A_d \}$ Notemos que en este caso $\mathcal{F}$ efectivamente es una $\sigma$-álgebra. Esto es fácil de ver dado que $A_u = A^c_d$. Transcurridos dos días tenemos conocemos aún mas información, por lo pronto sabemos si $\omega$ pertenece a alguno de los cuatro conjuntos: $A_{uu}$, $A_{ud}$, $A_{du}$ o $A_{dd}$ . Sin embargo: $C = \{\emptyset, \Omega, A_{uu}, A_{ud}, A_{du}, A_{dd} \}$ no es una $\sigma$-álgebra.
+
+
 \end{document}
 
 
-
-Fundamentos Ejemplos
-
-Si A ∈ F entonces se dice que A es un evento. Decimos que un evento A
-ocurre siempre y cuando el elemento \Omega ∈ \Omega que resulta después de
-ejecutado el experimento aleatorio es un elemento de A esto es \Omega ∈ A.
-Ejemplos de σ-álgebra. Dado un espacio muestral \Omega, la σ-álgebra más
-simple y pequeña que podemos definir es F = \{\Omega, ∅\}. Otro ejemplo
-simple lo conseguimos como sigue: si A ⊂ \Omega entonces: F = \{\Omega, ∅, A, Ac
-\} es una σ-álgebra. Y claro está, la σ-álgebra mas grande de todas 2\Omega .
-El conjunto potencia es una σ-álgebra que es útil en algunas
-aplicaciones, por ejemplo en el caso del lanzamiento de dos dados bien
-podemos usar al conjunto potencia como la σ-álgebra en nuestro
-experimento. En el ejemplo del precio de un activo también podríamos
-usar la potencia, sin embargo, podríamos jugar con algunas alternativas.
-Por ejemplo; para el tiempo t donde desconocemos cualquier cosa que
-pueda ocurrir en el futuro, podríamos seleccionar la σ-álgebra: F = \{\Omega,
-∅\}. 
-
-Fundamentos Ejemplos
-
-Ahora bien, si ya transcurrió un periodo, entonces tenemos conocimiento
-de lo ocurrido con el precio en el primer dia. Es decir, ya sabemos si \Omega
-∈ Au o si \Omega ∈ Ad . Podemos jugar con esta información y generar una
-σ-álgebra que denote el hecho que conocemos la historia del primer dia:
-F = \{∅, \Omega, Au , Ad \} Notemos que en este caso F efectivamente es una
-σ-álgebra. Esto es fácil de ver dado que Au = Acd . Transcurridos dos
-días tenemos conocemos aín mas información, por lo pronto sabemos si \Omega
-pertenece a alguno de los cuatro conjuntos: Auu , Aud , Adu o Add . Sin
-embargo: C = \{∅, \Omega, Auu , Aud , Adu , Add \} no es una σ-álgebra.
 
 Fundamentos Ejemplos
 
