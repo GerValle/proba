@@ -6,6 +6,7 @@
 %\usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{tikz}
+\usepackage[most]{tcolorbox}
 
 %\newcounter{ejemplo}[chapter] % Define a new counter tied to the chapter
 
@@ -376,352 +377,310 @@ El primer inciso de la definición, básicamente se asegura de que la $\sigma$-�
 
 En general, podemos concebir a una $\sigma$-álgebra como un mecanismo para ordenar la información contenida en el espacio muestral. Por lo pronto, el primer inciso en la definición de $\sigma$-álgebra garantiza que $\Omega$ es siempre un elemento de la misma, el segundo inciso implica que la $\sigma$-álgebra es cerrada bajo complementos, es decir; si sabemos que algo ocurrió también debemos saber si es que esto mismo, no ocurrió. El tercer inciso es el mas controvertido. La axiomática de la probabilidad que estudiaremos es la propuesta por Kolmogorov y no esta exenta de controversia. Hay probabilistas que afirman que una teoría de probabilidad debería considerar únicamente la cerradura bajo uniones finitas y no extenderlo al caso numerable. Lo cierto es que este último inciso es de vital importancia en la construcción de eventos que tienen que ver con algún comportamiento límite. No abundaremos más al respecto dado que es un tema correspondiente a un curso avanzado de probabilidad. Baste notar que el inciso tres implica no solo que una $\sigma$-álgebra es cerrada bajo uniones numerables, también es cerrada bajo uniones finitas. 
 
+Para probar la cerradura bajo uniones finitas antes observemos que de los dos primeros incisos se concluye que $\emptyset \in \Omega$. De este modo, si $A$ y $B$ son dos eventos en $\mathcal{F}$ entonces$A \cup B = \cup_n A_n$ con $A = A_1$ y $B = A_2$, mientras que $A_i = \emptyset$ para $i \geq 3$. Usando el inciso tres se sigue que $A \cup B = \cup A_i \in \mathcal{F}$. Ahora bien, si $\{A_n \}$ es una colección numerable de eventos en $\mathcal{F}$ entonces $\{A^c_n \}$ también es una colección numerable en $\mathcal{F}$. Usando de manera conjunta el inciso 2 y el inciso 3 y echando mano de la ley de Morgan tenemos que $\cap_n A_n = \left(\cup_n A^c_n \right)^c \in \mathcal{F}$. Esto es, una $\sigma$-álgebra también es cerrada bajo intersecciones numerables. Con un argumento similar al que usamos para probar la cerradura bajo uniones finitas, podemos probar la cerradura bajo intersecciones finitas.
 
-\end{document}
+Podemos continuar con propiedades del estilo de las que acabamos de exponer, dejemos algunas para los ejercicios. Lo importante que debemos recordar es que si bien una $\sigma$-álgebra es cerrada bajo uniones e intersecciones numerables, no lo es bajo uniones o intersecciones arbitrarias. Al par $(\Omega, \mathcal{F})$, se le conoce como espacio medible. En un espacio medible es que tiene sentido nuestra siguiente
 
+\begin{definition}[Medida de probabilidad]
+Dado un espacio medible $(\Omega, \mathcal{F})$,decimos que una función $P : F \rightarrow [0,1]$ es una medida de probabilidad si:
 
+\begin{enumerate}
+    \item $P(\Omega) = 1$
+    \item Si $\{A_n \}$ es una sucesión de eventos disjuntos, entonces:
+    $$P\left(\cup_n A_n \right) = \sum_n P(A_n)$$.
+\end{enumerate}
+\end{definition}
 
+A la tercia $(\Omega, \mathcal{F}, P)$ se le conoce como espacio de probabilidad. Observemos el importantísimo papel de la $\sigma$-álgebra, no sólo es útil para definir cierto orden a la información que podemos extraer en un experimento aleatorio, también funciona como el dominio de una medida de probabilidad. Debemos ser enfáticos en esto; seremos capaces de calcular probabilidades sobre elementos F y nada mas. Si $A \subset \Omega$ pero $A \notin \mathcal{F}$ entonces $P$ es incapaz de trabajar con $A$. Algunas propiedades de la probabilidad vienen bien en este momento: $P(\emptyset) = 0$ Efectivamente, consideremos la sucesión $\{An \}$ donde $A_n = \emptyset$ para todo $n$. Evidentemente esta es una sucesión de eventos disjuntos, por lo tanto 
+$$
+P(\emptyset) = P\left(\cup_n A_n\right) = \sum_n P(A_n ) = P(\emptyset) + \sum_{n\geq2} P(A_n )
+$$
 
+De donde se sigue que: $0 = \sum_{n\geq 2} P(A_n) = P\left(\cup_{n\geq 2} A_n\right) = P(\emptyset)$
 
+Si $A$ y $B$ son dos elementos disjuntos de $\mathcal{F}$ entonces: $P\left(A \cup B\right) = P(A) + P(B)$. Básicamente estamos afirmando que una medida de probabilidad no solo es aditiva ante uniones numerables disjuntas, también lo es ante uniones finitas disjuntas. Para probar este resultado observemos que $A \cup B = \cup_n A_n$ Donde $A_1 = A, A_2 = B$ y $A_n = \emptyset$ para $n \geq 3$. Claramente $\{An \}$ es una sucesión de eventos disjuntos. 
 
+Por lo tanto 
+\begin{equation*}
+\begin{split}
+    P(A \cup B) & = P\left(\cup_n A_n \right)\\ 
+                & = \sum_n P(A_n) \\
+                & = P(A) + P(B) + \sum_{n\geq 3} P(A_n) \\
+                & = P(A) + P(B)
+\end{split}    
+\end{equation*}
 
+Este resultado, nos conduce a la siguiente afirmación: Si $A \in \mathcal{F}$ entonces:
+$$
+P(A^c) = 1 - P(A)
+$$
 
-Para probar la cerradura bajo uniones finitas antes observemos que de
-los dos primeros incisos se concluye que ∅ ∈ \Omega. De este modo, si A y B
-son dos eventos en F entonces A \cup B = \cupn An con A = A1 y B = A2 ,
-mientras que Ai = ∅ para i ≥ 3. Usando el inciso tres se sigue que A \cup B
-= \cupAi ∈ F. Ahora bien, si \{An \} es una colección numerable de eventos
-en F entonces \{Acn \} también es una colección numerable en F. Usando
-de manera conjunta el inciso 2 y el inciso 3 y echando mano de la ley de
-Morgan tenemos que ∩n An = (\cupn Acn )c ∈ F. Esto es, una σ-álgebra
-también es cerrada bajo intersecciones numerables. Con un argumento
-similar al que usamos para probar la cerradura bajo uniones finitas,
-podemos probar la cerradura bajo intersecciones finitas.
+Este resultado se sigue de que: $1 = P(\Omega) = P(A \cup A_c ) = P(A) + P(A_c)$
 
-Fundamentos Podemos continuar con propiedades del estilo de las que
-acabamos de exponer, dejemos algunas para los ejercicios. Lo importante
-que debemos recordar es que si bien una σ-álgebra es cerrada bajo
-uniones e intersecciones numerables, no lo es bajo uniones o
-intersecciones arbitrarias. Al par (\Omega, F), se le conoce como espacio
-medible. En un espacio medible es que tiene sentido nuestra siguiente
-definición:
+Para dos eventos $A$ y $B$ tales que $A \subset B$ se tiene que:  $P(A) \leq P(B)$ Efectivamente; notemos que $B = A \cup (B \setminus A)$ por lo tanto:
+$$
+P(B) = P(A \cup (B\setminus A)) = P(A) + P(B \setminus A) \geq P(A)
+$$
 
-Medida de probabilidad
+La última igualdad se debe al hecho de que $P(B\setminus A) \geq 0$ Finalmente, una
+de las relaciones mas útiles: Dados los eventos $A$ y $B$: 
+$$
+P(A \cup B) = P(A) + P(B) - P(A \cap B)
+$$
 
-Dado un espacio medible (\Omega, F),decimos que una función P ∶ F → {[}0,
-1{]} es una medida de probabilidad si: 1 2
+En la igualdad anterior estamos tomando eventos $A$ y $B$ arbitrarios, no necesariamente disjuntos, de ahí la necesidad de restar la probabilidad de la intersección. A
 
-P(\Omega) = 1
-
-Si \{An \} es una sucesión de eventos disjuntos, entonces P(\cupn An ) = ∑n
-P(An ).
-
-Fundamentos A la tercia (\Omega, F, P) se le conoce como espacio de
-probabilidad. Observemos el importantísimo papel de la σ-álgebra, no
-sólo es útil para definir cierto orden a la información que podemos
-extraer en un experimento aleatorio, también funciona como el dominio de
-una medida de probabilidad. Debemos ser enfáticos en esto; seremos
-capaces de calcular probabilidades sobre elementos F y nada mas. Si A ⊂
-\Omega pero A ∉ F entonces P es incapaz de trabajar con A. Algunas
-propiedades de la probabilidad vienen bien en este momento: P(∅) = 0
-Efectivamente, consideremos la sucesión \{An \} donde An = ∅ para todo
-n. Evidentemente esta es una sucesión de eventos disjuntos, por lo tanto
-P(∅) = P(\cupn An ) = ∑ P(An ) = P(∅) + ∑ P(An ) n
-
-n≥2
-
-Fundamentos De donde se sigue que: 0 = ∑ P(An ) = P (\cupn≥2 An ) = P(∅)
-n≥2
-
-Si A y B son dos elementos disjuntos de F entonces: P(A \cup B) = P(A) +
-P(B) Básicamente estamos afirmando que una medida de probabilidad no
-solo es aditiva ante uniones numerables disjuntas, también lo es ante
-uniones finitas disjuntas. Para probar este resultado observemos que A \cup
-B = \cupn A n Donde A1 = A, A2 = B y An = ∅ para n ≥ 3. Claramente \{An \}
-es una sucesión de eventos disjuntos. 
-
-Fundamentos Por lo tanto P(A \cup B) = P(\cupn An )
-
-= ∑ P(An ) n
-
-= P(A) + P(B) + ∑ P(An ) = P(A) + P(B)
-
-n≥3
-
-Este resultado, nos conduce a la siguiente afirmación: Si A ∈ F
-entonces:
-
-P(Ac ) = 1 − P(A)
-
-Este resultado se sigue de que: 1 = P(\Omega) = P(A \cup Ac ) = P(A) + P(Ac )
-
-Fundamentos Para dos eventos A y B tales que A ⊂ B se tiene que: P(A) ≤
-P(B) Efectivamente; notemos que B = A \cup (B ∖ A) por lo tanto:
-
-P(B) = P(A \cup (B ∖ A)) = P(A) + P(B ∖ A) ≥ P(A)
-
-La última igualdad se debe al hecho de que P(B ∖ A) ≥ 0 Finalmente, una
-de las relaciones mas útiles: Dados los eventos A y B: P(A \cup B) = P(A) +
-P(B) − P(A ∩ B)
-
-Fundamentos En la igualdad anterior estamos tomando eventos A y B
-arbitrarios, no necesariamente disjuntos, de ahi la necesidad des restar
-la probabilidad de la intersección. A
-
-B
-
-A∖B A∩B B ∖A
-
-Observemos primero que A \cup B = A \cup (B ∖ A) y ademas B = (A ∩ B) \cup (B ∖
-A) por lo tanto
-
-Fundamentos P(A \cup B) = P(A) + P(B ∖ A) y
-
-P(B) = P(A ∩ B) + P(B ∖ A)
-
+Observemos primero que $A \cup B = A \cup (B \setminus A)$ y además $B = (A \cap B) \cup (B \setminus A)$ por lo tanto
+$$
+P(A \cup B) = P(A) + P(B\setminus A) 
+$$
+y
+$$
+P(B) = P(A \cap B) + P(B \setminus A)
+$$
 Usando estas dos igualdades obtenemos la fórmula propuesta para la
-unión. Retomemos el ejercicio que consiste en el lanzamiento de dos
-dados. Sabemos que \Omega = \{(1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6)
-(2, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2, 6)
+unión.
 
-(3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6)
+Retomemos el ejercicio que consiste en el lanzamiento de dos
+dados. Sabemos que
 
-(4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6)
+\begin{equation*}
+\begin{split}
+	\Omega = \left\{\right.%
+	(1&, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), \\
+   (2&, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2, 6), \\ 
+   (3&, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), \\ 
+   (4&, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), \\
+   (5&, 1), (5, 2), (5, 3), (5, 4), (5, 5), (5, 6), \\ 
+   (6&, 1), (6, 2), (6, 3), (6, 4), (6,5), (6, 6) \left.\right\}
+\end{split}	
+\end{equation*}
 
-(5, 1), (5, 2), (5, 3), (5, 4), (5, 5), (5, 6)
-
-(6, 1), (6, 2), (6, 3), (6, 4), (6, 5), (6, 6)\} (Facultad de Ciencias.
-UNAM)
-
-Fundamentos Si ambos dados son justos, si ninguno de ellos esta cargado
-y todas las caras son igualmente probables entonces cada cara tiene un
-sexto de probabilidad de aparecer. Derivado de \Omega de deducimos que cada
-combinación en el lanzamiento de los dados tiene 1/36 de probabilidad de
-ocurrir. Retomando los ejemplos anteriores, si A = evento de obtener un
-3 en el primer dado entonces P(A) = 6/36 = 1/6. De manera análoga, si B
-= evento de obtener un 3 en el segundo dado entonces P(B) = 1/6.
-
-Fundamentos A su vez: A ∩ B = Evento de obtener 3 en ambos dados =
-\{(3, 3)\}
-
-por lo cual P(A ∩ B) = 1/36. Con estos elementos, calculamos la
+Si ambos dados son justos, si ninguno de ellos esta cargado y todas las caras son igualmente probables entonces cada cara tiene un sexto de probabilidad de aparecer. Derivado de $\Omega$ deducimos que cada combinación en el lanzamiento de los dados tiene $1/36$ de probabilidad de ocurrir. Retomando los ejemplos anteriores, si 
+$$
+A = \text{evento de obtener un 3 en el primer dado}
+$$ 
+entonces $P(A) = 6/36 = 1/6$. De manera análoga, si 
+$$
+B = \text{evento de obtener un 3 en el segundo dado}
+$$ 
+entonces $P(B) = 1/6$. A su vez: 
+$$
+A \cap B = \text{Evento de obtener 3 en ambos dados } = \{(3, 3)\}
+$$
+por lo cual $P(A \cap B) = 1/36$. Con estos elementos, calculamos la
 probabilidad de:
+$$
+A \cup B = \text{Evento de obtener al menos un tres}
+$$
+esto es: 
+$$
+P(A \cup B) = P(A) + P(B) - P(A \cap B) =  1/6 + 1/ 6 - 1/36 = 11/36
+$$
+Esto lo verificamos al notar que: 
+\begin{equation*}
+    \begin{split}
+        A \cup B = \left\{\right.(3&, 1), (3, 2), (3, 3), (3,4), (3, 5),\\
+                                 (3&, 6), (1, 3), (2, 3), (4, 3), (5, 3), (6, 3)\left.\right\}
+    \end{split}
+\end{equation*}
+Un ejemplo un poco mas complicado. Recordemos que 
+$$
+A \triangle B = \text{Evento de obtener exactamente un tres}
+$$
+y sabemos que:
+$$
+A \triangle B = (A \setminus B) \cup (B \setminus A)
+$$
+pero además:
+$$
+A = (A \cap B) \cup (A \setminus B)
+$$
+con lo cual: 
+$$
+P(A \setminus B) = P(A) - P(A \cap B)
+$$
+análogamente:
+$$
+P(B \setminus A) = P(B) - P(A \cap B)
+$$
+Por lo tanto: 
+\begin{equation*}
+    \begin{split}
+        P(A \triangle B) & = P(A) + P(B) - 2P(A \cap B) \\
+                         & = 1/6 + 1/6 -2/36 \\
+                         & = 10/36
+    \end{split}
+\end{equation*}
+Lo cual se verifica al ver que: 
+\begin{equation*}
+    \begin{split}
+        A \triangle B = \left\{\right. (3&, 1), (3, 2),(3, 4), (3, 5), (3, 6),\\
+                                       (1&, 3), (2, 3), (4, 3), (5, 3), (6, 3)\left.\right\}
+    \end{split}
+\end{equation*}
+La siguiente tabla puede ser de utilidad:
+\renewcommand{\arraystretch}{1.5}
+     \begin{table}
+         \centering
+         \begin{tabular}{|c|l|}
+         \hline
+              $\Omega$    & Espacio Muestral  \\
+              $\emptyset$ & Evento imposible \\
+              $\omega$    & Resultado del experimento aleatorio\\
+              $A$         & $A$ ocurre si $\omega \in A$ \\
+              $A^c$       & Negación de $A$. Si $\omega \in A^c$ entonces $A$ no ocurrió.\\
+              $A\cap B$   & $A$ y $B$\\
+              $A\cup B$   & $A$ o $B$\\
+              $A\setminus B$   & $A$ pero no $B$\\
+              $A\triangle B$   & $A$ o $B$ pero no ambos. Exactamente uno de los dos\\
+              $A\subset B$   & Si $A$ entonces $B$\\
+         \hline
+         \end{tabular}
+         %\caption{Caption}
+         %\label{tab:my_label}
+     \end{table}
+A continuación vemos algunos ejemplos adicionales. En el ejemplo del lanzamiento de dos dados, sea 
+$$
+A = \text{evento de obtener un par en el primer dado}
+$$
+y
+$$
+B = \text{evento de obtener un par en el segundo dado}
+$$
+Tenemos entonces que 
+\begin{equation*}
+    \begin{split}
+    A = \left\{\right.(2&, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2,6),  \\
+                      (4&, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), \\       
+                      (6&, 1), (6, 2), (6, 3), (6, 4), (6, 5), (6, 6)   \left.\right\}
+    \end{split}
+\end{equation*}
 
-A \cup B = Evento de obtener al menos un tres esto es: P(A \cup B) = P(A) +
-P(B) − P(A ∩ B) =
+Por lo tanto: $P(A) = 18/36 = 1/2$. Análogamente deducimos que $P(B) = 1/2$.
 
-11 1 1 1 + − = 6 6 36 36
+De lo anterior sigue además que
+$$
+A^c = \text{evento de obtener un impar en el primer dado}
+$$
+y
+$$
+B^c = \text{evento de obtener un impar en el primer dado}
+$$
+y claro: 
+$$
+P(A^c ) = 1 - P(A) = 1/2\quad \text{y} \quad P(B^c ) = 1 - P(B) = 1/2 
+$$
+Siguiendo con la misma idea tenemos que: 
+$$
+A \cap B = \text{Obtenemos par en ambos dados }
+$$
+Es decir: 
+\begin{equation*}
+    \begin{split}
+        A \cap B = \left\{\right. (2&, 2), (2, 4), (2, 6),\\
+                                  (4&, 2), (4, 4), (4, 6),\\
+                                  (6&, 2), (6, 4), (6, 6)\left.\right\}        
+    \end{split}
+\end{equation*}
+De donde $P(A \cap B) = 9/36 = 1/4$. Con esto podemos calcular la probabilidad del evento: 
+$$
+A \cup B = \text{Obtenemos par en alguno de los dados}
+$$
+efecto: 
+$$
+P(A \cup B) = P(A) + P(B) - P(A \cap B) = 1/2 + 1/2 - 1/4 = 3/4
+$$
+Otro evento interesante: 
+$$
+A\setminus B = A \cap B^c = \text{El dado uno es par y el dado 2 es impar}
+$$
+Tenemos que: 
+$$
+P(A \setminus B) = P(A) - P(A \cap B) = 1/2 - 1/4 = 1/4
+$$
+Esto ultimo lo verificamos al ver que: 
+\begin{equation*}
+    \begin{split}
+        A \setminus B = \left\{\right. (2&, 1),(2, 3), (2, 5),\\
+                                       (4&, 1), (4, 3), (4, 5),\\
+                                       (6&, 1), (6, 3), (6, 5)\left.\right\}
+    \end{split}
+\end{equation*}
+Osea, $P(A \setminus B) = 9/36 = 1/4$. Siguiendo en la misma linea: 
+$$
+A \triangle B = \text{obtenemos exactamente un par} 
+$$
+en este caso 
+$$
+P(A \triangle B) = P(A \setminus B) + P(B \setminus A) = 1/4 + 1/4 = 1/2. 
+$$
+Finalmente, un ejemplo un poco mas complejo: 
+$$
+C = \text{La suma de los dados es par}
+$$
+Podemos seguir dos rutas para encontrar la probabilidad de $C$ . Una es la de ``fuerza bruta'' y enlistar todos los elementos de $\Omega$ que cumplen con la condición. La otra es tratar de razonar la lógica del conjunto y expresarlo en términos de otros mas simples. Sigamos la segunda ruta y notemos que para que la suma de los dados sea par, es necesario que se cumpla que ambos dados sean pares o bien que ambos dados sean impares. Esto es: 
+\begin{equation*}
+    \begin{split}
+        C & = (A \cap B) \cup (A^c \cap B^c ) \\
+          & = (A \cap B) \cup (A \cup B)^c
+    \end{split}
+\end{equation*}
 
-Esto lo verificamos al notar que: A \cup B = \{(3, 1), (3, 2), (3, 3), (3,
-4), (3, 5), (3, 6), (1, 3), (2, 3), (4, 3), (5, 3), (6, 3)\}
+Adicionalmente, observemos que como $(A \cap B) \subset A \cup B$, entonces $A \cap B$ y $(A
+\cup B)^c$ son disjuntos. En consecuencia: 
+\begin{equation*}
+    \begin{split}
+        P(C ) & = P((A \cap B) \cup (A \cup B)^c ) \\
+              & = P(A \cap B) + P((A \cup B)^c )    \\
+              & = P(A \cap B) + (1 - P(A \cup B)) \\
+              & = 1/4 + (1-3/4)\\
+              & = 1/2
+    \end{split}
+\end{equation*}
 
-Fundamentos Un ejemplo un poco mas complicado. Recordemos que A △ B =
-Evento de obtener exactamente un tres Sabemos que:
+Esto lo verificamos usando la ``fuerza bruta'' y enlistamos todos los pares cuya suma es par donde verificamos que: $P(C ) = 18/36 = 1/2$. 
+\begin{equation*}
+    \begin{split}
+        C = \left\{\right. (2&, 2), (4, 2), (6, 2),(1, 1), (3, 1), (5, 1),\\
+                           (2&, 4), (4, 4), (6, 4),(1, 3), (3, 3), (5, 3),\\
+                           (2&, 6), (4, 6), (6, 6),(1, 5), (3, 5), (5, 5)\left.\right\}       
+    \end{split}
+\end{equation*}
+\chapter{Combinatoria}
+Frecuentemente el cálculo de probabilidades involucra el conteo de elementos en un conjunto. Sobre todo cuando consideramos que los resultados de un posible experimento son igualmente probables. En un caso así, la estrategia usual a seguir para el cálculo de las probabilidad de un evento es la de estimar el número de casos favorables y el número de casos totales en el experimento aleatorio. Por ejemplo en el caso del lanzamiento de dos dados, el número de casos totales es 36. Podemos obtener 36 parejas diferentes. sin embargo, responder la pregunta: ¿Cuál es la probabilidad de que la suma de los dados sea 7? implica el conteo de todas aquellas parejas cuya suma es 7 a saber: 
+$$
+A = \{(1, 6), (2, 5), (3, 4), (4, 3), (5, 2), (6, 1)\} 
+$$
+de aquí, es fácil ver que
+$$
+P(A) = 6/36 = 1/6
+$$
 
-A △ B = (A ∖ B) \cup (B ∖ A)
-
-pero ademas:
-
-A = (A ∩ B) \cup (A ∖ B)
-
-con lo cual: análogamente:
-
-P(A ∖ B) = P(A) − P(A ∩ B) P(B ∖ A) = P(B) − P(A ∩ B)
-
-Por lo tanto: P(A △ B) = P(A) + P(B) − 2P(A ∩ B) = (Facultad de
-Ciencias. UNAM)
-
-1 10 1 1 + −2 = 6 6 36 36 
-
-Fundamentos Lo cual se verifica al ver que: A △ B = \{(3, 1), (3, 2),
-(3, 4), (3, 5), (3, 6),
-
-(1, 3), (2, 3), (4, 3), (5, 3), (6, 3)\}
-
-Fundamentos La siguiente tabla puede ser de utilidad: \Omega
-
-Espacio Muestral. Evento seguro
-
-∅
-
-Evento imposible
-
-\Omega
-
-Resultado del experimento aleatorio
-
-A
-
-A ocurre si \Omega ∈ A
-
-Ac
-
-Negación de A. Si \Omega ∈ Ac entonces A no ocurrió
-
-A∩B
-
-AyB
-
-A\cupB
-
-AoB
-
-A∖B
-
-A pero no B
-
-A△B
-
-A o B pero no ambos.
-
-A⊂B
-
-Si A entonces B
-
-Fundamentos A continuación vemos algunos ejemplos adicionales. En el
-ejemplo del lanzamiento de dos dados, sea A = evento de obtener un par
-en el primer dado y
-
-B = evento de obtener un par en el segundo dado
-
-Tenemos entonces que A = \{(2, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2,
-6), (4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6),
-
-(6, 1), (6, 2), (6, 3), (6, 4), (6, 5), (6, 6)\}
-
-Por lo tanto: P(A) = 18/36 = 1/2. Análogamente deducimos que P(B) = 1/2.
-
-Fundamentos De lo anterior sigue además que Ac = evento de obtener un
-impar en el primer dado y
-
-B c = evento de obtener un impar en el primer dado
-
-y claro: P(Ac ) = 1 − P(A) = 1/2 y P(B c ) = 1 − P(B) = 1/2 Siguiendo
-con la misma idea tenemos que: A ∩ B = Obtenemos par en ambos dados Es
-decir: A ∩ B = \{(2, 2), (2, 4), (2, 6),
-
-(4, 2), (4, 4), (4, 6),
-
-(6, 2), (6, 4), (6, 6)\}
-
-Fundamentos De donde P(A ∩ B) = 9/36 = 1/4. Consto podemos calcular la
-probabilidad del evento: A \cup B = Obtenemos par en alguno de los dados en
-efecto: P(A \cup B) = P(A) + P(B) − P(A ∩ B) =
-
-1 1 1 3 + − = 2 2 4 4
-
-Otro evento interesante: A ∖ B = A ∩ B c = El dado uno es par y el dado
-2 es impar Tenemos que: P(A ∖ B) = P(A) − P(A ∩ B) = (Facultad de
-Ciencias. UNAM)
-
-1 1 1 − = 2 4 4 
-
-Fundamentos Esto ultimo lo verificamos al ver que: A ∖ B = \{(2, 1),
-(2, 3), (2, 5),
-
-(4, 1), (4, 3), (4, 5),
-
-(6, 1), (6, 3), (6, 5)\}
-
-Osea, P(A ∖ B) = 9/36 = 1/4. Siguiendo en la misma linea: A △ B =
-obtenemos exactamente un par en este caso P(A △ B) = P(A ∖ B) + P(B ∖ A)
-= 1/4 + 1/4 = 1/2. Finalmente, un ejemplo un poco mas complejo: C = La
-suma de los dados es par
-
-Fundamentos Podemos seguir dos rutas para encontrar la probabilidad de
-C . Una es la de ``fuerza bruta'' y enlistar todos los elementos de \Omega
-que cumplen con la condición.~La otra es tratar de razonar la lógica del
-conjunto y expresarlo en términos de otros mas simples. Sigamos la
-segunda ruta y notemos que para que la suma de los dados sea par, es
-necesario que se cumpla que ambos dados sean pares o bien que ambos
-dados sean impares. Esto es: C = (A ∩ B) \cup (Ac ∩ B c ) = (A ∩ B) \cup (A \cup
-B)c
-
-Adicionalmente, observemos que como (A ∩ B) ⊂ A \cup B, entonces A ∩ B y (A
-\cup B)c son disjuntos.
-
-Fundamentos En consecuencia: P(C ) = P((A ∩ B) \cup (A \cup B)c )
-
-= P(A ∩ B) + P((A \cup B)c )
-
-= P(A ∩ B) + (1 − P(A \cup B)) 3 1 = + (1 − ) 4 4 1 = 2 Esto lo verificamos
-usando la ``fuerza bruta'' y enlistamos todos los pares cuya suma es par
-donde verificamos que:P(C ) = 18/36 = 1/2. C = \{(2, 2), (4, 2), (6, 2),
-(1, 1), (3, 1), (5, 1),
-
-(2, 4), (4, 4), (6, 4), (1, 3), (3, 3), (5, 3),
-
-(2, 6), (4, 6), (6, 6), (1, 5), (3, 5), (5, 5)\} (Facultad de Ciencias.
-UNAM)
-
-Combinatoria Frecuentemente el cálculo de probabilidades involucra el
-conteo de elementos en un conjunto. Sobre todo cuando consideramos que
-los resultados de un posible experimento son igualmente probables. En un
-caso así, la estrategia usual a seguir para el cálculo de las
-probabilidad de un evento es la de estimar el número de casos favorables
-y el número de casos totales en el experimento aleatorio. Por ejemplo en
-el caso del lanzamiento de dos dados, el número de casos totales es 36.
-Podemos obtener 36 parejas diferentes. sin embargo, responder la
-pregunta: ¿Cuál es la probabilidad de que la suma de los dados sea 7?
-implica el conteo de todas aquellas parejas cuya suma es 7 a saber: A =
-\{(1, 6), (2, 5), (3, 4), (4, 3), (5, 2), (6, 1)\} de aquí, es fácil ver
-que
-
-P(A) =
-
-1 6 = 36 6
-
-Combinatoria Sin embargo, no siempre es fácil, enlistar todos los
+Sin embargo, no siempre es fácil, enlistar todos los
 posibles resultados de un evento. Es aquí donde conviene analizar de
 mejor manera la situación y encontrar métodos que nos faciliten el
 conteo de elementos de un conjunto.
 
-Principio básico de conteo. Supongamos que dos experimentos son
-realizados. Si el experimento 1 puede resultar en una de n formas
-posibles y para cada resultado del experimento 1 existen m posibilidades
-para el experimento 2, entonces en conjunto existen nm resultados para
-los dos experimentos. A menudo conviene ver esto con ``casillas''. En
-una casilla ponemos el número de posibilidades al seleccionar un
-elemento de un conjunto A y en la otra el número de posibilidades al
-seleccionar un elemento de un conjunto B, si son n y m de forma
-correspondiente, entonces en total podremos hacer nm selecciones de los
-dos conjuntos. A B AB n m nm 
+\begin{tcolorbox}
+ \textbf{Principio básico de conteo.}
+\tcblower
+Supongamos que dos experimentos son realizados. Si el experimento 1 puede resultar en una de $n$ formas posibles y para cada resultado del experimento 1 existen $m$ posibilidades para el experimento 2, entonces en conjunto existen $n\times m$ resultados para los dos experimentos.
+\end{tcolorbox}
+  
+A menudo conviene ver esto con ``casillas''. En una casilla ponemos el número de posibilidades al seleccionar un elemento de un conjunto $A$ y en la otra el número de posibilidades al seleccionar un elemento de un conjunto $B$, si son $n$ y $m$ respectivamente, entonces en total podremos hacer $n\times m$ selecciones de los dos conjuntos. 
 
-Combinatoria En general, podemos pensar que tenemos m casillas. En la i
--ésima casilla podemos depositar un elemento de un conjunto con ni
-elementos. Entonces el número de formas en que podemos `llenar' estas
-casillas es igual a: n1 ⋅ n2 ⋯nm El siguiente diagrama esquematiza el
-caso para cuando tenemos solo 4 casillas, el caso general es similar.
-Cada casilla puede tener uno elemento seleccionado de un conjunto con ni
-elementos. En total tendremos b
+A B AB n m nm 
 
-b
+En general, podemos pensar que tenemos $m$ casillas. En la $i$-ésima casilla depositamos un elemento de un conjunto con $n_i$ elementos. Entonces el número de formas en que podemos `llenar' estas casillas es igual a:
+$$
+n_1\cdot n_2 \cdots nm 
+$$
+El siguiente diagrama esquematiza el caso para cuando tenemos solo 4 casillas, el caso general es similar. Cada casilla puede tener uno elemento seleccionado de un conjunto con ni elementos. En total tendremos b
 
-b
+\end{document}
 
-b
 
-b
-
-b
-
-b
-
-b
-
-b
-
-b
-
-b
-
-b
-
-3 ⋅ 2 ⋅ ⋅3 ⋅ 5 = 90
-
-n1 = 3 n2 = 2 n3 = 3 n4 = 5
-
-selecciones posibles.
 
 Combinatoria Ejemplo.. La cantidad total de placas formadas con tres
 dígitos y tres letras es igual a: 10 ⋅ 10 ⋅ 10 ⋅ 26 ⋅ 26 ⋅ 26 = 17, 576,
@@ -736,7 +695,7 @@ telefónicos de 8 dígitos es igual a: 10 ⋅ 10 ⋅ 10 ⋅ 10 ⋅ 10 ⋅ 10 ⋅
 Combinatoria Este ejemplo, aunque simple de más tal vez sirve para
 ejemplificar dos cosas importantes. Por un lado al igual que en el caso
 de las placas, también en este caso es válido repetir números. Además el
-orden es importante. Los números: 55 − 21 − 28 − 35 y 55 − 82 − 12 − 35
+orden es importante. Los números: 55 - 21 - 28 - 35 y 55 - 82 - 12 - 35
 son números diferentes, comparten la misma selección de números, sin
 embargo la selección no esta en el mismo orden, por lo tanto son números
 diferentes. Adicionalmente, al realizar estas selecciones, las
@@ -771,7 +730,7 @@ Combinatoria Asi el problema de contar el número de subconjuntos se
 traduce a encontrar el número posible de vectores (x1 , x2 , . . . , xk
 )
 
-con xi ∈ \{0, 1\}. Como cada xi es seleccionado de un conjunto con dos
+con xi \in \{0, 1\}. Como cada xi es seleccionado de un conjunto con dos
 elementos, entonces el número total de este tipo de vectores es igual a
 2k . Ejemplo. Supongamos que tenemos el conjunto A = \{1, 2, 3\}. ¿De
 cuantas formas podemos ordenar al conjunto A?. El conjunto A es lo
@@ -796,7 +755,7 @@ quizás no sea la mas indicada. ¿Cómo llegamos a la misma conclusión sin
 necesidad de enlistar todos los posibles ordenamientos? En realidad
 estamos formando triadas del estilo: (x1 , x2 , x3 )
 
-donde xi ∈ A. Con la peculiaridad de que x1 puede ser cualquier elemento
+donde xi \in A. Con la peculiaridad de que x1 puede ser cualquier elemento
 de A, mientras que x2 , pude ser cualquier elemento de A excepto el que
 ya asignamos a x1 . Asimismo x3 puede ser cualquier elemento de A
 excepto los ya asignados a x1 y x2 . De este modo, x1 puede
@@ -805,7 +764,7 @@ una de dos formas posibles y x3 solo puede seleccionarse de una única
 forma. En total podremos ordenar A de: 3! = 3 ⋅ 2 ⋅ 1 = 6 formas
 
 Combinatoria En general un conjunto con n elementos se puede ordenar de
-n! = n ⋅ (n − 1) ⋅ (n − 2)⋯1 formas posibles. El siguiente ejemplo se
+n! = n ⋅ (n - 1) ⋅ (n - 2)⋯1 formas posibles. El siguiente ejemplo se
 resuelve con una pequeña variación del argumento que hemos usado hasta
 este momento: Ejemplo. ¿Cuantas palabras de cuatro letras podemos
 formar? ¿Cuantas si las letras no pueden repetirse? Para resolver este
@@ -814,8 +773,7 @@ cualquier sucesión de cuatro letras, el resultado no tiene que ser
 necesariamente una palabra del diccionario. Asi por ejemplo `abcd' es
 una `palabra'. En realidad buscamos el numero de vectores del tipo. (x1
 , x2 , x3 , x4 ) donde cada xi es alguna de las 26 letras del
-abecedario. En este caso el número de palabras será 264 (Facultad de
-Ciencias. UNAM)
+abecedario. En este caso el número de palabras será 264 
 
 Combinatoria ¿Que pasa si no podemos repetir letras? Obviamente en este
 caso palabras como aabc no son válidas. Ahora al componer los vectores
@@ -824,16 +782,16 @@ posibles, x2 de 1 de 25 posibles, x3 de una de 24 formas posibles y x4
 de una de 23 formas posibles, eso con la finalidad de no repetir letras.
 En total tendremos 26 ⋅ 25 ⋅ 24 ⋅ 23 =
 
-26! 26! = = 358, 800 22! (26 − 4)!
+26! 26! = = 358, 800 22! (26 - 4)!
 
 formas de armar una palabra de cuatro letras que no repita letras.
 
 Combinatoria En general si queremos formar palabras de m letras
 tendremos un total de 26m palabras si es que podemos repetir letras. Si
 no podemos repetir letras, entonces podremos formar un total de total de
-26! (26 − m)!
+26! (26 - m)!
 
-palabras. Observemos que este último caso solo tiene sentido solo si m ≤
+palabras. Observemos que este último caso solo tiene sentido solo si m \leq
 26. Por último, cuando permitimos repetición de letras decimos que
 hacemos una selección con orden y con reemplazo. Lo de reemplazo, creo
 que es claro, lo de orden también si consideramos que aabc y abac por
@@ -847,10 +805,9 @@ pero también el orden si consideramos que las palabras abcd y bacd son
 diferentes a pesar de tener las mismas letras. En general; si tenemos un
 conjunto con n elementos el número total de selecciones de m elementos,
 con orden y con reemplazo es igual a nm en contraste; el número total de
-selecciones con orden y sin reemplazo es igual a: n! (n − m)!
+selecciones con orden y sin reemplazo es igual a: n! (n - m)!
 
-Observemos que en este caso es necesario que m ≤ n. (Facultad de
-Ciencias. UNAM)
+Observemos que en este caso es necesario que m \leq n. 
 
 Combinatoria Ejemplo. Tengo 6 discos de rock, 4 de música clásica y 3
 de música regional. ¿De cuantas formas puedo ordenar mis discos de modo
@@ -886,7 +843,7 @@ héroes. ¿Cuantos equipos de tres podemos formar? Una primera
 aproximación sería pensar que para la primera selección tenemos 5
 posibilidades, para la segunda tendríamos sólo 4 y para la tercera solo
 2. Por lo tanto el número total de equipos que podemos formar es igual
-a: 5! = 60 5⋅4⋅3= (5 − 3)! ¿Es correcto?
+a: 5! = 60 5⋅4⋅3= (5 - 3)! ¿Es correcto?
 
 Combinatoria Hemos hecho un selección de tres elementos tomados de un
 conjunto de cinco elementos. Sin embargo hemos realizado una selección
@@ -901,13 +858,13 @@ Combinatoria Observemos sin embargo que los seis equipos que enlistamos
 son en realidad el mismo. Son solo los 6 posibles ordenamientos de los 3
 miembros seleccionados, es decir 3!. Para evitar estas repeticiones
 debemos dividir nuestra estimación original entre 3!, de modo que el
-número total de equipos es en realidad: 5! = 10 3!(5 − 3)! Este ultimo
+número total de equipos es en realidad: 5! = 10 3!(5 - 3)! Este ultimo
 cociente es tan importante que tenemos una notación especial para el
-mismo: 5! 5 ( )= 3!(5 − 3)! 3
+mismo: 5! 5 ( )= 3!(5 - 3)! 3
 
-Combinatoria En general para m ≤ n:
+Combinatoria En general para m \leq n:
 
-n! n ( )= m m!(n − m)!
+n! n ( )= m m!(n - m)!
 
 y se lee como las combinaciones de n en m. Del ejemplo que estudiamos,
 deberíamos llegar a la conclusión de que este cociente son las formas en
@@ -1000,7 +957,7 @@ Combinatoria Finalmente la probabilidad que buscamos es: 134 ≈ 0.1055
 Como subproducto, observemos que si esta es la probabilidad de que cada
 jugador tenga exactamente un As, entonces el complemento es el evento de
 que algún jugador tenga al menos dos ases. La probabilidad de este
-segundo evento sería entonces 1−
+segundo evento sería entonces 1-
 
 134 ≈ 0.8945 (52 ) 4
 
@@ -1019,24 +976,24 @@ nm
 
 Sin reemplazo
 
-n! (n−m)!
+n! (n-m)!
 
-n n! (m ) = m!(n−m)!
+n n! (m ) = m!(n-m)!
 
 Aún nos hace falta el caso con reemplazo y sin orden, por el momento lo
 dejaremos para más tarde. Antes algunas observaciones primero; en ambos
 casos en los cuales la selección se realiza sin reemplazo, es necesario
-que m ≤ n. 
+que m \leq n. 
 
 Combinatoria En el caso en el que realizamos una selección sin orden y
 sin reemplazo, en realidad lo que estamos haciendo es contar las formas
 en que podemos construir un subconjunto de m elementos a partir de un
-conjunto con n elementos. Pero más aún dado que n n! n ) =( ( )= n−m
-m!(n − m)! m Deducimos que el número de subconjuntos con m elementos es
-igual al número de subconjuntos con n − m elementos. Dicho de otro modo;
+conjunto con n elementos. Pero más aún dado que n n! n ) =( ( )= n-m
+m!(n - m)! m Deducimos que el número de subconjuntos con m elementos es
+igual al número de subconjuntos con n - m elementos. Dicho de otro modo;
 al hacer una selección sin orden y sin reemplazo, implícitamente estamos
 contando el numero de formas en que podemos dividir al conjunto original
-en un par de conjuntos; uno con m elementos y otro con n − m elementos.
+en un par de conjuntos; uno con m elementos y otro con n - m elementos.
 El siguiente ejemplo nos da una generalización de esta conclusión.
 
 Combinatoria Previamente dimos un argumento satisfactorio para calcular
@@ -1045,12 +1002,12 @@ un argumento alternativo pero usando combinaciones. Esto lo logramos
 contando uno por uno, el numero de subconjuntos con cero elementos, el
 numero de conjuntos con un elementos, el número de conjuntos con dos
 elementos etc. La suma de todos ellos es el número total de
-subconjuntos, esto es: n n ∑( ) i =0 i Pero recordando el teorema del
-binomio: n n (a + b)n = ∑ ( )ai b n−i i =0 i
+subconjuntos, esto es: n n \sum( ) i =0 i Pero recordando el teorema del
+binomio: n n (a + b)n = \sum ( )ai b n-i i =0 i
 
 tenemos que
 
-n n n i n−i n n n ∑ ( ) = ∑ ( )1 1 = (1 + 1) = 2 i i i =0 i =0
+n n n i n-i n n n \sum ( ) = \sum ( )1 1 = (1 + 1) = 2 i i i =0 i =0
 
 Combinatoria Ejemplo. ¿De cuantas formas podemos ordenar las letras de
 la palabra PEPPER? Es claro que en esta palabra no es posible distinguir
@@ -1092,7 +1049,7 @@ construir una partición al conjunto en k subconjuntos cada uno con ni ,
 i = 1, . . . , k elementos? Siguiendo misma lógica del ejemplo anterior,
 podríamos realizar esta partición de n! n1 !n2 !⋯nk ! con n1 + n2 + ⋯ +
 nk = n.~A este cociente se le conoce como coeficiente multinomial el
-cual es una generalización del coeficiente binomial: n! n ( )= m!(n −
+cual es una generalización del coeficiente binomial: n! n ( )= m!(n -
 m)! m
 
 Combinatoria
@@ -1349,14 +1306,14 @@ selecciones, un ``registro típico'' seria como sigue: ●● 1
 
 3
 
-n−2 n−1
+n-2 n-1
 
 n
 
 Donde en total tenemos m bolas repartidas en las n casillas. Cada
-separación es un ``raya'' tenemos un total de n − 1 rayas. Con lo cual
-tenemos un total de n − 1 + m objetos entre bolas y rayas. Que pueden
-arreglarse sin orden de n+m−1 (n − 1 + m)! n+m−1 ) =( )= ( n−1 (n −
+separación es un ``raya'' tenemos un total de n - 1 rayas. Con lo cual
+tenemos un total de n - 1 + m objetos entre bolas y rayas. Que pueden
+arreglarse sin orden de n+m-1 (n - 1 + m)! n+m-1 ) =( )= ( n-1 (n -
 1)!m! m formas.
 
 Combinatoria
@@ -1372,13 +1329,13 @@ nm
 
 Sin reemplazo
 
-n! (n−m)!
+n! (n-m)!
 
-(n+m−1 ) m
+(n+m-1 ) m
 
-n n! (m ) = m!(n−m)!
+n n! (m ) = m!(n-m)!
 
-Recordemos que en los casos sin reemplazo es necesario que m ≤ n.
+Recordemos que en los casos sin reemplazo es necesario que m \leq n.
 
 Probabilidad Condicional Empecemos este tema resolviendo (si podemos)
 un problema muy bonito, sencillo pero bonito. . .
@@ -1420,19 +1377,19 @@ resultado que involucre a ambos dados debe estar en B. Para hacer
 UNAM)
 
 Probabilidad Condicional Probabilidad Condicional Definimos la
-Probabilidad Condicional de A dado B como: P(A ∣ B) ∶=
+Probabilidad Condicional de A dado B como: P(A ∣ B) :=
 
-P(A ∩ B) P(B)
+P(A \cap B) P(B)
 
 La idea de probabilidad condicional resuelve la pregunta: ¿cuál es la
 probabilidad de A dado que conozco B? El experimento sigue siendo
 aleatorio, pero ahora tenemos información adicional, ahora sabemos que B
 ocurrió, lo cual pude ser sumamente relevante. En el ejercicio de los
-dados: A ∩ B = \{(1, 4)\}
+dados: A \cap B = \{(1, 4)\}
 
 En consecuencia:
 
-P(A ∩ B) =
+P(A \cap B) =
 
 y
 
@@ -1462,7 +1419,7 @@ Finalmente, lo que en realidad nos interesa es la probabilidad: P(A ∣ B)
 =
 
 \hypertarget{pa-b-24}{%
-\section{P(A ∩ B) 2/4}\label{pa-b-24}}
+\section{P(A \cap B) 2/4}\label{pa-b-24}}
 
 = 2/3 P(B) 3/4
 
@@ -1483,10 +1440,10 @@ La probabilidad condicional P(⋅ ∣ B) es una probabilidad. Esto es: 1 2 3
 
 P(\Omega ∣ B) = 1
 
-Para todo evento A, 0 ≤ P(A ∣ B) ≤ 1
+Para todo evento A, 0 \leq P(A ∣ B) \leq 1
 
 Si \{An \} es una sucesión de eventos disjuntos entonces: P (\cupn An ∣ B)
-= ∑ P(An ∣ B) n
+= \sum P(An ∣ B) n
 
 La prueba de estos tres incisos, quedará como tarea\ldots{} :-)
 
@@ -1542,11 +1499,11 @@ y tenemos que;
 
 P(E ∣ F ) =
 
-P(E ∩ F ) P(F )
+P(E \cap F ) P(F )
 
-E ∩ F = \{\Omega1 \}
+E \cap F = \{\Omega1 \}
 
-Probabilidad condicional Antes de calcular P(E ∩ F ) y P(F ) observemos
+Probabilidad condicional Antes de calcular P(E \cap F ) y P(F ) observemos
 lo siguiente:
 
 \{\Omega1 \} = Evento de que A y B sean liberados \{\Omega2 \} = Evento de que A y
@@ -1558,7 +1515,7 @@ que revelar a B como el prisionero que será liberado, del mismo modo,
 cuando A y C son liberados el guardia no tiene opción, debe revelar a C
 como el prisionero a ser liberado. En cambio, cuando B y C son
 liberados, el guardia puede decidir revelar a B o revelar a C como el
-prisionero a ser liberado. Esto nos conduce a lo siguiente: P(E ∩ F ) =
+prisionero a ser liberado. Esto nos conduce a lo siguiente: P(E \cap F ) =
 P(\{\Omega1 \}) =
 
 1 3
@@ -1587,7 +1544,7 @@ P(F ) =
 
 y por lo tanto: P(E ∣ F ) =
 
-1/3 2 P(E ∩ F ) = = P(F ) 1/3 + 1/6 3
+1/3 2 P(E \cap F ) = = P(F ) 1/3 + 1/6 3
 
 Hay dos cosas muy importantes que debemos notar aquí, primero esta
 estimación surgio del supuesto de que \Omega3 y \Omega4 eran igualmente probables:
@@ -1599,23 +1556,22 @@ aquí dijimos que el guardia tiraba una moneda para decidir si decía B o
 decía C cuando B y C eran liberados. Pero lo que es cierto es que 1 =
 P(\{\Omega3 , \Omega4 \}) = P(\{\Omega3 \}) + P(\{\Omega4 \}) 3 
 
-Probabilidad Condicional y esto se cumple siempre y cuando 0 ≤ P(\{\Omega3
-\}) ≤ y
+Probabilidad Condicional y esto se cumple siempre y cuando 0 \leq P(\{\Omega3
+\}) \leq y
 
 1 3
 
 P(\Omega4 ) =
 
-1 − P(\{\Omega3 \}) 3 Esto nos conduciría a conclusiones muy diferentes en
+1 - P(\{\Omega3 \}) 3 Esto nos conduciría a conclusiones muy diferentes en
 función del valor seleccionado, para P(\{\Omega3 \}), por ejemplo si P(\{\Omega3
 \}) = 1/3 entonces: P(E ∣ F ) =
 
-1/3 1 P(E ∩ F ) = = P(F ) 1/3 + 1/3 2
+1/3 1 P(E \cap F ) = = P(F ) 1/3 + 1/3 2
 
 Esto confirmaría el argumento del guardia, sin embargo aunque es
 matemáticamente correcto, parece increíble que la decision del guardia
-cambie de algún modo la probabilidades del prisionero A. (Facultad de
-Ciencias. UNAM)
+cambie de algún modo la probabilidades del prisionero A. 
 
 En contraste, si P(\{\Omega3 \}) = 0 entonces:
 
@@ -1635,11 +1591,11 @@ este problema. En este caso, la información adicional es irrelevante. Lo
 cual nos lleva al siguiente concepto:
 
 Probilidad Condicional Eventos independientes Decimos que dos eventos A
-y B son independientes si P(A ∩ B) = P(A)P(B) Esto claro esta nos
+y B son independientes si P(A \cap B) = P(A)P(B) Esto claro esta nos
 conduce inmediatamente al siguiente resultado; si B es un evento tal que
 P(B) \textgreater{} 0 y A y B son independientes entonces: P(A ∣ B) =
 
-P(A ∩ B) = P(A) P(B)
+P(A \cap B) = P(A) P(B)
 
 es de aquí de donde se comprende mejor la idea de ``independencia'', al
 ser A y B independientes, el conocimiento de B no afecta para nada la
@@ -1672,28 +1628,28 @@ P(B) =
 
 1 6
 
-A ∩ B = \{(1, 6)\} P(A ∩ B) =
+A \cap B = \{(1, 6)\} P(A \cap B) =
 
 1 36
 
 Probabilidad Condicional en conclusión:
 
-1 = P(A ∩ B) 36 es decir; en este caso A y B son independientes! y se
+1 = P(A \cap B) 36 es decir; en este caso A y B son independientes! y se
 sigue entonces que: P(A)P(B) =
 
 P(A ∣ B) = P(A) Sea C el evento de que salga un 6 en el primer dado. Un
 argumento análogo nos conduce a concluir que A y C son independientes.
-De hecho, también B y C son independientes. Por lo tanto: P(A ∩ B) =
-P(A)P(B) P(A ∩ B) = P(A)P(C ) P(B ∩ C ) = P(B)P(C ) En situaciones como
+De hecho, también B y C son independientes. Por lo tanto: P(A \cap B) =
+P(A)P(B) P(A \cap B) = P(A)P(C ) P(B \cap C ) = P(B)P(C ) En situaciones como
 esta se dice que A, B y C son independientes dos a dos.
 
 Probabilidad Condicional Sin embargo, debemos tener cuidado, observemos
-que P(A ∣ B ∩ C ) = 1 Por lo tanto A, B y C no son independientes en el
-sentido de que: P(A ∩ B ∩ C ) ≠ P(A)P(B)P(C ) De aquí se sigue la
+que P(A ∣ B \cap C ) = 1 Por lo tanto A, B y C no son independientes en el
+sentido de que: P(A \cap B \cap C ) ≠ P(A)P(B)P(C ) De aquí se sigue la
 definición:
 
 Independencia Decimos que A1 , A2 , . . . , An es una colección de
-eventos independientes si para toda r ≤ n P(A1 ∩ A2 ∩ ⋯ ∩ Ar ) = P(A1
+eventos independientes si para toda r \leq n P(A1 \cap A2 \cap ⋯ \cap Ar ) = P(A1
 )P(A2 )⋯P(Ar )
 
 Probabilidad Condicional
@@ -1703,13 +1659,13 @@ independiente si cualquier cualquier subconjunto finito de esta
 colección es a su vez una colección de eventos independientes. Si A y B
 son independientes entonces A y B c son independientes.
 
-No es difícil probar este hecho: P(A) = P(A ∩ (B \cup B c ))
+No es difícil probar este hecho: P(A) = P(A \cap (B \cup B c ))
 
-= P(A ∩ B) + P(A ∩ B c )
+= P(A \cap B) + P(A \cap B c )
 
-Con lo cual: P(A ∩ B c ) = P(A) − P(A ∩ B)
+Con lo cual: P(A \cap B c ) = P(A) - P(A \cap B)
 
-= P(A) − P(A)P(B) = P(A)(1 − P(B))
+= P(A) - P(A)P(B) = P(A)(1 - P(B))
 
 = P(A)P(B c ) 
 
@@ -1717,28 +1673,28 @@ Probabilidad Condicional Ejemplo. Supongamos que un experimento es
 repetido n veces. El resultado de un ensayo, no incide en el resultado
 de los demás, es decir se efectúan ensayos independientes. La
 probabilidad de éxito de cada ensayo es de p y la probabilidad de
-fracaso 1 − p. Si Ai es el evento de éxito del i -ésimo ensayo, entonces
+fracaso 1 - p. Si Ai es el evento de éxito del i -ésimo ensayo, entonces
 la colección \{Ai \} es una colección de eventos independientes. Pero
 también la colección \{Aci \} son independientes. Por lo tanto: n
 
-P(∩ni=1 Ai ) = ∏ P(Ai ) = p n i =1
+P(\capni=1 Ai ) = ∏ P(Ai ) = p n i =1
 
 y
 
 n
 
-P(∩ni=1 Aci ) = ∏ P(Aci ) = (1 − p)n i =1
+P(\capni=1 Aci ) = ∏ P(Aci ) = (1 - p)n i =1
 
 La última igualdad es la probabilidad de que todos los ensayos sean un
 fracaso. Por lo tanto, la probabilidad de que exista al menos un éxito
-en los n ensayos es igual a: 1 − (1 − p)n Este resultado. esta
+en los n ensayos es igual a: 1 - (1 - p)n Este resultado. esta
 relacionado con la pregunta: ¿Cuál es la probabilidad de que existan
 exactamente i éxitos en los n ensayos? Esto sería equivalente a
 seleccionar i de los n ensayos. Estos i ensayos son un éxito con
-probabilidad p, el resto son fracaso con probabilidad (1 − p). El número
-de selecciones de este estilo es igual a: n!/i !(n − i )!. Por lo tanto,
+probabilidad p, el resto son fracaso con probabilidad (1 - p). El número
+de selecciones de este estilo es igual a: n!/i !(n - i )!. Por lo tanto,
 la probabilidad de tener exactamente i exitos en n ensayos es igual a: n
-( )p i (1 − p)n−i i
+( )p i (1 - p)n-i i
 
 Probabilidad Condicional El siguiente resultado, es de particular
 utilidad, de algún modo nos permite , calcular la probabilidad de una
@@ -1746,8 +1702,8 @@ serie de eventos, de manera separada; ``divide y venceras''.
 
 Regla de la multiplicación Sean A1 , A2 , . . . , An eventos definidos
 en un espacio de probabilidad. P(A1 , A2 , . . . , An ) = P(A1 )P(A2 ∣
-A1 )⋯P(An ∣ A1 , A2 , . . . , An−1 ) En el enunciado anterior hemos
-usado una nueva notación: P(A1 , A2 , . . . , An ) ∶= P(∩n1 Ai ) solo es
+A1 )⋯P(An ∣ A1 , A2 , . . . , An-1 ) En el enunciado anterior hemos
+usado una nueva notación: P(A1 , A2 , . . . , An ) := P(\capn1 Ai ) solo es
 nueva notación, que en casos como este es de mayor utilidad. Esta regla
 de multiplicación es particularmente útil cuando se estudian temas donde
 las estructura de dependencia entre eventos es muy particular. Un
@@ -1755,21 +1711,21 @@ ejemplo de ello es cuando se estudian Cadenas de Markov por ejemplo.
 
 Probabilidad Condicional La prueba de la regla de la multiplicación no
 es particularmente difícil, notemos que solo es el resultado de aplicar
-de forma recursiva la igualdad: P(A1 , A2 , ⋯, An−1 ) P(A1 , A2 , ⋯,
-An−1 ) = P(An ∣ A1 , A2 , ⋯, An−1 )P(A1 , A2 , ⋯, An−1 )
+de forma recursiva la igualdad: P(A1 , A2 , ⋯, An-1 ) P(A1 , A2 , ⋯,
+An-1 ) = P(An ∣ A1 , A2 , ⋯, An-1 )P(A1 , A2 , ⋯, An-1 )
 
 P(A1 , A2 , ⋯, An ) = P(A1 , A2 , ⋯, An )
 
-Por lo tanto: P(A1 , A2 , ⋯, An ) = P(An ∣ A1 , A2 , ⋯, An−1 )P(A1 , A2
-, ⋯, An−1 ) ``Reciclando'' este argumento obtenemos que: P(A1 , A2 , ⋯,
-An−1 ) = P(An−1 ∣ A1 , A2 , ⋯, An−2 )P(A1 , A2 , ⋯, An−2 )
+Por lo tanto: P(A1 , A2 , ⋯, An ) = P(An ∣ A1 , A2 , ⋯, An-1 )P(A1 , A2
+, ⋯, An-1 ) ``Reciclando'' este argumento obtenemos que: P(A1 , A2 , ⋯,
+An-1 ) = P(An-1 ∣ A1 , A2 , ⋯, An-2 )P(A1 , A2 , ⋯, An-2 )
 
 Probabilidad Condicional
 
 por lo tanto: P(A1 , A2 , ⋯, An ) =
 
-P(An ∣ A1 , A2 , ⋯, An−1 )P(An−1 ∣ A1 , A2 , ⋯, An−2 )P(A1 , A2 , ⋯,
-An−2 )
+P(An ∣ A1 , A2 , ⋯, An-1 )P(An-1 ∣ A1 , A2 , ⋯, An-2 )P(A1 , A2 , ⋯,
+An-2 )
 
 repitiendo el argumento las veces necesarias, obtenemos el resultado.
 Ejemplo. Un mazo convencional de 52 cartas es barajado con cuidado. Las
@@ -1892,30 +1848,30 @@ además de que:
 
 P(A ∣ J1c , J2c ) = 0 
 
-Esto nos permite usar una estrategia muy útil, notemos que: \Omega = (J1 ∩
-J2 ) \cup (J1c ∩ J2 ) \cup (J1 ∩ J2c ) \cup (J1c ∩ J2c ) pero además obsérvese
-que esta unión es una unión de disjuntos. Por lo tanto: P(A) =P(A ∩ (J1
-∩ J2 )) + P(A ∩ (J1c ∩ J2 ))
+Esto nos permite usar una estrategia muy útil, notemos que: \Omega = (J1 \cap
+J2 ) \cup (J1c \cap J2 ) \cup (J1 \cap J2c ) \cup (J1c \cap J2c ) pero además obsérvese
+que esta unión es una unión de disjuntos. Por lo tanto: P(A) =P(A \cap (J1
+\cap J2 )) + P(A \cap (J1c \cap J2 ))
 
 \begin{itemize}
 \tightlist
 \item
-  P(A ∩ (J1 ∩ J2c )) + P(A ∩ (J1c ∩ J2c ))
+  P(A \cap (J1 \cap J2c )) + P(A \cap (J1c \cap J2c ))
 \end{itemize}
 
 Condicionando las probabilidades anteriores obtenemos: P(A) =P(A ∣ J1 ,
-J2 )P(J1 ∩ J2 ) + P(A ∣ J1c , J2 )P(J1c ∩ J2 )
+J2 )P(J1 \cap J2 ) + P(A ∣ J1c , J2 )P(J1c \cap J2 )
 
 \begin{itemize}
 \tightlist
 \item
-  P(A ∣ J1 , J2c )P(J1 ∩ J2c ) + P(A ∣ J1c , J2c )P(J1c ∩ J2c )
+  P(A ∣ J1 , J2c )P(J1 \cap J2c ) + P(A ∣ J1c , J2c )P(J1c \cap J2c )
 \end{itemize}
 
 Probabilidad Condicional Usando los valores obtenidos para las
 condicionales y el supuesto de independencia entre los eventos Ji ,
-concluimos que: 1 1 × (1 − p)p + × p(1 − p) + 0 × (1 − p)2 2 2 = p 2 +
-(1 − p)p
+concluimos que: 1 1 × (1 - p)p + × p(1 - p) + 0 × (1 - p)2 2 2 = p 2 +
+(1 - p)p
 
 P(A) = 1 × p 2 + =p
 
@@ -1927,11 +1883,11 @@ los resultados más útiles del curso, la fórmula de probabilidad total.
 Probabilidad Condicional
 
 Fórmula de Probabilidad Total Sea Bi una partición del espacio de
-probabilidad \Omega, entonces: P(A) = ∑ P(A ∩ Bi ) i
+probabilidad \Omega, entonces: P(A) = \sum P(A \cap Bi ) i
 
 Si además P(Bi ) \textgreater{} 0 para toda i , entonces
 
-P(A) = ∑ P(A ∣ Bi )P(Bi ) i
+P(A) = \sum P(A ∣ Bi )P(Bi ) i
 
 Son en verdad muchos,los problemas que se simplifican notablemente
 mediante el uso de esta relación.
@@ -1977,7 +1933,7 @@ P(A ∣ B)P(B) P(A ∣ B)P(B) + P(A ∣ B c )P(B c )
 
 La prueba de este resultado no es difícil, observemos que: P(B ∣ A) =
 
-P(A ∩ B) P(A) P(A ∩ B) P(B) = P(B) P(A) P(A ∣ B)P(B) = P(A)
+P(A \cap B) P(A) P(A \cap B) P(B) = P(B) P(A) P(A ∣ B)P(B) = P(A)
 
 Probabilidad Condicional Es decir
 
@@ -2018,7 +1974,7 @@ pregunta, deseamos encontrar: P(B ∣ A)
 Probabilidad Condicional
 
 Usando Bayes: P(A ∣ B)P(B) P(A ∣ B)P(B) + P(A ∣ B c )P(B c ) 1×p = 1 × p
-+ (1/n) × (1 − p) np = 1 + (n − 1)p
++ (1/n) × (1 - p) np = 1 + (n - 1)p
 
 P(B ∣ A) =
 
@@ -2034,7 +1990,7 @@ conduce a la siguiente definición1 :
 
 Variable Aleatoria
 
-Dado un espacio de probabilidad (\Omega, F, P), una función: X ∶\Omega→R Es
+Dado un espacio de probabilidad (\Omega, F, P), una función: X :\Omega\rightarrowR Es
 conocida como variable aleatoria. 1 Esta es una definición adecuada para
 un primer curso, de manera mas formal, debemos exigir que la función sea
 medible. 
@@ -2057,27 +2013,27 @@ X (\Omega3 ) = 2 X (\Omega7 ) = 1
 X (\Omega4 ) = 1 X (\Omega8 ) = 2 
 
 Variables Aleatorias Observemos como X mapea cada elemento de \Omega en
-algún real. Notemos de hecho que: X (\Omega) = 0 si y solo si \Omega ∈ \{\Omega5 \}
+algún real. Notemos de hecho que: X (\Omega) = 0 si y solo si \Omega \in \{\Omega5 \}
 
-X (\Omega) = 1 si y solo si \Omega ∈ \{\Omega4 , \Omega6 , \Omega7 \}
+X (\Omega) = 1 si y solo si \Omega \in \{\Omega4 , \Omega6 , \Omega7 \}
 
-X (\Omega) = 2 si y solo si \Omega ∈ \{\Omega2 , \Omega3 , \Omega8 \}
+X (\Omega) = 2 si y solo si \Omega \in \{\Omega2 , \Omega3 , \Omega8 \}
 
-X (\Omega) = 3 si y solo si \Omega ∈ \{\Omega1 \} Este ejemplo nos conduce a nueva
+X (\Omega) = 3 si y solo si \Omega \in \{\Omega1 \} Este ejemplo nos conduce a nueva
 notación:
 
-X −1 (x) = \{\Omega ∈ \Omega ∶ X (\Omega) = x\}
+X -1 (x) = \{\Omega \in \Omega : X (\Omega) = x\}
 
-X −1 (x) es conocida como la preimagen de x bajo X . Notemos que esta
+X -1 (x) es conocida como la preimagen de x bajo X . Notemos que esta
 preimagen no es una función.
 
-Variables Aleatorias Asi, en el ejemplo anterior: X −1 (2) = \{\Omega2 , \Omega3
+Variables Aleatorias Asi, en el ejemplo anterior: X -1 (2) = \{\Omega2 , \Omega3
 , \Omega8 \} y
 
-X −1 (0) = \{\Omega5 \}
+X -1 (0) = \{\Omega5 \}
 
 Una notación más compacta y de uso mas frecuente es la siguiente2 : \{X
-= x\} = \{w ∈ \Omega ∶ X (\Omega) = x\} Siguiendo el ejemplo anterior: \{X = 1\} =
+= x\} = \{w \in \Omega : X (\Omega) = x\} Siguiendo el ejemplo anterior: \{X = 1\} =
 \{\Omega4 , \Omega6 , \Omega7 \} y
 
 \{X = 3\} = \{\Omega1 \}
@@ -2088,7 +2044,7 @@ de Ciencias. UNAM)
 
 Variables Aleatorias Ejemplo. En el lanzamiento de dos dados, estamos
 interesados en la variable X que denota al máximo de las dos caras.
-Observemos que X ∶ \Omega → \{1, 2, 3, 4, 5, 6\} ⊂ R y tenemos por ejemplo
+Observemos que X : \Omega \rightarrow \{1, 2, 3, 4, 5, 6\} \subset R y tenemos por ejemplo
 que: \{X = 3\} = \{(1, 3), (2, 3), (3, 3), (3, 2), (3, 1)\} .
 
 o
@@ -2096,7 +2052,7 @@ o
 \{X = 4\} = \{(1, 4), (2, 4), (3, 4), (4, 4), (4, 3), (4, 2), (4, 1)\} .
 
 usando nuestra nueva notación, podemos calcular probabilidades como: P(X
-= x) = P(\{\Omega ∈ \Omega ∶ X (\Omega) = x\})
+= x) = P(\{\Omega \in \Omega : X (\Omega) = x\})
 
 Variables Aleatorias En el ejemplo de los dados: 1 36 3 P(X = 2) = 36 5
 P(X = 3) = 36
@@ -2107,7 +2063,7 @@ P(X = 1) =
 
 En el ejemplo del lanzamiento de tres monedas, podemos exhibir una
 formula especifica, si p es la probabilidad de que la moneda muestre
-águila, entonces es claro que: P(X = 0) = (1 − p)3
+águila, entonces es claro que: P(X = 0) = (1 - p)3
 
 y P(X = 3) = p 3
 
@@ -2115,13 +2071,13 @@ Variables Aleatorias Cuando i = 1 o i = 2, debemos tener un poco de
 mayor cuidado, ya que por ejemplo: \{X = 1\} = \{(ASS), (SAS), (SSA)\}
 De donde:
 
-P(X = 1) = 3p(1 − p)2
+P(X = 1) = 3p(1 - p)2
 
 y
 
-P(X = 2) = 3p 2 (1 − p)
+P(X = 2) = 3p 2 (1 - p)
 
-De hecho en general: 3 P(X = i ) = ( )p i (1 − p)3−i para i = 0, 1, 2,
+De hecho en general: 3 P(X = i ) = ( )p i (1 - p)3-i para i = 0, 1, 2,
 3. i
 
 Variables Aleatorias Ejemplo. Seleccionamos aleatoriamente tres bolas
@@ -2132,7 +2088,7 @@ apuesta? La clave en este problema esta en notar que si X es la variable
 aleatoria que registra el número máximo obtenido y X es mayor o igual a
 17, entonces ganaremos la apuesta. Para ello observemos que X puede
 tomar uno de los valores: 3, 4, . . . , 20. Por otro lado, si cada una
-de las extracciones es igualmente probable, entonces: (i −1 ) 2 , i = 3,
+de las extracciones es igualmente probable, entonces: (i -1 ) 2 , i = 3,
 . . . , 20. P(X = i ) = 20 (3)
 
 Variables Aleatorias En efecto, el denominador simplemente cuenta el
@@ -2141,7 +2097,7 @@ colección.~El numerador, hace algo similar, pero ahora solo
 seleccionamos dos bolas de entre aquellas que sabemos que son menores a
 i . La probabilidad que buscamos seria: 20
 
-P(X ≥ 17) = ∑ P(X = i ) ≈ 0.508 i =17
+P(X \geq 17) = \sum P(X = i ) ≈ 0.508 i =17
 
 Ejemplo. Consideremos el experimento, donde lanzamos una moneda de forma
 repetida hasta que obtenemos águila o bien un total de n lanzamientos
@@ -2150,30 +2106,30 @@ efectuados entonces X toma alguno de los valores: 1, 2, . . . , n.
 
 Mas aún si obtenemos águila con probabilidad p: P(X = 1) = p
 
-P(X = 2) = (1 − p)p
+P(X = 2) = (1 - p)p
 
-P(X = 3) = (1 − p)2 p ⋮
+P(X = 3) = (1 - p)2 p ⋮
 
-P(X = n − 1) = (1 − p)n−2 p P(X = n) = (1 − p)n−1
+P(X = n - 1) = (1 - p)n-2 p P(X = n) = (1 - p)n-1
 
 Notemos que: n
 
-P (\cupni=1 \{X = i \}) = ∑ P(X = i ) i =1 n−1
+P (\cupni=1 \{X = i \}) = \sum P(X = i ) i =1 n-1
 
-= ∑ (1 − p)i −1 p + (1 − p)n−1 i =1
+= \sum (1 - p)i -1 p + (1 - p)n-1 i =1
 
 Variables Aleatorias de donde P (\cupni=1 \{X = i \}) = p {[}
 
-1 − (1 − p)n−1 {]} + (1 − p)n−1 1 − (1 − p)
+1 - (1 - p)n-1 {]} + (1 - p)n-1 1 - (1 - p)
 
-= 1 − (1 − p)n−1 + (1 − p)n−1
+= 1 - (1 - p)n-1 + (1 - p)n-1
 
 =1
 
 El desarrollo anterior sugiere la idea de que una variable aleatoria
 induce cierta medida de probabilidad. La idea de manera superficial es
 como sigue3 ; Sabemos que una variable aleatoria es una función que
-mapea al conjunto de \Omega en los reales, esto es: X ∶\Omega→R 3
+mapea al conjunto de \Omega en los reales, esto es: X :\Omega\rightarrowR 3
 
 El desarrollo formal requiere de conceptos de teoría de la medida, temas
 que exceden el nivel de este curso, sin embargo se ofrece aquí al menos
@@ -2181,17 +2137,17 @@ un tratamiento superficial del tema.
 
 Variables Aleatorias Pero no olvidemos que todo modelo de probabilidad
 esta definido en un espacio de probabilidad (\Omega, F, P), de algún modo, la
-variable X , también mapea a la σ-álgebra F en una nueva σ-álgebra B: X
+variable X , también mapea a la \sigma-álgebra F en una nueva \sigma-álgebra B: X
 
-FÐ →B B es una σ-ágebra de subconjuntos de R, no profundizaremos, pero
-esta suele coincidir con la σ-álgebra de Borel o la σ-álgebra de
+FÐ \rightarrowB B es una \sigma-ágebra de subconjuntos de R, no profundizaremos, pero
+esta suele coincidir con la \sigma-álgebra de Borel o la \sigma-álgebra de
 Lebesgue. Del mismo modo, podemos definir una nueva medida de
 probabilidad, inducida por la misma variable aleatoria: X
 
-PÐ → PX Esto lo logramos del siguiente modo; si A ∈ B entonces: PX (A) =
-P(X ∈ A)
+PÐ \rightarrow PX Esto lo logramos del siguiente modo; si A \in B entonces: PX (A) =
+P(X \in A)
 
-= P(\{\Omega ∈ \Omega ∶ X (\Omega) ∈ A\})
+= P(\{\Omega \in \Omega : X (\Omega) \in A\})
 
 Variables Aleatorias En este punto, es pertinente, hacer una
 distinción.~Si una variable aleatoria X toma valores en algún conjunto
@@ -2212,26 +2168,26 @@ aha!!!
 
 Variables Aleatorias Esta observación es pertinente en este punto, si
 una variable aleatoria es discreta entonces podemos ir mas lejos con
-respecto a PX , en efecto, si X es discreta: PX (A) = P(X ∈ A)
+respecto a PX , en efecto, si X es discreta: PX (A) = P(X \in A)
 
-= P(\{\Omega ∈ \Omega ∶ X (\Omega) ∈ A\})
+= P(\{\Omega \in \Omega : X (\Omega) \in A\})
 
-= ∑ P(\{\Omega ∈ \Omega ∶ X (\Omega) = a\}) a∈A
+= \sum P(\{\Omega \in \Omega : X (\Omega) = a\}) a\inA
 
-= ∑ P(X = a) a∈A
+= \sum P(X = a) a\inA
 
-En resumen, si X es discreta, entonces, para cualquier A ∈ B: PX (A) = ∑
-P(X = a) a∈A
+En resumen, si X es discreta, entonces, para cualquier A \in B: PX (A) = \sum
+P(X = a) a\inA
 
 Variables Aleatorias
 
-Si S el rango de una variable aleatoria X , es decir X ∶ \Omega → S ⊂ R y X
+Si S el rango de una variable aleatoria X , es decir X : \Omega \rightarrow S \subset R y X
 es una variable aleatoria discreta, definimos la función de probabilidad
-o función de probabilidad de masa p(a) de X como: ⎧ ⎪ ⎪P(X = a) a ∈ S
-p(a) = ⎨ ⎪ a∉S ⎪ ⎩0
+o función de probabilidad de masa p(a) de X como: ⎧ ⎪ ⎪P(X = a) a \in S
+p(a) = ⎨ ⎪ a\notinS ⎪ ⎩0
 
-Observemos que p(a) ≥ 0 para todo a ∈ S, además: P(X ∈ S) = ∑ p(a) = 1
-a∈S
+Observemos que p(a) \geq 0 para todo a \in S, además: P(X \in S) = \sum p(a) = 1
+a\inS
 
 Ejemplo. La función de probabilidad de una variable aleatoria X esta
 dada por i ⎧ ⎪ i = 0, 1, . . . ⎪ cλ i ! p(i ) = ⎨ ⎪0 en otro caso. ⎪ ⎩
@@ -2245,9 +2201,9 @@ P(X \textgreater{} 2).
 
 Para ello debemos determinar previamente el valor de c: ∞
 
-cλi =1 i =0 i ! ∑
+cλi =1 i =0 i ! \sum
 
-i pero sabemos que e x = ∑∞ i =0 x /i !, lo cual implica que:
+i pero sabemos que e x = \sum∞ i =0 x /i !, lo cual implica que:
 
 ce λ = 1
 
@@ -2255,9 +2211,9 @@ de modo que
 
 o bien
 
-−λ i ⎧ ⎪ ⎪ e i !λ p(i ) = ⎨ ⎪ ⎪ ⎩0
+-λ i ⎧ ⎪ ⎪ e i !λ p(i ) = ⎨ ⎪ ⎪ ⎩0
 
-c = e −λ
+c = e -λ
 
 i = 0, 1, . . . en otro caso.
 
@@ -2265,19 +2221,19 @@ Variables Aleatorias
 
 De aquí se sigue que: P(X = 0) =
 
-e −λ λ0 = e −λ 0!
+e -λ λ0 = e -λ 0!
 
-por otro lado: P(X \textgreater{} 2) = 1 − P(X ≤ 2)
+por otro lado: P(X \textgreater{} 2) = 1 - P(X \leq 2)
 
-= 1 − \{P(X = 0) + P(X = 1) + P(X = 2)\}
+= 1 - \{P(X = 0) + P(X = 1) + P(X = 2)\}
 
-= 1 − e −λ − λe −λ −
+= 1 - e -λ - λe -λ -
 
-λ2 e −λ 2
+λ2 e -λ 2
 
 Variables Aleatorias Si X es una variable aleatoria discreta
-definimos,la funcion de probabilidad acumulada F de X como: F (a) = ∑
-p(x) = P(X ≤ a) x≤a
+definimos,la funcion de probabilidad acumulada F de X como: F (a) = \sum
+p(x) = P(X \leq a) x\leqa
 
 Ejemplo. Supongamos que X es una variable aleatoria con función de
 probabilidad definida por: 1 1 1 p(2) = p(3) = 4 2 8 la función
@@ -2289,7 +2245,7 @@ p(4) =
 
 1 8
 
-a\textless1 1≤a\textless2 2≤a\textless3 3≤a\textless4 4\textless a
+a\textless1 1\leqa\textless2 2\leqa\textless3 3\leqa\textless4 4\textless a
 
 Variables Aleatorias Conviene echar un ojo a la representación gráfica
 de la función acumulada:
@@ -2316,92 +2272,92 @@ los conceptos fundamentales en la teoría de probabilidad. Si X es una
 variable aleatoria discreta con función de probabilidad p(x), definimos
 la esperanza de X o valor esperado de X como: E {[}X {]} =
 
-∑
+\sum
 
-x∶p(x)\textgreater0
+x:p(x)\textgreater0
 
-xp(x) = ∑ xp(x) x∈S
+xp(x) = \sum xp(x) x\inS
 
 de manera informal: el valor esperado de X es un promedio ponderado de
 los posibles valores que puede tomar la variable X . Ejemplo. Encuentra
 el valor esperado E {[}X {]} donde X es el resultado obtenido al lanzar
-un dado justo. Dado que p(x) = 1/6 para x ∈ S = \{1, 2, 3, 4, 5, 6\},
+un dado justo. Dado que p(x) = 1/6 para x \in S = \{1, 2, 3, 4, 5, 6\},
 tenemos que: 6
 
-E {[}X {]} = ∑ i ⋅ i =1
+E {[}X {]} = \sum i ⋅ i =1
 
 1 1 1 1 1 1 7 1 =1⋅ +2⋅ +3⋅ +4⋅ +5⋅ +6⋅ = 6 6 6 6 6 6 6 2 
 
 Ejemplo. En el ejemplo del lanzamiento de las tres monedas. Teníamos
-que: 3 P(X = i ) = ( )p i (1 − p)n−i i = 0, 1, 2, 3. i Tenemos entonces
-que: 3 3 E {[}X {]} = ∑ i ( )p i (1 − p)3−i i =0 i 3
+que: 3 P(X = i ) = ( )p i (1 - p)n-i i = 0, 1, 2, 3. i Tenemos entonces
+que: 3 3 E {[}X {]} = \sum i ( )p i (1 - p)3-i i =0 i 3
 
-3! p i (1 − p)3−i (i − 1)!(3 − i )! i =1
+3! p i (1 - p)3-i (i - 1)!(3 - i )! i =1
 
-=∑
+=\sum
 
 3
 
-2! p i −1 (1 − p)2−(i −1) (i − 1)!(2 − (i − 1))! i =1
+2! p i -1 (1 - p)2-(i -1) (i - 1)!(2 - (i - 1))! i =1
 
-= 3p ⋅ ∑
+= 3p ⋅ \sum
 
-Variables Aleatorias Haciendo j = i − 1 tenemos que: 2 2 E {[}X {]} =
-3p ∑ ( )p j (1 − p)2−j j=0 j
+Variables Aleatorias Haciendo j = i - 1 tenemos que: 2 2 E {[}X {]} =
+3p \sum ( )p j (1 - p)2-j j=0 j
 
-= 3p ⋅ \{(1 − p)2 + 2p(1 − p) + p 2 \}
+= 3p ⋅ \{(1 - p)2 + 2p(1 - p) + p 2 \}
 
-= 3p ⋅ \{(1 − p) + p\}2
+= 3p ⋅ \{(1 - p) + p\}2
 
 = 3p
 
 El siguiente, es un resultado de gran utilidad para lo sucesivo; Si X es
-una variable aleatoria discreta que toma valores xi , i ≥ 1 con
+una variable aleatoria discreta que toma valores xi , i \geq 1 con
 probabilidades p(xi ) entonces, para cualquier función g se tiene que: E
-{[}g (X ){]} = ∑ g (xi )p(xi ) i
+{[}g (X ){]} = \sum g (xi )p(xi ) i
 
 Variables aleatorias Este resultado, aparentemente inocente. . . es muy
 util y relevante, notemos que si X es una variable aleatoria, entonces Y
 = g (X ) es también una variable aleatoria. Por definición: E {[}g (X
-){]} = E {[}Y {]} = ∑ yP(Y = y ) y
+){]} = E {[}Y {]} = \sum yP(Y = y ) y
 
 Es decir, la esperanza de g (X ) tendríamos que calcularla en función de
 las probabilidades P(Y = y ), esto es; en función de la función de
 probabilidad de Y . Sin embargo el resultado que estamos proponiendo
-afirma que: E {[}Y {]} = ∑ g (xi )p(xi ) i
+afirma que: E {[}Y {]} = \sum g (xi )p(xi ) i
 
 es decir, estamos usando directamente la función de probabilidad de X en
 lugar de la de Y . 
 
 Variables Aleatorias Esto puede ser sumamente, relevante, pues nos
 ``ahorramos'' el trabajo de estimar la función de probabilidad de Y . A
-continuación damos la prueba del resultado. ∑ g (xi )p(xi ) = ∑
+continuación damos la prueba del resultado. \sum g (xi )p(xi ) = \sum
 
-∑
+\sum
 
-=∑
+=\sum
 
-∑
+\sum
 
-= ∑ yj
+= \sum yj
 
-i ∶g (xi )=yj
+i :g (xi )=yj
 
 i
 
-j i ∶g (xi )=yj
+j i :g (xi )=yj
 
-j i ∶g (xi )=yj
+j i :g (xi )=yj
 
 j
 
-∑
+\sum
 
 g (xi )p(xi ) yj p(xi ) p(xi )
 
-= ∑ yj P(g (X ) = yj ) j
+= \sum yj P(g (X ) = yj ) j
 
-= ∑ yj P(Y = yj ) j
+= \sum yj P(Y = yj ) j
 
 = E {[}Y {]}
 
@@ -2412,25 +2368,25 @@ Variables Aleatorias
 Un corolario inmediato e importantísimo lo encontramos a continuación,
 dados a y b escalares: E {[}aX + b{]} =
 
-∑ (ax + b)p(x)
+\sum (ax + b)p(x)
 
-x∶p(x)\textgreater0
+x:p(x)\textgreater0
 
 =a
 
-∑
+\sum
 
 xp(x) + b
 
-x∶p(x)\textgreater0
+x:p(x)\textgreater0
 
 = aE {[}X {]} + b
 
-∑
+\sum
 
 p(x)
 
-x∶p(x)\textgreater0
+x:p(x)\textgreater0
 
 Variables Aleatorias Otra aplicación de suma importancia la encontramos
 en la siguiente definición
@@ -2438,123 +2394,123 @@ en la siguiente definición
 Varianza de una variable Aleatoria
 
 Si X es una variable aleatoria con media E {[}X {]} = µ, definimos la
-varianza de X como: Var (X ) = E {[}(X − µ)2 {]} Se dice que la varianza
+varianza de X como: Var (X ) = E {[}(X - µ)2 {]} Se dice que la varianza
 es una medida de dispersión.~La varianza de una variable aleatoria, es
 una estimación de que tanto se despega la misma de su media. Aplicando
 el resultado sobre esperanzas de funciones de variables aleatorias mas
 la linealidad de la esperanza, tenemos el siguiente resultado: Var (x) =
-E {[}(X − µ)2 {]}
+E {[}(X - µ)2 {]}
 
-= E {[}X 2 − 2X µ + µ2 {]}
+= E {[}X 2 - 2X µ + µ2 {]}
 
-= E {[}X 2 {]} − 2µE {[}X {]} + µ2 = E {[}X 2 {]} − µ2
+= E {[}X 2 {]} - 2µE {[}X {]} + µ2 = E {[}X 2 {]} - µ2
 
-Variables Aleatorias Esta nueva versión: Var (X ) = E {[}X 2 {]} − µ2 =
-E {[}X 2 {]} − E {[}X {]}2 suele ser mas utilizado en la práctica. La
+Variables Aleatorias Esta nueva versión: Var (X ) = E {[}X 2 {]} - µ2 =
+E {[}X 2 {]} - E {[}X {]}2 suele ser mas utilizado en la práctica. La
 esperanza E {[}X k {]} se conoce como k-ésimo momento muestral. En este
 sentido E {[}X 2 {]} es el segundo momento muestral. Esperanzas de este
 tipo suelen tener aplicaciones en distintos ámbitos. Ejemplo. Decimos
 que una variable aleatoria X se distribuye Bernoulli con parámetro p y
 se denota X ∼ Bernoulli (p) si tiene función de probabilidad: ⎧ ⎪ ⎪p P(X
-= i ) = ⎨ ⎪ ⎪ ⎩1 − p
+= i ) = ⎨ ⎪ ⎪ ⎩1 - p
 
 si i = 1 si i = 0
 
 Variables Aleatorias Una variable aleatoria Bernoulli, modelo un
 fenómeno que ocurre o no, que solo tiene una de dos posibilidades de
 ocurrir. El ejemplo mas claro sería el lanzamiento de una moneda, si
-ésta es justa p = 1/2. Tenemos entoces que: E {[}X {]} = p ⋅ 1 + (1 − p)
+ésta es justa p = 1/2. Tenemos entoces que: E {[}X {]} = p ⋅ 1 + (1 - p)
 ⋅ 0 = p Por otro lado:
 
-E {[}X 2 {]} = 1 ⋅ p + (1 − p) ⋅ 0 = p
+E {[}X 2 {]} = 1 ⋅ p + (1 - p) ⋅ 0 = p
 
-Por lo tanto: Var (X ) = E {[}X 2 {]} − E {[}X {]}2 = p − p 2 = p(1 − p)
+Por lo tanto: Var (X ) = E {[}X 2 {]} - E {[}X {]}2 = p - p 2 = p(1 - p)
 
 Variables Aleatorias Decimos que una variable aleatoria se distribuye
 Binomial con parámetros n y p y se denota X ∼ Binom(n.p) si tiene
-función de probabilidad: ⎧ n ⎪ ⎪( )p i (1 − p)n−i P(X = i ) = ⎨ i ⎪ ⎪ ⎩0
+función de probabilidad: ⎧ n ⎪ ⎪( )p i (1 - p)n-i P(X = i ) = ⎨ i ⎪ ⎪ ⎩0
 
 si i = 0, 1, . . . , n en otro caso
 
 Una variable aleatoria binomial cuanta el número de éxitos en n ensayos
 Bernoulli, cada uno de ellos con probabilidad p.~Calcular la media y la
 varianza de una variable aleatoria Binomial es mas fácil si calculamos
-de manera genérica el k-ésimo momento muestral: n n E {[}X k {]} = ∑ i k
-( )p i (1 − p)n−1 i i =0 n n = ∑ i k ( )p i (1 − p)n−1 i i =1
+de manera genérica el k-ésimo momento muestral: n n E {[}X k {]} = \sum i k
+( )p i (1 - p)n-1 i i =0 n n = \sum i k ( )p i (1 - p)n-1 i i =1
 
 Variables Aleatorias Usando la igualdad:
 
-n−1 n ) i ( ) = n( i −1 i
+n-1 n ) i ( ) = n( i -1 i
 
 tenemos que n
 
-E {[}X k {]} = np ∑ i k−1 ( i =1 n
+E {[}X k {]} = np \sum i k-1 ( i =1 n
 
-n − 1 i −1 )p (1 − p)n−i i −1
+n - 1 i -1 )p (1 - p)n-i i -1
 
-n−1 j )p (1 − p)n−1−j = np ∑(j + 1)k−1 ( j j=0
+n-1 j )p (1 - p)n-1-j = np \sum(j + 1)k-1 ( j j=0
 
-= npE {[}(Y + 1)k−1 {]}
+= npE {[}(Y + 1)k-1 {]}
 
-donde Y ∼ Binom(n − 1, p). De aquí se sigue fácilmente que, si k = 1
+donde Y ∼ Binom(n - 1, p). De aquí se sigue fácilmente que, si k = 1
 entonces: E {[}X {]} = np 
 
 Variables Aleatorias Por otro lado si k = 2:
 
 E {[}X 2 {]} = npE {[}Y + 1{]}
 
-= np{[}(n − 1)p + 1{]}
+= np{[}(n - 1)p + 1{]}
 
-por lo tanto: Var (x) = E {[}X 2 {]} − E {[}X {]}2
+por lo tanto: Var (x) = E {[}X 2 {]} - E {[}X {]}2
 
-= np{[}(n − 1)p + 1{]} − (np)2 = np(1 − p)
+= np{[}(n - 1)p + 1{]} - (np)2 = np(1 - p)
 
 Variables Aleatorias
 
 Ejemplo. Decimos que una variable aleatoria X se distribuye Poisson con
 parámetro λ \textgreater{} 0 y se denota X ∼ Poi (λ) si tiene función de
-probabilidad: i ⎧ ⎪ ⎪e −λ λi ! P(X = i ) = ⎨ ⎪ ⎪ ⎩0
+probabilidad: i ⎧ ⎪ ⎪e -λ λi ! P(X = i ) = ⎨ ⎪ ⎪ ⎩0
 
 parai = 0, 1, . . . en otro caso
 
 Notemos que dado que ∞
 
-entonces ∑∞ i =1 P(X = i ) = 1
+entonces \sum∞ i =1 P(X = i ) = 1
 
 λi i =0 i !
 
-eλ = ∑
+eλ = \sum
 
 Variables Aleatorias La esperanza de una variable aleatoria Poisson la
 calculamos como sigue: ∞
 
-E {[}X {]} = ∑ i ⋅ e −λ i =0
+E {[}X {]} = \sum i ⋅ e -λ i =0
 
 λi i!
 
-λi −1 i =1 (i − 1)! ∞
+λi -1 i =1 (i - 1)! ∞
 
-= λe −λ ∑ ∞
+= λe -λ \sum ∞
 
 λj j=0 (j)!
 
-= λe −λ ∑ =λ
+= λe -λ \sum =λ
 
 Para estimar la varianza, calculamos primero el segundo momento:
 
 Variables Aleatorias ∞
 
-E {[}X 2 {]} = ∑ i 2 ⋅ e −λ i =0 ∞
+E {[}X 2 {]} = \sum i 2 ⋅ e -λ i =0 ∞
 
 λi i!
 
-= λ ∑ i ⋅ e −λ i =1
+= λ \sum i ⋅ e -λ i =1
 
 ∞
 
-λi −1 (i − 1)!
+λi -1 (i - 1)!
 
-= λe −λ ∑(j + 1) ⋅
+= λe -λ \sum(j + 1) ⋅
 
 λj j!
 
@@ -2564,16 +2520,16 @@ E {[}X 2 {]} = ∑ i 2 ⋅ e −λ i =0 ∞
 
 j=0
 
-= λe −λ ∑(j + 1) ⋅ j=0
+= λe -λ \sum(j + 1) ⋅ j=0
 
-⎧ ∞ j⎫ ⎪ λ ⎪ ⎪ ⎪ −λ ∞ λj −λ = λ ⎨e ∑ j + e ∑ ⎬ ⎪ ⎪ ⎪ j=0 j! ⎪ j=0 j! ⎭ ⎩
+⎧ ∞ j⎫ ⎪ λ ⎪ ⎪ ⎪ -λ ∞ λj -λ = λ ⎨e \sum j + e \sum ⎬ ⎪ ⎪ ⎪ j=0 j! ⎪ j=0 j! ⎭ ⎩
 = λ \{λ + 1\}
 
 = λ2 + λ 
 
 Variables Aleatorias
 
-Por lo tanto Var (X ) = E {[}X 2 {]} − E 2 {[}X {]} = λ2 + λ − λ2 =λ
+Por lo tanto Var (X ) = E {[}X 2 {]} - E 2 {[}X {]} = λ2 + λ - λ2 =λ
 
 Este es un hallazgo curioso, la esperanza y la varianza de una variable
 aleatoria Poisson son iguales entre si y son iguales a su parámetro.
@@ -2581,26 +2537,26 @@ aleatoria Poisson son iguales entre si y son iguales a su parámetro.
 Variables Aleatorias Por último, si X ∼ Binomial (n, p) y definimos; λ
 = np, tenemos que: P(X = i ) =
 
-n! p i (1 − p)n−i (n − i )!i !
+n! p i (1 - p)n-i (n - i )!i !
 
-λ i λ n−i n! ( ) (1 − ) (n − i )!i ! n n n(n − 1) ⋅ (n − i + 1) λi (1 −
-λ/n)n = ni i ! (1 − λ/n)i
+λ i λ n-i n! ( ) (1 - ) (n - i )!i ! n n n(n - 1) ⋅ (n - i + 1) λi (1 -
+λ/n)n = ni i ! (1 - λ/n)i
 
 =
 
 de aquí se sigue que si n es grande y p es pequeño, de modo que λ es
-moderado: (1 −
+moderado: (1 -
 
-λ n ) ≈ e −λ n
+λ n ) ≈ e -λ n
 
-n(n − 1) ⋅ (n − i + 1) ≈1 ni
+n(n - 1) ⋅ (n - i + 1) ≈1 ni
 
-(1 − λ/n)i ≈ 1
+(1 - λ/n)i ≈ 1
 
 Variables Aleatorias
 
 De donde se concluye que si n es grande y p es pequeño de modo que λ es
-moderado, entoces: λi P(X = i ) ≈ e −λ i! Ejemplo. Un sistema de
+moderado, entoces: λi P(X = i ) ≈ e -λ i! Ejemplo. Un sistema de
 comunicación, consiste de n componentes, los cuales funcionan de manera
 independiente con probabilidad p.~El sistema completo funcionara
 correctamente si al menos la mitad de los componentes se encuentran en
@@ -2611,35 +2567,35 @@ componentes?
 Variables Aleatorias La probabilidad de que el sistema con 5
 componentes se encuentre en funcionamiento, coincide con la probabilidad
 de que el número de componentes en funcionamiento sean 3 o mas, esto se
-logra con probabilidad: 5 5 ( )p 3 (1 − p)2 + ( )p 4 (1 − p) + p 5 4 3
+logra con probabilidad: 5 5 ( )p 3 (1 - p)2 + ( )p 4 (1 - p) + p 5 4 3
 de manera análoga, el sistema de 3 componentes se encuentra en
-funcionamiento con probabilidad: 3 ( )p 2 (1 − p) + p 3 2 de este modo,
+funcionamiento con probabilidad: 3 ( )p 2 (1 - p) + p 3 2 de este modo,
 el sistema de 5 componentes será mejor que el sistema de 3 componentes
-si: 10p 3 (1 − p)2 + 5p 4 (1 − p) + p 5 \textgreater{} 3p 2 (1 − p) + p
+si: 10p 3 (1 - p)2 + 5p 4 (1 - p) + p 5 \textgreater{} 3p 2 (1 - p) + p
 3 
 
 Variables Aleatorias lo cual se reduce a: o bien:
 
-3(p − 1)2 (2p − 1) \textgreater{} 0
+3(p - 1)2 (2p - 1) \textgreater{} 0
 
 1 2 Ejemplo. Supongamos que el número de errores tipográficos en un
 página de un libro se distribuye Poisson con parámetro λ = 1/2. Calcula
 la probabilidad de que exista al menos un error en la página. La
 probabilidad que buscamos se calcula como sigue: p\textgreater{}
 
-P(X ≥ 1) = 1 − P(X = 0) = 1 − e −1/2 ≈ 0.393
+P(X \geq 1) = 1 - P(X = 0) = 1 - e -1/2 ≈ 0.393
 
 Variables Aleatorias Ejemplo. Supongamos que la probabilidad de que
 cierto articulo, producido en una máquina, sea defectuoso es igual a
 0.1. Encuentra la probabilidad de que en una muestra de 10 artículos,
 contenga a lo mas un artículo defectuoso. La probabilidad que buscamos
-es: P(X ≤ 1) = (
+es: P(X \leq 1) = (
 
 10 10 )(0.1)0 (0.9)10 + ( )(0.1)1 (0.9)9 = 0.7361 1 0
 
 Esta probabilidad podemos aproximarla a través de una variable aleatoria
 Poisson con parámetro λ = np = 10 ⋅ 0.1 = 1. Asi es la probabilidad
-usando Poisson sería: e −1 + e −1 ≈ 0.7358 Observemos la precisión de
+usando Poisson sería: e -1 + e -1 ≈ 0.7358 Observemos la precisión de
 esta aproximación, aun cuando n y p son valores no muy extremos. En
 otros contextos, esta aproximación puede ser de importancia fundamental,
 para n muy grande, el cálculo de los coeficientes binomiales, puede ser
@@ -2657,16 +2613,16 @@ considerar que un átomo emite una partícula α con probabilidad p =
 3.2/n.~En este sentido podemos suponer que el número de partículas α
 emitidas a lo largo de un segundo es una variable aleatoria Poisson con
 parámetro λ = 3.2. De modo que la probabilidad que buscamos es igual a:
-P(X ≤ 2) = e −3.2 + 3.2e −3.2 +
+P(X \leq 2) = e -3.2 + 3.2e -3.2 +
 
-(3.2)2 −3.2 e ≈ 0.3799 2
+(3.2)2 -3.2 e ≈ 0.3799 2
 
 Variables Aleatorias Del ejemplo anterior, vemos que una variable
 aleatoria Poisson ``cuenta''. Cuenta ocurrencias de algún experimento
 aleatorio, de hecho es la variable aleatoria de conteo por excelencia.
 Ejemplo. Decimos que una variable aleatoria se distribuye Geométrica con
-parámetro p, X ∼ Geom(p) si tiene función de probabilidad: ⎧ ⎪ ⎪(1 − p)i
-−1 p P(X = i ) = ⎨ ⎪ ⎪ ⎩0
+parámetro p, X ∼ Geom(p) si tiene función de probabilidad: ⎧ ⎪ ⎪(1 - p)i
+-1 p P(X = i ) = ⎨ ⎪ ⎪ ⎩0
 
 para i = 1, 2, . . . en otro caso.
 
@@ -2679,14 +2635,14 @@ alternativo.
 
 Variables Aleatorias Decimos que una variable aleatoria se distribuye
 Geométrica con parámetro p, X ∼ Geom(p) si tiene función de
-probabilidad: ⎧ ⎪ ⎪(1 − p)i p P(X = i ) = ⎨ ⎪ ⎪ ⎩0
+probabilidad: ⎧ ⎪ ⎪(1 - p)i p P(X = i ) = ⎨ ⎪ ⎪ ⎩0
 
 para i = 0, 1, 2, . . . en otro caso.
 
 Observemos las diferencias, en este caso la variable pude valer 0,
 mientras que en la definición original, la variable podía tomar solo
 enteros positivos. Notemos que en este caso la probabilidad de fracaso:
-1 − p esta elevada a la i en lugar de i − 1. Todo es cuestión de
+1 - p esta elevada a la i en lugar de i - 1. Todo es cuestión de
 enfoque. en este nuevo caso contamos el número de fracasos hasta el
 primer éxito, en este sentido no contamos el último ensayo, el cual
 finalmente resulta en éxito.
@@ -2700,21 +2656,21 @@ F toma valores no negativos y 1
 2 3 4
 
 F es una función no decreciente, es decir, si a \textless{} b entonces F
-(a) ≤ F (b) límb→∞ F (b) = 1
+(a) \leq F (b) límb\rightarrow∞ F (b) = 1
 
-límb→−∞ F (b) = 0
+límb\rightarrow-∞ F (b) = 0
 
 F es continua por la derecha. Esto es, si bn es una sucesión decreciente
-tal que bn → b, entonces límn→∞ F (bn ) = F (b)
+tal que bn \rightarrow b, entonces límn\rightarrow∞ F (bn ) = F (b)
 
 Variables Aleatorias Continuas El concepto de función de distribución
 no es privativo de las variables aleatorias continuas. De hecho, para
-toda variable aleatoria X podemos demostrar que: F (x) = P(X ≤ x)
+toda variable aleatoria X podemos demostrar que: F (x) = P(X \leq x)
 
 es una función de distribución5 . Ejemplo. La función de distribución de
-una variable aleatoria esta dada por: ⎧ 0 x \textless0 ⎪ ⎪ ⎪ ⎪ ⎪ x ⎪ 0≤x
-\textless1 ⎪ ⎪ ⎪ ⎪ 22 F (x) = ⎨ 3 1 ≤ x \textless{} 2 ⎪ ⎪ ⎪ 11 ⎪ 2≤x
-\textless3 ⎪ ⎪ 12 ⎪ ⎪ ⎪ ⎪ ⎩1 3 ≤ x 5
+una variable aleatoria esta dada por: ⎧ 0 x \textless0 ⎪ ⎪ ⎪ ⎪ ⎪ x ⎪ 0\leqx
+\textless1 ⎪ ⎪ ⎪ ⎪ 22 F (x) = ⎨ 3 1 \leq x \textless{} 2 ⎪ ⎪ ⎪ 11 ⎪ 2\leqx
+\textless3 ⎪ ⎪ 12 ⎪ ⎪ ⎪ ⎪ ⎩1 3 \leq x 5
 
 De hecho en un tratamiento mas formal de la probabilidad, la lógica es
 al revés. Definimos probabilidades en términos de funciones de
@@ -2734,22 +2690,22 @@ función es la siguiente:
 3
 
 Variables Aleatorias Continuas Observemos por ejemplo que: 1 P(X
-\textless{} 3) = lím P (X ≤ 3 − ) n n 1 = lím F (3 − ) n n 11 = 12 Otro
-ejemplo: P(X = 1) = P (X ≤ 1) − P (X \textless{} 1) 1 2 1 1 = F (1) −
-lím F (1 − ) = − = n n 3 2 6 Sin embargo notemos por ejemplo que P(X =
+\textless{} 3) = lím P (X \leq 3 - ) n n 1 = lím F (3 - ) n n 11 = 12 Otro
+ejemplo: P(X = 1) = P (X \leq 1) - P (X \textless{} 1) 1 2 1 1 = F (1) -
+lím F (1 - ) = - = n n 3 2 6 Sin embargo notemos por ejemplo que P(X =
 1.5) = 0, esto debido a que F es continua en 1.5 (Facultad de Ciencias.
 UNAM)
 
 Variables Aleatorias Continuas Otro ejemplo 1 1 P (X \textgreater{} ) =
-1 − P (X ≤ ) 2 2 1 3 =1−F ( )= 2 4 Finalmente: P (2 \textless{} X ≤ 4) =
-P(X ≤ 4) − P(X ≤ 2) 1 = F (4) − F (2) = 12
+1 - P (X \leq ) 2 2 1 3 =1-F ( )= 2 4 Finalmente: P (2 \textless{} X \leq 4) =
+P(X \leq 4) - P(X \leq 2) 1 = F (4) - F (2) = 12
 
 Variables Aleatorias Continuas Ahora si entramos en temas continuos. .
 .
 
 Variables Aleatorias Continuas Una variable aleatoria X se dice que
-tiene distribución continua con función de densidad f si para todo a ≤ b
-tenemos que: P(a ≤ X ≤ b) = ∫
+tiene distribución continua con función de densidad f si para todo a \leq b
+tenemos que: P(a \leq X \leq b) = ∫
 
 a
 
@@ -2757,18 +2713,17 @@ b
 
 f (x)dx
 
-De hecho para B ⊂ R, tendríamos que6 : P(X ∈ B) = ∫ f (x)dx B
+De hecho para B \subset R, tendríamos que6 : P(X \in B) = ∫ f (x)dx B
 
 6 De manera formal deberíamos pedir que B fuera un conjunto medible, sin
-embargo no entraremos en esas complicaciones en este curso (Facultad de
-Ciencias. UNAM)
+embargo no entraremos en esas complicaciones en este curso 
 
 Variables Aleatorias continuas Sabemos que si X es continua: P(X = x) =
-P(X ≤ x) − P(X \textless{} x) 1 = P(X ≤ x) − lím P(X \textless{} x − ) n
-n 1 = F (x) − lím F (x − ) = 0 n n La última igualdad se sigue de la
+P(X \leq x) - P(X \textless{} x) 1 = P(X \leq x) - lím P(X \textless{} x - ) n
+n 1 = F (x) - lím F (x - ) = 0 n n La última igualdad se sigue de la
 continuidad de F . Por esta razón no tiene mucho sentido hablar de
 función de probabilidad cuando trabajamos con variables aleatorias
-continuas, sin embargo a manera de aproximación: P(x ≤ X ≤ x + ∆x) = ∫
+continuas, sin embargo a manera de aproximación: P(x \leq X \leq x + ∆x) = ∫
 
 x+∆x
 
@@ -2777,19 +2732,19 @@ x
 f (y )dy ≈ f (x)dx
 
 Variables Aleatorias Continuas Dada la definición de f , concluimos
-además que: F (a) = P(X ≤ a) = ∫
+además que: F (a) = P(X \leq a) = ∫
 
 a
 
-−∞
+-∞
 
 f (y )dy
 
 Esto tambien nos conduce a la conclusión de que: lím F (a) = ∫
 
-a→∞
+a\rightarrow∞
 
-∞ −∞
+∞ -∞
 
 f (y )dy = 1
 
@@ -2799,12 +2754,12 @@ a
 
 b
 
-f (y )dy = P(a \textless{} X ≤ b) = P(X ≤ b) − P(X ≤ a) = F (b) − F (a)
+f (y )dy = P(a \textless{} X \leq b) = P(X \leq b) - P(X \leq a) = F (b) - F (a)
 
 lo cual era de esperarse.
 
 Variables Aleatorias Continuas Ejemplo. Supongamos que X es una
-variable aleatoria con función de densidad: ⎧ ⎪ ⎪C (4x − 2x 2 ) 0
+variable aleatoria con función de densidad: ⎧ ⎪ ⎪C (4x - 2x 2 ) 0
 \textless{} x \textless{} 2 f (x) = ⎨ ⎪ en otro caso ⎪ ⎩0 1 2
 
 ¿Cuál es el valor de C ? Encuentra P(X \textgreater{} 1)
@@ -2815,9 +2770,9 @@ Para encontrar el valor de C notemos que: C∫
 
 2
 
-(4x − 2x 2 )dx = 1
+(4x - 2x 2 )dx = 1
 
-es decir: C {[}2x 2 − 
+es decir: C {[}2x 2 - 
 
 2
 
@@ -2837,15 +2792,15 @@ Por otro lado: P (X \textgreater{} 1) = ∫
 
 f (x)dx =
 
-3 2 1 2 ∫ (4x − 2x )dx = 8 1 2
+3 2 1 2 ∫ (4x - 2x )dx = 8 1 2
 
 Ejemplo. Supongamos que la variable aleatoria X tiene función de
 distribución FX y tiene densidad fX . Encuentra la densidad de Y = 2X .
-Calculamos la densidad de Y como sigue: FY (a) = P (Y ≤ a)
+Calculamos la densidad de Y como sigue: FY (a) = P (Y \leq a)
 
-= P (2X ≤ a)
+= P (2X \leq a)
 
-Variables Aleatorias Continuas por lo tanto: FY (a) = P (X ≤ a/2) = FX
+Variables Aleatorias Continuas por lo tanto: FY (a) = P (X \leq a/2) = FX
 (a/2)
 
 de aqui tenemos que: fY (a) =
@@ -2858,7 +2813,7 @@ caso discreto: E {[}X {]} = ∫
 
 ∞
 
-−∞
+-∞
 
 xf (x)dx
 
@@ -2866,13 +2821,13 @@ considerando esta igualdad, la varianza la definimos del mismo modo que
 en el caso discreto. Ejemplo. Encuentra la esperanza y la varianza de
 una variable aleatoria con función de densidad: ⎧ ⎪ ⎪2x f (x) = ⎨ ⎪ ⎪ ⎩0
 
-para 0 ≤ x ≤ 1 en otro caso.
+para 0 \leq x \leq 1 en otro caso.
 
 Primero notemos que: ∫
 
 ∞
 
-−∞
+-∞
 
 f (x)dx = ∫
 
@@ -2884,7 +2839,7 @@ Por otro lado: E {[}x{]} = ∫
 
 ∞
 
-−∞ 1
+-∞ 1
 
 =∫
 
@@ -2903,7 +2858,7 @@ Variables Aleatorias Continuas Para la varianza calculamos: E {[}X 2
 
 ∞
 
-−∞ 1
+-∞ 1
 
 =∫
 
@@ -2925,9 +2880,9 @@ x 2 f (x)dx
 
 1 41 1 x ∣ = 2 0 2
 
-Por lo tanto Var (X ) = E {[}X 2 {]} − E 2 {[}X {]} =
+Por lo tanto Var (X ) = E {[}X 2 {]} - E 2 {[}X {]} =
 
-1 2 2 1 −( ) = . 2 3 18
+1 2 2 1 -( ) = . 2 3 18
 
 Variables Aleatorias Continuas Ejemplo. Decimos que una variable
 aleatoria X se distribuye unifomre en el intervalo (0, 1), X ∼ Unif (0,
@@ -2936,7 +2891,7 @@ aleatoria X se distribuye unifomre en el intervalo (0, 1), X ∼ Unif (0,
 la mas simple de las variables aleatorias continuas. Sin embargo su
 simplicidad no le resta importancia, por lo pronto es la piedra
 fundamental en todos los algoritmos de simulación. 1 Claramente f (x)
-\textgreater{} 0 para x ∈ (0, 1) y ∫0 f (x)dx = 1. Por otro lado: E {[}X
+\textgreater{} 0 para x \in (0, 1) y ∫0 f (x)dx = 1. Por otro lado: E {[}X
 {]} = ∫
 
 \hypertarget{section}{%
@@ -2965,11 +2920,11 @@ x 2 f (x)dx x 2 dx
 
 Var (x) =
 
-1 1 1 − = 3 4 12
+1 1 1 - = 3 4 12
 
 Variables Aleatorias Una versión mas general, seria una variable
 aleatoria uniforme en el intervalo (a, b). En este caso, la función de
-densidad esta dada por: ⎧ ⎪ ⎪ 1 f (x) = ⎨ b−a ⎪ ⎪ ⎩0
+densidad esta dada por: ⎧ ⎪ ⎪ 1 f (x) = ⎨ b-a ⎪ ⎪ ⎩0
 
 a\textless x \textless b en otro caso
 
@@ -2981,33 +2936,33 @@ a x
 
 f (y )dy
 
-1 dy a b−a x −a = b−a =∫
+1 dy a b-a x -a = b-a =∫
 
 De donde se sigue inmediatamente que F (x) = x para X ∼ Unif (0, 1)
 
 Variables Aleatorias Continuas
 
-Ejemplo. Si X ∼ Unif (0, 1), demuestra que Y = (b − a)X + a se
-distribuye uniforme en el intervalo (a, b). FY (x) = P(Y ≤ x)
+Ejemplo. Si X ∼ Unif (0, 1), demuestra que Y = (b - a)X + a se
+distribuye uniforme en el intervalo (a, b). FY (x) = P(Y \leq x)
 
-= P((b − a)X + a ≤ x) x −a = P (X ≤ ) b−a x −a ) = FX ( b−a x −a = b−a
+= P((b - a)X + a \leq x) x -a = P (X \leq ) b-a x -a ) = FX ( b-a x -a = b-a
 
 Adicionalmente:
 
-E {[}Y {]} = E {[}(b − a)X + a{]} = (b − a)E {[}X {]} + a b+a = 2
+E {[}Y {]} = E {[}(b - a)X + a{]} = (b - a)E {[}X {]} + a b+a = 2
 
 Variables Aleatorias Continuas Un ejercicio sencillo que resulta de
 utilidad es el probar que: Var (aX + b) = a2 Var (x) Usando este
-resultado tenemos que: Var (Y ) = Var ((b − a)X + a) = (b − a)2 Var (x)
+resultado tenemos que: Var (Y ) = Var ((b - a)X + a) = (b - a)2 Var (x)
 =
 
-(b − a)2 12
+(b - a)2 12
 
 Ejemplo. Decimos que una variable aleatoria X se distribuye Exponiencial
 con parámetro λ \textgreater{} 0 si tiene función de densidad: ⎧ ⎪ ⎪λe
-−λx f (x) = ⎨ ⎪ ⎪ ⎩0
+-λx f (x) = ⎨ ⎪ ⎪ ⎩0
 
-si x ≤ 0 si x \textless{} 0
+si x \leq 0 si x \textless{} 0
 
 Variables Aleatorias Continuas Algunas propiedades de la exponencial: F
 (x) = ∫
@@ -3016,11 +2971,11 @@ Variables Aleatorias Continuas Algunas propiedades de la exponencial: F
 
 x
 
-λe −λy dy
+λe -λy dy
 
-= 1 − e −λx
+= 1 - e -λx
 
-Observemos que límx→−∞ F (x) = 0 y límx→∞ F (x) = 1. Por otro lado: E
+Observemos que límx\rightarrow-∞ F (x) = 0 y límx\rightarrow∞ F (x) = 1. Por otro lado: E
 {[}X k {]} = ∫
 
 0
@@ -3033,17 +2988,17 @@ Observemos que límx→−∞ F (x) = 0 y límx→∞ F (x) = 1. Por otro lado: 
 
 x k f (x)dx
 
-x k λe −λx dx
+x k λe -λx dx
 
-= −x k e −λx ∣0 + ∫ ∞
+= -x k e -λx ∣0 + ∫ ∞
 
 0
 
 ∞
 
-kx k−1 e −λx dx
+kx k-1 e -λx dx
 
-∞ k k−1 −λx ∫ x λe dx λ 0 k = E {[}X k−1 {]} λ
+∞ k k-1 -λx ∫ x λe dx λ 0 k = E {[}X k-1 {]} λ
 
 =
 
@@ -3062,7 +3017,7 @@ E {[}X 2 {]} =
 
 Var (x) =
 
-2 1 1 − 2 = 2 2 λ λ λ
+2 1 1 - 2 = 2 2 λ λ λ
 
 Variables Aleatorias Continuas Ejemplo. Supongamos que la duración en
 minutos de una llamada telefónica se distribuye exponencial con
@@ -3075,9 +3030,9 @@ Dure mas de 10 minutos
 
 Dure entre 10 y 20 minutos
 
-Para responder el primer inciso calculamos: P(X ≥ 10) = 1 − F (10) = e
-−λ10 = e −1 ≈ 0.368 Para el segundo inciso: P(10 ≤ x ≤ 20) = F (20) − F
-(10) = (1 − e −2 ) − (1 − e −1 ) ≈ 0.233
+Para responder el primer inciso calculamos: P(X \geq 10) = 1 - F (10) = e
+-λ10 = e -1 ≈ 0.368 Para el segundo inciso: P(10 \leq x \leq 20) = F (20) - F
+(10) = (1 - e -2 ) - (1 - e -1 ) ≈ 0.233
 
 Variables Aleatorias Continuas Decimos que una variable aleatoria no
 tiene memoria si: P (X \textgreater{} t + s ∣ X \textgreater{} t) = P (X
@@ -3090,10 +3045,10 @@ horas desde el principio. Es decir, es irrelevante que ya hayamos
 esperado t horas.
 
 Distribución Normal Decimos que una variable aleatoria X se distribuye
-Normal con parámetros µ y σ 2 , X ∼ N(µ, σ 2 ) si tiene densidad: (x−µ)2
-1 e − 2σ2 f (x) = √ 2πσ
+Normal con parámetros µ y \sigma 2 , X ∼ N(µ, \sigma 2 ) si tiene densidad: (x-µ)2
+1 e - 2\sigma2 f (x) = √ 2π\sigma
 
-−∞\textless x \textless∞
+-∞\textless x \textless∞
 
 La distribución Normal es sin duda una de las piedras fundamentales de
 la probabilidad y de aplicaciones de la probabilidad. Es tan útil que a
@@ -3101,22 +3056,22 @@ menudo se abusa del uso del supuesto de normalidad, aun asi en ciertos
 casos puede tolerarse cierto grado de imprecisión.~Tantas son las
 ventajas de la normalidad que bien vale la pena sacrificar un modelo mas
 sofisticado a favor de la flexibilidad que la normalidad otorga.
-Empezamos por mostrar que: ∞ (x−µ)2 1 e − 2σ2 dx = 1 √ ∫ 2πσ −∞
+Empezamos por mostrar que: ∞ (x-µ)2 1 e - 2\sigma2 dx = 1 √ ∫ 2π\sigma -∞
 
 Distribución Normal Esto no es tan directo como puede parecer a primera
 instancia. La densidad de la Normal no puede ser integrada de forma
 cerrada. Esto nos obliga a proceder de forma indirecta. Por lo pronto,
-empezamos por el cambio de variable: y = (x − µ)/σ. Con este cambio de
-variable obtenemos: ∞ ∞ (x−µ)2 y2 1 1 − 2σ 2 dx = √ √ e e − 2 dy ∫ ∫ 2πσ
-−∞ 2π −∞
+empezamos por el cambio de variable: y = (x - µ)/\sigma. Con este cambio de
+variable obtenemos: ∞ ∞ (x-µ)2 y2 1 1 - 2\sigma 2 dx = √ √ e e - 2 dy ∫ ∫ 2π\sigma
+-∞ 2π -∞
 
 por lo tanto, basta que demostremos que: I =∫
 
-∞ −∞
+∞ -∞
 
 y2
 
-e − 2 dy =
+e - 2 dy =
 
 √ 2π
 
@@ -3126,11 +3081,11 @@ Distribución Normal Para ello: ∞
 
 I2 = ∫
 
-−∞ ∞
+-∞ ∞
 
 =∫
 
-−∞
+-∞
 
 x2
 
@@ -3138,17 +3093,17 @@ x2
 
 ∞
 
-2 2 − x +y 2
+2 2 - x +y 2
 
-e − 2 dx ∫
+e - 2 dx ∫
 
 y2
 
-e − 2 dy
+e - 2 dy
 
-−∞
+-∞
 
-∫−∞ e
+∫-∞ e
 
 dxdy
 
@@ -3184,17 +3139,17 @@ dθ ⋅ ∫
 
 r2
 
-e − 2 rdr
+e - 2 rdr
 
 r2
 
-re − 2 dr
+re - 2 dr
 
-= −2πe − 2 ∣ r2
+= -2πe - 2 ∣ r2
 
 r2
 
-e − 2 rdθdr
+e - 2 rdθdr
 
 ∞ 0
 
@@ -3202,12 +3157,12 @@ e − 2 rdθdr
 
 Distribución Normal
 
-Supongamos que Y ∼ N(µ, σ 2 ) y X = (Y − µ)/σ, tenemos entonces que: FX
-(x) = P(X ≤ x) Y −µ ≤ x) =P( σ = P(Y ≤ σx + µ) = FY (σx + µ)
+Supongamos que Y ∼ N(µ, \sigma 2 ) y X = (Y - µ)/\sigma, tenemos entonces que: FX
+(x) = P(X \leq x) Y -µ \leq x) =P( \sigma = P(Y \leq \sigmax + µ) = FY (\sigmax + µ)
 
 Por lo tanto fX (x) =
 
-∂ FY (σx + µ) ∂x = σfY (σx + µ) x2 1 = √ e− 2 2π
+∂ FY (\sigmax + µ) ∂x = \sigmafY (\sigmax + µ) x2 1 = √ e- 2 2π
 
 Es decir X ∼ N(0, 1). 
 
@@ -3215,43 +3170,43 @@ Distribución Normal
 
 Es tan importante una variable X ∼ N(0, 1), que ameríta un nombre
 especial.Si X ∼ N(0, 1), decimos que X se distribuye Normal Estándar. Al
-proceso de sustituir una variable Y ∼ N(µ, σ 2 ) por X = (Y − µ)/σ se le
+proceso de sustituir una variable Y ∼ N(µ, \sigma 2 ) por X = (Y - µ)/\sigma se le
 conoce como estandarización. Un razonamiento análogo pero ``inverso'',
-nos lleva a concluir que si X ∼ N(0, 1), entonces Y = σX + µ ∼ N(µ, σ 2
+nos lleva a concluir que si X ∼ N(0, 1), entonces Y = \sigmaX + µ ∼ N(µ, \sigma 2
 ). Debemos recordar que en general es más fácil trabajar con variables
 normales estándar, razón por la cual es costumbre, estandarizar primero
-y luego de ser necesario, realizar la transformación Y = σX + µ.
+y luego de ser necesario, realizar la transformación Y = \sigmaX + µ.
 Supongamos ahora que Z ∼ N(0, 1), entonces: E {[}Z {]} = ∫
 
 ∞
 
-−∞
+-∞
 
 xf (x)dx
 
-∞ x2 1 = √ ∫ xe − 2 dx 2π −∞ ∞ 1 − x2 2 = −√ e ∣ = 0 2π −∞
+∞ x2 1 = √ ∫ xe - 2 dx 2π -∞ ∞ 1 - x2 2 = -√ e ∣ = 0 2π -∞
 
 Distribución Normal Por lo tanto:
 
-Var (Z ) = E {[}Z 2 {]} ∞ x2 1 = √ ∫ x 2 e − 2 dx 2π −∞ ∞ ∞ x2 x2 1 = √
-(−xe − 2 ∣ + ∫ e − 2 dx) −∞ 2π −∞ 2 ∞ x 1 = √ ∫ e − 2 dx 2π −∞ =1
+Var (Z ) = E {[}Z 2 {]} ∞ x2 1 = √ ∫ x 2 e - 2 dx 2π -∞ ∞ ∞ x2 x2 1 = √
+(-xe - 2 ∣ + ∫ e - 2 dx) -∞ 2π -∞ 2 ∞ x 1 = √ ∫ e - 2 dx 2π -∞ =1
 
 En resumen, si Z ∼ N(0, 1) entonces E {[}Z {]} = 0 y Var (Z ) = 1. Ahora
-bien, sabemos que Z = σZ + µ ∼ N(µ, σ 2 ) pero: E {[}X {]} = σE {[}Z {]}
+bien, sabemos que Z = \sigmaZ + µ ∼ N(µ, \sigma 2 ) pero: E {[}X {]} = \sigmaE {[}Z {]}
 + µ = µ
 
 y
 
-Var {[}X {]} = σ 2 Var {[}Z {]} = σ 2 
+Var {[}X {]} = \sigma 2 Var {[}Z {]} = \sigma 2 
 
-En resumen, si X ∼ N(µ, σ 2 ) entonces E {[}X {]} = µ y Var (X ) = σ 2
-. A σ se le conce como desviación estándar. También sabemos que si Y ∼
-N(µ, σ 2 ) entonces X = (Y − µ)/σ ∼ N(0, 1). Es tan útil esta estrategia
+En resumen, si X ∼ N(µ, \sigma 2 ) entonces E {[}X {]} = µ y Var (X ) = \sigma 2
+. A \sigma se le conce como desviación estándar. También sabemos que si Y ∼
+N(µ, \sigma 2 ) entonces X = (Y - µ)/\sigma ∼ N(0, 1). Es tan útil esta estrategia
 de estandarización que es usual denotar FX (x) = Φ(x). Observemos porque
-es relevante; supongamos que Y ∼ N(µ, σ 2 ) entonces: FY (y ) = P(Y ≤ y
-) = P (X ≤
+es relevante; supongamos que Y ∼ N(µ, \sigma 2 ) entonces: FY (y ) = P(Y \leq y
+) = P (X \leq
 
-y −µ y −µ ) = Φ( ) σ σ
+y -µ y -µ ) = Φ( ) \sigma \sigma
 
 Esto es muy importante, pues nos permite encontrar la acumulada de Y en
 términos de la acumulada de una normal estándar.
@@ -3259,27 +3214,27 @@ términos de la acumulada de una normal estándar.
 Distribución Normal
 
 Ejemplo. Sea X ∼ N(3, 9). Calcula P(2 \textless{} x \textless{} 5), P(X
-\textgreater{} 0) y P(∣X − 3∣ \textgreater{} 6) P(2 \textless{} X
+\textgreater{} 0) y P(∣X - 3∣ \textgreater{} 6) P(2 \textless{} X
 \textless{} 5) = P (
 
-2−3 X −3 5−3 \textless{} \textless{} ) 3 3 3 1 X −3 2 \textless{} ) = P
-(− \textless{} 3 3 3 1 2 = Φ ( ) − Φ (− ) ≈ 0.3779 3 3
+2-3 X -3 5-3 \textless{} \textless{} ) 3 3 3 1 X -3 2 \textless{} ) = P
+(- \textless{} 3 3 3 1 2 = Φ ( ) - Φ (- ) ≈ 0.3779 3 3
 
 P(X \textgreater{} 0) = P (
 
-X −3 0−3 \textgreater{} ) 3 3 = P(Z \textgreater{} −1) = P(−Z
+X -3 0-3 \textgreater{} ) 3 3 = P(Z \textgreater{} -1) = P(-Z
 \textless{} 1)
 
 = Φ(1) ≈ 0.8413
 
 En este último cálculo hemos usado el hecho de que si Z ∼ N(0, 1)
-entonces −Z ∼ N(0, 1) 
+entonces -Z ∼ N(0, 1) 
 
 Distribución Normal
 
-Por último: P(∣X − 3∣ \textgreater{} 6) = P(X \textgreater{} 9) + P(X
-\textless{} −3) = P(Z \textgreater{} 2) + P(Z \textless{} −2) = 2P(Z
-\textless{} −2) ≈ 0.0456
+Por último: P(∣X - 3∣ \textgreater{} 6) = P(X \textgreater{} 9) + P(X
+\textless{} -3) = P(Z \textgreater{} 2) + P(Z \textless{} -2) = 2P(Z
+\textless{} -2) ≈ 0.0456
 
 \end{document}
 
