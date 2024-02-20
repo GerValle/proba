@@ -368,65 +368,23 @@ Dado un espacio muestral $\Omega$, la $\sigma$-álgebra más simple y pequeña q
 
 	Ahora bien, si ya transcurrió un periodo, entonces tenemos conocimiento de lo ocurrido con el precio en el primer dia. Es decir, ya sabemos si $\omega \in A_u$ o si $\omega \in A_d$ . Podemos jugar con esta información y generar una $\sigma$-álgebra que denote el hecho que conocemos la historia del primer dia: $F = \{\emptyset, \Omega, A_u , A_d \}$ Notemos que en este caso $\mathcal{F}$ efectivamente es una $\sigma$-álgebra. Esto es fácil de ver dado que $A_u = A^c_d$. Transcurridos dos días tenemos conocemos aún mas información, por lo pronto sabemos si $\omega$ pertenece a alguno de los cuatro conjuntos: $A_{uu}$, $A_{ud}$, $A_{du}$ o $A_{dd}$ . Sin embargo: $C = \{\emptyset, \Omega, A_{uu}, A_{ud}, A_{du}, A_{dd} \}$ no es una $\sigma$-álgebra.
 
+Por lo pronto conjuntos como: $Au = A_{uu} \cup A_{ud}$ o $A^c_u$ no están considerados. De acuerdo con la definición de $\sigma$-álgebra ambos deberían estar incluídos. En ejemplos como este , no es difícil resolver la situación, basta con tomar al conjunto $C$ y enriquecerlo con los conjuntos que le hagan falta para completar una $\sigma$-álgebra. Añadimos todas las uniones y complementos que hagan falta y listo. Este mecanismo sin embargo sirve solo para casos sencillos, donde el conjunto $\Omega$ es pequeño y podemos ser exhaustivos al momento de enlistar los elementos de una $\sigma$-álgebra. Para concluir el ejemplo; transcurridos los tres días, conocemos la historia completa, en este caso si parece apropiada la potencia como la $\sigma$-álgebra que describa la situación de nuestro experimento.
+
+Es importante hacer notar sin embargo que en general la potencia de $\Omega$ es demasiado grande y puede dar lugar a problemas serios, asimismo cuando $\Omega$ es muy grande, no es posible ser explícitos al momento de construir una  $\sigma$-álgebra, en cambio, debemos optar por algún argumento mas descriptivo que constructivo al momento de determinar la $\sigma$-álgebra de nuestro experimento.
+
+El primer inciso de la definición, básicamente se asegura de que la $\sigma$-álgebra sea una colección no vacía. De hecho podríamos sustituirlo por el requerimiento de que $\mathcal{F}$ sea una colección no vacía. Notemos además que decir que $\omega \in \Omega$ es equivalente a ``no decir nada'', una afirmación así no nos provee de información adicional. En cambio, decir que $\Omega \in A^c$ es un tipo de negación, negamos el hecho de que $A$ haya ocurrido. Asimismo, podemos parafrasear $\omega \in A \cup B$ diciendo que ``ocurrió $A$ u ocurrió $B$''. De manera parecida si $\omega \in A \cap B$, entonces ocurrió $A$ y ocurrió $B$.
+
+En general, podemos concebir a una $\sigma$-álgebra como un mecanismo para ordenar la información contenida en el espacio muestral. Por lo pronto, el primer inciso en la definición de $\sigma$-álgebra garantiza que $\Omega$ es siempre un elemento de la misma, el segundo inciso implica que la $\sigma$-álgebra es cerrada bajo complementos, es decir; si sabemos que algo ocurrió también debemos saber si es que esto mismo, no ocurrió. El tercer inciso es el mas controvertido. La axiomática de la probabilidad que estudiaremos es la propuesta por Kolmogorov y no esta exenta de controversia. Hay probabilistas que afirman que una teoría de probabilidad debería considerar únicamente la cerradura bajo uniones finitas y no extenderlo al caso numerable. Lo cierto es que este último inciso es de vital importancia en la construcción de eventos que tienen que ver con algún comportamiento límite. No abundaremos más al respecto dado que es un tema correspondiente a un curso avanzado de probabilidad. Baste notar que el inciso tres implica no solo que una $\sigma$-álgebra es cerrada bajo uniones numerables, también es cerrada bajo uniones finitas. 
+
 
 \end{document}
 
 
 
-Fundamentos Ejemplos
 
-Por lo pronto conjuntos como: Au = Auu \cup Aud o Acu no están
-considerados. De acuerdo con la definición de σ-álgebra ambos deberían
-estar incluídos. En ejemplos como este , no es difícil resolver la
-situación, basta con tomar al conjunto C y enriquecerlo con los
-conjuntos que le hagan falta para completar una σ-álgebra. Añadimos
-todas las uniones y complementos que hagan falta y listo. Este mecanismo
-sin embargo sirve solo para casos sencillos, donde el conjunto \Omega es
-pequeño y podemos ser exhaustivos al momento de enlistar los elementos
-de una σ-álgebra. Para concluir el ejemplo; transcurridos los tres días,
-conocemos la historia completa, en este caso si parece apropiada la
-potencia como la σ-álgebra que describa la situación de nuestro
-experimento.
 
-Fundamentos Ejemplos
 
-Es importante hacer notar sin embargo que en general la potencia de \Omega es
-demasiado grande y puede dar lugar a problemas serios, asimismo cuando \Omega
-es muy grande, no es posible ser explícitos al momento de construir una
-σ-álgebra, en cambio, debemos optar por algún argumento mas descriptivo
-que constructivo al momento de determinar la σ-álgebra de nuestro
-experimento.
 
-Fundamentos
-
-El primer inciso de la definición, básicamente se asegura de que la
-σ-álgebra sea una colección no vacía. De hecho podríamos sustituirlo por
-el requerimiento de que F sea una colección no vacía. Notemos además que
-decir que \Omega ∈ \Omega es equivalente a ``no decir nada'', una afirmación asi
-no nos provee de información adicional. En cambio, decir que \Omega ∈ Ac es
-un tipo de negación, negamos el hecho de que A haya ocurrido. Asimismo,
-podemos parafrasear \Omega ∈ A \cup B diciendo que ``ocurrió A u ocurrió B''. De
-manera parecida si \Omega ∈ A ∩ B, entonces ocurrió A y ocurrió B.
-
-Fundamentos En general, podemos concebir a una σ-álgebra como un
-mecanismo para ordenar la información contenida en el espacio muestral.
-Por lo pronto, el primer inciso en la definición de σ-álgebra garantiza
-que \Omega es siempre un elemento de la misma, el segundo inciso implica que
-la σ-álgebra es cerrada bajo complementos, es decir; si sabemos que algo
-ocurrió también debemos saber si es que esto mismo, no ocurrió. El
-tercer inciso es el mas controvertido. La axiomática de la probabilidad
-que estudiaremos es la propuesta por Kolmogorov y no esta exenta de
-controversia. Hay probabilistas que afirman que una teoría de
-probabilidad debería considerar únicamente la cerradura bajo uniones
-finitas y no extenderlo al caso numerable. Lo cierto es que este último
-inciso es de vital importancia en la construcción de eventos que tienen
-que ver con algún comportamiento límite. No abundaremos más al respecto
-dado que es un tema correspondiente a un curso avanzado de probabilidad.
-Baste notar que el inciso tres implica no solo que una σ-álgebra es
-cerrada bajo uniones numerables, también es cerrada bajo uniones
-finitas. 
-
-Fundamentos
 
 Para probar la cerradura bajo uniones finitas antes observemos que de
 los dos primeros incisos se concluye que ∅ ∈ \Omega. De este modo, si A y B
