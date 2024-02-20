@@ -14,6 +14,8 @@
 \usetikzlibrary{babel}
 \usetikzlibrary {positioning}
 
+\newtheorem{definition}{Definición}[chapter]
+
 \newcounter{ejemplo}[chapter]
 \newenvironment{ejemplo}
    {%
@@ -271,96 +273,96 @@ Pero podemos hacer aún mas; Consideremos por ejemplo los conjuntos:
 El conjunto Au contiene la información del primer dia. Si $\Omega \in A_u$ sabemos que el primer dia hubo una alza en el precio del activo, si $\Omega \in A_d$ entonces hubo una baja. Observemos sin embargo que ni $A_u$ , ni $A_d$ proporcionan información de lo que ocurrirá en el segundo o tercer día, aunque si acotan las posibilidades. Si sabemos que $\omega \in A_u$ automáticamente descartamos la posibilidad de que $\omega = (d, d,
 d)$ por ejemplo. 
 
-\begin{ejemplo}
-	Este es un primer ejemplo Este es un primer ejemploEste es un primer ejemploEste es un primer ejemploEste es un primer ejemploEste es un primer ejemploEste es un primer ejemploEste es un primer ejemplo
-\end{ejemplo}
 
+Continuando con el ejemplo; tomemos ahora los conjuntos:
+\begin{equation*}
+\begin{split}
+	A_{uu} & = \{(u, u, u), (u, u, d)\} \\
+	A_{du} & = \{(d, u, u), (d, u, d)\} \\
+	A_{ud} & = \{(u, d, u), (u, d, d)\} \\
+	A_{dd} & = \{(d, d, u), (d, d, d)\} \\
+\end{split}
+\end{equation*}
+La información que obtenemos de estos conjuntos esta relacionada con lo que ocurre en los dos primeros días. Si $\omega \in A_{uu}$ podemos afirmar que en los dos
+primeros días se registraron alzas de precios. Notemos ademas que ninguno de estos conjuntos determinan con certeza lo que ocurrirá en el tercer día. Aunque si limitan las posibilidades. Aquí viene algo interesante, notemos que decir que $S_{t+2} = 8$ es equivalente a decir que $\omega \in A_{ud} \cup A_{du}$ . O también por ejemplo decir que $St+2 \geq 2$ es
+equivalente a afirmar que $\omega \in A_{dd}$ 
+
+Tomemos ahora un ejemplo diferente, pensemos en el
+lanzamiento de dos dados. En este caso el espacio muestral parece muy natural; la colección de pares $(i, j)$ donde $i, j = 1,\ldots, 6$. Es decir: 
+\begin{equation*}
+\begin{split}
+	\Omega = \left\{\right.%
+	(1&, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), \\
+   (2&, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2, 6), \\ 
+   (3&, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), \\ 
+   (4&, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), \\
+   (5&, 1), (5, 2), (5, 3), (5, 4), (5, 5), (5, 6), \\ 
+   (6&, 1), (6, 2), (6, 3), (6, 4), (6,5), (6, 6) \left.\right\}
+\end{split}	
+\end{equation*}
+
+¿Cuales son los casos donde obtuvimos un 3 en el
+lanzamiento del primer dado? Esto lo resumimos en el siguiente conjunto:
+$$
+A = \{(3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6)\} 
+$$
+Mientras que el conjunto
+$$
+B = \{(1, 3), (2, 3), (3, 3), (4, 3), (5, 3), (6, 3)\}
+$$
+representa los casos donde hubo un tres en el segundo dado. Algo un poco mas complejo, de forma coloquial decimos: 
+$$
+A \cup B = \text{sale 3 en primer dado o sale 3 en el segundo}
+$$
+a diferencia de 
+$$
+A \cap B = \text{sale 3 en el primer dado y sale 3 en el segundo dado}
+$$
+
+Las dos aseveraciones anteriores podemos escribirlas de manera equivalente como: 
+$$
+A \cup B = \text{obtuvimos al menos un 3}
+$$
+a diferencia de:
+$$
+A \cap B = \text{obtuvimos 3 en ambos dados}
+$$
+En términos de conjuntos ¿cómo podríamos expresar la frase ``obtuvimos exactamente un 3''? Observemos que $A\cup B$ no es útil pues contiene a $(3, 3)$, en este elemento tenemos mas ocurrencias del 3 de las que necesitamos. $A \cap B = \{(3, 3)\}$ nos sirve
+aun menos, En realidad es el elemento que desearíamos eliminar de $A \cup B$ para obtener lo que estamos buscando. Esto es: 
+$$
+(A \cup B) \setminus (A \cap B) = \text{Obtenemos exactamente un tres}
+$$
+
+Recordemos que la diferencia simétrica de $A$ y $B$ se define como: 
+\begin{equation*}
+	\begin{split}
+		A \triangle B & = (A \setminus B) \cup (B \setminus A) \\
+		              & = (A \cup B) \setminus (A \cap B) 	\end{split}
+\end{equation*}
+
+Por lo tanto, en el ejemplo que estamos estudiando $A \triangle B$ es el conjunto donde ``obtenemos exactamente un tres''. ¿Que podemos decir entonces de la diferencia
+usual de conjuntos? 
+$$
+A \setminus B = \text{Obtuvimos 3 en el primer dado pero no en el segundo}
+$$
+Observemos que en esta última expresión estamos negando la ocurrencia de un 3 en el segundo dado, es decir: 
+$$
+B^c = \text{No obtuvimos 3 en el segundo dado}
+$$
+
+Todas estas divagaciones nos conducen a conclusiones interesantes. Por un lado como vimos, no existe una única forma de definir un espacio muestral, la forma adecuada dependerá en gran medida de las preguntas que necesitemos resolver. Por otro lado, debemos estar ya convencidos, que al reunir los elementos de $\Omega$ en subconjuntos, en realidad lo que logramos es organizar la información que eventualmente podamos extraer del experimento aleatorio. Estas ideas nos conducen a la siguiente definición.
+\begin{definition}[$\sigma$-álgebra]
+Una colección $\mathcal{F}$ de subconjuntos de $\Omega$ se conoce como $\sigma$-álgebra de subconjuntos de $\Omega$ si:
+\begin{enumerate}
+	\item $\Omega \in \mathcal{F}$
+	\item Si $A \in F$ entonces $A^c \in \mathcal{F}$
+	\item Si $\{A_n\}$ es una colección numerable de elementos de $\mathcal{F}$ entonces $\cup A_n \in \mathcal{F}$
+\end{enumerate}
+\end{definition}
 
 \end{document}
 
 
-
-
-
-
-
-
-
-
-
-
-
-Continuando con el ejemplo; tomemos ahora los conjuntos:
-Auu = \{(u, u, u), (u, u, d)\} Adu = \{(d, u, u), (d, u, d)\} Aud =
-\{(u, d, u), (u, d, d)\} Add = \{(d, d, u), (d, d, d)\} La información
-que obtenemos de estos conjuntos esta relacionada con lo que ocurre en
-los dos primeros días. Si \Omega ∈ Auu podemos afirmar que en los dos
-primeros días se registraron alzas de precios. Notemos ademas que
-ninguno de estos conjuntos determinan con certeza lo que ocurrirá en el
-tercer dia. Aunque si limitan las posibilidades. Aquí viene algo
-interesante, notemos que decir que St+2 = 8 es equivalente a decir que \Omega
-∈ Aud \cup Adu . O también por ejemplo decir que St+2 \textgreater{} 2 es
-equivalente a afirmar que \Omega ∈ Acdd 
-
-Fundamentos Tomemos ahora un ejemplo diferente, pesemos en el
-lanzamiento de dos dados. En este caso el espacio muestral parece muy
-natural; la colección de pares (i , j) donde i , j = 1, . . . , 6. Es
-decir: \Omega = \{(1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6) (2, 1), (2,
-2), (2, 3), (2, 4), (2, 5), (2, 6) (3, 1), (3, 2), (3, 3), (3, 4), (3,
-5), (3, 6) (4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6) (5, 1), (5,
-2), (5, 3), (5, 4), (5, 5), (5, 6) (6, 1), (6, 2), (6, 3), (6, 4), (6,
-5), (6, 6)\}
-
-Fundamentos ¿Cuales son los casos donde obtuvimos un 3 en el
-lanzamiento del primer dado? Esto lo resumimos en el siguiente conjunto:
-A = \{(3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6)\} Mientras que el
-el conjunto B = \{(1, 3), (2, 3), (3, 3), (4, 3), (5, 3), (6, 3)\}
-representa los casos donde hubo un tres en el segundo dado. Algo un poco
-mas complejo, de forma coloquial decimos: A \cup B = sale 3 en primer dado
-o sale 3 en el segundo a diferencia de A ∩ B = sale 3 en el primer dado
-y sale 3 en el segundo dado 
-
-Las dos aseveraciones anteriores podemos escribirlas de manera
-equivalente como: A \cup B = obtuvimos al menos un 3 a diferencia de A ∩ B
-= obtuvimos 3 en ambos dados En términos de conjuntos ¿cómo podríamos
-expresar la frase ``obtuvimos exactamente un 3''? Observemos que A \cup B
-no es útil pues contiene a (3, 3), en este elemento tenemos mas
-ocurrencias del 3 de las que necesitamos. A ∩ B = \{(3, 3)\} nos sirve
-aun menos, En realidad es el elemento que desearíamos eliminar de A \cup B
-para obtener lo que estamos buscando. Esto es: (A \cup B) ∖ (A ∩ B) =
-Obtenemos exactamente un tres
-
-Fundamentos Recordemos que la diferencia simétrica de A y B se define
-como: A △ B = (A ∖ B) \cup (B ∖ A) = (A \cup B) ∖ (A ∩ B) Por lo tanto, en el
-ejemplo que estamos estudiando A △ B es el conjunto donde ``obtenemos
-exactamente un tres''. ¿Que podemos decir entonces de la diferencia
-usual de conjuntos? A ∖ B = Obtuvimos 3 en el primer dado pero no en el
-segundo Observemos que en esta última expresión estamos negando la
-ocurrencia de un 3 en el segundo dado, es decir: B c = No obtuvimos 3 en
-el segundo dado
-
-Fundamentos Todas estas divagaciones nos conducen a conclusiones
-interesantes. Por un lado como vimos, no existe una única forma de
-definir un espacio muestral, la forma adecuada dependerá en gran medida
-de las preguntas que necesitemos resolver. Por otro lado, debemos estar
-ya convencidos, que al reunir los elementos de \Omega en subconjuntos, en
-realidad lo que logramos es organizar la información que eventualmente
-podamos extraer del experimento aleatorio. Estas ideas nos conducen a la
-siguiente definición.
-
-σ-álgebra Una colección F de subconjuntos de \Omega se conoce como σ-álgebra
-de \Omega si: 1
-
-\Omega∈F
-
-2
-
-Si A ∈ F entonces Ac ∈ F
-
-3
-
-Si \{An \} es una colección numerable de elementos de F entonces \cupAn ∈
-F.
 
 Fundamentos Ejemplos
 
