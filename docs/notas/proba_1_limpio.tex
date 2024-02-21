@@ -32,13 +32,36 @@
    }
 
 
+\newenvironment{mybox}[2][This is a box]
+    {\begin{center}
+    Argument 1 (\#1)=#1\\[1ex]
+    \begin{tabular}{|p{\textwidth}|}
+    \hline\\
+    Argument 2 (\#2)=#2\\[2ex]
+    }
+    { 
+    \\\\\hline
+    \end{tabular} 
+    \end{center}
+    }
+
 \begin{document}
 
 
 \chapter{Introducción}
 
 
-%\end{document}
+\begin{mybox}[This is not the default value]{Some more preliminary text}
+This text is still \textit{inside} the environment.
+\end{mybox}
+
+\begin{tcolorbox}
+ \textbf{Principio básico de conteo.}
+\tcblower
+Supongamos que dos experimentos son realizados. Si el experimento 1 puede resultar en una de $n$ formas posibles y para cada resultado del experimento 1 existen $m$ posibilidades para el experimento 2, entonces en conjunto existen $n\times m$ resultados para los dos experimentos.
+\end{tcolorbox}
+
+
 
 Existen multitud de fenómenos en la realidad que difícilmente pueden ser modelados con certeza. Ya sea por la complejidad de su naturaleza o
 porque efectivamente es imposible establecer algún modelo determinístico para el mismo. Ejemplos que nos vienen a la mente provienen directamente
@@ -670,13 +693,27 @@ Supongamos que dos experimentos son realizados. Si el experimento 1 puede result
   
 A menudo conviene ver esto con ``casillas''. En una casilla ponemos el número de posibilidades al seleccionar un elemento de un conjunto $A$ y en la otra el número de posibilidades al seleccionar un elemento de un conjunto $B$, si son $n$ y $m$ respectivamente, entonces en total podremos hacer $n\times m$ selecciones de los dos conjuntos. 
 
-A B AB n m nm 
+\begin{center}
+\begin{tikzpicture}[>=stealth, node distance=2cm, rounded corners]
+    \node (n) at (0, 0) [draw, shape=rectangle, rounded corners] {$n$};
+
+    \node (m) at (.75, 0) [draw, shape=rectangle, rounded corners] {$m$};
+
+    \node (nm) at (3, 0) {$n\times m$};
+
+  % Arrows
+  \draw[->] (m) -- (nm);
+\end{tikzpicture}
+	
+\end{center}
 
 En general, podemos pensar que tenemos $m$ casillas. En la $i$-ésima casilla depositamos un elemento de un conjunto con $n_i$ elementos. Entonces el número de formas en que podemos `llenar' estas casillas es igual a:
 $$
 n_1\cdot n_2 \cdots nm 
 $$
 El siguiente diagrama esquematiza el caso para cuando tenemos solo 4 casillas, el caso general es similar. Cada casilla puede tener uno elemento seleccionado de un conjunto con ni elementos. En total tendremos b
+
+
 
 \end{document}
 
