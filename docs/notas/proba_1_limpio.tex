@@ -11,7 +11,6 @@
 %\newcounter{ejemplo}[chapter] % Define a new counter tied to the chapter
 
 
-
 \usetikzlibrary{babel}
 \usetikzlibrary {positioning}
 
@@ -31,6 +30,7 @@
    \medskip
    }
 
+%TODO Mejorar este entorno
 
 \newenvironment{mybox}[2][This is a box]
     {\begin{center}
@@ -713,21 +713,15 @@ n_1\cdot n_2 \cdots nm
 $$
 El siguiente diagrama esquematiza el caso para cuando tenemos solo 4 casillas, el caso general es similar. Cada casilla puede tener uno elemento seleccionado de un conjunto con ni elementos. En total tendremos b
 
+Combinatoria Ejemplo.. La cantidad total de placas formadas con tres dígitos y tres letras es igual a: $10 \cdot 10 \cdot 10 \cdot 26 \cdot 26 \cdot 26 = 17,576,000$. En este ejemplo seleccionamos las primeras tres entradas de un conjunto con 10 elementos las últimas 3 entradas fueron seleccionadas de un conjunto con 26 entradas. Un dato importante es que podemos repetir tanto números como letras. Un caso partícular es cuando la selección se hace siempre del mismo conjunto. 
+
+Ejemplo.. El número total de números telefónicos de 8 dígitos es igual a: $10 \cdot 10 \cdot 10 \cdot 10 \cdot 10 \cdot 10 \cdot 10 \cdot 10 = 100, 000, 000$ números. 
 
 
 \end{document}
 
 
 
-Combinatoria Ejemplo.. La cantidad total de placas formadas con tres
-dígitos y tres letras es igual a: 10 ⋅ 10 ⋅ 10 ⋅ 26 ⋅ 26 ⋅ 26 = 17, 576,
-000 En este ejemplo seleccionamos las primeras tres entradas de un
-conjunto con 10 elementos las últimas 3 entradas fueron seleccionadas de
-un conjunto con 26 entradas. Un dato importante es que podemos repetir
-tanto números como letras Un caso partícular es cuando la selección se
-hace siempre del mismo conjunto. Ejemplo.. El número total de números
-telefónicos de 8 dígitos es igual a: 10 ⋅ 10 ⋅ 10 ⋅ 10 ⋅ 10 ⋅ 10 ⋅ 10 ⋅
-10 = 100, 000, 000 números. 
 
 Combinatoria Este ejemplo, aunque simple de más tal vez sirve para
 ejemplificar dos cosas importantes. Por un lado al igual que en el caso
@@ -798,10 +792,10 @@ ya asignamos a x1 . Asimismo x3 puede ser cualquier elemento de A
 excepto los ya asignados a x1 y x2 . De este modo, x1 puede
 seleccionarse de una de tres formas posibles, x2 puede seleccionarse de
 una de dos formas posibles y x3 solo puede seleccionarse de una única
-forma. En total podremos ordenar A de: 3! = 3 ⋅ 2 ⋅ 1 = 6 formas
+forma. En total podremos ordenar A de: 3! = 3 \cdot 2 \cdot 1 = 6 formas
 
 Combinatoria En general un conjunto con n elementos se puede ordenar de
-n! = n ⋅ (n - 1) ⋅ (n - 2)⋯1 formas posibles. El siguiente ejemplo se
+n! = n \cdot (n - 1) \cdot (n - 2)⋯1 formas posibles. El siguiente ejemplo se
 resuelve con una pequeña variación del argumento que hemos usado hasta
 este momento: Ejemplo. ¿Cuantas palabras de cuatro letras podemos
 formar? ¿Cuantas si las letras no pueden repetirse? Para resolver este
@@ -817,7 +811,7 @@ caso palabras como aabc no son válidas. Ahora al componer los vectores
 (x1 , x2 , x3 , x4 ) x1 podrá seleccionarse de una de 26 formas
 posibles, x2 de 1 de 25 posibles, x3 de una de 24 formas posibles y x4
 de una de 23 formas posibles, eso con la finalidad de no repetir letras.
-En total tendremos 26 ⋅ 25 ⋅ 24 ⋅ 23 =
+En total tendremos 26 \cdot 25 \cdot 24 \cdot 23 =
 
 26! 26! = = 358, 800 22! (26 - 4)!
 
@@ -866,7 +860,7 @@ cuantas formas podemos realizar la selección? Tenemos 25 posibilidades
 para el puesto de presidente. Sin embargo una vez seleccionado este,
 solo tenemos 24 posibilidades para el puesto de secretario y una vez
 seleccionados presidente y secretario solo quedan 23 posibilidades para
-el tesorero, por lo tanto tenemos: 25 ⋅ 24 ⋅ 23 =
+el tesorero, por lo tanto tenemos: 25 \cdot 24 \cdot 23 =
 
 25! = 13, 800 22!
 
@@ -880,7 +874,7 @@ héroes. ¿Cuantos equipos de tres podemos formar? Una primera
 aproximación sería pensar que para la primera selección tenemos 5
 posibilidades, para la segunda tendríamos sólo 4 y para la tercera solo
 2. Por lo tanto el número total de equipos que podemos formar es igual
-a: 5! = 60 5⋅4⋅3= (5 - 3)! ¿Es correcto?
+a: 5! = 60 5\cdot4\cdot3= (5 - 3)! ¿Es correcto?
 
 Combinatoria Hemos hecho un selección de tres elementos tomados de un
 conjunto de cinco elementos. Sin embargo hemos realizado una selección
@@ -1076,9 +1070,9 @@ mismo modo que cualquier permutación de E da lugar a la misma palabra y
 como dijimos previamente, lo mismo ocurriría de existir mas de un R.
 Ahora bien, el número total de ordenamientos que podemos realizar con
 las Ps es igual a 3!, de las E s es 2! y de las Rs es 1!. De este modo
-el número de repeticiones es: 3! ⋅ 2! ⋅ 1! Por lo tanto, el número de
+el número de repeticiones es: 3! \cdot 2! \cdot 1! Por lo tanto, el número de
 ordenamientos que podemos realizar de la palabra PEPPER es igual a 6! 3!
-⋅ 2! ⋅ 1!
+\cdot 2! \cdot 1!
 
 Combinatoria Este ejemplo es un caso particular del siguiente problema:
 si tenemos un conjunto con n elementos, ¿de cuantas formas podemos
@@ -1162,7 +1156,7 @@ fueron seleccionados. Es decir seleccionamos 5 de los 6 números
 naturales ganadores. El número de selecciones de este tipo es: 6 ( ) 5
 El número restante debe coincidir con el adicional. Como solo existe un
 adicional, esto se logra de una única manera. Por lo tanto la
-probabilidad de atinar 5 naturales mas el adicional es: (65) ⋅ 1 (56 ) 6
+probabilidad de atinar 5 naturales mas el adicional es: (65) \cdot 1 (56 ) 6
 
 Combinatoria El siguiente premio se obtiene si acertamos exactamente 5
 naturales pero fallamos en el adicional. El acierto de los 5 naturales
@@ -1171,8 +1165,8 @@ no acertamos? No puede ser ninguno de los naturales ganadores y tampoco
 puede ser el adicional, por lo tanto de los 56 naturales existen 49
 perdedores. El número que en definitiva no acertamos debe ser uno de
 esos 49 perdedores. de modo que en este caso el número de casos
-favorables es: 6 ( ) ⋅ 49 5 y la probabilidad de obtener exactamente 5
-naturales es: (65) ⋅ 49 (56 ) 6
+favorables es: 6 ( ) \cdot 49 5 y la probabilidad de obtener exactamente 5
+naturales es: (65) \cdot 49 (56 ) 6
 
 Combinatoria El siguiente premio lo ganamos si acertamos 4 naturales
 mas el adicional. Siguiendo la misma lógica, debemos entonce seleccionar
@@ -1180,8 +1174,8 @@ mas el adicional. Siguiendo la misma lógica, debemos entonce seleccionar
 Pero ahora tenemos dos números restantes. Uno de ellos es el adicional y
 solo hay una forma de seleccionarlo. El número restante debe ser uno de
 los 49 perdedores, de modo que el número de casos favorables será: 6 ( )
-⋅ 49 ⋅ 1 4 Finalmente, la probabilidad de obtener 4 naturales mas el
-adicional será (64) ⋅ 49 ⋅ 1 (56 ) 6
+\cdot 49 \cdot 1 4 Finalmente, la probabilidad de obtener 4 naturales mas el
+adicional será (64) \cdot 49 \cdot 1 (56 ) 6
 
 Combinatoria El ultimo caso que calcularemos es cuando acertamos
 exactamente 4 naturales. En este caso, nuevamente seleccionamos cuatro
@@ -1189,7 +1183,7 @@ de los 6 naturales ganadores. Sabemos que esto podemos hacerlos de 6 ( )
 4 formas. Nuevamente restan dos números, pero en este caso debe omitirse
 el adicional, debemos seleccionarlos de los 49 perdedores, esto podemos
 hacerlo de 49 ( ) 2 formas. De modo que la probabilidad de obtener
-exactamente 4 naturales es: ) (64) ⋅ (49 2 (56 ) 6
+exactamente 4 naturales es: ) (64) \cdot (49 2 (56 ) 6
 
 Combinatoria El resto de los casos ganadores se obtienen con:
 Probabilidad de 3 naturales + adicional = Probabilidad de 3 naturales =
@@ -1199,9 +1193,9 @@ Probabilidad de 2 naturales + adicional = Probabilidad de 2 naturales =
 \def\labelenumi{(\arabic{enumi})}
 \setcounter{enumi}{62}
 \item
-  ⋅ (49 ) 2 ⋅1 (56 ) 6
+  \cdot (49 ) 2 \cdot1 (56 ) 6
 \item
-  ⋅ (49
+  \cdot (49
 \end{enumerate}
 
 \begin{enumerate}
@@ -1216,9 +1210,9 @@ Probabilidad de 2 naturales + adicional = Probabilidad de 2 naturales =
 \def\labelenumi{(\arabic{enumi})}
 \setcounter{enumi}{61}
 \item
-  ⋅ (49 ) 3 ⋅1 (56 ) 6
+  \cdot (49 ) 3 \cdot1 (56 ) 6
 \item
-  ⋅ (49 ) 4 (56 ) 6
+  \cdot (49 ) 4 (56 ) 6
 \end{enumerate}
 
 Combinatoria Finalmente, para concluir el tema de combinatoria,
@@ -1473,7 +1467,7 @@ Probabilidad Condicional Esto nos conduce a los siguiente
 
 Porbabilidad Condicional
 
-La probabilidad condicional P(⋅ ∣ B) es una probabilidad. Esto es: 1 2 3
+La probabilidad condicional P(\cdot ∣ B) es una probabilidad. Esto es: 1 2 3
 
 P(\Omega ∣ B) = 1
 
@@ -2321,9 +2315,9 @@ el valor esperado E {[}X {]} donde X es el resultado obtenido al lanzar
 un dado justo. Dado que p(x) = 1/6 para x \in S = \{1, 2, 3, 4, 5, 6\},
 tenemos que: 6
 
-E {[}X {]} = \sum i ⋅ i =1
+E {[}X {]} = \sum i \cdot i =1
 
-1 1 1 1 1 1 7 1 =1⋅ +2⋅ +3⋅ +4⋅ +5⋅ +6⋅ = 6 6 6 6 6 6 6 2 
+1 1 1 1 1 1 7 1 =1\cdot +2\cdot +3\cdot +4\cdot +5\cdot +6\cdot = 6 6 6 6 6 6 6 2 
 
 Ejemplo. En el ejemplo del lanzamiento de las tres monedas. Teníamos
 que: 3 P(X = i ) = ( )p i (1 - p)n-i i = 0, 1, 2, 3. i Tenemos entonces
@@ -2337,14 +2331,14 @@ que: 3 3 E {[}X {]} = \sum i ( )p i (1 - p)3-i i =0 i 3
 
 2! p i -1 (1 - p)2-(i -1) (i - 1)!(2 - (i - 1))! i =1
 
-= 3p ⋅ \sum
+= 3p \cdot \sum
 
 Variables Aleatorias Haciendo j = i - 1 tenemos que: 2 2 E {[}X {]} =
 3p \sum ( )p j (1 - p)2-j j=0 j
 
-= 3p ⋅ \{(1 - p)2 + 2p(1 - p) + p 2 \}
+= 3p \cdot \{(1 - p)2 + 2p(1 - p) + p 2 \}
 
-= 3p ⋅ \{(1 - p) + p\}2
+= 3p \cdot \{(1 - p) + p\}2
 
 = 3p
 
@@ -2456,10 +2450,10 @@ si i = 1 si i = 0
 Variables Aleatorias Una variable aleatoria Bernoulli, modelo un
 fenómeno que ocurre o no, que solo tiene una de dos posibilidades de
 ocurrir. El ejemplo mas claro sería el lanzamiento de una moneda, si
-ésta es justa p = 1/2. Tenemos entoces que: E {[}X {]} = p ⋅ 1 + (1 - p)
-⋅ 0 = p Por otro lado:
+ésta es justa p = 1/2. Tenemos entoces que: E {[}X {]} = p \cdot 1 + (1 - p)
+\cdot 0 = p Por otro lado:
 
-E {[}X 2 {]} = 1 ⋅ p + (1 - p) ⋅ 0 = p
+E {[}X 2 {]} = 1 \cdot p + (1 - p) \cdot 0 = p
 
 Por lo tanto: Var (X ) = E {[}X 2 {]} - E {[}X {]}2 = p - p 2 = p(1 - p)
 
@@ -2521,7 +2515,7 @@ eλ = \sum
 Variables Aleatorias La esperanza de una variable aleatoria Poisson la
 calculamos como sigue: ∞
 
-E {[}X {]} = \sum i ⋅ e -λ i =0
+E {[}X {]} = \sum i \cdot e -λ i =0
 
 λi i!
 
@@ -2537,17 +2531,17 @@ Para estimar la varianza, calculamos primero el segundo momento:
 
 Variables Aleatorias ∞
 
-E {[}X 2 {]} = \sum i 2 ⋅ e -λ i =0 ∞
+E {[}X 2 {]} = \sum i 2 \cdot e -λ i =0 ∞
 
 λi i!
 
-= λ \sum i ⋅ e -λ i =1
+= λ \sum i \cdot e -λ i =1
 
 ∞
 
 λi -1 (i - 1)!
 
-= λe -λ \sum(j + 1) ⋅
+= λe -λ \sum(j + 1) \cdot
 
 λj j!
 
@@ -2557,7 +2551,7 @@ E {[}X 2 {]} = \sum i 2 ⋅ e -λ i =0 ∞
 
 j=0
 
-= λe -λ \sum(j + 1) ⋅ j=0
+= λe -λ \sum(j + 1) \cdot j=0
 
 ⎧ ∞ j⎫ ⎪ λ ⎪ ⎪ ⎪ -λ ∞ λj -λ = λ ⎨e \sum j + e \sum ⎬ ⎪ ⎪ ⎪ j=0 j! ⎪ j=0 j! ⎭ ⎩
 = λ \{λ + 1\}
@@ -2576,7 +2570,7 @@ Variables Aleatorias Por último, si X ∼ Binomial (n, p) y definimos; λ
 
 n! p i (1 - p)n-i (n - i )!i !
 
-λ i λ n-i n! ( ) (1 - ) (n - i )!i ! n n n(n - 1) ⋅ (n - i + 1) λi (1 -
+λ i λ n-i n! ( ) (1 - ) (n - i )!i ! n n n(n - 1) \cdot (n - i + 1) λi (1 -
 λ/n)n = ni i ! (1 - λ/n)i
 
 =
@@ -2586,7 +2580,7 @@ moderado: (1 -
 
 λ n ) ≈ e -λ n
 
-n(n - 1) ⋅ (n - i + 1) ≈1 ni
+n(n - 1) \cdot (n - i + 1) ≈1 ni
 
 (1 - λ/n)i ≈ 1
 
@@ -2631,7 +2625,7 @@ es: P(X \leq 1) = (
 10 10 )(0.1)0 (0.9)10 + ( )(0.1)1 (0.9)9 = 0.7361 1 0
 
 Esta probabilidad podemos aproximarla a través de una variable aleatoria
-Poisson con parámetro λ = np = 10 ⋅ 0.1 = 1. Asi es la probabilidad
+Poisson con parámetro λ = np = 10 \cdot 0.1 = 1. Asi es la probabilidad
 usando Poisson sería: e -1 + e -1 ≈ 0.7358 Observemos la precisión de
 esta aproximación, aun cuando n y p son valores no muy extremos. En
 otros contextos, esta aproximación puede ser de importancia fundamental,
@@ -2886,7 +2880,7 @@ Por otro lado: E {[}x{]} = ∫
 
 xf (x)dx
 
-x ⋅ 2xdx
+x \cdot 2xdx
 
 2 31 2 x ∣ = 3 0 3
 
@@ -2899,7 +2893,7 @@ Variables Aleatorias Continuas Para la varianza calculamos: E {[}X 2
 
 =∫
 
-x 2 ⋅ 2xdx
+x 2 \cdot 2xdx
 
 0
 
@@ -3160,7 +3154,7 @@ que: I2 = ∫
 
 2π 0
 
-dθ ⋅ ∫
+dθ \cdot ∫
 
 ∞
 
