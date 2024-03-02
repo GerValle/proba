@@ -6,10 +6,9 @@
 %\usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{tikz}
-\usepackage[most]{tcolorbox}
-
+%\usepackage[most]{tcolorbox}
+%\usepackage{tabularx}
 %\newcounter{ejemplo}[chapter] % Define a new counter tied to the chapter
-
 
 \usetikzlibrary{babel}
 \usetikzlibrary {positioning}
@@ -30,37 +29,11 @@
    \medskip
    }
 
-%TODO Mejorar este entorno
-
-\newenvironment{mybox}[2][This is a box]
-    {\begin{center}
-    Argument 1 (\#1)=#1\\[1ex]
-    \begin{tabular}{|p{\textwidth}|}
-    \hline\\
-    Argument 2 (\#2)=#2\\[2ex]
-    }
-    { 
-    \\\\\hline
-    \end{tabular} 
-    \end{center}
-    }
 
 \begin{document}
 
 
 \chapter{Introducción}
-
-
-\begin{mybox}[This is not the default value]{Some more preliminary text}
-This text is still \textit{inside} the environment.
-\end{mybox}
-
-\begin{tcolorbox}
- \textbf{Principio básico de conteo.}
-\tcblower
-Supongamos que dos experimentos son realizados. Si el experimento 1 puede resultar en una de $n$ formas posibles y para cada resultado del experimento 1 existen $m$ posibilidades para el experimento 2, entonces en conjunto existen $n\times m$ resultados para los dos experimentos.
-\end{tcolorbox}
-
 
 
 Existen multitud de fenómenos en la realidad que difícilmente pueden ser modelados con certeza. Ya sea por la complejidad de su naturaleza o
@@ -685,11 +658,11 @@ posibles resultados de un evento. Es aquí donde conviene analizar de
 mejor manera la situación y encontrar métodos que nos faciliten el
 conteo de elementos de un conjunto.
 
-\begin{tcolorbox}
- \textbf{Principio básico de conteo.}
-\tcblower
+
+\textbf{Principio básico de conteo.}
+
 Supongamos que dos experimentos son realizados. Si el experimento 1 puede resultar en una de $n$ formas posibles y para cada resultado del experimento 1 existen $m$ posibilidades para el experimento 2, entonces en conjunto existen $n\times m$ resultados para los dos experimentos.
-\end{tcolorbox}
+
   
 A menudo conviene ver esto con ``casillas''. En una casilla ponemos el número de posibilidades al seleccionar un elemento de un conjunto $A$ y en la otra el número de posibilidades al seleccionar un elemento de un conjunto $B$, si son $n$ y $m$ respectivamente, entonces en total podremos hacer $n\times m$ selecciones de los dos conjuntos. 
 
