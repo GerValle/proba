@@ -5,6 +5,8 @@
 \setlength{\parskip}{1em}
 %\usepackage{lmodern}
 \usepackage{amssymb,amsmath}
+\usepackage{array}
+\usepackage{booktabs}
 \usepackage{tikz}
 %\usepackage[most]{tcolorbox}
 %\usepackage{tabularx}
@@ -28,7 +30,7 @@
    %\end{quote}%
    \medskip
    }
-
+\decimalpoint
 
 \begin{document}
 
@@ -480,15 +482,7 @@ Esto lo verificamos al notar que:
                                  (3&, 6), (1, 3), (2, 3), (4, 3), (5, 3), (6, 3)\left.\right\}
     \end{split}
 \end{equation*}
-Un ejemplo un poco mas complicado. Recordemos que 
-$$
-A \triangle B = \text{Evento de obtener exactamente un tres}
-$$
-y sabemos que:
-$$
-A \triangle B = (A \setminus B) \cup (B \setminus A)
-$$
-pero además:
+Un ejemplo un poco mas complicado.c
 $$
 A = (A \cap B) \cup (A \setminus B)
 $$
@@ -690,299 +684,178 @@ Combinatoria Ejemplo.. La cantidad total de placas formadas con tres dígitos y 
 
 Ejemplo.. El número total de números telefónicos de 8 dígitos es igual a: $10 \cdot 10 \cdot 10 \cdot 10 \cdot 10 \cdot 10 \cdot 10 \cdot 10 = 100, 000, 000$ números. 
 
+Este ejemplo, aunque simple de más tal vez sirve para ejemplificar dos cosas importantes. Por un lado al igual que en el caso de las placas, también en este caso es válido repetir números. Además el orden es importante. Los números: 
+
+\begin{center}
+  55 - 21 - 28 - 35
+\end{center} 
+
+y 
+\begin{center}
+  55 - 82 - 12 - 35  
+\end{center}
+ 
+
+son números diferentes, comparten la misma selección de números, sin embargo la selección no esta en el mismo orden, por lo tanto son números diferentes. Adicionalmente, al realizar estas selecciones, las repeticiones están permitidas, el 5 aparece tres veces, mientras que el 2 aparece dos veces.
+
+El ejemplo anterior es en ejemplo claro de una selección con orden y reemplazo a partir de un conjunto con $n$ elementos. En general cuando seleccionamos $m$ elementos con orden y reemplazo de un conjunto con $n$ elementos, el número total de selecciones posibles es igual a $n\times m$ . Ejemplo. ¿Cual es el número total de subconjuntos de un conjunto con $k$ elementos? Existen varias formas de responder esta pregunta, aquí ofrecemos una alternativa: supongamos establecemos un orden en los elementos del conjunto y formamos un vector: $(x_1 , x_2,\ldots, x_k )$ donde $x_i = 1$ si el $i$-ésimo elemento es seleccionado y $xi = 0$ si el $i$-ésimo elemento no es seleccionado.
+
+Entonces por ejemplo el vector compuesto por puros ceros significa que no hemos seleccionado ningún elemento, lo cual sería equivalente al conjunto vacío. Mientras que el vector compuesto solamente por unos significa que hemos seleccionado todos los elementos del conjunto, hemos seleccionado al conjunto original. Supongamos por un momento que el conjunto tiene 5 elementos. El vector: 
+$$
+(1, 1, 0, 0, 0)
+$$ 
+indica que hemos seleccionado el subconjunto formado por los dos primeros elementos del conjunto original, mientras que el vector: 
+$$
+(0, 1, 1, 0, 0)
+$$
+esta asociado al conjunto compuesto por el segundo y tercer elementos del conjunto original.
+
+Asi el problema de contar el número de subconjuntos se traduce a encontrar el número posible de vectores $(x1 , x2 , . . . , xk
+)$ con $x_i \in \{0, 1\}$. Como cada $x_i$ es seleccionado de un conjunto con dos elementos, entonces el número total de este tipo de vectores es igual a $2_k$ . 
+
+Ejemplo. Supongamos que tenemos el conjunto $A = \{1, 2, 3\}$. ¿De cuantas formas podemos ordenar al conjunto $A$?. El conjunto $A$ es lo suficientemente pequeño como para enlistar todos los posibles ordenamientos: 
+\begin{align*}
+    \{1, 2, 3\}&\ &\{1, 3, 2\}&\ &\{2, 1, 3\}\\    
+    \{2, 3, 1\}&\ &\{3, 2, 1\}&\ &\{3, 1, 2\}
+\end{align*}
+
+El conjunto $A$ es lo suficientemente pequeño como para que estemos seguros de haber enlistado todos los posibles ordenamientos con lo cual, afirmamos que el numero total de ordenamientos del conjunto $A$ es igual a 6 . Sin embargo para un conjunto mas grande, esta estrategia quizás no sea la mas indicada. ¿Cómo llegamos a la misma conclusión sin necesidad de enlistar todos los posibles ordenamientos? En realidad estamos formando triadas del estilo: 
+$$
+(x_1, x_2, x_3)
+$$
+donde $x_i \in A$. Con la peculiaridad de que $x_1$ puede ser cualquier elemento de $A$, mientras que $x_2$, pude ser cualquier elemento de $A$ excepto el que ya asignamos a $x_1$ . Asimismo $x_3$ puede ser cualquier elemento de $A$ excepto los ya asignados a $x_1$ y $x_2$ . De este modo, $x_1$ puede seleccionarse de una de tres formas posibles, $x_2$ puede seleccionarse de una de dos formas posibles y $x_3$ solo puede seleccionarse de una única forma. En total podremos ordenar $A$ de: 
+$$
+3! = 3 \cdot 2 \cdot 1 = 6
+$$
+formas.
+
+En general un conjunto con $n$ elementos se puede ordenar de 
+$$n! = n \cdot (n - 1) \cdot (n - 2)\cdots 1
+$$ 
+formas posibles.  El siguiente ejemplo se resuelve con una pequeña variación del argumento que hemos usado hasta este momento: 
+co letras podemos formar? ¿Cuantas si las letras no pueden repetirse? Para resolver este problema primero debemos notar que una palabra de 4 letras será cualquier sucesión de cuatro letras, el resultado no tiene que ser necesariamente una palabra del diccionario. Así por ejemplo `abcd' es una `palabra'. En realidad buscamos el numero de vectores del tipo. $(x_1 , x_2 , x_3 , x_4 )$ donde cada $x_i$ es alguna de las 26 letras del abecedario. En este caso el número de palabras será $26^4$. 
+
+¿Que pasa si no podemos repetir letras? Obviamente en este caso palabras como $aabc$ no son válidas. Ahora al componer los vectores 
+$$
+(x_1, x_2, x_3, x_4)
+$$ 
+$x_1$ podrá seleccionarse de una de 26 formas posibles, $x_2$ de 1 de 25 posibles, $x_3$ de una de 24 formas posibles y $x_4$ de una de 23 formas posibles, esto con la finalidad de no repetir letras. En total tendremos 
+$$
+26 \cdot 25 \cdot 24 \cdot 23 = \frac{26!}{22!} = \frac{26!}{(26 - 4)!} = = 358,800 
+$$
+formas de armar una palabra de cuatro letras que no repita letras.
+
+En general si queremos formar palabras de m letras tendremos un total de 26m palabras si es que podemos repetir letras. Si no podemos repetir letras, entonces podremos formar un total de total de
+$$
+26! (26 - m)!
+$$ 
+palabras. Observemos que este último caso solo tiene sentido solo si $m \leq 26$. Por último, cuando permitimos repetición de letras decimos que hacemos una selección con orden y con reemplazo. Lo de reemplazo, creo que es claro, lo de orden también si consideramos que $aabc$ y $abac$ por ejemplo, son palabras diferentes aunque sean palabras formadas por las mismas letras.
+
+Por el contrario, cuando la repetición de letras no esta permitida entonces decimos que hicimos una selección con orden y sin reemplazo. Nuevamente, creo que es claro la parte de `sin reemplazo', pero también el orden si consideramos que las palabras $abcd$ y $bacd$ son diferentes a pesar de tener las mismas letras. En general; si tenemos un conjunto con $n$ elementos el número total de selecciones de $m$ elementos, con orden y con reemplazo es igual a 
+$$
+n\times m
+$$
+en contraste; el número total de selecciones con orden y sin reemplazo es igual a: 
+$$
+n! (n - m)!
+$$
+Observemos que en este caso es necesario que $m \leq n$. 
+
+Ejemplo. Tengo 6 discos de rock, 4 de música clásica y 3 de música regional. ¿De cuantas formas puedo ordenar mis discos de modo que los discos del mismo género estén en posiciones contiguas? 
+
+Los discos de rock pueden ordenarse de $6!$ formas, los de música clásica pueden ordenarse de $4!$ formas y los de música regional de $3!$ formas, por lo tanto, puedo ordenar mis discos de $6!4!3!$ formas ¿cierto? Falta un detalle\dots también podemos intercambiar los géneros! Podemos colocar primero los de rock, luego los regionales y finalmente los de música clásica. Otra posibilidad es poner primero los de música clásica, luego los regionales y al final los de rock\dots es decir falta contar las formas en que podemos ordenar los géneros. Esto lo hacemos de $3!$ formas. Por lo tanto el número que en realidad estoy buscando es: 
+$$
+3!6!4!3!
+$$
+
+Ejemplo. En un club con 25 miembros, deben ser seleccionados el presidente, el secretario y el tesorero. Cualquier miembro del club puede ser candidato a alguna de estas posiciones. ¿De cuantas formas podemos realizar la selección? Tenemos 25 posibilidades para el puesto de presidente. Sin embargo una vez seleccionado este, solo tenemos 24 posibilidades para el puesto de secretario y una vez seleccionados presidente y secretario solo quedan 23 posibilidades para el tesorero, por lo tanto tenemos: 
+$$
+25 \cdot 24 \cdot 23 = \frac{25!}{22!} = 13,800 
+$$
+formas de seleccionar presidente, secretario y tesorero.
+
+Ejemplo. Supongamos que queremos formar un equipo de superheroes. Están disponibles, Hulk, Ironman, Spiderman, Wolverine y Deadpool.
+
+de estos superhéroes queremos formar un equipo de solo tres. ¿Cuantos equipos de tres podemos formar? Una primera aproximación sería pensar que para la primera selección tenemos 5 posibilidades, para la segunda tendríamos sólo 4 y para la tercera solo 2. Por lo tanto el número total de equipos que podemos formar es igual a: 
+$$
+5\cdot4\cdot3=\frac{5!}{(5 - 3)!} = 60   
+$$
+
+\begin{center}
+¿Es correcto?  
+\end{center}
+
+Hemos hecho un selección de tres elementos tomados de un conjunto de cinco elementos. Sin embargo hemos realizado una selección sin reemplazo y con orden. Esta claro que la selección debe ser sin reemplazo, para formar un equipo, no podemos repetir a ningún superheroe, sin embargo ¿que pasa con el orden? Supongamos que seleccionamos a Hulk a Ironman y a Wolverine. Notemos que en la forma en que realizamos la cuenta, dado que lo hicimos con orden, hemos considerado los siguientes equipos como si fueran diferentes:
+
+Observemos sin embargo que los seis equipos que enlistamos son en realidad el mismo. Son solo los 6 posibles ordenamientos de los 3 miembros seleccionados, es decir $3!$. Para evitar estas repeticiones debemos dividir nuestra estimación original entre $3!$, de modo que el número total de equipos es en realidad: 
+$$
+\frac{5!}{3!(5 - 3)!} = 10
+$$  
+Este ultimo cociente es tan importante que tenemos una notación especial para el mismo: 
+
+$$
+\binom{5}{3}= \frac{5!}{3!(5 - 3)!}
+$$
+
+En general para $m \leq n$:
+$$
+\binom{n}{m}=  \frac{n!}{m!(n - m)!}
+$$
+y se lee como las combinaciones de $n$ en $m$. Del ejemplo que estudiamos, deberíamos llegar a la conclusión de que este cociente son las formas en las que podemos construir un subconjunto de $m$ elementos a partir de un conjunto con $n$ elementos sin orden y sin reemplazo. 
+
+Ejemplo. Ahora vamos a un ejemplo un poco mas retador. Supongamos que tenemos un mazo de 52 cartas que una vez que es barajado cuidadosamente es repartido entre cuatro jugadores. Cada jugador tendrá 13 cartas que le fueron repartidas aleatoriamente. Nos interesa conocer cual es la probabilidad de que cada jugador haya recibido exactamente un As.
+
+Dado que el mazo fue barajado con cuidado, podemos suponer que cualquier combinación posible de las 52 cartas es igualmente probable. En vista de ello calcularemos la probabilidad solicitada dividiendo el número de casos favorables entre el número de casos totales. El problema entonces se traduce en responder dos preguntas: ¿Cuál es el número de casos favorables? y ¿Cuál es el número de casos totales? Comencemos por calcular el número de casos totales. ¿Que es lo que debemos contar? Notemos que en realidad lo que nos interesa es determinar la posición en que serán distribuidos los ases. Para ello consideremos el siguiente diagrama: 
+
+\begin{center}
+  FALTA DIAGRAMA
+\end{center}
+
+Cada casilla representa una posible carta asignada. Las primeras 13 casillas son las correspondientes al jugador uno, las casillas 14 a 26 son las cartas asignadas al jugador dos, de la 27 a la 39 las asignadas al jugador 3 y de la 40 a la 52 son las cartas repartidas al jugador 4. Esta repartición es completamente aleatoria y en principio una casilla cualquiera pude `recibir' cualquier carta del mazo. A nosotros lo que realmente nos interesa es la repartición de los ases, por lo tanto estamos interesados en la manera que estos ases son repartidos entre las 52 casillas. Una posible repartición sería la siguiente:
+
+
+Notemos que esta asignación, si bien es posible, no es `favorable'. El As de corazones fue asignado al jugador 1, el de tréboles al jugador 4 pero el as de espadas y el de diamantes fueron asignados al jugador 2, mientras que el jugador 3 no tiene ningún As En cambio la asignación:
+
+es una asignación `favorable' ya qua cada jugador tiene asignado exactamente un As.
+
+En conclusión, para contar el número de casos totales, lo único que nos interesa es distribuir los cuatro ases en alguna de las 52 casillas posibles. Esto significa seleccionar 4 casillas de las 52 posibles, si importar a que jugador corresponden. Tenemos por tanto que el número de casos totales es igual a:
+$$
+\binom{52}{4}
+$$
+Para obtener el número de casos favorables, tenemos que limitarnos a aquellos en los cuales ya hay un as asignado en las posiciones del 1 al 13, otro en las posiciones del 14 al 26, uno más en las posiciones del 15 al 39 y el último en las posiciones del 40 al 52. Esto garantiza que cada jugador tiene asignado exactamente un As. Sin embargo notemos que cualquier As puede ser asignado a una de trece casillas posibles, de modo que el número casos favorables será $13^4$
+
+Finalmente la probabilidad que buscamos es: 
+$$
+\frac{13^4}{\binom{52}{4}}  \approx 0.1055
+$$
+
+Como subproducto, observemos que si esta es la probabilidad de que cada jugador tenga exactamente un As, entonces el complemento es el evento de que algún jugador tenga al menos dos ases. La probabilidad de este segundo evento sería entonces 
+$$
+1-\frac{13^4}{\binom{52}{4}} \approx 0.8945 
+$$
+
+Hemos deducido varias formas de contar posibles selecciones de un conjunto, la siguiente tabla muestra un resumen de lo conseguido hasta el momento. El número se selecciones de $m$ elementos a partir de un conjunto con $n$ elementos es igual a:
+%\renewcommand{\arraystretch}{3} 
+\begin{center}
+\begin{table}
+  \begin{tabular}{c|c|c|}
+    \multicolumn{1}{c}{}          & \multicolumn{1}{c}{Con reemplazo} & \multicolumn{1}{c}{Sin reemplazo}\\[0.5ex] \cline{2-3}
+    \multicolumn{1}{c|}{Con orden} & $n^m$ & $\frac{n!}{(n-m)!}$\\[0.5ex]\cline{2-3}
+    \multicolumn{1}{c|}{Sin orden} & ?     & $\binom{n}{m} = \frac{n!}{m!(n-m)!}=\binom{n}{n-m}$\\\cline{2-3}
+  \end{tabular}
+\end{table}
+\end{center}
+
 
 \end{document}
 
 
 
 
-Combinatoria Este ejemplo, aunque simple de más tal vez sirve para
-ejemplificar dos cosas importantes. Por un lado al igual que en el caso
-de las placas, también en este caso es válido repetir números. Además el
-orden es importante. Los números: 55 - 21 - 28 - 35 y 55 - 82 - 12 - 35
-son números diferentes, comparten la misma selección de números, sin
-embargo la selección no esta en el mismo orden, por lo tanto son números
-diferentes. Adicionalmente, al realizar estas selecciones, las
-repeticiones están permitidas, el 5 aparece tres veces, mientras que el
-2 aparece dos veces.
 
-Combinatoria El ejemplo anterior es en ejemplo claro de una sleccion
-con orden y reemplazo a partir de un conjunto con n elementos. En
-general cuando seleccionamos m elementos con orden y reemplazo de un
-conjunto con n elementos, el número total de selecciones posibles es
-igual a nm . Ejemplo. ¿Cual es el número total de subconjuntos de un
-conjunto con k elementos? Existen varias formas de responder esta
-pregunta, aquí ofrecemos una alternativa: supongamos establecemos un
-orden en los elementos del conjunto y formamos un vector: (x1 , x2 , . .
-. , xk )
 
-donde xi = 1 si el i -ésimo elemento es seleccionado y xi = 0 si el i
--ésimo elemento no es seleccionado.
 
-Combinatoria Entonces por ejemplo el vector compuesto por puros ceros
-significa que no hemos seleccionado ningún elemento, lo cual sería
-equivalente al conjunto vacío. Mientras que el vector compuesto por unos
-es que hemos seleccionado todos los elementos del conjunto, hemos
-seleccionado al conjunto original. Supongamos por un momento que el
-conjunto tiene 5 elementos. El vector: (1, 1, 0, 0, 0) indica que hemos
-seleccionado el subconjunto formado por los dos primeros elementos del
-conjunto original, mientras que el vector: (0, 1, 1, 0, 0) esta asociado
-al conjunto compuesto por el segundo y tercer elementos del conjunto
-original.
 
-Combinatoria Asi el problema de contar el número de subconjuntos se
-traduce a encontrar el número posible de vectores (x1 , x2 , . . . , xk
-)
-
-con xi \in \{0, 1\}. Como cada xi es seleccionado de un conjunto con dos
-elementos, entonces el número total de este tipo de vectores es igual a
-2k . Ejemplo. Supongamos que tenemos el conjunto A = \{1, 2, 3\}. ¿De
-cuantas formas podemos ordenar al conjunto A?. El conjunto A es lo
-suficientemente pequeño como para enlistar todos los posibles
-ordenamientos: \{1, 2, 3\}
-
-\{1, 3, 2\}
-
-\{2, 1, 3\}
-
-\{2, 3, 1\}
-
-\{3, 2, 1\}
-
-\{3, 1, 2\}
-
-Combinatoria El conjunto A es lo suficientemente pequeño como para que
-estemos seguros de haber enlistado todos los posibles ordenamientos con
-lo cual afirmamos que el numero total de ordenamientos del conjunto A es
-igual a 6 . Sin embargo para un conjunto mas grande, esta estrategia
-quizás no sea la mas indicada. ¿Cómo llegamos a la misma conclusión sin
-necesidad de enlistar todos los posibles ordenamientos? En realidad
-estamos formando triadas del estilo: (x1 , x2 , x3 )
-
-donde xi \in A. Con la peculiaridad de que x1 puede ser cualquier elemento
-de A, mientras que x2 , pude ser cualquier elemento de A excepto el que
-ya asignamos a x1 . Asimismo x3 puede ser cualquier elemento de A
-excepto los ya asignados a x1 y x2 . De este modo, x1 puede
-seleccionarse de una de tres formas posibles, x2 puede seleccionarse de
-una de dos formas posibles y x3 solo puede seleccionarse de una única
-forma. En total podremos ordenar A de: 3! = 3 \cdot 2 \cdot 1 = 6 formas
-
-Combinatoria En general un conjunto con n elementos se puede ordenar de
-n! = n \cdot (n - 1) \cdot (n - 2)⋯1 formas posibles. El siguiente ejemplo se
-resuelve con una pequeña variación del argumento que hemos usado hasta
-este momento: Ejemplo. ¿Cuantas palabras de cuatro letras podemos
-formar? ¿Cuantas si las letras no pueden repetirse? Para resolver este
-problema primero debemos notar que una palabra de 4 letras será
-cualquier sucesión de cuatro letras, el resultado no tiene que ser
-necesariamente una palabra del diccionario. Asi por ejemplo `abcd' es
-una `palabra'. En realidad buscamos el numero de vectores del tipo. (x1
-, x2 , x3 , x4 ) donde cada xi es alguna de las 26 letras del
-abecedario. En este caso el número de palabras será 264 
-
-Combinatoria ¿Que pasa si no podemos repetir letras? Obviamente en este
-caso palabras como aabc no son válidas. Ahora al componer los vectores
-(x1 , x2 , x3 , x4 ) x1 podrá seleccionarse de una de 26 formas
-posibles, x2 de 1 de 25 posibles, x3 de una de 24 formas posibles y x4
-de una de 23 formas posibles, eso con la finalidad de no repetir letras.
-En total tendremos 26 \cdot 25 \cdot 24 \cdot 23 =
-
-26! 26! = = 358, 800 22! (26 - 4)!
-
-formas de armar una palabra de cuatro letras que no repita letras.
-
-Combinatoria En general si queremos formar palabras de m letras
-tendremos un total de 26m palabras si es que podemos repetir letras. Si
-no podemos repetir letras, entonces podremos formar un total de total de
-26! (26 - m)!
-
-palabras. Observemos que este último caso solo tiene sentido solo si m \leq
-26. Por último, cuando permitimos repetición de letras decimos que
-hacemos una selección con orden y con reemplazo. Lo de reemplazo, creo
-que es claro, lo de orden también si consideramos que aabc y abac por
-ejemplo, son palabras diferentes aunque sean palabras formadas por las
-mismas letras. 
-
-Combinatoria Por el contrario, cuando la repetición de letras no esta
-permitida entonces decimos que hicimos una selección con orden y sin
-reemplazo. Nuevamente, creo que es claro la parte de `sin reemplazo',
-pero también el orden si consideramos que las palabras abcd y bacd son
-diferentes a pesar de tener las mismas letras. En general; si tenemos un
-conjunto con n elementos el número total de selecciones de m elementos,
-con orden y con reemplazo es igual a nm en contraste; el número total de
-selecciones con orden y sin reemplazo es igual a: n! (n - m)!
-
-Observemos que en este caso es necesario que m \leq n. 
-
-Combinatoria Ejemplo. Tengo 6 discos de rock, 4 de música clásica y 3
-de música regional. ¿De cuantas formas puedo ordenar mis discos de modo
-que los discos del mismo género estén en posiciones contiguas? Los
-discos de rock pueden ordenarse de 6! formas, los de música clásica
-pueden ordenarse de 4! formas y los de música regional de 3! formas, por
-lo tanto, puedo ordenar mis discos de 6!4!3! formas ¿cierto? Falta un
-detalle. . . también podemos intercambiar los géneros! Podemos colocar
-primero los de rock, luego los regionales y finalmente los de música
-clásica. Otra posibilidad es poner primero los de música clásica, luego
-los regionales y al final los de rock. . . es decir falta contar las
-formas en que podemos ordenar los géneros. Esto lo hacemos de 3! formas.
-Por lo tanto el número que en realidad estoy buscando es: 3!6!4!3!
-
-Combinatoria Ejemplo. En un club con 25 miembros, deben ser
-seleccionados el presidente, el secretario y el tesorero. Cualquier
-miembro del club puede ser candidato a alguna de estas posiciones. ¿De
-cuantas formas podemos realizar la selección? Tenemos 25 posibilidades
-para el puesto de presidente. Sin embargo una vez seleccionado este,
-solo tenemos 24 posibilidades para el puesto de secretario y una vez
-seleccionados presidente y secretario solo quedan 23 posibilidades para
-el tesorero, por lo tanto tenemos: 25 \cdot 24 \cdot 23 =
-
-25! = 13, 800 22!
-
-formas de seleccionar presidente, secretario y tesorero.
-
-Ejemplo. Supongamos que queremos formar un equipo de spuer heroes.
-Estan disponibles, Hulk, Ironman, Spiderman, Wolverine y Deadpool.
-
-de estos super héroes queremos formar un equipo de solo tres super
-héroes. ¿Cuantos equipos de tres podemos formar? Una primera
-aproximación sería pensar que para la primera selección tenemos 5
-posibilidades, para la segunda tendríamos sólo 4 y para la tercera solo
-2. Por lo tanto el número total de equipos que podemos formar es igual
-a: 5! = 60 5\cdot4\cdot3= (5 - 3)! ¿Es correcto?
-
-Combinatoria Hemos hecho un selección de tres elementos tomados de un
-conjunto de cinco elementos. Sin embargo hemos realizado una selección
-sin reemplazo y con orden. Esta claro que la selección debe ser sin
-reemplazo, para formar un equipo, no podemos repetir a ningún
-superheroe, sin embargo ¿que pasa con el orden? Supongamos que
-seleccionamos a Hulk a Ironman y a Wolverine. Notemos que en la forma en
-que realizamos la cuenta, dado que lo hicimos con orden, hemos
-considerado los siguientes equipos como si fueran diferentes:
-
-Combinatoria Observemos sin embargo que los seis equipos que enlistamos
-son en realidad el mismo. Son solo los 6 posibles ordenamientos de los 3
-miembros seleccionados, es decir 3!. Para evitar estas repeticiones
-debemos dividir nuestra estimación original entre 3!, de modo que el
-número total de equipos es en realidad: 5! = 10 3!(5 - 3)! Este ultimo
-cociente es tan importante que tenemos una notación especial para el
-mismo: 5! 5 ( )= 3!(5 - 3)! 3
-
-Combinatoria En general para m \leq n:
-
-n! n ( )= m m!(n - m)!
-
-y se lee como las combinaciones de n en m. Del ejemplo que estudiamos,
-deberíamos llegar a la conclusión de que este cociente son las formas en
-las que podemos construir un subconjunto de m elementos a partir de un
-conjunto con n elementos sin orden y sin reemplazo. Ejemplo. Ahora vamos
-a un ejemplo un poco mas retador. Supongamos que tenemos un mazo de 52
-cartas que una vez que es barajado cuidadosamente es repartido entre
-cuatro jugadores. Cada jugador tendrá 13 cartas que le fueron repartidas
-aleatoriamente. Nos interesa conocer cual es la probabilidad de que cada
-jugador haya recibido exactamente un As.
-
-Combinatoria Dado que el mazo fue barajado con cuidado, podemos suponer
-que cualquier combinación posible de las 52 cartas es igualmente
-probable. En vista de ello calcularemos la probabilidad solicitada
-dividiendo el número de casos favorables entre el número de casos
-totales. El problema entonces se traduce en responder dos preguntas:
-¿Cuál es el número de casos favorables? y ¿Cuál es el número de casos
-totales? Comencemos por calcular el número de casos totales. ¿Que es lo
-que debemos contar? Notemos que en realidad lo que nos interesa es
-determinar la posición en que serán distribuidos los ases. Para ello
-consideremos el siguiente diagrama: J1
-
-J2
-
-J3
-
-J4
-
-1 2 \ldots{}
-
-13 14 . . .
-
-26 27 . . .
-
-39 40 . . .
-
-52
-
-Combinatoria Cada casilla representa una posible carta asignada. Las
-primeras 13 casillas son las correspondientes al jugador uno, las
-casillas 14 a 26 son las cartas asignadas al jugador dos, de la 27 a la
-39 las asignadas al jugador 3 y de la 40 a la 52 son las cartas
-repartidas al jugador 4. Esta repartición es completamente aleatoria y
-en principio una casilla cualquiera pude `recibir' cualquier carta del
-mazo. A nosotros lo que realmente nos interesa es la repartición de los
-ases, por lo tanto estamos interesados en la manera que estos ases son
-repartidos entre las 52 casillas. Una posible repartición sería la
-siguiente:
-
-C5 
-
-C14
-
-C15 
-
-C52 
-
-Combinatoria Notemos que esta asignación, si bien es posible, no es
-`favorable'. El As de corazones fue asignado al jugador 1, el de
-tréboles al jugador 4 pero el as de espadas y el de diamantes fueron
-asignados al jugador 2, mientras que el jugador 3 no tiene ningún As En
-cambio la asignación:
-
-C5
-
-C14
-
-C27
-
-C52
-
-es una asignación `favorable' ya qua cada jugador tiene asignado
-exactamente un As.
-
-En conclusión, para contar el número de casos totales, lo único que nos
-interesa es distribuir los cuatro ases en alguna de las 52 casillas
-posibles. Esto significa seleccionar 4 casillas de las 52 posibles, si
-importar a que jugador corresponden. Tenemos por tanto que el número de
-casos totales es igual a: 52 ( ) 4 Para obtener el número de casos
-favorables, tenemos que limitarnos a aquellos en los cuales ya hay un as
-asignado en las posiciones del 1 al 13, otro en las posiciones del 14 al
-26, uno más en las posiciones del 15 al 39 y el último en las posiciones
-del 40 al 52. Esto garantiza que cada jugador tiene asignado exactamente
-un As. Sin embargo notemos que cualquier As puede ser asignado a una de
-trece casillas posibles, de modo que el número casos favorables será 134
-
-Combinatoria Finalmente la probabilidad que buscamos es: 134 ≈ 0.1055
-(52 ) 4
-
-Como subproducto, observemos que si esta es la probabilidad de que cada
-jugador tenga exactamente un As, entonces el complemento es el evento de
-que algún jugador tenga al menos dos ases. La probabilidad de este
-segundo evento sería entonces 1-
-
-134 ≈ 0.8945 (52 ) 4
-
-Combinatoria Hemos deducido varias formas de contar posibles
-selecciones de un conjunto, la siguiente tabla muestra un resumen de lo
-conseguido hasta el momento. El número se selecciones de m elementos a
-partir de un conjunto con n elementos es igual a: Con orden
-
-Sin orden
-
-Con reemplazo
-
-nm
-
-?
-
-Sin reemplazo
-
-n! (n-m)!
-
-n n! (m ) = m!(n-m)!
 
 Aún nos hace falta el caso con reemplazo y sin orden, por el momento lo
 dejaremos para más tarde. Antes algunas observaciones primero; en ambos
