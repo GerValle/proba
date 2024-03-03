@@ -845,7 +845,61 @@ Hemos deducido varias formas de contar posibles selecciones de un conjunto, la s
   \end{tabular}
 \end{table}
 \end{center}
+Aún nos hace falta el caso con reemplazo y sin orden, por el momento lo dejaremos para más tarde. Antes algunas observaciones: en ambos casos en los cuales la selección se realiza sin reemplazo, es necesario que $m \leq n$.  En el caso en el que realizamos una selección sin orden y sin reemplazo, en realidad lo que estamos haciendo es contar las formas en que podemos construir un subconjunto de m elementos a partir de un conjunto con n elementos. Pero más aún dado que 
+$$
+\binom{n}{m} = \frac{n!}{m!(n-m)!}=\binom{n}{n-m}
+$$
 
+Deducimos que el número de subconjuntos con $m$ elementos es igual al número de subconjuntos con $n-m$ elementos. Dicho de otro modo; al hacer una selección sin orden y sin reemplazo, implícitamente estamos contando el numero de formas en que podemos dividir al conjunto original en un par de conjuntos; uno con $m$ elementos y otro con $n - m$ elementos. El siguiente ejemplo nos da una generalización de esta conclusión.
+
+Previamente dimos un argumento satisfactorio para calcular el número de subconjunto de un subconjunto con n elementos. Ahora damos un argumento alternativo pero usando combinaciones. Esto lo logramos contando uno por uno, el numero de subconjuntos con cero elementos, el numero de conjuntos con un elemento, el número de conjuntos con dos elementos etc. La suma de todos ellos es el número total de subconjuntos, esto es: 
+$$
+\sum_{i =0}^n\binom{n}{i}
+$$
+Pero recordando el teorema del binomio: 
+$$
+(a + b)^n = \sum_{i =0}^n\binom{n}{i}a^ib^{n-i} 
+$$
+tenemos que
+$$
+\sum_{i =0}^n\binom{n}{i} = \sum_{i =0}^n\binom{n}{i}1^i1^{n-i} = (1+1)^n = 2^n
+$$
+
+Ejemplo. ¿De cuantas formas podemos ordenar las letras de la palabra $PEPPER$? Es claro que en esta palabra no es posible distinguir entre una $P$ y otra o entre una $E$ y otra. Sin embargo como primer paso, hagámos identificables a cada una de las letras: 
+$$
+PEPPER = P_1 E_1 P_2 P_3 E_2 R 
+$$
+En este caso tenemos $6!$ permutaciones de estas letras. Sin embargo observemos que las combinaciones: 
+$$
+PEPPER = P_2 E_2 P_1 P_3 E_1 R 
+$$
+y
+$$
+PEPPER = P_3 E_1 P_1 P_2 E_2 R
+$$
+son en realidad la misma combinación. 
+
+Esto último es sólo un ejemplo, otro ejemplo podría ser el siguiente, las combinaciones: 
+$$
+PPPEER = P_1 P_2 P_3 E_1 E_2 R
+$$
+y
+$$
+PPPEER = P_2 P_1 P_3 E_2 E_1 R
+$$
+
+son en realidad la misma combinación. Esto es al contar los ordenamientos con 6! estamos contando muchos casos repetidos. ¿Como calculamos los casos repetidos? Observemos que una vez que determinamos una combinación si intercambiamos de lugar una $P$ con otra el resultado es la misma `palabra'. Lo mismo ocurre con una $E$, si la cambio de lugar con otra E la palabra resultante no cambia. Solo tenemos una $R$, pero si hubiera mas de una, la conclusión sería idéntica.
+
+Es así que una vez que determinamos una ordenamiento de las letras, cualquier permutación de $P$s da lugar a la misma palabra, del mismo modo que cualquier permutación de $E$ da lugar a la misma palabra y como dijimos previamente, lo mismo ocurriría de existir mas de un $R$. Ahora bien, el número total de ordenamientos que podemos realizar con las $P$s es igual a $3!$, de las $E$s es $2!$ y de las $R$s es $1!$. De este modo el número de repeticiones es: $3! \cdot 2! \cdot 1!$ Por lo tanto, el número de ordenamientos que podemos realizar de la palabra $PEPPER$ es igual a $6! 3! \cdot 2! \cdot 1!$
+
+Este ejemplo es un caso particular del siguiente problema: si tenemos un conjunto con $n$ elementos, ¿de cuantas formas podemos construir una partición del conjunto en $k$ subconjuntos cada uno con $n_i$, $i = 1,\ldots, k$ elementos? Siguiendo misma lógica del ejemplo anterior, podríamos realizar esta partición de
+$$
+\frac{n!}{n_1!n_2!\cdots n_k!} 
+$$
+formas, con $n_1 + n_2 + \cdots + n_k = n$. A este cociente se le conoce como coeficiente multinomial el cual es una generalización del coeficiente binomial:
+$$
+\frac{n!}{m!(n-m)!}.
+$$
 
 \end{document}
 
@@ -854,80 +908,7 @@ Hemos deducido varias formas de contar posibles selecciones de un conjunto, la s
 
 
 
-
-
-
-Aún nos hace falta el caso con reemplazo y sin orden, por el momento lo
-dejaremos para más tarde. Antes algunas observaciones primero; en ambos
-casos en los cuales la selección se realiza sin reemplazo, es necesario
-que m \leq n. 
-
-Combinatoria En el caso en el que realizamos una selección sin orden y
-sin reemplazo, en realidad lo que estamos haciendo es contar las formas
-en que podemos construir un subconjunto de m elementos a partir de un
-conjunto con n elementos. Pero más aún dado que n n! n ) =( ( )= n-m
-m!(n - m)! m Deducimos que el número de subconjuntos con m elementos es
-igual al número de subconjuntos con n - m elementos. Dicho de otro modo;
-al hacer una selección sin orden y sin reemplazo, implícitamente estamos
-contando el numero de formas en que podemos dividir al conjunto original
-en un par de conjuntos; uno con m elementos y otro con n - m elementos.
-El siguiente ejemplo nos da una generalización de esta conclusión.
-
-Combinatoria Previamente dimos un argumento satisfactorio para calcular
-el número de subconjunto de un subconjunto con n elementos. Ahora damos
-un argumento alternativo pero usando combinaciones. Esto lo logramos
-contando uno por uno, el numero de subconjuntos con cero elementos, el
-numero de conjuntos con un elementos, el número de conjuntos con dos
-elementos etc. La suma de todos ellos es el número total de
-subconjuntos, esto es: n n \sum( ) i =0 i Pero recordando el teorema del
-binomio: n n (a + b)n = \sum ( )ai b n-i i =0 i
-
-tenemos que
-
-n n n i n-i n n n \sum ( ) = \sum ( )1 1 = (1 + 1) = 2 i i i =0 i =0
-
-Combinatoria Ejemplo. ¿De cuantas formas podemos ordenar las letras de
-la palabra PEPPER? Es claro que en esta palabra no es posible distinguir
-entre una P y otra o entre una E y otra. Sin embargo como primer paso,
-hagámos identificables a cada una de las letras: PEPPER = P1 E1 P2 P3 E2
-R En este caso tenemos 6! permutaciones de estas letras. Sin embargo
-observemos que las combinaciones: PEPPER = P2 E2 P1 P3 E1 R y
-
-PEPPER = P3 E1 P1 P2 E2 R
-
-son en realidad la misma combinación. 
-
-Combinatoria Esto último es sólo un ejemplo, otro ejemplo podría ser el
-siguiente, las combinaciones: PPPEER = P1 P2 P3 E1 E2 R y
-
-PPPEER = P2 P1 P3 E2 E1 R
-
-son en realidad la misma combinación.~Esto es al contar los
-ordenamientos con 6! estamos contando muchos casos repetidos. ¿Como
-cálculamos los casos repetidos? Observemos que una vez que determinamos
-una combinación si intercambiamos de lugar una P con otra el resultado
-es la misma `palabra'. Lo mismo ocurre con una E , si la cambio de lugar
-con otra E la palabra resultante no cambia. Solo tenemos una R, pero si
-hubiera mas de una, la conclusión sería idéntica.
-
-Combinatiria Es asi que una vez que determinamos una ordenamiento de
-las letras, cualquier permutación de Ps da lugar a la misma palabra, del
-mismo modo que cualquier permutación de E da lugar a la misma palabra y
-como dijimos previamente, lo mismo ocurriría de existir mas de un R.
-Ahora bien, el número total de ordenamientos que podemos realizar con
-las Ps es igual a 3!, de las E s es 2! y de las Rs es 1!. De este modo
-el número de repeticiones es: 3! \cdot 2! \cdot 1! Por lo tanto, el número de
-ordenamientos que podemos realizar de la palabra PEPPER es igual a 6! 3!
-\cdot 2! \cdot 1!
-
-Combinatoria Este ejemplo es un caso particular del siguiente problema:
-si tenemos un conjunto con n elementos, ¿de cuantas formas podemos
-construir una partición al conjunto en k subconjuntos cada uno con ni ,
-i = 1, . . . , k elementos? Siguiendo misma lógica del ejemplo anterior,
-podríamos realizar esta partición de n! n1 !n2 !⋯nk ! con n1 + n2 + ⋯ +
-nk = n.~A este cociente se le conoce como coeficiente multinomial el
-cual es una generalización del coeficiente binomial: n! n ( )= m!(n -
-m)! m
+ 
 
 Combinatoria
 
