@@ -32,6 +32,9 @@
    }
 \decimalpoint
 
+
+\title{Notas de Probabilidad}
+
 \begin{document}
 
 
@@ -57,29 +60,29 @@ En un contexto de orden mas probabilístico; supongamos que un inversionista est
 
 Matemáticamente; si denotamos con $S_t$ al precio del activo al tiempo $t$ entonces proponemos el modelo:
 $$
-S_{t+1} = \begin{cases}
-  uSt & u > 1 \\
-  dSt & 0 < d < 1
-\end{cases}
+  S_{t+1} = \begin{cases}
+    uSt & u > 1     \\
+    dSt & 0 < d < 1
+  \end{cases}
 $$
 
 Si todo ``empieza'' al tiempo $t$ entonces $S_{t+3}$ es desconocida al tiempo $t$ pero sabemos que puede tomar cualquiera de los valores:  $S_{t+3}= u^id^{3-i}$, $i = 0,\ldots, 3$.
 
 El problema es que no sabemos cual de ellos tomará. No importa, podemos modelar el precio del activo al tiempo $t + 3$ como un experimento aleatorio. ¿cual sería en este caso el espacio muestral?
 
-No es la única posibilidad, pero una buen idea sería definir el espacio muestral en términos de las alzas y bajas del activo: $\Omega = \{w = (x_1 , x_2, x_3 ):x_i \in \{u, d\}, i = 1, 2, 3\}$. Así por ejemplo si $w = (u, u, d)$ entonces sabemos que en $t + 3$ el 
+No es la única posibilidad, pero una buen idea sería definir el espacio muestral en términos de las alzas y bajas del activo: $\Omega = \{w = (x_1 , x_2, x_3 ):x_i \in \{u, d\}, i = 1, 2, 3\}$. Así por ejemplo si $w = (u, u, d)$ entonces sabemos que en $t + 3$ el
 precio del activo es $u^2dSt$ . Pero si $w = (d, d, d)$ entonces $S_{t+3} = d^3St$ En resumen, el conjunto $\Omega$, reúne
 todos los escenarios posibles. De acuerdo con nuestro modelo, solo las alternativas que están en $\Omega$ pueden ocurrir. Cualquier otra cosa es imposible. Aun que no sabemos cual $w \in \Omega$ ocurrirá, al menos hemos
 delimitado las posibilidades.
 
-El modelo que hemos propuesto, si bien simple, es un modelo muy popular en el medio financiero. En la práctica se usa tal cual lo describimos, usualmente con un mayor número de periodos, pero fuera de ello sin cambio alguno. Por muy simple que parezca de primera instancia, es un modelo muy adecuado para resolver algunos tipos de problemas en finanzas. Claro esta que no es el único modelo de uso extendido para modelar precios de activos. Una alternativa quizás mas ambiciosa seria suponer que a lo largo de los tres días de operación, el activo puede tomar cualquier valor no negativo, en tal caso: $\Omega = R^+$. Sirva esto para hacer notar que $\Omega$ puede tomar formas muy variadas, desde conjuntos sencillos, pequeños y finitos, hasta conjuntos infinitos no numerables. 
+El modelo que hemos propuesto, si bien simple, es un modelo muy popular en el medio financiero. En la práctica se usa tal cual lo describimos, usualmente con un mayor número de periodos, pero fuera de ello sin cambio alguno. Por muy simple que parezca de primera instancia, es un modelo muy adecuado para resolver algunos tipos de problemas en finanzas. Claro esta que no es el único modelo de uso extendido para modelar precios de activos. Una alternativa quizás mas ambiciosa seria suponer que a lo largo de los tres días de operación, el activo puede tomar cualquier valor no negativo, en tal caso: $\Omega = R^+$. Sirva esto para hacer notar que $\Omega$ puede tomar formas muy variadas, desde conjuntos sencillos, pequeños y finitos, hasta conjuntos infinitos no numerables.
 
 En ciertas circunstancias una adecuada
 definición del espacio muestral, puede ser la diferencia entre resolver o no un problema. El siguiente es un buen ejemplo de esto
 
 \noindent\hrulefill
 
-Consideremos el juego de la ``Catafixia''. Un concursante llega al final de un programa cargado de premios. Sin embargo, se le ofrece la posibilidades de entrar a la ``catafixia''. Si entra entonces le son presentadas tres cortinas diferentes. Sabemos que detrás de una de ellas existe un premio sumamente deseable... el premio mayor digamos. Detrás de las dos restantes, existen premios indeseables. Si abrimos alguna de estas cortinas, perdemos los premios con los que llegamos al final del programa y nos vamos con cualquier cosa que hubiese detrás de la cortina seleccionada. ¿Entramos a la catafixia? Pensemos por un momento... si entramos tenemos un tercio de probabilidad de obtener el ``premio mayor'' ¿Estamos dispuestos a arriesgar los premios que ya ganamos? 
+Consideremos el juego de la ``Catafixia''. Un concursante llega al final de un programa cargado de premios. Sin embargo, se le ofrece la posibilidades de entrar a la ``catafixia''. Si entra entonces le son presentadas tres cortinas diferentes. Sabemos que detrás de una de ellas existe un premio sumamente deseable... el premio mayor digamos. Detrás de las dos restantes, existen premios indeseables. Si abrimos alguna de estas cortinas, perdemos los premios con los que llegamos al final del programa y nos vamos con cualquier cosa que hubiese detrás de la cortina seleccionada. ¿Entramos a la catafixia? Pensemos por un momento... si entramos tenemos un tercio de probabilidad de obtener el ``premio mayor'' ¿Estamos dispuestos a arriesgar los premios que ya ganamos?
 
 Decidimos entrar, seleccionamos una de la cortinas. Sin embargo, antes de abrir la cortina seleccionada, Chabelo nos ofrece una alternativa. Abre una de las dos cortinas que no fueron seleccionadas, una detrás de la cual se encuentra uno de los premios ``broma''. Nos encontramos entonces con una nueva situación; el premio mayor esta detrás de la cortina que seleccionamos o bien detrás de la cortina que Chabelo dejo cerrada. Se nos ofrece entonces la posibilidad de cambiar nuestra
 decisión ¿Lo hacemos? En realidad si llegamos a este punto cambiar de cortina es irrelevante,  ahora la posibilidad que tenemos de ganar es de un medio. Problema resuelto. ¿o no?
@@ -98,25 +101,25 @@ momento no tenemos ninguna razón para seleccionar una cortina sobre
 otra. Después de esta primera selección, puede ocurrir una de las siguientes cosas
 
 \begin{enumerate}
-	\item Seleccionamos la cortina 1. 
-	\begin{enumerate}
-		\item Chabelo abre la cortina 2. Cambiamos por la 3. Perdemos
-		\item Chabelo abre la
-cortina 3. Cambiamos por la 2. Perdemos
-	\end{enumerate}
-	\item Seleccionamos la cortina 2. Chabelo abre la cortina 3. Cambiamos por la
-1. ganamos
-	\item Seleccionamos la cortina 3. Chabelo abre la cortina 2. Cambiamos por la
-1. ganamos
+  \item Seleccionamos la cortina 1.
+        \begin{enumerate}
+          \item Chabelo abre la cortina 2. Cambiamos por la 3. Perdemos
+          \item Chabelo abre la
+                cortina 3. Cambiamos por la 2. Perdemos
+        \end{enumerate}
+  \item Seleccionamos la cortina 2. Chabelo abre la cortina 3. Cambiamos por la
+        1. ganamos
+  \item Seleccionamos la cortina 3. Chabelo abre la cortina 2. Cambiamos por la
+        1. ganamos
 \end{enumerate}
- 
+
 Ante estas circunstancias, parece razonable el
-siguiente espacio muestral: 
+siguiente espacio muestral:
 $$\Omega = \{(1, 2, 3, P), (1, 3, 2, P), (2, 3, 1,
-G ), (3, 2, 1, G )\}$$
- Efectivamente, si seleccionamos la cortina 2, es
+  G ), (3, 2, 1, G )\}$$
+Efectivamente, si seleccionamos la cortina 2, es
 equivalente en nuestro espacio muestral a haber seleccionado: $\omega = (2, 3,
-1, G )$ Es decir seleccionamos la cortina 2, nos abren la 3, cambiamos a
+  1, G )$ Es decir seleccionamos la cortina 2, nos abren la 3, cambiamos a
 la 1 y en consecuencia ganamos! Notemos que si seleccionamos la uno,
 entonces se derivan dos posibilidades, en función de la cortina que nos
 abran en segunda instancia.
@@ -136,236 +139,236 @@ Una vez que hemos comprendido la idea de espacio muestral,
 debemos trabajar en establecer cierto orden sobre el mismo. Un orden que
 nos permita extraer información valiosa. Información que nos conduzca a
 cálculos mas precisos. Para este fin retomemos el ejemplo de los precios
-de activos. Habíamos propuesto el espacio de estados: 
+de activos. Habíamos propuesto el espacio de estados:
 $$
-\Omega = \{w = (x_1, x_2, x_3 ) : x_i \in \{u, d\}, i = 1, 2, 3\} 
+  \Omega = \{w = (x_1, x_2, x_3 ) : x_i \in \{u, d\}, i = 1, 2, 3\}
 $$
 
-Para lo que intentamos exponer a continuación, conviene escribir este espacio de manera explícita: 
+Para lo que intentamos exponer a continuación, conviene escribir este espacio de manera explícita:
 
 \begin{equation*}
-\begin{split}
-\Omega = & \left\{(uuu), (uud), (udu), (udd), \right.\\
-         & \phantom{\{}\left.(ddd), (ddu),(dud), (duu)\right\}
-\end{split}
+  \begin{split}
+    \Omega = & \left\{(uuu), (uud), (udu), (udd), \right.\\
+    & \phantom{\{}\left.(ddd), (ddu),(dud), (duu)\right\}
+  \end{split}
 \end{equation*}
 
 
 Una representación gráfica de este problema la tenemos a continuación:
 
-\begin{center}	
-\begin{tikzpicture}
-  [nodo/.style={}]
-  \node (o) at (0, 0)[nodo] {$S_t$};
-  
-  \node (u) at (2, 2)[nodo] {$uS_t$};
-  \node (d) at (2,-2)[nodo] {$dS_t$};
-  
-  \node (uu) at (4, 3) [nodo] {$uuS_t$};
-  \node (ud) at (4, 1) [nodo] {$udS_t$};
-  \node (du) at (4,-1) [nodo] {$duS_t$};
-  \node (dd) at (4,-3) [nodo] {$ddS_t$};
+\begin{center}
+  \begin{tikzpicture}
+    [nodo/.style={}]
+    \node (o) at (0, 0)[nodo] {$S_t$};
 
-  \node (uuu) at (7, 3.5) [nodo] {$uuuS_t$};
-  \node (uud) at (7, 2.5) [nodo] {$uudS_t$};
-  \node (udu) at (7, 1.5) [nodo] {$uduS_t$};
-  \node (udd) at (7,  .5) [nodo] {$uddS_t$};
-  
-  \node (duu) at (7, -.5) [nodo] {$duuS_t$};
-  \node (dud) at (7,-1.5) [nodo] {$dudS_t$};
-  \node (ddu) at (7,-2.5) [nodo] {$dduS_t$};
-  \node (ddd) at (7,-3.5) [nodo] {$dddS_t$};
-  
-  \draw[->] (o)--(u);
-  \draw[->] (o)--(d);  
-  
-  \draw[->] (u)--(uu);
-  \draw[->] (u)--(ud);  
-  \draw[->] (d)--(du);
-  \draw[->] (d)--(dd);  
+    \node (u) at (2, 2)[nodo] {$uS_t$};
+    \node (d) at (2,-2)[nodo] {$dS_t$};
 
-  \draw[->] (uu)--(uuu);
-  \draw[->] (uu)--(uud);  
-  \draw[->] (ud)--(udu);
-  \draw[->] (ud)--(udd);
-  \draw[->] (du)--(duu);
-  \draw[->] (du)--(dud);  
-  \draw[->] (dd)--(ddu);
-  \draw[->] (dd)--(ddd);
-  
-  \node (t)   at (0,-4.5) [nodo]{$S_t$};  
-  \node (t+1) at (2,-4.5) [nodo]{$S_{t+1}$};  
-  \node (t+2) at (4,-4.5) [nodo]{$S_{t+2}$};      
-  \node (t+3) at (7,-4.5) [nodo]{$S_{t+3}$};
-  \draw[-] (t)--(t+1)--(t+2) --(t+3);
-\end{tikzpicture}
+    \node (uu) at (4, 3) [nodo] {$uuS_t$};
+    \node (ud) at (4, 1) [nodo] {$udS_t$};
+    \node (du) at (4,-1) [nodo] {$duS_t$};
+    \node (dd) at (4,-3) [nodo] {$ddS_t$};
+
+    \node (uuu) at (7, 3.5) [nodo] {$uuuS_t$};
+    \node (uud) at (7, 2.5) [nodo] {$uudS_t$};
+    \node (udu) at (7, 1.5) [nodo] {$uduS_t$};
+    \node (udd) at (7,  .5) [nodo] {$uddS_t$};
+
+    \node (duu) at (7, -.5) [nodo] {$duuS_t$};
+    \node (dud) at (7,-1.5) [nodo] {$dudS_t$};
+    \node (ddu) at (7,-2.5) [nodo] {$dduS_t$};
+    \node (ddd) at (7,-3.5) [nodo] {$dddS_t$};
+
+    \draw[->] (o)--(u);
+    \draw[->] (o)--(d);
+
+    \draw[->] (u)--(uu);
+    \draw[->] (u)--(ud);
+    \draw[->] (d)--(du);
+    \draw[->] (d)--(dd);
+
+    \draw[->] (uu)--(uuu);
+    \draw[->] (uu)--(uud);
+    \draw[->] (ud)--(udu);
+    \draw[->] (ud)--(udd);
+    \draw[->] (du)--(duu);
+    \draw[->] (du)--(dud);
+    \draw[->] (dd)--(ddu);
+    \draw[->] (dd)--(ddd);
+
+    \node (t)   at (0,-4.5) [nodo]{$S_t$};
+    \node (t+1) at (2,-4.5) [nodo]{$S_{t+1}$};
+    \node (t+2) at (4,-4.5) [nodo]{$S_{t+2}$};
+    \node (t+3) at (7,-4.5) [nodo]{$S_{t+3}$};
+    \draw[-] (t)--(t+1)--(t+2) --(t+3);
+  \end{tikzpicture}
 \end{center}
 
 
 Consideremos el ejemplo donde $S_t = 4$, $u = 2$ y $d = 1/2$, con estos números el arbol resultante  Sería el siguiente:
 
-\begin{center}	
-\begin{tikzpicture}
-  [nodo/.style={}]
-  \node (o) at (0, 0)[nodo] {$4$};
-  
-  \node (u) at (2, 2)[nodo] {$8$};
-  \node (d) at (2,-2)[nodo] {$2$};
-  
-  \node (uu) at (4, 3) [nodo] {$16$};
-  \node (ud) at (4, 1) [nodo] {$4$};
-  \node (du) at (4,-1) [nodo] {$4$};
-  \node (dd) at (4,-3) [nodo] {$1$};
+\begin{center}
+  \begin{tikzpicture}
+    [nodo/.style={}]
+    \node (o) at (0, 0)[nodo] {$4$};
 
-  \node (uuu) at (7, 3.5) [nodo] {$32$};
-  \node (uud) at (7, 2.5) [nodo] {$8$};
-  \node (udu) at (7, 1.5) [nodo] {$8$};
-  \node (udd) at (7,  .5) [nodo] {$2$};
-  
-  \node (duu) at (7, -.5) [nodo] {$8$};
-  \node (dud) at (7,-1.5) [nodo] {$2$};
-  \node (ddu) at (7,-2.5) [nodo] {$2$};
-  \node (ddd) at (7,-3.5) [nodo] {$1/2$};
-  
-  \draw[->] (o)--(u);
-  \draw[->] (o)--(d);  
-  
-  \draw[->] (u)--(uu);
-  \draw[->] (u)--(ud);  
-  \draw[->] (d)--(du);
-  \draw[->] (d)--(dd);  
+    \node (u) at (2, 2)[nodo] {$8$};
+    \node (d) at (2,-2)[nodo] {$2$};
 
-  \draw[->] (uu)--(uuu);
-  \draw[->] (uu)--(uud);  
-  \draw[->] (ud)--(udu);
-  \draw[->] (ud)--(udd);
-  \draw[->] (du)--(duu);
-  \draw[->] (du)--(dud);  
-  \draw[->] (dd)--(ddu);
-  \draw[->] (dd)--(ddd);
-  
-  \node (t)   at (0,-4.5) [nodo]{$S_t$};  
-  \node (t+1) at (2,-4.5) [nodo]{$S_{t+1}$};  
-  \node (t+2) at (4,-4.5) [nodo]{$S_{t+2}$};      
-  \node (t+3) at (7,-4.5) [nodo]{$S_{t+3}$};
-  \draw[-] (t)--(t+1)--(t+2) --(t+3);
-\end{tikzpicture}
+    \node (uu) at (4, 3) [nodo] {$16$};
+    \node (ud) at (4, 1) [nodo] {$4$};
+    \node (du) at (4,-1) [nodo] {$4$};
+    \node (dd) at (4,-3) [nodo] {$1$};
+
+    \node (uuu) at (7, 3.5) [nodo] {$32$};
+    \node (uud) at (7, 2.5) [nodo] {$8$};
+    \node (udu) at (7, 1.5) [nodo] {$8$};
+    \node (udd) at (7,  .5) [nodo] {$2$};
+
+    \node (duu) at (7, -.5) [nodo] {$8$};
+    \node (dud) at (7,-1.5) [nodo] {$2$};
+    \node (ddu) at (7,-2.5) [nodo] {$2$};
+    \node (ddd) at (7,-3.5) [nodo] {$1/2$};
+
+    \draw[->] (o)--(u);
+    \draw[->] (o)--(d);
+
+    \draw[->] (u)--(uu);
+    \draw[->] (u)--(ud);
+    \draw[->] (d)--(du);
+    \draw[->] (d)--(dd);
+
+    \draw[->] (uu)--(uuu);
+    \draw[->] (uu)--(uud);
+    \draw[->] (ud)--(udu);
+    \draw[->] (ud)--(udd);
+    \draw[->] (du)--(duu);
+    \draw[->] (du)--(dud);
+    \draw[->] (dd)--(ddu);
+    \draw[->] (dd)--(ddd);
+
+    \node (t)   at (0,-4.5) [nodo]{$S_t$};
+    \node (t+1) at (2,-4.5) [nodo]{$S_{t+1}$};
+    \node (t+2) at (4,-4.5) [nodo]{$S_{t+2}$};
+    \node (t+3) at (7,-4.5) [nodo]{$S_{t+3}$};
+    \draw[-] (t)--(t+1)--(t+2) --(t+3);
+  \end{tikzpicture}
 \end{center}
 
-Lo primero que debemos notar es que el espacio de probabilidad que hemos propuesto describe cada una de las rutas en el árbol. Bien nos podríamos preguntar si es que es necesario tanto detalle. A final de cuentas solo estamos interesados en el resultado final, el precio al término de los tres días. De acuerdo con los parámetros seleccionados, el precio del activo al tiempo t + 3 solo puede tomar uno de los cuatro valores: 64, 16, 4 o 1. En este sentido, podríamos proponer un espacio de estados alternativo: 
+Lo primero que debemos notar es que el espacio de probabilidad que hemos propuesto describe cada una de las rutas en el árbol. Bien nos podríamos preguntar si es que es necesario tanto detalle. A final de cuentas solo estamos interesados en el resultado final, el precio al término de los tres días. De acuerdo con los parámetros seleccionados, el precio del activo al tiempo t + 3 solo puede tomar uno de los cuatro valores: 64, 16, 4 o 1. En este sentido, podríamos proponer un espacio de estados alternativo:
 $$
-\Omega = \{32, 16, 8, 4, 2, 1, 1/2\} 
+  \Omega = \{32, 16, 8, 4, 2, 1, 1/2\}
 $$
-¿Cuál es mejor? En realidad los dos pueden ser correctos, todo depende del problema que deseamos resolver. Sin embargo lo que si es claro es que el primer espacio que propusimos, contiene mayor información que el segundo. 
+¿Cuál es mejor? En realidad los dos pueden ser correctos, todo depende del problema que deseamos resolver. Sin embargo lo que si es claro es que el primer espacio que propusimos, contiene mayor información que el segundo.
 
 Pensemos por ejemplo, que ocurre si después de transcurridos los tres días, lo que ocurrió fueron tres alzas: $\omega = (u,
-u, u)$. En términos de los precios, estamos diciendo que $St+3 = 64$. Si lo que ocurre es $\omega = (u, d, u )$entonces $S_{t+3} = 16$. De hecho observemos que
+  u, u)$. En términos de los precios, estamos diciendo que $St+3 = 64$. Si lo que ocurre es $\omega = (u, d, u )$entonces $S_{t+3} = 16$. De hecho observemos que
 si $\omega \in \{(u, u, d), (u, d, u), (d, u, u)\}$ entonces $S_{t+3} = 16$. De manera
 análoga, si $\omega \in \{(d, d, u), (d, u, d), (u, d, d)\}$ entonces $S_{t+3} = 4$.
-Pero podemos hacer aún mas; Consideremos por ejemplo los conjuntos: 
+Pero podemos hacer aún mas; Consideremos por ejemplo los conjuntos:
 \begin{equation*}
-	\begin{split}
-		A_u & = \{(u, u, u), (u, u, d), (u, d, u), (u, d, d)\} \\
-      A_d & = \{(d, d, d), (d, d,u), (d, u, d), (d, u, u)\} 
-	\end{split}
+  \begin{split}
+    A_u & = \{(u, u, u), (u, u, d), (u, d, u), (u, d, d)\} \\
+    A_d & = \{(d, d, d), (d, d,u), (d, u, d), (d, u, u)\}
+  \end{split}
 \end{equation*}
 El conjunto Au contiene la información del primer dia. Si $\Omega \in A_u$ sabemos que el primer dia hubo una alza en el precio del activo, si $\Omega \in A_d$ entonces hubo una baja. Observemos sin embargo que ni $A_u$ , ni $A_d$ proporcionan información de lo que ocurrirá en el segundo o tercer día, aunque si acotan las posibilidades. Si sabemos que $\omega \in A_u$ automáticamente descartamos la posibilidad de que $\omega = (d, d,
-d)$ por ejemplo. 
+  d)$ por ejemplo.
 
 
 Continuando con el ejemplo; tomemos ahora los conjuntos:
 \begin{equation*}
-\begin{split}
-	A_{uu} & = \{(u, u, u), (u, u, d)\} \\
-	A_{du} & = \{(d, u, u), (d, u, d)\} \\
-	A_{ud} & = \{(u, d, u), (u, d, d)\} \\
-	A_{dd} & = \{(d, d, u), (d, d, d)\} \\
-\end{split}
+  \begin{split}
+    A_{uu} & = \{(u, u, u), (u, u, d)\} \\
+    A_{du} & = \{(d, u, u), (d, u, d)\} \\
+    A_{ud} & = \{(u, d, u), (u, d, d)\} \\
+    A_{dd} & = \{(d, d, u), (d, d, d)\} \\
+  \end{split}
 \end{equation*}
 La información que obtenemos de estos conjuntos esta relacionada con lo que ocurre en los dos primeros días. Si $\omega \in A_{uu}$ podemos afirmar que en los dos
 primeros días se registraron alzas de precios. Notemos ademas que ninguno de estos conjuntos determinan con certeza lo que ocurrirá en el tercer día. Aunque si limitan las posibilidades. Aquí viene algo interesante, notemos que decir que $S_{t+2} = 8$ es equivalente a decir que $\omega \in A_{ud} \cup A_{du}$ . O también por ejemplo decir que $St+2 \geq 2$ es
-equivalente a afirmar que $\omega \in A_{dd}$ 
+equivalente a afirmar que $\omega \in A_{dd}$
 
 Tomemos ahora un ejemplo diferente, pensemos en el
-lanzamiento de dos dados. En este caso el espacio muestral parece muy natural; la colección de pares $(i, j)$ donde $i, j = 1,\ldots, 6$. Es decir: 
+lanzamiento de dos dados. En este caso el espacio muestral parece muy natural; la colección de pares $(i, j)$ donde $i, j = 1,\ldots, 6$. Es decir:
 \begin{equation*}
-\begin{split}
-	\Omega = \left\{\right.%
-	(1&, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), \\
-   (2&, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2, 6), \\ 
-   (3&, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), \\ 
-   (4&, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), \\
-   (5&, 1), (5, 2), (5, 3), (5, 4), (5, 5), (5, 6), \\ 
-   (6&, 1), (6, 2), (6, 3), (6, 4), (6,5), (6, 6) \left.\right\}
-\end{split}	
+  \begin{split}
+    \Omega = \left\{\right.%
+    (1&, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), \\
+    (2&, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2, 6), \\
+    (3&, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), \\
+    (4&, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), \\
+    (5&, 1), (5, 2), (5, 3), (5, 4), (5, 5), (5, 6), \\
+    (6&, 1), (6, 2), (6, 3), (6, 4), (6,5), (6, 6) \left.\right\}
+  \end{split}
 \end{equation*}
 
 ¿Cuales son los casos donde obtuvimos un 3 en el
 lanzamiento del primer dado? Esto lo resumimos en el siguiente conjunto:
 $$
-A = \{(3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6)\} 
+  A = \{(3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6)\}
 $$
 Mientras que el conjunto
 $$
-B = \{(1, 3), (2, 3), (3, 3), (4, 3), (5, 3), (6, 3)\}
+  B = \{(1, 3), (2, 3), (3, 3), (4, 3), (5, 3), (6, 3)\}
 $$
-representa los casos donde hubo un tres en el segundo dado. Algo un poco mas complejo, de forma coloquial decimos: 
+representa los casos donde hubo un tres en el segundo dado. Algo un poco mas complejo, de forma coloquial decimos:
 $$
-A \cup B = \text{sale 3 en primer dado o sale 3 en el segundo}
+  A \cup B = \text{sale 3 en primer dado o sale 3 en el segundo}
 $$
-a diferencia de 
+a diferencia de
 $$
-A \cap B = \text{sale 3 en el primer dado y sale 3 en el segundo dado}
+  A \cap B = \text{sale 3 en el primer dado y sale 3 en el segundo dado}
 $$
 
-Las dos aseveraciones anteriores podemos escribirlas de manera equivalente como: 
+Las dos aseveraciones anteriores podemos escribirlas de manera equivalente como:
 $$
-A \cup B = \text{obtuvimos al menos un 3}
+  A \cup B = \text{obtuvimos al menos un 3}
 $$
 a diferencia de:
 $$
-A \cap B = \text{obtuvimos 3 en ambos dados}
+  A \cap B = \text{obtuvimos 3 en ambos dados}
 $$
 En términos de conjuntos ¿cómo podríamos expresar la frase ``obtuvimos exactamente un 3''? Observemos que $A\cup B$ no es útil pues contiene a $(3, 3)$, en este elemento tenemos mas ocurrencias del 3 de las que necesitamos. $A \cap B = \{(3, 3)\}$ nos sirve
-aun menos, En realidad es el elemento que desearíamos eliminar de $A \cup B$ para obtener lo que estamos buscando. Esto es: 
+aun menos, En realidad es el elemento que desearíamos eliminar de $A \cup B$ para obtener lo que estamos buscando. Esto es:
 $$
-(A \cup B) \setminus (A \cap B) = \text{Obtenemos exactamente un tres}
+  (A \cup B) \setminus (A \cap B) = \text{Obtenemos exactamente un tres}
 $$
 
-Recordemos que la diferencia simétrica de $A$ y $B$ se define como: 
+Recordemos que la diferencia simétrica de $A$ y $B$ se define como:
 \begin{equation*}
-	\begin{split}
-		A \triangle B & = (A \setminus B) \cup (B \setminus A) \\
-		              & = (A \cup B) \setminus (A \cap B) 	\end{split}
+  \begin{split}
+    A \triangle B & = (A \setminus B) \cup (B \setminus A) \\
+    & = (A \cup B) \setminus (A \cap B) 	\end{split}
 \end{equation*}
 
 Por lo tanto, en el ejemplo que estamos estudiando $A \triangle B$ es el conjunto donde ``obtenemos exactamente un tres''. ¿Que podemos decir entonces de la diferencia
-usual de conjuntos? 
+usual de conjuntos?
 $$
-A \setminus B = \text{Obtuvimos 3 en el primer dado pero no en el segundo}
+  A \setminus B = \text{Obtuvimos 3 en el primer dado pero no en el segundo}
 $$
-Observemos que en esta última expresión estamos negando la ocurrencia de un 3 en el segundo dado, es decir: 
+Observemos que en esta última expresión estamos negando la ocurrencia de un 3 en el segundo dado, es decir:
 $$
-B^c = \text{No obtuvimos 3 en el segundo dado}
+  B^c = \text{No obtuvimos 3 en el segundo dado}
 $$
 
 Todas estas divagaciones nos conducen a conclusiones interesantes. Por un lado como vimos, no existe una única forma de definir un espacio muestral, la forma adecuada dependerá en gran medida de las preguntas que necesitemos resolver. Por otro lado, debemos estar ya convencidos, que al reunir los elementos de $\Omega$ en subconjuntos, en realidad lo que logramos es organizar la información que eventualmente podamos extraer del experimento aleatorio. Estas ideas nos conducen a la siguiente definición.
 \begin{definition}[$\sigma$-álgebra]
-Una colección $\mathcal{F}$ de subconjuntos de $\Omega$ se conoce como $\sigma$-álgebra de subconjuntos de $\Omega$ si:
-\begin{enumerate}
-	\item $\Omega \in \mathcal{F}$
-	\item Si $A \in F$ entonces $A^c \in \mathcal{F}$
-	\item Si $\{A_n\}$ es una colección numerable de elementos de $\mathcal{F}$ entonces $\cup A_n \in \mathcal{F}$
-\end{enumerate}
+  Una colección $\mathcal{F}$ de subconjuntos de $\Omega$ se conoce como $\sigma$-álgebra de subconjuntos de $\Omega$ si:
+  \begin{enumerate}
+    \item $\Omega \in \mathcal{F}$
+    \item Si $A \in F$ entonces $A^c \in \mathcal{F}$
+    \item Si $\{A_n\}$ es una colección numerable de elementos de $\mathcal{F}$ entonces $\cup A_n \in \mathcal{F}$
+  \end{enumerate}
 \end{definition}
 
-Si $A \in F$ entonces se dice que $A$ es un evento. Decimos que un evento $A$ ocurre siempre y cuando el elemento $\omega \in \Omega$ que resulta después de ejecutado el experimento aleatorio es un elemento de $A$ esto es $\Omega \in A$. 
+Si $A \in F$ entonces se dice que $A$ es un evento. Decimos que un evento $A$ ocurre siempre y cuando el elemento $\omega \in \Omega$ que resulta después de ejecutado el experimento aleatorio es un elemento de $A$ esto es $\Omega \in A$.
 
-Ejemplos de $\sigma$-álgebra. 
+Ejemplos de $\sigma$-álgebra.
 
 Dado un espacio muestral $\Omega$, la $\sigma$-álgebra más simple y pequeña que podemos definir es $\mathcal{F}=\{\Omega, \emptyset\}$. Otro ejemplo simple lo conseguimos como sigue: si $A \subset \Omega$ entonces: $F = \{\Omega,\emptyset, A, A^c\}$ es una $\sigma$-álgebra. Y claro está, la $\sigma$-álgebra mas grande de todas $2^\Omega$. El conjunto potencia es una $\sigma$-álgebra que es útil en algunas aplicaciones, por ejemplo en el caso del lanzamiento de dos dados bien podemos usar al conjunto potencia como la $\sigma$-álgebra en nuestro experimento. En el ejemplo del precio de un activo también podríamos usar la potencia, sin embargo, podríamos jugar con algunas alternativas. Por ejemplo; para el tiempo $t$ donde desconocemos cualquier cosa que pueda ocurrir en el futuro, podríamos seleccionar la $\sigma$-álgebra: $\mathcal{F} = \{\Omega,\emptyset\}$.
 
-	Ahora bien, si ya transcurrió un periodo, entonces tenemos conocimiento de lo ocurrido con el precio en el primer dia. Es decir, ya sabemos si $\omega \in A_u$ o si $\omega \in A_d$ . Podemos jugar con esta información y generar una $\sigma$-álgebra que denote el hecho que conocemos la historia del primer dia: $F = \{\emptyset, \Omega, A_u , A_d \}$ Notemos que en este caso $\mathcal{F}$ efectivamente es una $\sigma$-álgebra. Esto es fácil de ver dado que $A_u = A^c_d$. Transcurridos dos días tenemos conocemos aún mas información, por lo pronto sabemos si $\omega$ pertenece a alguno de los cuatro conjuntos: $A_{uu}$, $A_{ud}$, $A_{du}$ o $A_{dd}$ . Sin embargo: $C = \{\emptyset, \Omega, A_{uu}, A_{ud}, A_{du}, A_{dd} \}$ no es una $\sigma$-álgebra.
+Ahora bien, si ya transcurrió un periodo, entonces tenemos conocimiento de lo ocurrido con el precio en el primer dia. Es decir, ya sabemos si $\omega \in A_u$ o si $\omega \in A_d$ . Podemos jugar con esta información y generar una $\sigma$-álgebra que denote el hecho que conocemos la historia del primer dia: $F = \{\emptyset, \Omega, A_u , A_d \}$ Notemos que en este caso $\mathcal{F}$ efectivamente es una $\sigma$-álgebra. Esto es fácil de ver dado que $A_u = A^c_d$. Transcurridos dos días tenemos conocemos aún mas información, por lo pronto sabemos si $\omega$ pertenece a alguno de los cuatro conjuntos: $A_{uu}$, $A_{ud}$, $A_{du}$ o $A_{dd}$ . Sin embargo: $C = \{\emptyset, \Omega, A_{uu}, A_{ud}, A_{du}, A_{dd} \}$ no es una $\sigma$-álgebra.
 
 Por lo pronto conjuntos como: $Au = A_{uu} \cup A_{ud}$ o $A^c_u$ no están considerados. De acuerdo con la definición de $\sigma$-álgebra ambos deberían estar incluídos. En ejemplos como este , no es difícil resolver la situación, basta con tomar al conjunto $C$ y enriquecerlo con los conjuntos que le hagan falta para completar una $\sigma$-álgebra. Añadimos todas las uniones y complementos que hagan falta y listo. Este mecanismo sin embargo sirve solo para casos sencillos, donde el conjunto $\Omega$ es pequeño y podemos ser exhaustivos al momento de enlistar los elementos de una $\sigma$-álgebra. Para concluir el ejemplo; transcurridos los tres días, conocemos la historia completa, en este caso si parece apropiada la potencia como la $\sigma$-álgebra que describa la situación de nuestro experimento.
 
@@ -373,68 +376,68 @@ Es importante hacer notar sin embargo que en general la potencia de $\Omega$ es 
 
 El primer inciso de la definición, básicamente se asegura de que la $\sigma$-álgebra sea una colección no vacía. De hecho podríamos sustituirlo por el requerimiento de que $\mathcal{F}$ sea una colección no vacía. Notemos además que decir que $\omega \in \Omega$ es equivalente a ``no decir nada'', una afirmación así no nos provee de información adicional. En cambio, decir que $\Omega \in A^c$ es un tipo de negación, negamos el hecho de que $A$ haya ocurrido. Asimismo, podemos parafrasear $\omega \in A \cup B$ diciendo que ``ocurrió $A$ u ocurrió $B$''. De manera parecida si $\omega \in A \cap B$, entonces ocurrió $A$ y ocurrió $B$.
 
-En general, podemos concebir a una $\sigma$-álgebra como un mecanismo para ordenar la información contenida en el espacio muestral. Por lo pronto, el primer inciso en la definición de $\sigma$-álgebra garantiza que $\Omega$ es siempre un elemento de la misma, el segundo inciso implica que la $\sigma$-álgebra es cerrada bajo complementos, es decir; si sabemos que algo ocurrió también debemos saber si es que esto mismo, no ocurrió. El tercer inciso es el mas controvertido. La axiomática de la probabilidad que estudiaremos es la propuesta por Kolmogorov y no esta exenta de controversia. Hay probabilistas que afirman que una teoría de probabilidad debería considerar únicamente la cerradura bajo uniones finitas y no extenderlo al caso numerable. Lo cierto es que este último inciso es de vital importancia en la construcción de eventos que tienen que ver con algún comportamiento límite. No abundaremos más al respecto dado que es un tema correspondiente a un curso avanzado de probabilidad. Baste notar que el inciso tres implica no solo que una $\sigma$-álgebra es cerrada bajo uniones numerables, también es cerrada bajo uniones finitas. 
+En general, podemos concebir a una $\sigma$-álgebra como un mecanismo para ordenar la información contenida en el espacio muestral. Por lo pronto, el primer inciso en la definición de $\sigma$-álgebra garantiza que $\Omega$ es siempre un elemento de la misma, el segundo inciso implica que la $\sigma$-álgebra es cerrada bajo complementos, es decir; si sabemos que algo ocurrió también debemos saber si es que esto mismo, no ocurrió. El tercer inciso es el mas controvertido. La axiomática de la probabilidad que estudiaremos es la propuesta por Kolmogorov y no esta exenta de controversia. Hay probabilistas que afirman que una teoría de probabilidad debería considerar únicamente la cerradura bajo uniones finitas y no extenderlo al caso numerable. Lo cierto es que este último inciso es de vital importancia en la construcción de eventos que tienen que ver con algún comportamiento límite. No abundaremos más al respecto dado que es un tema correspondiente a un curso avanzado de probabilidad. Baste notar que el inciso tres implica no solo que una $\sigma$-álgebra es cerrada bajo uniones numerables, también es cerrada bajo uniones finitas.
 
 Para probar la cerradura bajo uniones finitas antes observemos que de los dos primeros incisos se concluye que $\emptyset \in \Omega$. De este modo, si $A$ y $B$ son dos eventos en $\mathcal{F}$ entonces$A \cup B = \cup_n A_n$ con $A = A_1$ y $B = A_2$, mientras que $A_i = \emptyset$ para $i \geq 3$. Usando el inciso tres se sigue que $A \cup B = \cup A_i \in \mathcal{F}$. Ahora bien, si $\{A_n \}$ es una colección numerable de eventos en $\mathcal{F}$ entonces $\{A^c_n \}$ también es una colección numerable en $\mathcal{F}$. Usando de manera conjunta el inciso 2 y el inciso 3 y echando mano de la ley de Morgan tenemos que $\cap_n A_n = \left(\cup_n A^c_n \right)^c \in \mathcal{F}$. Esto es, una $\sigma$-álgebra también es cerrada bajo intersecciones numerables. Con un argumento similar al que usamos para probar la cerradura bajo uniones finitas, podemos probar la cerradura bajo intersecciones finitas.
 
 Podemos continuar con propiedades del estilo de las que acabamos de exponer, dejemos algunas para los ejercicios. Lo importante que debemos recordar es que si bien una $\sigma$-álgebra es cerrada bajo uniones e intersecciones numerables, no lo es bajo uniones o intersecciones arbitrarias. Al par $(\Omega, \mathcal{F})$, se le conoce como espacio medible. En un espacio medible es que tiene sentido nuestra siguiente
 
 \begin{definition}[Medida de probabilidad]
-Dado un espacio medible $(\Omega, \mathcal{F})$,decimos que una función $P : F \rightarrow [0,1]$ es una medida de probabilidad si:
+  Dado un espacio medible $(\Omega, \mathcal{F})$,decimos que una función $P : F \rightarrow [0,1]$ es una medida de probabilidad si:
 
-\begin{enumerate}
+  \begin{enumerate}
     \item $P(\Omega) = 1$
     \item Si $\{A_n \}$ es una sucesión de eventos disjuntos, entonces:
-    $$P\left(\cup_n A_n \right) = \sum_n P(A_n)$$.
-\end{enumerate}
+          $$P\left(\cup_n A_n \right) = \sum_n P(A_n)$$.
+  \end{enumerate}
 \end{definition}
 
-A la tercia $(\Omega, \mathcal{F}, P)$ se le conoce como espacio de probabilidad. Observemos el importantísimo papel de la $\sigma$-álgebra, no sólo es útil para definir cierto orden a la información que podemos extraer en un experimento aleatorio, también funciona como el dominio de una medida de probabilidad. Debemos ser enfáticos en esto; seremos capaces de calcular probabilidades sobre elementos F y nada mas. Si $A \subset \Omega$ pero $A \notin \mathcal{F}$ entonces $P$ es incapaz de trabajar con $A$. Algunas propiedades de la probabilidad vienen bien en este momento: $P(\emptyset) = 0$ Efectivamente, consideremos la sucesión $\{An \}$ donde $A_n = \emptyset$ para todo $n$. Evidentemente esta es una sucesión de eventos disjuntos, por lo tanto 
+A la tercia $(\Omega, \mathcal{F}, P)$ se le conoce como espacio de probabilidad. Observemos el importantísimo papel de la $\sigma$-álgebra, no sólo es útil para definir cierto orden a la información que podemos extraer en un experimento aleatorio, también funciona como el dominio de una medida de probabilidad. Debemos ser enfáticos en esto; seremos capaces de calcular probabilidades sobre elementos F y nada mas. Si $A \subset \Omega$ pero $A \notin \mathcal{F}$ entonces $P$ es incapaz de trabajar con $A$. Algunas propiedades de la probabilidad vienen bien en este momento: $P(\emptyset) = 0$ Efectivamente, consideremos la sucesión $\{An \}$ donde $A_n = \emptyset$ para todo $n$. Evidentemente esta es una sucesión de eventos disjuntos, por lo tanto
 $$
-P(\emptyset) = P\left(\cup_n A_n\right) = \sum_n P(A_n ) = P(\emptyset) + \sum_{n\geq2} P(A_n )
+  P(\emptyset) = P\left(\cup_n A_n\right) = \sum_n P(A_n ) = P(\emptyset) + \sum_{n\geq2} P(A_n )
 $$
 
 De donde se sigue que: $0 = \sum_{n\geq 2} P(A_n) = P\left(\cup_{n\geq 2} A_n\right) = P(\emptyset)$
 
-Si $A$ y $B$ son dos elementos disjuntos de $\mathcal{F}$ entonces: $P\left(A \cup B\right) = P(A) + P(B)$. Básicamente estamos afirmando que una medida de probabilidad no solo es aditiva ante uniones numerables disjuntas, también lo es ante uniones finitas disjuntas. Para probar este resultado observemos que $A \cup B = \cup_n A_n$ Donde $A_1 = A, A_2 = B$ y $A_n = \emptyset$ para $n \geq 3$. Claramente $\{An \}$ es una sucesión de eventos disjuntos. 
+Si $A$ y $B$ son dos elementos disjuntos de $\mathcal{F}$ entonces: $P\left(A \cup B\right) = P(A) + P(B)$. Básicamente estamos afirmando que una medida de probabilidad no solo es aditiva ante uniones numerables disjuntas, también lo es ante uniones finitas disjuntas. Para probar este resultado observemos que $A \cup B = \cup_n A_n$ Donde $A_1 = A, A_2 = B$ y $A_n = \emptyset$ para $n \geq 3$. Claramente $\{An \}$ es una sucesión de eventos disjuntos.
 
-Por lo tanto 
+Por lo tanto
 \begin{equation*}
-\begin{split}
-    P(A \cup B) & = P\left(\cup_n A_n \right)\\ 
-                & = \sum_n P(A_n) \\
-                & = P(A) + P(B) + \sum_{n\geq 3} P(A_n) \\
-                & = P(A) + P(B)
-\end{split}    
+  \begin{split}
+    P(A \cup B) & = P\left(\cup_n A_n \right)\\
+    & = \sum_n P(A_n) \\
+    & = P(A) + P(B) + \sum_{n\geq 3} P(A_n) \\
+    & = P(A) + P(B)
+  \end{split}
 \end{equation*}
 
 Este resultado, nos conduce a la siguiente afirmación: Si $A \in \mathcal{F}$ entonces:
 $$
-P(A^c) = 1 - P(A)
+  P(A^c) = 1 - P(A)
 $$
 
 Este resultado se sigue de que: $1 = P(\Omega) = P(A \cup A_c ) = P(A) + P(A_c)$
 
 Para dos eventos $A$ y $B$ tales que $A \subset B$ se tiene que:  $P(A) \leq P(B)$ Efectivamente; notemos que $B = A \cup (B \setminus A)$ por lo tanto:
 $$
-P(B) = P(A \cup (B\setminus A)) = P(A) + P(B \setminus A) \geq P(A)
+  P(B) = P(A \cup (B\setminus A)) = P(A) + P(B \setminus A) \geq P(A)
 $$
 
 La última igualdad se debe al hecho de que $P(B\setminus A) \geq 0$ Finalmente, una
-de las relaciones mas útiles: Dados los eventos $A$ y $B$: 
+de las relaciones mas útiles: Dados los eventos $A$ y $B$:
 $$
-P(A \cup B) = P(A) + P(B) - P(A \cap B)
+  P(A \cup B) = P(A) + P(B) - P(A \cap B)
 $$
 
 En la igualdad anterior estamos tomando eventos $A$ y $B$ arbitrarios, no necesariamente disjuntos, de ahí la necesidad de restar la probabilidad de la intersección. A
 
 Observemos primero que $A \cup B = A \cup (B \setminus A)$ y además $B = (A \cap B) \cup (B \setminus A)$ por lo tanto
 $$
-P(A \cup B) = P(A) + P(B\setminus A) 
+  P(A \cup B) = P(A) + P(B\setminus A)
 $$
 y
 $$
-P(B) = P(A \cap B) + P(B \setminus A)
+  P(B) = P(A \cap B) + P(B \setminus A)
 $$
 Usando estas dos igualdades obtenemos la fórmula propuesta para la
 unión.
@@ -443,208 +446,208 @@ Retomemos el ejercicio que consiste en el lanzamiento de dos
 dados. Sabemos que
 
 \begin{equation*}
-\begin{split}
-	\Omega = \left\{\right.%
-	(1&, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), \\
-   (2&, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2, 6), \\ 
-   (3&, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), \\ 
-   (4&, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), \\
-   (5&, 1), (5, 2), (5, 3), (5, 4), (5, 5), (5, 6), \\ 
-   (6&, 1), (6, 2), (6, 3), (6, 4), (6,5), (6, 6) \left.\right\}
-\end{split}	
+  \begin{split}
+    \Omega = \left\{\right.%
+    (1&, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), \\
+    (2&, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2, 6), \\
+    (3&, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), \\
+    (4&, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), \\
+    (5&, 1), (5, 2), (5, 3), (5, 4), (5, 5), (5, 6), \\
+    (6&, 1), (6, 2), (6, 3), (6, 4), (6,5), (6, 6) \left.\right\}
+  \end{split}
 \end{equation*}
 
-Si ambos dados son justos, si ninguno de ellos esta cargado y todas las caras son igualmente probables entonces cada cara tiene un sexto de probabilidad de aparecer. Derivado de $\Omega$ deducimos que cada combinación en el lanzamiento de los dados tiene $1/36$ de probabilidad de ocurrir. Retomando los ejemplos anteriores, si 
+Si ambos dados son justos, si ninguno de ellos esta cargado y todas las caras son igualmente probables entonces cada cara tiene un sexto de probabilidad de aparecer. Derivado de $\Omega$ deducimos que cada combinación en el lanzamiento de los dados tiene $1/36$ de probabilidad de ocurrir. Retomando los ejemplos anteriores, si
 $$
-A = \text{evento de obtener un 3 en el primer dado}
-$$ 
-entonces $P(A) = 6/36 = 1/6$. De manera análoga, si 
+  A = \text{evento de obtener un 3 en el primer dado}
 $$
-B = \text{evento de obtener un 3 en el segundo dado}
-$$ 
-entonces $P(B) = 1/6$. A su vez: 
+entonces $P(A) = 6/36 = 1/6$. De manera análoga, si
 $$
-A \cap B = \text{Evento de obtener 3 en ambos dados } = \{(3, 3)\}
+  B = \text{evento de obtener un 3 en el segundo dado}
+$$
+entonces $P(B) = 1/6$. A su vez:
+$$
+  A \cap B = \text{Evento de obtener 3 en ambos dados } = \{(3, 3)\}
 $$
 por lo cual $P(A \cap B) = 1/36$. Con estos elementos, calculamos la
 probabilidad de:
 $$
-A \cup B = \text{Evento de obtener al menos un tres}
+  A \cup B = \text{Evento de obtener al menos un tres}
 $$
-esto es: 
+esto es:
 $$
-P(A \cup B) = P(A) + P(B) - P(A \cap B) =  1/6 + 1/ 6 - 1/36 = 11/36
+  P(A \cup B) = P(A) + P(B) - P(A \cap B) =  1/6 + 1/ 6 - 1/36 = 11/36
 $$
-Esto lo verificamos al notar que: 
+Esto lo verificamos al notar que:
 \begin{equation*}
-    \begin{split}
-        A \cup B = \left\{\right.(3&, 1), (3, 2), (3, 3), (3,4), (3, 5),\\
-                                 (3&, 6), (1, 3), (2, 3), (4, 3), (5, 3), (6, 3)\left.\right\}
-    \end{split}
+  \begin{split}
+    A \cup B = \left\{\right.(3&, 1), (3, 2), (3, 3), (3,4), (3, 5),\\
+    (3&, 6), (1, 3), (2, 3), (4, 3), (5, 3), (6, 3)\left.\right\}
+  \end{split}
 \end{equation*}
 Un ejemplo un poco mas complicado.c
 $$
-A = (A \cap B) \cup (A \setminus B)
+  A = (A \cap B) \cup (A \setminus B)
 $$
-con lo cual: 
+con lo cual:
 $$
-P(A \setminus B) = P(A) - P(A \cap B)
+  P(A \setminus B) = P(A) - P(A \cap B)
 $$
 análogamente:
 $$
-P(B \setminus A) = P(B) - P(A \cap B)
+  P(B \setminus A) = P(B) - P(A \cap B)
 $$
-Por lo tanto: 
+Por lo tanto:
 \begin{equation*}
-    \begin{split}
-        P(A \triangle B) & = P(A) + P(B) - 2P(A \cap B) \\
-                         & = 1/6 + 1/6 -2/36 \\
-                         & = 10/36
-    \end{split}
+  \begin{split}
+    P(A \triangle B) & = P(A) + P(B) - 2P(A \cap B) \\
+    & = 1/6 + 1/6 -2/36 \\
+    & = 10/36
+  \end{split}
 \end{equation*}
-Lo cual se verifica al ver que: 
+Lo cual se verifica al ver que:
 \begin{equation*}
-    \begin{split}
-        A \triangle B = \left\{\right. (3&, 1), (3, 2),(3, 4), (3, 5), (3, 6),\\
-                                       (1&, 3), (2, 3), (4, 3), (5, 3), (6, 3)\left.\right\}
-    \end{split}
+  \begin{split}
+    A \triangle B = \left\{\right. (3&, 1), (3, 2),(3, 4), (3, 5), (3, 6),\\
+    (1&, 3), (2, 3), (4, 3), (5, 3), (6, 3)\left.\right\}
+  \end{split}
 \end{equation*}
 La siguiente tabla puede ser de utilidad:
 \renewcommand{\arraystretch}{1.5}
-     \begin{table}
-         \centering
-         \begin{tabular}{|c|l|}
-         \hline
-              $\Omega$    & Espacio Muestral  \\
-              $\emptyset$ & Evento imposible \\
-              $\omega$    & Resultado del experimento aleatorio\\
-              $A$         & $A$ ocurre si $\omega \in A$ \\
-              $A^c$       & Negación de $A$. Si $\omega \in A^c$ entonces $A$ no ocurrió.\\
-              $A\cap B$   & $A$ y $B$\\
-              $A\cup B$   & $A$ o $B$\\
-              $A\setminus B$   & $A$ pero no $B$\\
-              $A\triangle B$   & $A$ o $B$ pero no ambos. Exactamente uno de los dos\\
-              $A\subset B$   & Si $A$ entonces $B$\\
-         \hline
-         \end{tabular}
-         %\caption{Caption}
-         %\label{tab:my_label}
-     \end{table}
-A continuación vemos algunos ejemplos adicionales. En el ejemplo del lanzamiento de dos dados, sea 
+\begin{table}
+  \centering
+  \begin{tabular}{|c|l|}
+    \hline
+    $\Omega$       & Espacio Muestral                                              \\
+    $\emptyset$    & Evento imposible                                              \\
+    $\omega$       & Resultado del experimento aleatorio                           \\
+    $A$            & $A$ ocurre si $\omega \in A$                                  \\
+    $A^c$          & Negación de $A$. Si $\omega \in A^c$ entonces $A$ no ocurrió. \\
+    $A\cap B$      & $A$ y $B$                                                     \\
+    $A\cup B$      & $A$ o $B$                                                     \\
+    $A\setminus B$ & $A$ pero no $B$                                               \\
+    $A\triangle B$ & $A$ o $B$ pero no ambos. Exactamente uno de los dos           \\
+    $A\subset B$   & Si $A$ entonces $B$                                           \\
+    \hline
+  \end{tabular}
+  %\caption{Caption}
+  %\label{tab:my_label}
+\end{table}
+A continuación vemos algunos ejemplos adicionales. En el ejemplo del lanzamiento de dos dados, sea
 $$
-A = \text{evento de obtener un par en el primer dado}
+  A = \text{evento de obtener un par en el primer dado}
 $$
 y
 $$
-B = \text{evento de obtener un par en el segundo dado}
+  B = \text{evento de obtener un par en el segundo dado}
 $$
-Tenemos entonces que 
+Tenemos entonces que
 \begin{equation*}
-    \begin{split}
+  \begin{split}
     A = \left\{\right.(2&, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2,6),  \\
-                      (4&, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), \\       
-                      (6&, 1), (6, 2), (6, 3), (6, 4), (6, 5), (6, 6)   \left.\right\}
-    \end{split}
+    (4&, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), \\
+    (6&, 1), (6, 2), (6, 3), (6, 4), (6, 5), (6, 6)   \left.\right\}
+  \end{split}
 \end{equation*}
 
 Por lo tanto: $P(A) = 18/36 = 1/2$. Análogamente deducimos que $P(B) = 1/2$.
 
 De lo anterior sigue además que
 $$
-A^c = \text{evento de obtener un impar en el primer dado}
+  A^c = \text{evento de obtener un impar en el primer dado}
 $$
 y
 $$
-B^c = \text{evento de obtener un impar en el primer dado}
+  B^c = \text{evento de obtener un impar en el primer dado}
 $$
-y claro: 
+y claro:
 $$
-P(A^c ) = 1 - P(A) = 1/2\quad \text{y} \quad P(B^c ) = 1 - P(B) = 1/2 
+  P(A^c ) = 1 - P(A) = 1/2\quad \text{y} \quad P(B^c ) = 1 - P(B) = 1/2
 $$
-Siguiendo con la misma idea tenemos que: 
+Siguiendo con la misma idea tenemos que:
 $$
-A \cap B = \text{Obtenemos par en ambos dados }
+  A \cap B = \text{Obtenemos par en ambos dados }
 $$
-Es decir: 
+Es decir:
 \begin{equation*}
-    \begin{split}
-        A \cap B = \left\{\right. (2&, 2), (2, 4), (2, 6),\\
-                                  (4&, 2), (4, 4), (4, 6),\\
-                                  (6&, 2), (6, 4), (6, 6)\left.\right\}        
-    \end{split}
+  \begin{split}
+    A \cap B = \left\{\right. (2&, 2), (2, 4), (2, 6),\\
+    (4&, 2), (4, 4), (4, 6),\\
+    (6&, 2), (6, 4), (6, 6)\left.\right\}
+  \end{split}
 \end{equation*}
-De donde $P(A \cap B) = 9/36 = 1/4$. Con esto podemos calcular la probabilidad del evento: 
+De donde $P(A \cap B) = 9/36 = 1/4$. Con esto podemos calcular la probabilidad del evento:
 $$
-A \cup B = \text{Obtenemos par en alguno de los dados}
+  A \cup B = \text{Obtenemos par en alguno de los dados}
 $$
-efecto: 
+efecto:
 $$
-P(A \cup B) = P(A) + P(B) - P(A \cap B) = 1/2 + 1/2 - 1/4 = 3/4
+  P(A \cup B) = P(A) + P(B) - P(A \cap B) = 1/2 + 1/2 - 1/4 = 3/4
 $$
-Otro evento interesante: 
+Otro evento interesante:
 $$
-A\setminus B = A \cap B^c = \text{El dado uno es par y el dado 2 es impar}
+  A\setminus B = A \cap B^c = \text{El dado uno es par y el dado 2 es impar}
 $$
-Tenemos que: 
+Tenemos que:
 $$
-P(A \setminus B) = P(A) - P(A \cap B) = 1/2 - 1/4 = 1/4
+  P(A \setminus B) = P(A) - P(A \cap B) = 1/2 - 1/4 = 1/4
 $$
-Esto ultimo lo verificamos al ver que: 
+Esto ultimo lo verificamos al ver que:
 \begin{equation*}
-    \begin{split}
-        A \setminus B = \left\{\right. (2&, 1),(2, 3), (2, 5),\\
-                                       (4&, 1), (4, 3), (4, 5),\\
-                                       (6&, 1), (6, 3), (6, 5)\left.\right\}
-    \end{split}
+  \begin{split}
+    A \setminus B = \left\{\right. (2&, 1),(2, 3), (2, 5),\\
+    (4&, 1), (4, 3), (4, 5),\\
+    (6&, 1), (6, 3), (6, 5)\left.\right\}
+  \end{split}
 \end{equation*}
-Osea, $P(A \setminus B) = 9/36 = 1/4$. Siguiendo en la misma linea: 
+Osea, $P(A \setminus B) = 9/36 = 1/4$. Siguiendo en la misma linea:
 $$
-A \triangle B = \text{obtenemos exactamente un par} 
+  A \triangle B = \text{obtenemos exactamente un par}
 $$
-en este caso 
+en este caso
 $$
-P(A \triangle B) = P(A \setminus B) + P(B \setminus A) = 1/4 + 1/4 = 1/2. 
+  P(A \triangle B) = P(A \setminus B) + P(B \setminus A) = 1/4 + 1/4 = 1/2.
 $$
-Finalmente, un ejemplo un poco mas complejo: 
+Finalmente, un ejemplo un poco mas complejo:
 $$
-C = \text{La suma de los dados es par}
+  C = \text{La suma de los dados es par}
 $$
-Podemos seguir dos rutas para encontrar la probabilidad de $C$ . Una es la de ``fuerza bruta'' y enlistar todos los elementos de $\Omega$ que cumplen con la condición. La otra es tratar de razonar la lógica del conjunto y expresarlo en términos de otros mas simples. Sigamos la segunda ruta y notemos que para que la suma de los dados sea par, es necesario que se cumpla que ambos dados sean pares o bien que ambos dados sean impares. Esto es: 
+Podemos seguir dos rutas para encontrar la probabilidad de $C$ . Una es la de ``fuerza bruta'' y enlistar todos los elementos de $\Omega$ que cumplen con la condición. La otra es tratar de razonar la lógica del conjunto y expresarlo en términos de otros mas simples. Sigamos la segunda ruta y notemos que para que la suma de los dados sea par, es necesario que se cumpla que ambos dados sean pares o bien que ambos dados sean impares. Esto es:
 \begin{equation*}
-    \begin{split}
-        C & = (A \cap B) \cup (A^c \cap B^c ) \\
-          & = (A \cap B) \cup (A \cup B)^c
-    \end{split}
+  \begin{split}
+    C & = (A \cap B) \cup (A^c \cap B^c ) \\
+    & = (A \cap B) \cup (A \cup B)^c
+  \end{split}
 \end{equation*}
 
 Adicionalmente, observemos que como $(A \cap B) \subset A \cup B$, entonces $A \cap B$ y $(A
-\cup B)^c$ son disjuntos. En consecuencia: 
+  \cup B)^c$ son disjuntos. En consecuencia:
 \begin{equation*}
-    \begin{split}
-        P(C ) & = P((A \cap B) \cup (A \cup B)^c ) \\
-              & = P(A \cap B) + P((A \cup B)^c )    \\
-              & = P(A \cap B) + (1 - P(A \cup B)) \\
-              & = 1/4 + (1-3/4)\\
-              & = 1/2
-    \end{split}
+  \begin{split}
+    P(C ) & = P((A \cap B) \cup (A \cup B)^c ) \\
+    & = P(A \cap B) + P((A \cup B)^c )    \\
+    & = P(A \cap B) + (1 - P(A \cup B)) \\
+    & = 1/4 + (1-3/4)\\
+    & = 1/2
+  \end{split}
 \end{equation*}
 
-Esto lo verificamos usando la ``fuerza bruta'' y enlistamos todos los pares cuya suma es par donde verificamos que: $P(C ) = 18/36 = 1/2$. 
+Esto lo verificamos usando la ``fuerza bruta'' y enlistamos todos los pares cuya suma es par donde verificamos que: $P(C ) = 18/36 = 1/2$.
 \begin{equation*}
-    \begin{split}
-        C = \left\{\right. (2&, 2), (4, 2), (6, 2),(1, 1), (3, 1), (5, 1),\\
-                           (2&, 4), (4, 4), (6, 4),(1, 3), (3, 3), (5, 3),\\
-                           (2&, 6), (4, 6), (6, 6),(1, 5), (3, 5), (5, 5)\left.\right\}       
-    \end{split}
+  \begin{split}
+    C = \left\{\right. (2&, 2), (4, 2), (6, 2),(1, 1), (3, 1), (5, 1),\\
+    (2&, 4), (4, 4), (6, 4),(1, 3), (3, 3), (5, 3),\\
+    (2&, 6), (4, 6), (6, 6),(1, 5), (3, 5), (5, 5)\left.\right\}
+  \end{split}
 \end{equation*}
 \chapter{Combinatoria}
-Frecuentemente el cálculo de probabilidades involucra el conteo de elementos en un conjunto. Sobre todo cuando consideramos que los resultados de un posible experimento son igualmente probables. En un caso así, la estrategia usual a seguir para el cálculo de las probabilidad de un evento es la de estimar el número de casos favorables y el número de casos totales en el experimento aleatorio. Por ejemplo en el caso del lanzamiento de dos dados, el número de casos totales es 36. Podemos obtener 36 parejas diferentes. sin embargo, responder la pregunta: ¿Cuál es la probabilidad de que la suma de los dados sea 7? implica el conteo de todas aquellas parejas cuya suma es 7 a saber: 
+Frecuentemente el cálculo de probabilidades involucra el conteo de elementos en un conjunto. Sobre todo cuando consideramos que los resultados de un posible experimento son igualmente probables. En un caso así, la estrategia usual a seguir para el cálculo de las probabilidad de un evento es la de estimar el número de casos favorables y el número de casos totales en el experimento aleatorio. Por ejemplo en el caso del lanzamiento de dos dados, el número de casos totales es 36. Podemos obtener 36 parejas diferentes. sin embargo, responder la pregunta: ¿Cuál es la probabilidad de que la suma de los dados sea 7? implica el conteo de todas aquellas parejas cuya suma es 7 a saber:
 $$
-A = \{(1, 6), (2, 5), (3, 4), (4, 3), (5, 2), (6, 1)\} 
+  A = \{(1, 6), (2, 5), (3, 4), (4, 3), (5, 2), (6, 1)\}
 $$
 de aquí, es fácil ver que
 $$
-P(A) = 6/36 = 1/6
+  P(A) = 6/36 = 1/6
 $$
 
 Sin embargo, no siempre es fácil, enlistar todos los
@@ -657,155 +660,155 @@ conteo de elementos de un conjunto.
 
 Supongamos que dos experimentos son realizados. Si el experimento 1 puede resultar en una de $n$ formas posibles y para cada resultado del experimento 1 existen $m$ posibilidades para el experimento 2, entonces en conjunto existen $n\times m$ resultados para los dos experimentos.
 
-  
-A menudo conviene ver esto con ``casillas''. En una casilla ponemos el número de posibilidades al seleccionar un elemento de un conjunto $A$ y en la otra el número de posibilidades al seleccionar un elemento de un conjunto $B$, si son $n$ y $m$ respectivamente, entonces en total podremos hacer $n\times m$ selecciones de los dos conjuntos. 
+
+A menudo conviene ver esto con ``casillas''. En una casilla ponemos el número de posibilidades al seleccionar un elemento de un conjunto $A$ y en la otra el número de posibilidades al seleccionar un elemento de un conjunto $B$, si son $n$ y $m$ respectivamente, entonces en total podremos hacer $n\times m$ selecciones de los dos conjuntos.
 
 \begin{center}
-\begin{tikzpicture}[>=stealth, node distance=2cm, rounded corners]
+  \begin{tikzpicture}[>=stealth, node distance=2cm, rounded corners]
     \node (n) at (0, 0) [draw, shape=rectangle, rounded corners] {$n$};
 
     \node (m) at (.75, 0) [draw, shape=rectangle, rounded corners] {$m$};
 
     \node (nm) at (3, 0) {$n\times m$};
 
-  % Arrows
-  \draw[->] (m) -- (nm);
-\end{tikzpicture}
-	
+    % Arrows
+    \draw[->] (m) -- (nm);
+  \end{tikzpicture}
+
 \end{center}
 
 En general, podemos pensar que tenemos $m$ casillas. En la $i$-ésima casilla depositamos un elemento de un conjunto con $n_i$ elementos. Entonces el número de formas en que podemos `llenar' estas casillas es igual a:
 $$
-n_1\cdot n_2 \cdots nm 
+  n_1\cdot n_2 \cdots nm
 $$
 El siguiente diagrama esquematiza el caso para cuando tenemos solo 4 casillas, el caso general es similar. Cada casilla puede tener uno elemento seleccionado de un conjunto con ni elementos. En total tendremos b
 
-Combinatoria Ejemplo.. La cantidad total de placas formadas con tres dígitos y tres letras es igual a: $10 \cdot 10 \cdot 10 \cdot 26 \cdot 26 \cdot 26 = 17,576,000$. En este ejemplo seleccionamos las primeras tres entradas de un conjunto con 10 elementos las últimas 3 entradas fueron seleccionadas de un conjunto con 26 entradas. Un dato importante es que podemos repetir tanto números como letras. Un caso partícular es cuando la selección se hace siempre del mismo conjunto. 
+Combinatoria Ejemplo.. La cantidad total de placas formadas con tres dígitos y tres letras es igual a: $10 \cdot 10 \cdot 10 \cdot 26 \cdot 26 \cdot 26 = 17,576,000$. En este ejemplo seleccionamos las primeras tres entradas de un conjunto con 10 elementos las últimas 3 entradas fueron seleccionadas de un conjunto con 26 entradas. Un dato importante es que podemos repetir tanto números como letras. Un caso partícular es cuando la selección se hace siempre del mismo conjunto.
 
-Ejemplo.. El número total de números telefónicos de 8 dígitos es igual a: $10 \cdot 10 \cdot 10 \cdot 10 \cdot 10 \cdot 10 \cdot 10 \cdot 10 = 100, 000, 000$ números. 
+Ejemplo.. El número total de números telefónicos de 8 dígitos es igual a: $10 \cdot 10 \cdot 10 \cdot 10 \cdot 10 \cdot 10 \cdot 10 \cdot 10 = 100, 000, 000$ números.
 
-Este ejemplo, aunque simple de más tal vez sirve para ejemplificar dos cosas importantes. Por un lado al igual que en el caso de las placas, también en este caso es válido repetir números. Además el orden es importante. Los números: 
+Este ejemplo, aunque simple de más tal vez sirve para ejemplificar dos cosas importantes. Por un lado al igual que en el caso de las placas, también en este caso es válido repetir números. Además el orden es importante. Los números:
 
 \begin{center}
   55 - 21 - 28 - 35
-\end{center} 
-
-y 
-\begin{center}
-  55 - 82 - 12 - 35  
 \end{center}
- 
+
+y
+\begin{center}
+  55 - 82 - 12 - 35
+\end{center}
+
 
 son números diferentes, comparten la misma selección de números, sin embargo la selección no esta en el mismo orden, por lo tanto son números diferentes. Adicionalmente, al realizar estas selecciones, las repeticiones están permitidas, el 5 aparece tres veces, mientras que el 2 aparece dos veces.
 
 El ejemplo anterior es en ejemplo claro de una selección con orden y reemplazo a partir de un conjunto con $n$ elementos. En general cuando seleccionamos $m$ elementos con orden y reemplazo de un conjunto con $n$ elementos, el número total de selecciones posibles es igual a $n\times m$ . Ejemplo. ¿Cual es el número total de subconjuntos de un conjunto con $k$ elementos? Existen varias formas de responder esta pregunta, aquí ofrecemos una alternativa: supongamos establecemos un orden en los elementos del conjunto y formamos un vector: $(x_1 , x_2,\ldots, x_k )$ donde $x_i = 1$ si el $i$-ésimo elemento es seleccionado y $xi = 0$ si el $i$-ésimo elemento no es seleccionado.
 
-Entonces por ejemplo el vector compuesto por puros ceros significa que no hemos seleccionado ningún elemento, lo cual sería equivalente al conjunto vacío. Mientras que el vector compuesto solamente por unos significa que hemos seleccionado todos los elementos del conjunto, hemos seleccionado al conjunto original. Supongamos por un momento que el conjunto tiene 5 elementos. El vector: 
+Entonces por ejemplo el vector compuesto por puros ceros significa que no hemos seleccionado ningún elemento, lo cual sería equivalente al conjunto vacío. Mientras que el vector compuesto solamente por unos significa que hemos seleccionado todos los elementos del conjunto, hemos seleccionado al conjunto original. Supongamos por un momento que el conjunto tiene 5 elementos. El vector:
 $$
-(1, 1, 0, 0, 0)
-$$ 
-indica que hemos seleccionado el subconjunto formado por los dos primeros elementos del conjunto original, mientras que el vector: 
+  (1, 1, 0, 0, 0)
 $$
-(0, 1, 1, 0, 0)
+indica que hemos seleccionado el subconjunto formado por los dos primeros elementos del conjunto original, mientras que el vector:
+$$
+  (0, 1, 1, 0, 0)
 $$
 esta asociado al conjunto compuesto por el segundo y tercer elementos del conjunto original.
 
 Asi el problema de contar el número de subconjuntos se traduce a encontrar el número posible de vectores $(x1 , x2 , . . . , xk
-)$ con $x_i \in \{0, 1\}$. Como cada $x_i$ es seleccionado de un conjunto con dos elementos, entonces el número total de este tipo de vectores es igual a $2_k$ . 
+  )$ con $x_i \in \{0, 1\}$. Como cada $x_i$ es seleccionado de un conjunto con dos elementos, entonces el número total de este tipo de vectores es igual a $2_k$ .
 
-Ejemplo. Supongamos que tenemos el conjunto $A = \{1, 2, 3\}$. ¿De cuantas formas podemos ordenar al conjunto $A$?. El conjunto $A$ es lo suficientemente pequeño como para enlistar todos los posibles ordenamientos: 
+Ejemplo. Supongamos que tenemos el conjunto $A = \{1, 2, 3\}$. ¿De cuantas formas podemos ordenar al conjunto $A$?. El conjunto $A$ es lo suficientemente pequeño como para enlistar todos los posibles ordenamientos:
 \begin{align*}
-    \{1, 2, 3\}&\ &\{1, 3, 2\}&\ &\{2, 1, 3\}\\    
-    \{2, 3, 1\}&\ &\{3, 2, 1\}&\ &\{3, 1, 2\}
+  \{1, 2, 3\} & \  & \{1, 3, 2\} & \  & \{2, 1, 3\} \\
+  \{2, 3, 1\} & \  & \{3, 2, 1\} & \  & \{3, 1, 2\}
 \end{align*}
 
-El conjunto $A$ es lo suficientemente pequeño como para que estemos seguros de haber enlistado todos los posibles ordenamientos con lo cual, afirmamos que el numero total de ordenamientos del conjunto $A$ es igual a 6 . Sin embargo para un conjunto mas grande, esta estrategia quizás no sea la mas indicada. ¿Cómo llegamos a la misma conclusión sin necesidad de enlistar todos los posibles ordenamientos? En realidad estamos formando triadas del estilo: 
+El conjunto $A$ es lo suficientemente pequeño como para que estemos seguros de haber enlistado todos los posibles ordenamientos con lo cual, afirmamos que el numero total de ordenamientos del conjunto $A$ es igual a 6 . Sin embargo para un conjunto mas grande, esta estrategia quizás no sea la mas indicada. ¿Cómo llegamos a la misma conclusión sin necesidad de enlistar todos los posibles ordenamientos? En realidad estamos formando triadas del estilo:
 $$
-(x_1, x_2, x_3)
+  (x_1, x_2, x_3)
 $$
-donde $x_i \in A$. Con la peculiaridad de que $x_1$ puede ser cualquier elemento de $A$, mientras que $x_2$, pude ser cualquier elemento de $A$ excepto el que ya asignamos a $x_1$ . Asimismo $x_3$ puede ser cualquier elemento de $A$ excepto los ya asignados a $x_1$ y $x_2$ . De este modo, $x_1$ puede seleccionarse de una de tres formas posibles, $x_2$ puede seleccionarse de una de dos formas posibles y $x_3$ solo puede seleccionarse de una única forma. En total podremos ordenar $A$ de: 
+donde $x_i \in A$. Con la peculiaridad de que $x_1$ puede ser cualquier elemento de $A$, mientras que $x_2$, pude ser cualquier elemento de $A$ excepto el que ya asignamos a $x_1$ . Asimismo $x_3$ puede ser cualquier elemento de $A$ excepto los ya asignados a $x_1$ y $x_2$ . De este modo, $x_1$ puede seleccionarse de una de tres formas posibles, $x_2$ puede seleccionarse de una de dos formas posibles y $x_3$ solo puede seleccionarse de una única forma. En total podremos ordenar $A$ de:
 $$
-3! = 3 \cdot 2 \cdot 1 = 6
+  3! = 3 \cdot 2 \cdot 1 = 6
 $$
 formas.
 
-En general un conjunto con $n$ elementos se puede ordenar de 
+En general un conjunto con $n$ elementos se puede ordenar de
 $$n! = n \cdot (n - 1) \cdot (n - 2)\cdots 1
-$$ 
-formas posibles.  El siguiente ejemplo se resuelve con una pequeña variación del argumento que hemos usado hasta este momento: 
-co letras podemos formar? ¿Cuantas si las letras no pueden repetirse? Para resolver este problema primero debemos notar que una palabra de 4 letras será cualquier sucesión de cuatro letras, el resultado no tiene que ser necesariamente una palabra del diccionario. Así por ejemplo `abcd' es una `palabra'. En realidad buscamos el numero de vectores del tipo. $(x_1 , x_2 , x_3 , x_4 )$ donde cada $x_i$ es alguna de las 26 letras del abecedario. En este caso el número de palabras será $26^4$. 
+$$
+formas posibles.  El siguiente ejemplo se resuelve con una pequeña variación del argumento que hemos usado hasta este momento:
+co letras podemos formar? ¿Cuantas si las letras no pueden repetirse? Para resolver este problema primero debemos notar que una palabra de 4 letras será cualquier sucesión de cuatro letras, el resultado no tiene que ser necesariamente una palabra del diccionario. Así por ejemplo `abcd' es una `palabra'. En realidad buscamos el numero de vectores del tipo. $(x_1 , x_2 , x_3 , x_4 )$ donde cada $x_i$ es alguna de las 26 letras del abecedario. En este caso el número de palabras será $26^4$.
 
-¿Que pasa si no podemos repetir letras? Obviamente en este caso palabras como $aabc$ no son válidas. Ahora al componer los vectores 
+¿Que pasa si no podemos repetir letras? Obviamente en este caso palabras como $aabc$ no son válidas. Ahora al componer los vectores
 $$
-(x_1, x_2, x_3, x_4)
-$$ 
-$x_1$ podrá seleccionarse de una de 26 formas posibles, $x_2$ de 1 de 25 posibles, $x_3$ de una de 24 formas posibles y $x_4$ de una de 23 formas posibles, esto con la finalidad de no repetir letras. En total tendremos 
+  (x_1, x_2, x_3, x_4)
 $$
-26 \cdot 25 \cdot 24 \cdot 23 = \frac{26!}{22!} = \frac{26!}{(26 - 4)!} = = 358,800 
+$x_1$ podrá seleccionarse de una de 26 formas posibles, $x_2$ de 1 de 25 posibles, $x_3$ de una de 24 formas posibles y $x_4$ de una de 23 formas posibles, esto con la finalidad de no repetir letras. En total tendremos
+$$
+  26 \cdot 25 \cdot 24 \cdot 23 = \frac{26!}{22!} = \frac{26!}{(26 - 4)!} = = 358,800
 $$
 formas de armar una palabra de cuatro letras que no repita letras.
 
 En general si queremos formar palabras de m letras tendremos un total de 26m palabras si es que podemos repetir letras. Si no podemos repetir letras, entonces podremos formar un total de total de
 $$
-26! (26 - m)!
-$$ 
+  26! (26 - m)!
+$$
 palabras. Observemos que este último caso solo tiene sentido solo si $m \leq 26$. Por último, cuando permitimos repetición de letras decimos que hacemos una selección con orden y con reemplazo. Lo de reemplazo, creo que es claro, lo de orden también si consideramos que $aabc$ y $abac$ por ejemplo, son palabras diferentes aunque sean palabras formadas por las mismas letras.
 
-Por el contrario, cuando la repetición de letras no esta permitida entonces decimos que hicimos una selección con orden y sin reemplazo. Nuevamente, creo que es claro la parte de `sin reemplazo', pero también el orden si consideramos que las palabras $abcd$ y $bacd$ son diferentes a pesar de tener las mismas letras. En general; si tenemos un conjunto con $n$ elementos el número total de selecciones de $m$ elementos, con orden y con reemplazo es igual a 
+Por el contrario, cuando la repetición de letras no esta permitida entonces decimos que hicimos una selección con orden y sin reemplazo. Nuevamente, creo que es claro la parte de `sin reemplazo', pero también el orden si consideramos que las palabras $abcd$ y $bacd$ son diferentes a pesar de tener las mismas letras. En general; si tenemos un conjunto con $n$ elementos el número total de selecciones de $m$ elementos, con orden y con reemplazo es igual a
 $$
-n\times m
+  n\times m
 $$
-en contraste; el número total de selecciones con orden y sin reemplazo es igual a: 
+en contraste; el número total de selecciones con orden y sin reemplazo es igual a:
 $$
-n! (n - m)!
+  n! (n - m)!
 $$
-Observemos que en este caso es necesario que $m \leq n$. 
+Observemos que en este caso es necesario que $m \leq n$.
 
-Ejemplo. Tengo 6 discos de rock, 4 de música clásica y 3 de música regional. ¿De cuantas formas puedo ordenar mis discos de modo que los discos del mismo género estén en posiciones contiguas? 
+Ejemplo. Tengo 6 discos de rock, 4 de música clásica y 3 de música regional. ¿De cuantas formas puedo ordenar mis discos de modo que los discos del mismo género estén en posiciones contiguas?
 
-Los discos de rock pueden ordenarse de $6!$ formas, los de música clásica pueden ordenarse de $4!$ formas y los de música regional de $3!$ formas, por lo tanto, puedo ordenar mis discos de $6!4!3!$ formas ¿cierto? Falta un detalle\dots también podemos intercambiar los géneros! Podemos colocar primero los de rock, luego los regionales y finalmente los de música clásica. Otra posibilidad es poner primero los de música clásica, luego los regionales y al final los de rock\dots es decir falta contar las formas en que podemos ordenar los géneros. Esto lo hacemos de $3!$ formas. Por lo tanto el número que en realidad estoy buscando es: 
+Los discos de rock pueden ordenarse de $6!$ formas, los de música clásica pueden ordenarse de $4!$ formas y los de música regional de $3!$ formas, por lo tanto, puedo ordenar mis discos de $6!4!3!$ formas ¿cierto? Falta un detalle\dots también podemos intercambiar los géneros! Podemos colocar primero los de rock, luego los regionales y finalmente los de música clásica. Otra posibilidad es poner primero los de música clásica, luego los regionales y al final los de rock\dots es decir falta contar las formas en que podemos ordenar los géneros. Esto lo hacemos de $3!$ formas. Por lo tanto el número que en realidad estoy buscando es:
 $$
-3!6!4!3!
+  3!6!4!3!
 $$
 
-Ejemplo. En un club con 25 miembros, deben ser seleccionados el presidente, el secretario y el tesorero. Cualquier miembro del club puede ser candidato a alguna de estas posiciones. ¿De cuantas formas podemos realizar la selección? Tenemos 25 posibilidades para el puesto de presidente. Sin embargo una vez seleccionado este, solo tenemos 24 posibilidades para el puesto de secretario y una vez seleccionados presidente y secretario solo quedan 23 posibilidades para el tesorero, por lo tanto tenemos: 
+Ejemplo. En un club con 25 miembros, deben ser seleccionados el presidente, el secretario y el tesorero. Cualquier miembro del club puede ser candidato a alguna de estas posiciones. ¿De cuantas formas podemos realizar la selección? Tenemos 25 posibilidades para el puesto de presidente. Sin embargo una vez seleccionado este, solo tenemos 24 posibilidades para el puesto de secretario y una vez seleccionados presidente y secretario solo quedan 23 posibilidades para el tesorero, por lo tanto tenemos:
 $$
-25 \cdot 24 \cdot 23 = \frac{25!}{22!} = 13,800 
+  25 \cdot 24 \cdot 23 = \frac{25!}{22!} = 13,800
 $$
 formas de seleccionar presidente, secretario y tesorero.
 
 Ejemplo. Supongamos que queremos formar un equipo de superheroes. Están disponibles, Hulk, Ironman, Spiderman, Wolverine y Deadpool.
 
-de estos superhéroes queremos formar un equipo de solo tres. ¿Cuantos equipos de tres podemos formar? Una primera aproximación sería pensar que para la primera selección tenemos 5 posibilidades, para la segunda tendríamos sólo 4 y para la tercera solo 2. Por lo tanto el número total de equipos que podemos formar es igual a: 
+de estos superhéroes queremos formar un equipo de solo tres. ¿Cuantos equipos de tres podemos formar? Una primera aproximación sería pensar que para la primera selección tenemos 5 posibilidades, para la segunda tendríamos sólo 4 y para la tercera solo 2. Por lo tanto el número total de equipos que podemos formar es igual a:
 $$
-5\cdot4\cdot3=\frac{5!}{(5 - 3)!} = 60   
+  5\cdot4\cdot3=\frac{5!}{(5 - 3)!} = 60
 $$
 
 \begin{center}
-¿Es correcto?  
+  ¿Es correcto?
 \end{center}
 
 Hemos hecho un selección de tres elementos tomados de un conjunto de cinco elementos. Sin embargo hemos realizado una selección sin reemplazo y con orden. Esta claro que la selección debe ser sin reemplazo, para formar un equipo, no podemos repetir a ningún superheroe, sin embargo ¿que pasa con el orden? Supongamos que seleccionamos a Hulk a Ironman y a Wolverine. Notemos que en la forma en que realizamos la cuenta, dado que lo hicimos con orden, hemos considerado los siguientes equipos como si fueran diferentes:
 
-Observemos sin embargo que los seis equipos que enlistamos son en realidad el mismo. Son solo los 6 posibles ordenamientos de los 3 miembros seleccionados, es decir $3!$. Para evitar estas repeticiones debemos dividir nuestra estimación original entre $3!$, de modo que el número total de equipos es en realidad: 
+Observemos sin embargo que los seis equipos que enlistamos son en realidad el mismo. Son solo los 6 posibles ordenamientos de los 3 miembros seleccionados, es decir $3!$. Para evitar estas repeticiones debemos dividir nuestra estimación original entre $3!$, de modo que el número total de equipos es en realidad:
 $$
-\frac{5!}{3!(5 - 3)!} = 10
-$$  
-Este ultimo cociente es tan importante que tenemos una notación especial para el mismo: 
+  \frac{5!}{3!(5 - 3)!} = 10
+$$
+Este ultimo cociente es tan importante que tenemos una notación especial para el mismo:
 
 $$
-\binom{5}{3}= \frac{5!}{3!(5 - 3)!}
+  \binom{5}{3}= \frac{5!}{3!(5 - 3)!}
 $$
 
 En general para $m \leq n$:
 $$
-\binom{n}{m}=  \frac{n!}{m!(n - m)!}
+  \binom{n}{m}=  \frac{n!}{m!(n - m)!}
 $$
-y se lee como las combinaciones de $n$ en $m$. Del ejemplo que estudiamos, deberíamos llegar a la conclusión de que este cociente son las formas en las que podemos construir un subconjunto de $m$ elementos a partir de un conjunto con $n$ elementos sin orden y sin reemplazo. 
+y se lee como las combinaciones de $n$ en $m$. Del ejemplo que estudiamos, deberíamos llegar a la conclusión de que este cociente son las formas en las que podemos construir un subconjunto de $m$ elementos a partir de un conjunto con $n$ elementos sin orden y sin reemplazo.
 
 Ejemplo. Ahora vamos a un ejemplo un poco mas retador. Supongamos que tenemos un mazo de 52 cartas que una vez que es barajado cuidadosamente es repartido entre cuatro jugadores. Cada jugador tendrá 13 cartas que le fueron repartidas aleatoriamente. Nos interesa conocer cual es la probabilidad de que cada jugador haya recibido exactamente un As.
 
-Dado que el mazo fue barajado con cuidado, podemos suponer que cualquier combinación posible de las 52 cartas es igualmente probable. En vista de ello calcularemos la probabilidad solicitada dividiendo el número de casos favorables entre el número de casos totales. El problema entonces se traduce en responder dos preguntas: ¿Cuál es el número de casos favorables? y ¿Cuál es el número de casos totales? Comencemos por calcular el número de casos totales. ¿Que es lo que debemos contar? Notemos que en realidad lo que nos interesa es determinar la posición en que serán distribuidos los ases. Para ello consideremos el siguiente diagrama: 
+Dado que el mazo fue barajado con cuidado, podemos suponer que cualquier combinación posible de las 52 cartas es igualmente probable. En vista de ello calcularemos la probabilidad solicitada dividiendo el número de casos favorables entre el número de casos totales. El problema entonces se traduce en responder dos preguntas: ¿Cuál es el número de casos favorables? y ¿Cuál es el número de casos totales? Comencemos por calcular el número de casos totales. ¿Que es lo que debemos contar? Notemos que en realidad lo que nos interesa es determinar la posición en que serán distribuidos los ases. Para ello consideremos el siguiente diagrama:
 
 \begin{center}
   FALTA DIAGRAMA
@@ -820,72 +823,62 @@ es una asignación `favorable' ya qua cada jugador tiene asignado exactamente un
 
 En conclusión, para contar el número de casos totales, lo único que nos interesa es distribuir los cuatro ases en alguna de las 52 casillas posibles. Esto significa seleccionar 4 casillas de las 52 posibles, si importar a que jugador corresponden. Tenemos por tanto que el número de casos totales es igual a:
 $$
-\binom{52}{4}
+  \binom{52}{4}
 $$
 Para obtener el número de casos favorables, tenemos que limitarnos a aquellos en los cuales ya hay un as asignado en las posiciones del 1 al 13, otro en las posiciones del 14 al 26, uno más en las posiciones del 15 al 39 y el último en las posiciones del 40 al 52. Esto garantiza que cada jugador tiene asignado exactamente un As. Sin embargo notemos que cualquier As puede ser asignado a una de trece casillas posibles, de modo que el número casos favorables será $13^4$
 
-Finalmente la probabilidad que buscamos es: 
+Finalmente la probabilidad que buscamos es:
 $$
-\frac{13^4}{\binom{52}{4}}  \approx 0.1055
+  \frac{13^4}{\binom{52}{4}}  \approx 0.1055
 $$
 
-Como subproducto, observemos que si esta es la probabilidad de que cada jugador tenga exactamente un As, entonces el complemento es el evento de que algún jugador tenga al menos dos ases. La probabilidad de este segundo evento sería entonces 
+Como subproducto, observemos que si esta es la probabilidad de que cada jugador tenga exactamente un As, entonces el complemento es el evento de que algún jugador tenga al menos dos ases. La probabilidad de este segundo evento sería entonces
 $$
-1-\frac{13^4}{\binom{52}{4}} \approx 0.8945 
+  1-\frac{13^4}{\binom{52}{4}} \approx 0.8945
 $$
 
 Hemos deducido varias formas de contar posibles selecciones de un conjunto, la siguiente tabla muestra un resumen de lo conseguido hasta el momento. El número se selecciones de $m$ elementos a partir de un conjunto con $n$ elementos es igual a:
 %\renewcommand{\arraystretch}{3} 
 \begin{center}
-\begin{table}
-  \begin{tabular}{c|c|c|}
-    \multicolumn{1}{c}{}          & \multicolumn{1}{c}{Con reemplazo} & \multicolumn{1}{c}{Sin reemplazo}\\[0.5ex] \cline{2-3}
-    \multicolumn{1}{c|}{Con orden} & $n^m$ & $\frac{n!}{(n-m)!}$\\[0.5ex]\cline{2-3}
-    \multicolumn{1}{c|}{Sin orden} & ?     & $\binom{n}{m} = \frac{n!}{m!(n-m)!}=\binom{n}{n-m}$\\\cline{2-3}
-  \end{tabular}
-\end{table}
+  \begin{table}
+    \begin{tabular}{c|c|c|}
+      \multicolumn{1}{c}{}           & \multicolumn{1}{c}{Con reemplazo} & \multicolumn{1}{c}{Sin reemplazo}                   \\[0.5ex] \cline{2-3}
+      \multicolumn{1}{c|}{Con orden} & $n^m$                             & $\frac{n!}{(n-m)!}$                                 \\[0.5ex]\cline{2-3}
+      \multicolumn{1}{c|}{Sin orden} & ?                                 & $\binom{n}{m} = \frac{n!}{m!(n-m)!}=\binom{n}{n-m}$ \\\cline{2-3}
+    \end{tabular}
+  \end{table}
 \end{center}
-Aún nos hace falta el caso con reemplazo y sin orden, por el momento lo dejaremos para más tarde. Antes algunas observaciones: en ambos casos en los cuales la selección se realiza sin reemplazo, es necesario que $m \leq n$.  En el caso en el que realizamos una selección sin orden y sin reemplazo, en realidad lo que estamos haciendo es contar las formas en que podemos construir un subconjunto de m elementos a partir de un conjunto con n elementos. Pero más aún dado que 
+Aún nos hace falta el caso con reemplazo y sin orden, por el momento lo dejaremos para más tarde. Antes algunas observaciones: en ambos casos en los cuales la selección se realiza sin reemplazo, es necesario que $m \leq n$.  En el caso en el que realizamos una selección sin orden y sin reemplazo, en realidad lo que estamos haciendo es contar las formas en que podemos construir un subconjunto de m elementos a partir de un conjunto con n elementos. Pero más aún dado que
 $$
-\binom{n}{m} = \frac{n!}{m!(n-m)!}=\binom{n}{n-m}
+  \binom{n}{m} = \frac{n!}{m!(n-m)!}=\binom{n}{n-m}
 $$
 
 Deducimos que el número de subconjuntos con $m$ elementos es igual al número de subconjuntos con $n-m$ elementos. Dicho de otro modo; al hacer una selección sin orden y sin reemplazo, implícitamente estamos contando el numero de formas en que podemos dividir al conjunto original en un par de conjuntos; uno con $m$ elementos y otro con $n - m$ elementos. El siguiente ejemplo nos da una generalización de esta conclusión.
 
-Previamente dimos un argumento satisfactorio para calcular el número de subconjunto de un subconjunto con n elementos. Ahora damos un argumento alternativo pero usando combinaciones. Esto lo logramos contando uno por uno, el numero de subconjuntos con cero elementos, el numero de conjuntos con un elemento, el número de conjuntos con dos elementos etc. La suma de todos ellos es el número total de subconjuntos, esto es: 
+Previamente dimos un argumento satisfactorio para calcular el número de subconjunto de un subconjunto con n elementos. Ahora damos un argumento alternativo pero usando combinaciones. Esto lo logramos contando uno por uno, el numero de subconjuntos con cero elementos, el numero de conjuntos con un elemento, el número de conjuntos con dos elementos etc. La suma de todos ellos es el número total de subconjuntos, esto es:
 $$
-\sum_{i =0}^n\binom{n}{i}
+  \sum_{i =0}^n\binom{n}{i}
 $$
-Pero recordando el teorema del binomio: 
+Pero recordando el teorema del binomio:
 $$
-(a + b)^n = \sum_{i =0}^n\binom{n}{i}a^ib^{n-i} 
+  (a + b)^n = \sum_{i =0}^n\binom{n}{i}a^ib^{n-i}
 $$
 tenemos que
 $$
-\sum_{i =0}^n\binom{n}{i} = \sum_{i =0}^n\binom{n}{i}1^i1^{n-i} = (1+1)^n = 2^n
+  \sum_{i =0}^n\binom{n}{i} = \sum_{i =0}^n\binom{n}{i}1^i1^{n-i} = (1+1)^n = 2^n
 $$
 
-Ejemplo. ¿De cuantas formas podemos ordenar las letras de la palabra $PEPPER$? Es claro que en esta palabra no es posible distinguir entre una $P$ y otra o entre una $E$ y otra. Sin embargo como primer paso, hagámos identificables a cada una de las letras: 
+Ejemplo. ¿De cuantas formas podemos ordenar las letras de la palabra $PEPPER$? Es claro que en esta palabra no es posible distinguir entre una $P$ y otra o entre una $E$ y otra. Sin embargo como primer paso, hagámos identificables a cada una de las letras:
 $$
-PEPPER = P_1 E_1 P_2 P_3 E_2 R 
+  PEPPER = P_1 E_1 P_2 P_3 E_2 R
+$$\tikz \draw (0,0) -- (0.0,0.2);
+Esto último es sólo un ejemplo, otro ejemplo podría ser el siguiente, las combinaciones:
 $$
-En este caso tenemos $6!$ permutaciones de estas letras. Sin embargo observemos que las combinaciones: 
-$$
-PEPPER = P_2 E_2 P_1 P_3 E_1 R 
+  PPPEER = P_1 P_2 P_3 E_1 E_2 R
 $$
 y
 $$
-PEPPER = P_3 E_1 P_1 P_2 E_2 R
-$$
-son en realidad la misma combinación. 
-
-Esto último es sólo un ejemplo, otro ejemplo podría ser el siguiente, las combinaciones: 
-$$
-PPPEER = P_1 P_2 P_3 E_1 E_2 R
-$$
-y
-$$
-PPPEER = P_2 P_1 P_3 E_2 E_1 R
+  PPPEER = P_2 P_1 P_3 E_2 E_1 R
 $$
 
 son en realidad la misma combinación. Esto es al contar los ordenamientos con 6! estamos contando muchos casos repetidos. ¿Como calculamos los casos repetidos? Observemos que una vez que determinamos una combinación si intercambiamos de lugar una $P$ con otra el resultado es la misma `palabra'. Lo mismo ocurre con una $E$, si la cambio de lugar con otra E la palabra resultante no cambia. Solo tenemos una $R$, pero si hubiera mas de una, la conclusión sería idéntica.
@@ -894,13 +887,368 @@ Es así que una vez que determinamos una ordenamiento de las letras, cualquier p
 
 Este ejemplo es un caso particular del siguiente problema: si tenemos un conjunto con $n$ elementos, ¿de cuantas formas podemos construir una partición del conjunto en $k$ subconjuntos cada uno con $n_i$, $i = 1,\ldots, k$ elementos? Siguiendo misma lógica del ejemplo anterior, podríamos realizar esta partición de
 $$
-\frac{n!}{n_1!n_2!\cdots n_k!} 
+  \frac{n!}{n_1!n_2!\cdots n_k!}
 $$
 formas, con $n_1 + n_2 + \cdots + n_k = n$. A este cociente se le conoce como coeficiente multinomial el cual es una generalización del coeficiente binomial:
 $$
-\frac{n!}{m!(n-m)!}.
+  \frac{n!}{m!(n-m)!}.
 $$
 
+\par\noindent
+Ejemplo.
+
+El sorteo del Melate bolas numeradas del 1 al 56 son introducidas en una urna. Aleatoriamente son seleccionadas 6 de ellas, los números `naturales' mas un `adicional'. Los participantes compran un boleto en el cual hacen su propia selección de 6 números. Existen varias formas de ganar en el sorteo. Obtenemos el premio mayor si acertamos los 6 números naturales. El siguiente premio se consigue si acertamos exactamente 5 de los números naturales mas el adicional, el siguiente lo conseguimos si solo acertamos exactamente 5 naturales. La siguiente tabla resume las formas en que podemos ganar y la probabilidad de cada una.
+
+
+\begin{center}
+  \begin{tabular}{@{}lr@{}}
+    \toprule
+    \multicolumn{1}{c}{Categoría} & \multicolumn{1}{c}{Chances de ganar}\\ 
+    \midrule
+    6 Naturales             & 1 en 32,468,436 \\\midrule
+    5 Naturales + Adicional & 1 en 5,411,406  \\\midrule
+    5 Naturales             & 1 en 110,437    \\\midrule
+    4 Naturales + Adicional & 1 en 44,175     \\\midrule
+    4 Naturales             & 1 en 1,841      \\\midrule
+    3 Naturales + Adicional & 1 en 1,380      \\\midrule
+    3 Naturales             & 1 en 88         \\\midrule
+    2 Naturales + Adicional & 1 en 117        \\\midrule
+    2 Naturales             & 1 en 10         \\\bottomrule
+  \end{tabular}
+\end{center}
+
+¿Como verificamos que estas probabilidades son correctas? Empecemos por determinar el número total de casos. Como la selección que hace un participante es de 6 números, debemos hacer una selección de 6 a partir de los 56 disponibles. El orden no importa, solo es relevante si acertamos o no los números. Por lo tanto el número total de casos es: 
+
+$$
+\binom{56}{5}= 32,468,436
+$$
+
+¿Como ganamos el premio mayor? Este es el caso más fácil Sólo ganamos si acertamos exactamente los 6 números naturales, por lo tanto solo existe un caso favorable. Por lo tanto, la probabilidad de ganar el premio mayor es igual a 
+
+$$
+\frac{1}{\binom{56}{6}}
+$$
+
+El siguiente premio la ganamos si acertamos exactamente 5 naturales mas el adicional. ¿Como lo logramos? Pues debemos `forzar' a que 5 de los números que seleccionamos provengan de los 6 naturales que fueron seleccionados. Es decir seleccionamos 5 de los 6 números naturales ganadores. El número de selecciones de este tipo es: 
+$$
+\binom{6}{5} 
+$$
+El número restante debe coincidir con el adicional. Como solo existe un adicional, esto se logra de una única manera. Por lo tanto la probabilidad de atinar 5 naturales mas el adicional es: 
+$$
+\frac{\binom{6}{5} \cdot 1}{\binom{56}{6}}
+$$
+El siguiente premio se obtiene si acertamos exactamente 5 naturales pero fallamos en el adicional. El acierto de los 5 naturales como ya vimos se puede obtener de
+$$
+\binom{6}{5}
+$$ 
+formas. ¿Que pasa con el que no acertamos? No puede ser ninguno de los naturales ganadores y tampoco puede ser el adicional, por lo tanto de los 56 naturales existen 49 perdedores. El número que en definitiva no acertamos debe ser uno de esos 49 perdedores. de modo que en este caso el número de casos favorables es: 
+$$
+\binom{6}{5}\cdot 49
+$$
+y la probabilidad de obtener exactamente 5 naturales es:
+$$
+\frac{\binom{6}{5}\cdot 49}{\binom{56}{6}}
+$$
+El siguiente premio lo ganamos si acertamos 4 naturales mas el adicional. Siguiendo la misma lógica, debemos entonce seleccionar 4 de los 6 naturales ganadores. Las formas de hacer esto es: 
+
+$$
+\binom{6}{4}
+$$
+
+Pero ahora tenemos dos números restantes. Uno de ellos es el adicional y solo hay una forma de seleccionarlo. El número restante debe ser uno de los 49 perdedores, de modo que el número de casos favorables será: 
+$$
+\binom{6}{4}\cdot 49 \cdot 1
+$$
+Finalmente, la probabilidad de obtener 4 naturales mas el adicional será
+$$
+\frac{\binom{6}{4}\cdot 49 \cdot 1}{\binom{56}{6}}
+$$
+
+El ultimo caso que calcularemos es cuando acertamos exactamente 4 naturales. En este caso, nuevamente seleccionamos cuatro de los 6 naturales ganadores. Sabemos que esto podemos hacerlos de 
+$$
+\binom{6}{4}
+$$ 
+formas. Nuevamente restan dos números, pero en este caso debe omitirse el adicional, debemos seleccionarlos de los 49 perdedores, esto podemos hacerlo de
+$$
+\binom{49}{2}
+$$
+formas. De modo que la probabilidad de obtener exactamente 4 naturales es:
+$$
+\frac{\binom{6}{4}\cdot \binom{49}{2}}{\binom{56}{6}}
+$$
+Los casos restantes se calculan de manera similar. El resto de los casos ganadores se obtienen con:
+\begin{align*}
+  \text{Probabilidad de 3 naturales + adicional} & = \frac{\binom{6}{3}\cdot 49 \cdot 1}{\binom{56}{6}}\\
+  \text{Probabilidad de 3 naturales} & = \frac{\binom{6}{3}\cdot \binom{49}{3}}{\binom{56}{6}}\\
+  \text{Probabilidad de 2 naturales + adicional} & = \frac{\binom{6}{2}\cdot 49 \cdot 1}{\binom{56}{6}}\\
+  \text{Probabilidad de 2 naturales} & = \frac{\binom{6}{2}\cdot \binom{49}{4}}{\binom{56}{6}}
+\end{align*}
+Finalmente, para concluir el tema de combinatoria, determinaremos el número de selecciones con reemplazo y sin orden, de tamaño $m$ a partir de un conjunto con $n$ elementos. Primero, notemos que dado que la selección se realiza con reemplazo, en este caso es posible que $m \geq n$ aunque no es necesario. Pensemos en un ejemplo muy concreto. Supongamos que tenemos $n$ bolas numeradas. Seleccionamos una bola, tomamos registro de su número y la devolvemos con las demás. Esto lo repetimos $m$ veces. Como devolvimos la bola en cada ocasión, pueden existir repeticiones sin ningún problema. Un registro posible donde  tenemos cuatro bolas y hacemos tres selecciones, podría verse como sigue:
+
+\begin{center}
+\begin{tikzpicture}
+  % Draw the main line
+  \draw[line width=1.5pt, -] (0,0) -- (8,0);
+
+  % Draw small ticks
+  
+  %\foreach \x in {1,2,...,9}
+  %    \draw (\x,0) -- (\x,-0.2);
+
+  %Draw large ticks and labels\bullet 
+  \foreach \x in {2,4,6}
+  {
+      \draw (\x,0.2) -- (\x,-0.2);
+      %\node at (\x,-0.7) {\x};
+  }
+  \node at (1,-0.4) {1};
+  \node at (3,-0.4) {2};
+  \node at (5,-0.4) {3};
+  \node at (7,-0.4) {4};
+
+  \fill (5.3,0.4) circle (0.1);
+  \fill (5,0.4) circle (0.1);
+  \fill (4.7,0.4) circle (0.1);
+\end{tikzpicture}
+\end{center}
+
+ \begin{center}
+  \begin{tikzpicture}
+    \node at (0,0) {10.};   
+    \node at (0,1) {9.};    
+    \node at (0,2) {8.};    
+    \node at (0,3) {7.};    
+    \node at (0,4) {6.};    
+    \node at (0,5) {5.};    
+    \node at (0,6) {4.};    
+    \node at (0,7) {3.};    
+    \node at (0,8) {2.};    
+    \node at (0,9) {1.};   
+    
+    \node at (7,0) {20.};
+    \node at (7,1) {19.};
+    \node at (7,2) {18.};
+    \node at (7,3) {17.};
+    \node at (7,4) {16.};
+    \node at (7,5) {15.};
+    \node at (7,6) {14.};
+    \node at (7,7) {13.};
+    \node at (7,8) {12.};
+    \node at (7,9) {11.};
+
+    %\draw[line width=1.5pt, -] (1.4,-0.2) -- (1.4,.3) (0.7,-0.2) -- (0.7,.3) (1,-0.2) -- (1,.3); 
+
+    %[1]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
+    \foreach \x in {.7,1.2,1.7}
+    {
+      \fill (\x,9.05) circle (0.15);
+    }
+    
+    \foreach \x in {2.2, 2.7, 3.2}
+    {
+      \draw[line width=1.2pt, -] (\x,8.8) -- (\x,9.3);
+    }
+    %[2]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
+    \foreach \x in {.7,1.2,2.2}
+    {
+      \fill (\x,8.05) circle (0.15);
+    }
+    
+    \foreach \x in {1.7, 2.7, 3.2}
+    {
+      \draw[line width=1.2pt, -] (\x,7.8) -- (\x,8.3);
+    }
+    %[3]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
+    \foreach \x in {.7,2.2,1.7}
+    {
+      \fill (\x,7.05) circle (0.15);
+    }
+        
+    \foreach \x in {1.2, 2.7, 3.2}
+    {
+      \draw[line width=1.2pt, -] (\x,6.8) -- (\x,7.3);
+    }
+    %[4]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
+    \foreach \x in {2.2,1.2,1.7}
+    {
+      \fill (\x,6.05) circle (0.15);
+    }
+    
+    \foreach \x in {0.7, 2.7, 3.2}
+    {
+      \draw[line width=1.2pt, -] (\x,5.8) -- (\x,6.3);
+    }        
+    %[5]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \foreach \x in {1.2,1.7, 2.7}
+    {
+      \fill (\x,5.05) circle (0.15);
+    }
+    
+    \foreach \x in {0.7, 2.2, 3.2}
+    {
+      \draw[line width=1.2pt, -] (\x,4.8) -- (\x,5.3);
+    }
+    %[6]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
+    \foreach \x in {1.2,2.2, 2.7}
+    {
+      \fill (\x,4.05) circle (0.15);
+    }
+    
+    \foreach \x in {0.7, 1.7, 3.2}
+    {
+      \draw[line width=1.2pt, -] (\x,3.8) -- (\x,4.3);
+    }
+    %[7]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
+    \foreach \x in {1.7,2.2, 2.7}
+    {
+      \fill (\x,3.05) circle (0.15);
+    }
+    
+    \foreach \x in {0.7, 1.2, 3.2}
+    {
+      \draw[line width=1.2pt, -] (\x,2.8) -- (\x,3.3);
+    }        
+    %[8]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
+    \foreach \x in {1.7,2.2, 3.2}
+    {
+      \fill (\x,2.05) circle (0.15);
+    }
+    
+    \foreach \x in {0.7, 1.2, 2.7}
+    {
+      \draw[line width=1.2pt, -] (\x,1.8) -- (\x,2.3);
+    }
+    %[9]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
+    \foreach \x in {1.7,2.7, 3.2}
+    {
+      \fill (\x,1.05) circle (0.15);
+    }
+    
+    \foreach \x in {0.7, 1.2, 2.2}
+    {
+      \draw[line width=1.2pt, -] (\x,0.8) -- (\x,1.3);
+    }     
+    %[10]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
+    \foreach \x in {2.2,2.7, 3.2}
+    {
+      \fill (\x,0.05) circle (0.15);
+    }
+    
+    \foreach \x in {0.7, 1.2, 1.7}
+    {
+      \draw[line width=1.2pt, -] (\x,-0.2) -- (\x,0.3);
+    }
+
+
+    %-----------------------------------------------------
+
+    %-----------------------------------------------------
+    %[11]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
+
+    \foreach \x in {7.7,8.2,9.7}
+    {
+      \fill (\x,9.05) circle (0.15);
+    }
+    
+    \foreach \x in {8.7,9.2, 10.2}
+    {
+      \draw[line width=1.2pt, -] (\x,8.8) -- (\x,9.3);
+    }
+    %[12]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
+    \foreach \x in {7.7,9.2,9.7}
+    {
+      \fill (\x,8.05) circle (0.15);
+    }
+    
+    \foreach \x in {8.2, 8.7, 10.2}
+    {
+      \draw[line width=1.2pt, -] (\x,7.8) -- (\x,8.3);
+    }
+    %[13]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
+    \foreach \x in {7.7,8.2,10.2}
+    {
+      \fill (\x,7.05) circle (0.15);
+    }
+    
+    \foreach \x in {8.7, 9.2, 9.7}
+    {
+      \draw[line width=1.2pt, -] (\x,6.8) -- (\x,7.3);
+    }        
+    %[14]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
+    \foreach \x in {7.7,9.7,10.2}
+    {
+      \fill (\x,6.05) circle (0.15);
+    }
+    
+    \foreach \x in {8.2, 8.7, 9.2}
+    {
+      \draw[line width=1.2pt, -] (\x,5.8) -- (\x,6.3);
+    }
+    %[15]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
+    \foreach \x in {8.2,9.7,10.2}
+    {
+      \fill (\x,5.05) circle (0.15);
+    }
+    
+    \foreach \x in {7.7, 8.7, 9.2}
+    {
+      \draw[line width=1.2pt, -] (\x,4.8) -- (\x,5.3);
+    }
+    %[16]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
+
+    \foreach \x in {8.2,8.7, 10.2}
+    {
+      \fill (\x,4.05) circle (0.15);
+    }
+    
+    \foreach \x in {7.7, 9.2, 9.7}
+    {
+      \draw[line width=1.2pt, -] (\x,3.8) -- (\x,4.3);
+    }
+    %[17]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
+    \foreach \x in {7.7,9.2, 10.2}
+    {
+      \fill (\x,3.05) circle (0.15);
+    }
+    
+    \foreach \x in {8.2, 8.7, 9.7}
+    {
+      \draw[line width=1.2pt, -] (\x,2.8) -- (\x,3.3);
+    }
+    %[18]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
+    \foreach \x in {7.7,8.7, 10.2}
+    {
+      \fill (\x,2.05) circle (0.15);
+    }
+    
+    \foreach \x in {8.2, 9.2, 9.7}
+    {
+      \draw[line width=1.2pt, -] (\x,1.8) -- (\x,2.3);
+    }        
+    %[19]%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
+    \foreach \x in {7.7,8.7, 9.7}
+    {
+      \fill (\x,1.05) circle (0.15);
+    }
+    
+    \foreach \x in {8.2, 9.2, 10.2}
+    {
+      \draw[line width=1.2pt, -] (\x,0.8) -- (\x,1.3);
+    }
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
+    \foreach \x in {8.2, 9.2, 10.2}
+    {
+      \fill (\x,0.05) circle (0.15);
+    }
+    
+    \foreach \x in {7.7,8.7, 9.7}
+    {
+      \draw[line width=1.2pt, -] (\x,-0.2) -- (\x,0.3);
+    }
+    %-----------------------------------------------------
+
+  \end{tikzpicture}
+ \end{center}
 \end{document}
 
 
@@ -908,157 +1256,10 @@ $$
 
 
 
- 
 
-Combinatoria
 
-Ejemplo. El sorteo del Melate bolas numeradas del 1 al 56 son
-introducidas en una urna. Aleatoriamente son seleccionadas 6 de
-ellas,los números `naturales' mas un `adicional'. Los participantes
-compran un boleto en el cual hacen su propia selección de 6 números.
-Existen varias formas de ganar en el sorteo. Obtenemos el premio mayor
-si acertamos los 6 números naturales. El siguiente premio se consigue si
-acertamos exactamente 5 de los números naturales mas el adicional, el
-siguiente lo conseguimos si solo acertamos exactamente 5 naturales. La
-siguiente tabla resume las formas en que podemos ganar y la probabilidad
-de cada una.
+Combinatoria  ●● 1
 
-Combinatoria Categoría
-
-Chances de ganar
-
-6 Naturales
-
-1 en 32,468,436
-
-5 Naturales + Adicional
-
-1 en 5,411,406
-
-5 Naturales
-
-1 en 110,437
-
-4 Naturales + Adicional
-
-1 en 44,175
-
-4 Naturales
-
-1 en 1,841
-
-3 Naturales + Adicional
-
-1 en 1,380
-
-3 Naturales
-
-1 en 88
-
-2 Naturales + Adicional
-
-1 en 117
-
-2 Naturales
-
-1 en 10
-
-Combinatoria ¿Como verificamos que estas probabilidades son correctas?
-Empecemos por determinar el numero total de casos. Como la selección que
-hace un participante es de 6 números, debemos hacer una selección de 6 a
-partir de los 56 disponibles. El orden no importa, solo es relevante si
-acertamos o no los números. Por lo tanto el número total de casos es: (
-
-56 ) = 32, 468, 436 5
-
-¿Como ganamos el premio mayor? Este es el caso más fácil Sólo ganamos si
-acertamos exactamente los 6 números naturales, por lo tanto solo existe
-un caso favorable. Por lo tanto, la probabilidad de ganar el premio
-mayor es igual a 1 56 (6) 
-
-Combinatoria El siguiente premio la ganamos si acertamos exactamente 5
-naturales mas el adicional. ¿Como lo logramos? Pues debemos `forzar' a
-que 5 de los números que seleccionamos provengan de los 6 naturales que
-fueron seleccionados. Es decir seleccionamos 5 de los 6 números
-naturales ganadores. El número de selecciones de este tipo es: 6 ( ) 5
-El número restante debe coincidir con el adicional. Como solo existe un
-adicional, esto se logra de una única manera. Por lo tanto la
-probabilidad de atinar 5 naturales mas el adicional es: (65) \cdot 1 (56 ) 6
-
-Combinatoria El siguiente premio se obtiene si acertamos exactamente 5
-naturales pero fallamos en el adicional. El acierto de los 5 naturales
-como ya vimos se puede obtener de 6 ( ) 5 formas. ¿Que pasa con el que
-no acertamos? No puede ser ninguno de los naturales ganadores y tampoco
-puede ser el adicional, por lo tanto de los 56 naturales existen 49
-perdedores. El número que en definitiva no acertamos debe ser uno de
-esos 49 perdedores. de modo que en este caso el número de casos
-favorables es: 6 ( ) \cdot 49 5 y la probabilidad de obtener exactamente 5
-naturales es: (65) \cdot 49 (56 ) 6
-
-Combinatoria El siguiente premio lo ganamos si acertamos 4 naturales
-mas el adicional. Siguiendo la misma lógica, debemos entonce seleccionar
-4 de los 6 naturales ganadores. Las formas de hacer esto es: 6 ( ) 4
-Pero ahora tenemos dos números restantes. Uno de ellos es el adicional y
-solo hay una forma de seleccionarlo. El número restante debe ser uno de
-los 49 perdedores, de modo que el número de casos favorables será: 6 ( )
-\cdot 49 \cdot 1 4 Finalmente, la probabilidad de obtener 4 naturales mas el
-adicional será (64) \cdot 49 \cdot 1 (56 ) 6
-
-Combinatoria El ultimo caso que calcularemos es cuando acertamos
-exactamente 4 naturales. En este caso, nuevamente seleccionamos cuatro
-de los 6 naturales ganadores. Sabemos que esto podemos hacerlos de 6 ( )
-4 formas. Nuevamente restan dos números, pero en este caso debe omitirse
-el adicional, debemos seleccionarlos de los 49 perdedores, esto podemos
-hacerlo de 49 ( ) 2 formas. De modo que la probabilidad de obtener
-exactamente 4 naturales es: ) (64) \cdot (49 2 (56 ) 6
-
-Combinatoria El resto de los casos ganadores se obtienen con:
-Probabilidad de 3 naturales + adicional = Probabilidad de 3 naturales =
-Probabilidad de 2 naturales + adicional = Probabilidad de 2 naturales =
-
-\begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
-\setcounter{enumi}{62}
-\item
-  \cdot (49 ) 2 \cdot1 (56 ) 6
-\item
-  \cdot (49
-\end{enumerate}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
-\setcounter{enumi}{2}
-\tightlist
-\item
-  (56 ) 6
-\end{enumerate}
-
-\begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
-\setcounter{enumi}{61}
-\item
-  \cdot (49 ) 3 \cdot1 (56 ) 6
-\item
-  \cdot (49 ) 4 (56 ) 6
-\end{enumerate}
-
-Combinatoria Finalmente, para concluir el tema de combinatoria,
-determinaremos el número de selecciones con reemplazo y sin orden, de
-tamaño m a partir de un conjunto con n elementos. Primero, notemos que
-dado que la selección se realiza con reemplazo, en este caso es posible
-que m \textgreater{} n aunque no es necesario. Pensemos en un ejemplo
-muy concreto. Supongamos que tenemos n bolas numeradas (del 1 al n claro
-esta). Seleccionamos una bola, tomamos registro de su número y la
-devolvemos con las demás. Esto lo repetimos m veces. Como devolvimos la
-bola en cada ocasión, pueden existir repeticiones sin ningún problema.
-Este registro si tenemos cuatro bolas y hacemos tres selecciones, podría
-verse como sigue: ●● 1 
-
-● 2
-
-3
-
-4 
 
 Combinatoria El esquema previo ilustra el caso donde la bola uno fue
 seleccionada dos veces. El siguiente: ●●● 1
@@ -1088,52 +1289,52 @@ Combinatoria En general podemos enlistar los 20 casos posibles como: 1.
 ● ●● ∣∣∣
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{10}
-\item
-  ∣ ● ∣ ●● ∣
-\item
-  ● ● ∣∣ ● ∣
-\item
-  ∣∣∣ ● ● ●
-\item
-  ● ● ∣ ● ∣∣
-\item
-  ∣∣ ●● ∣ ●
-\item
-  ● ● ∣∣∣ ●
-\item
-  ● ∣∣∣ ●●
-\item
-  ∣ ● ● ● ∣∣
-\item
-  ∣ ● ∣∣ ●●
-\item
-  ∣ ●● ∣ ● ∣
-\item
-  ● ∣ ● ∣ ● ∣
-\item
-  ∣∣ ● ● ● ∣
-\item
-  ● ∣∣ ● ∣ ●
-\item
-  ● ∣ ●● ∣∣
-\item
-  ∣∣ ● ∣ ●●
-\item
-  ∣ ●● ∣∣ ●
-\item
-  ● ∣ ● ∣∣ ●
-\item
-  ● ∣∣ ●● ∣
+  \def\labelenumi{\arabic{enumi}.}
+  \setcounter{enumi}{10}
+  \item
+        ∣ ● ∣ ●● ∣
+  \item
+        ● ● ∣∣ ● ∣
+  \item
+        ∣∣∣ ● ● ●
+  \item
+        ● ● ∣ ● ∣∣
+  \item
+        ∣∣ ●● ∣ ●
+  \item
+        ● ● ∣∣∣ ●
+  \item
+        ● ∣∣∣ ●●
+  \item
+        ∣ ● ● ● ∣∣
+  \item
+        ∣ ● ∣∣ ●●
+  \item
+        ∣ ●● ∣ ● ∣
+  \item
+        ● ∣ ● ∣ ● ∣
+  \item
+        ∣∣ ● ● ● ∣
+  \item
+        ● ∣∣ ● ∣ ●
+  \item
+        ● ∣ ●● ∣∣
+  \item
+        ∣∣ ● ∣ ●●
+  \item
+        ∣ ●● ∣∣ ●
+  \item
+        ● ∣ ● ∣∣ ●
+  \item
+        ● ∣∣ ●● ∣
 \end{enumerate}
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{19}
-\tightlist
-\item
-  ∣ ● ∣ ● ∣ ●
+  \def\labelenumi{\arabic{enumi}.}
+  \setcounter{enumi}{19}
+  \tightlist
+  \item
+        ∣ ● ∣ ● ∣ ●
 \end{enumerate}
 
 Combinatoria Notemos que este es el ``registro completo''. En la lista
@@ -1149,7 +1350,7 @@ y el ``registro'' es el mismo. Lo mismo ocurre con las rayas, cambio una
 raya por otra y el ``registro'' es el mismo. Por lo tanto de los 6!
 posibles arreglos de bolas y rayas 3!3! están repetidos. En conclusión
 el número total de selecciones que podemos realizar es igual a: 6 6! = (
-) = 20 3 3!3! 
+) = 20 3 3!3!
 
 Combinatoria En general si tenemos un total de n bolas y hago m
 selecciones, un ``registro típico'' seria como sigue: ●● 1
@@ -1216,7 +1417,7 @@ conjunto: A = \{(1, 4), (2, 3), (3, 2), (4, 1)\}
 
 = La suma de las caras es igual a 5
 
-De aqui se sigue facilmente que P(A) = 
+De aqui se sigue facilmente que P(A) =
 
 1 4 = 36 9
 
@@ -1277,7 +1478,7 @@ Finalmente, lo que en realidad nos interesa es la probabilidad: P(A ∣ B)
 =
 
 \hypertarget{pa-b-24}{%
-\section{P(A \cap B) 2/4}\label{pa-b-24}}
+  \section{P(A \cap B) 2/4}\label{pa-b-24}}
 
 = 2/3 P(B) 3/4
 
@@ -1317,7 +1518,7 @@ argumento: ``Mira, ahora mismo tienes 2/3 de probabilidad de ser
 liberado, si te digo por ejemplo que B será liberado, entonces tu serás
 uno de los dos cuya destino sería incierto y en consecuencia tu
 probabilidad de ser liberado disminuiría a 1/2.'' ¿Es correcto el
-razonamiento del guardia? 
+razonamiento del guardia?
 
 Probabilidad Condicional Primero tratemos de razonar como lo hizo el
 guardia. Dado que de inicio afirmó que el prisionero A tenía 2/3 de
@@ -1392,7 +1593,7 @@ sería suponer que P(\{\Omega3 \}) = P(\{\Omega4 \}) =
 
 eso implicaría que si B y C son liberados el guardia decide decir que B
 o C serán liberados, ``tirando una moneda'' al aire, le es indistinto
-decir que B o que C sera liberado. 
+decir que B o que C sera liberado.
 
 Probabilidad Condicional En este caso:
 
@@ -1412,7 +1613,7 @@ P(\{\Omega3 \}) = P(\{\Omega4 \}) =
 
 aquí dijimos que el guardia tiraba una moneda para decidir si decía B o
 decía C cuando B y C eran liberados. Pero lo que es cierto es que 1 =
-P(\{\Omega3 , \Omega4 \}) = P(\{\Omega3 \}) + P(\{\Omega4 \}) 3 
+P(\{\Omega3 , \Omega4 \}) = P(\{\Omega3 \}) + P(\{\Omega4 \}) 3
 
 Probabilidad Condicional y esto se cumple siempre y cuando 0 \leq P(\{\Omega3
 \}) \leq y
@@ -1429,7 +1630,7 @@ función del valor seleccionado, para P(\{\Omega3 \}), por ejemplo si P(\{\Omega
 
 Esto confirmaría el argumento del guardia, sin embargo aunque es
 matemáticamente correcto, parece increíble que la decision del guardia
-cambie de algún modo la probabilidades del prisionero A. 
+cambie de algún modo la probabilidades del prisionero A.
 
 En contraste, si P(\{\Omega3 \}) = 0 entonces:
 
@@ -1525,7 +1726,7 @@ Con lo cual: P(A \cap B c ) = P(A) - P(A \cap B)
 
 = P(A) - P(A)P(B) = P(A)(1 - P(B))
 
-= P(A)P(B c ) 
+= P(A)P(B c )
 
 Probabilidad Condicional Ejemplo. Supongamos que un experimento es
 repetido n veces. El resultado de un ensayo, no incide en el resultado
@@ -1661,7 +1862,7 @@ siguiente: ♠ 1 2 \ldots{}
 
 Es decir, los casos favorables serían 39., por lo tanto: P(A2 ∣ A1 ) =
 
-39 51 
+39 51
 
 Probabilidad Condicional
 
@@ -1679,7 +1880,7 @@ de forma análoga concluimos que: P(A4 ∣ A1 , A2 , A3 ) =
 En conclusión, la probabilidad de que los Ases sean asignados a
 jugadores diferentes es igual a P(A1 , A2 , A3 , A4 ) = P(A4 ∣ A1 , A2 ,
 A3 )P(A3 ∣ A1 , A2 )P(A2 ∣ A1 )P(A1 ) 13 26 39 = × × × 1 ≈ 0.105 49 50
-15 
+15
 
 Probabilidad Condicional Ejemplo. En un jurado de tres personas, dos de
 los miembros toman cada uno, la decisión correcta, de manera
@@ -1704,7 +1905,7 @@ P(A ∣ J1 , J2 ) = 1 P(A ∣ J1c , J2 ) = P(A ∣ J1 , J2c ) = 1/2
 
 además de que:
 
-P(A ∣ J1c , J2c ) = 0 
+P(A ∣ J1c , J2c ) = 0
 
 Esto nos permite usar una estrategia muy útil, notemos que: \Omega = (J1 \cap
 J2 ) \cup (J1c \cap J2 ) \cup (J1 \cap J2c ) \cup (J1c \cap J2c ) pero además obsérvese
@@ -1712,18 +1913,18 @@ que esta unión es una unión de disjuntos. Por lo tanto: P(A) =P(A \cap (J1
 \cap J2 )) + P(A \cap (J1c \cap J2 ))
 
 \begin{itemize}
-\tightlist
-\item
-  P(A \cap (J1 \cap J2c )) + P(A \cap (J1c \cap J2c ))
+  \tightlist
+  \item
+        P(A \cap (J1 \cap J2c )) + P(A \cap (J1c \cap J2c ))
 \end{itemize}
 
 Condicionando las probabilidades anteriores obtenemos: P(A) =P(A ∣ J1 ,
 J2 )P(J1 \cap J2 ) + P(A ∣ J1c , J2 )P(J1c \cap J2 )
 
 \begin{itemize}
-\tightlist
-\item
-  P(A ∣ J1 , J2c )P(J1 \cap J2c ) + P(A ∣ J1c , J2c )P(J1c \cap J2c )
+  \tightlist
+  \item
+        P(A ∣ J1 , J2c )P(J1 \cap J2c ) + P(A ∣ J1c , J2c )P(J1c \cap J2c )
 \end{itemize}
 
 Probabilidad Condicional Usando los valores obtenidos para las
@@ -1817,7 +2018,7 @@ tenemos entonces que: P(B ∣ A) =
 (0.95)(0.003) ≈ 0.05 (0.95)(0.003) + (0.05)(0.997)
 
 Es decir, la probabilidad de que efectivamente estemos enfermos dado que
-la prueba es positiva es 0.05! 
+la prueba es positiva es 0.05!
 
 Probabilidad Condicional Ejemplo. Supongamos que en un examen de opción
 múltiple, un estudiante conoce la respuesta a una pregunta con
@@ -1851,7 +2052,7 @@ Variable Aleatoria
 Dado un espacio de probabilidad (\Omega, F, P), una función: X :\Omega\rightarrowR Es
 conocida como variable aleatoria. 1 Esta es una definición adecuada para
 un primer curso, de manera mas formal, debemos exigir que la función sea
-medible. 
+medible.
 
 Variables Aleatorias Consideremos por ejemplo el lanzamiento de tres
 monedas. El espacio muestral sería: \Omega = \{\Omega1 = (AAA), \Omega2 = (AAS), \Omega3 =
@@ -1868,7 +2069,7 @@ X (\Omega2 ) = 2 X (\Omega6 ) = 1
 
 X (\Omega3 ) = 2 X (\Omega7 ) = 1
 
-X (\Omega4 ) = 1 X (\Omega8 ) = 2 
+X (\Omega4 ) = 1 X (\Omega8 ) = 2
 
 Variables Aleatorias Observemos como X mapea cada elemento de \Omega en
 algún real. Notemos de hecho que: X (\Omega) = 0 si y solo si \Omega \in \{\Omega5 \}
@@ -1991,7 +2192,7 @@ mapea al conjunto de \Omega en los reales, esto es: X :\Omega\rightarrowR 3
 
 El desarrollo formal requiere de conceptos de teoría de la medida, temas
 que exceden el nivel de este curso, sin embargo se ofrece aquí al menos
-un tratamiento superficial del tema. 
+un tratamiento superficial del tema.
 
 Variables Aleatorias Pero no olvidemos que todo modelo de probabilidad
 esta definido en un espacio de probabilidad (\Omega, F, P), de algún modo, la
@@ -2144,7 +2345,7 @@ tenemos que: 6
 
 E {[}X {]} = \sum i \cdot i =1
 
-1 1 1 1 1 1 7 1 =1\cdot +2\cdot +3\cdot +4\cdot +5\cdot +6\cdot = 6 6 6 6 6 6 6 2 
+1 1 1 1 1 1 7 1 =1\cdot +2\cdot +3\cdot +4\cdot +5\cdot +6\cdot = 6 6 6 6 6 6 6 2
 
 Ejemplo. En el ejemplo del lanzamiento de las tres monedas. Teníamos
 que: 3 P(X = i ) = ( )p i (1 - p)n-i i = 0, 1, 2, 3. i Tenemos entonces
@@ -2185,7 +2386,7 @@ probabilidad de Y . Sin embargo el resultado que estamos proponiendo
 afirma que: E {[}Y {]} = \sum g (xi )p(xi ) i
 
 es decir, estamos usando directamente la función de probabilidad de X en
-lugar de la de Y . 
+lugar de la de Y .
 
 Variables Aleatorias Esto puede ser sumamente, relevante, pues nos
 ``ahorramos'' el trabajo de estimar la función de probabilidad de Y . A
@@ -2219,7 +2420,7 @@ g (xi )p(xi ) yj p(xi ) p(xi )
 
 = E {[}Y {]}
 
-= E {[}g (X ){]} 
+= E {[}g (X ){]}
 
 Variables Aleatorias
 
@@ -2311,7 +2512,7 @@ n-1 j )p (1 - p)n-1-j = np \sum(j + 1)k-1 ( j j=0
 = npE {[}(Y + 1)k-1 {]}
 
 donde Y ∼ Binom(n - 1, p). De aquí se sigue fácilmente que, si k = 1
-entonces: E {[}X {]} = np 
+entonces: E {[}X {]} = np
 
 Variables Aleatorias Por otro lado si k = 2:
 
@@ -2383,7 +2584,7 @@ j=0
 ⎧ ∞ j⎫ ⎪ λ ⎪ ⎪ ⎪ -λ ∞ λj -λ = λ ⎨e \sum j + e \sum ⎬ ⎪ ⎪ ⎪ j=0 j! ⎪ j=0 j! ⎭ ⎩
 = λ \{λ + 1\}
 
-= λ2 + λ 
+= λ2 + λ
 
 Variables Aleatorias
 
@@ -2430,7 +2631,7 @@ de manera análoga, el sistema de 3 componentes se encuentra en
 funcionamiento con probabilidad: 3 ( )p 2 (1 - p) + p 3 2 de este modo,
 el sistema de 5 componentes será mejor que el sistema de 3 componentes
 si: 10p 3 (1 - p)2 + 5p 4 (1 - p) + p 5 \textgreater{} 3p 2 (1 - p) + p
-3 
+3
 
 Variables Aleatorias lo cual se reduce a: o bien:
 
@@ -2457,7 +2658,7 @@ usando Poisson sería: e -1 + e -1 ≈ 0.7358 Observemos la precisión de
 esta aproximación, aun cuando n y p son valores no muy extremos. En
 otros contextos, esta aproximación puede ser de importancia fundamental,
 para n muy grande, el cálculo de los coeficientes binomiales, puede ser
-realmente complicado computacionalmente. 
+realmente complicado computacionalmente.
 
 Variables Aleatorias Ejemplo. Consideremos un experimento en el cual
 contamos el número de partículas α que emite un gramo de un material
@@ -2574,7 +2775,7 @@ f (x)dx
 De hecho para B \subset R, tendríamos que6 : P(X \in B) = ∫ f (x)dx B
 
 6 De manera formal deberíamos pedir que B fuera un conjunto medible, sin
-embargo no entraremos en esas complicaciones en este curso 
+embargo no entraremos en esas complicaciones en este curso
 
 Variables Aleatorias continuas Sabemos que si X es continua: P(X = x) =
 P(X \leq x) - P(X \textless{} x) 1 = P(X \leq x) - lím P(X \textless{} x - ) n
@@ -2630,7 +2831,7 @@ Para encontrar el valor de C notemos que: C∫
 
 (4x - 2x 2 )dx = 1
 
-es decir: C {[}2x 2 - 
+es decir: C {[}2x 2 -
 
 2
 
@@ -2712,7 +2913,7 @@ x \cdot 2xdx
 2 31 2 x ∣ = 3 0 3
 
 Variables Aleatorias Continuas Para la varianza calculamos: E {[}X 2
-{]} = ∫
+  {]} = ∫
 
 ∞
 
@@ -2753,7 +2954,7 @@ fundamental en todos los algoritmos de simulación. 1 Claramente f (x)
 {]} = ∫
 
 \hypertarget{section}{%
-\section{=∫}\label{section}}
+  \section{=∫}\label{section}}
 
 1
 
@@ -3022,7 +3223,7 @@ Por lo tanto fX (x) =
 
 ∂ FY (\sigmax + µ) ∂x = \sigmafY (\sigmax + µ) x2 1 = √ e- 2 2π
 
-Es decir X ∼ N(0, 1). 
+Es decir X ∼ N(0, 1).
 
 Distribución Normal
 
@@ -3055,7 +3256,7 @@ bien, sabemos que Z = \sigmaZ + µ ∼ N(µ, \sigma 2 ) pero: E {[}X {]} = \sigm
 
 y
 
-Var {[}X {]} = \sigma 2 Var {[}Z {]} = \sigma 2 
+Var {[}X {]} = \sigma 2 Var {[}Z {]} = \sigma 2
 
 En resumen, si X ∼ N(µ, \sigma 2 ) entonces E {[}X {]} = µ y Var (X ) = \sigma 2
 . A \sigma se le conce como desviación estándar. También sabemos que si Y ∼
@@ -3086,7 +3287,7 @@ X -3 0-3 \textgreater{} ) 3 3 = P(Z \textgreater{} -1) = P(-Z
 = Φ(1) ≈ 0.8413
 
 En este último cálculo hemos usado el hecho de que si Z ∼ N(0, 1)
-entonces -Z ∼ N(0, 1) 
+entonces -Z ∼ N(0, 1)
 
 Distribución Normal
 
@@ -3098,7 +3299,7 @@ Por último: P(∣X - 3∣ \textgreater{} 6) = P(X \textgreater{} 9) + P(X
 
 \begin{tikzpicture}
   \foreach \x in {1,2,...,5,7,8,...,12}
-    \foreach \y in {1,...,5}
+  \foreach \y in {1,...,5}
     {
       \draw (\x,\y) +(-.5,-.5) rectangle ++(.5,.5);
       \draw (\x,\y) node{\x,\y};
