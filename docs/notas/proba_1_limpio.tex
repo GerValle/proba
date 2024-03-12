@@ -1006,11 +1006,72 @@ Finalmente, para concluir el tema de combinatoria, determinaremos el número de 
   \node at (5,-0.4) {3};
   \node at (7,-0.4) {4};
 
+  \fill (1.3,0.4) circle (0.1);
+  \fill (.7,0.4) circle (0.1);
+  \fill (7,0.4) circle (0.1);
+\end{tikzpicture}
+\end{center}
+El esquema previo ilustra el caso donde la bola uno fue
+seleccionada dos veces y la cuatro una vez. El siguiente:
+\par\noindent
+\begin{center}
+\begin{tikzpicture}
+  % Draw the main line
+  \draw[line width=1.5pt, -] (0,0) -- (8,0);
+
+  % Draw small ticks
+  
+  %\foreach \x in {1,2,...,9}
+  %    \draw (\x,0) -- (\x,-0.2);
+
+  %Draw large ticks and labels\bullet 
+  \foreach \x in {2,4,6}
+  {
+      \draw (\x,0.2) -- (\x,-0.2);
+      %\node at (\x,-0.7) {\x};
+  }
+  \node at (1,-0.4) {1};
+  \node at (3,-0.4) {2};
+  \node at (5,-0.4) {3};
+  \node at (7,-0.4) {4};
+
   \fill (5.3,0.4) circle (0.1);
   \fill (5,0.4) circle (0.1);
   \fill (4.7,0.4) circle (0.1);
 \end{tikzpicture}
 \end{center}
+es el caso donde la bola tres fue seleccionada tres veces.
+\par\noindent
+\begin{center}
+\begin{tikzpicture}
+  % Draw the main line
+  \draw[line width=1.5pt, -] (0,0) -- (8,0);
+
+  % Draw small ticks
+  
+  %\foreach \x in {1,2,...,9}
+  %    \draw (\x,0) -- (\x,-0.2);
+
+  %Draw large ticks and labels\bullet 
+  \foreach \x in {2,4,6}
+  {
+      \draw (\x,0.2) -- (\x,-0.2);
+      %\node at (\x,-0.7) {\x};
+  }
+  \node at (1,-0.4) {1};
+  \node at (3,-0.4) {2};
+  \node at (5,-0.4) {3};
+  \node at (7,-0.4) {4};
+
+  \fill (1,0.4) circle (0.1);
+  \fill (5,0.4) circle (0.1);
+  \fill (7,0.4) circle (0.1);
+\end{tikzpicture}
+\end{center}
+y este último esquematiza el el caso cuando la bola uno, la tres y la
+cuatro son seleccionadas.
+
+En general podemos enlistar los 20 casos posibles como:
 
  \begin{center}
   \begin{tikzpicture}
@@ -1249,152 +1310,76 @@ Finalmente, para concluir el tema de combinatoria, determinaremos el número de 
 
   \end{tikzpicture}
  \end{center}
+Notemos que este es el ``registro completo". En la lista anterior, el caso 13 coincide con el caso donde seleccionamos dos veces la bola 1 y una vez la bola 4. El inciso 7 coincide con el caso donde seleccionamos la bola 3, tres veces. El caso 17 es el caso donde seleccionábamos la bola 1, la 3 y la 4. Ahora bien, observemos del listado anterior, que en realidad lo único que hicimos fue ordenar las bolas y las rayas. En total tenemos 6 objetos entre rayas y bolas, mismos que pueden ordenarse de $6!$ formas. Sin embargo, notemos que en cualquiera de los 20 arreglos podemos cambiar de lugar una bola por otra y el ``registro" es el mismo. Lo mismo ocurre con las rayas, cambio una raya por otra y el ``registro'' es el mismo. Por lo tanto de los $6!$ posibles arreglos de bolas y rayas $3!3!$ están repetidos. En conclusión el número total de selecciones que podemos realizar es igual a: 
+$$
+\frac{6!}{3!3!} = \binom{6}{3} = 20
+$$ 
+En general si tenemos un total de $n$ bolas y hago $m$ selecciones, un ``registro típico'' sería como sigue:
+\begin{center}
+\begin{tikzpicture}
+  % Draw the main line
+  \draw[line width=1.5pt, -] (0,0) -- (6,0);
+  %\draw[line width=1.5pt, -] (6,0) -- (8,0);
+  \draw[line width=1.5pt, -] (8,0) -- (14,0);
+
+  % Draw small ticks
+  
+  %\foreach \x in {1,2,...,9}
+  %    \draw (\x,0) -- (\x,-0.2);
+
+  %Draw large ticks and labels\bullet 
+  \foreach \x in {2,4,6,8,10,12}
+  {
+      \draw (\x,0.2) -- (\x,-0.2);
+      %\node at (\x,-0.7) {\x};
+  }
+  \node at (1,-0.4) {1};
+  \node at (3,-0.4) {2};
+  \node at (5,-0.4) {3};
+
+  \node at (6.5,0) {$\cdots$};
+
+  \node at (9,-0.4) {$n-2$};
+  \node at (11,-0.4) {$n-3$};
+  \node at (13,-0.4) {$n$};
+
+
+  \fill (0.8,0.4) circle (0.1);
+  \fill (1.2,0.4) circle (0.1);
+  
+  \fill (5,0.4) circle (0.1);
+
+  \fill (8.7,0.4) circle (0.1); 
+  \fill (9,0.4) circle (0.1);
+  \fill (9.3,0.4) circle (0.1);  
+  
+  \fill (13,0.4) circle (0.1);    
+\end{tikzpicture}
+\end{center}
+ Donde en total tenemos $m$ bolas repartidas en las $n$ casillas. Cada separación es un ``raya" tenemos un total de $n - 1$ rayas. Con lo cual tenemos un total de $n - 1 + m$ objetos entre bolas y rayas. Que pueden arreglarse sin orden de 
+ $$
+ \binom{n+m-1}{m}=\frac{(n-1+m)!}{(n-1)!m!} = \binom{n+m-1}{n-1}
+ $$
+ formas.
+
+Con esto completamos la tabla que resume la forma de seleccionar $m$ elementos a partir de un conjunto con $n$ elementos: 
+
+\begin{center}
+  \begin{table}[h]
+    \begin{tabular}{c|c|c|}
+      \multicolumn{1}{c}{}           & \multicolumn{1}{c}{Con reemplazo} & \multicolumn{1}{c}{Sin reemplazo}                   \\[0.5ex] \cline{2-3}
+      \multicolumn{1}{c|}{Con orden} & $n^m$                             & $\frac{n!}{(n-m)!}$                                 \\[0.5ex]\cline{2-3}
+      \multicolumn{1}{c|}{Sin orden} & $\binom{n+m-1}{m}$                                 & $\binom{n}{m} = \frac{n!}{m!(n-m)!}=\binom{n}{n-m}$ \\\cline{2-3}
+    \end{tabular}
+  \end{table}
+\end{center}
+Recordemos que en los casos sin reemplazo es necesario que $m \leq n$.
+
 \end{document}
 
 
 
 
-
-
-
-
-Combinatoria  ●● 1
-
-
-Combinatoria El esquema previo ilustra el caso donde la bola uno fue
-seleccionada dos veces. El siguiente: ●●● 1
-
-2
-
-3
-
-4
-
-es el caso donde la bola tres fue seleccionada tres veces. ● 1
-
-2
-
-●
-
-●
-
-3
-
-4
-
-y este último esquematiza el el caso cuando la bola uno, la tres y la
-cuatro son seleccionadas.
-
-Combinatoria En general podemos enlistar los 20 casos posibles como: 1.
-● ●● ∣∣∣
-
-\begin{enumerate}
-  \def\labelenumi{\arabic{enumi}.}
-  \setcounter{enumi}{10}
-  \item
-        ∣ ● ∣ ●● ∣
-  \item
-        ● ● ∣∣ ● ∣
-  \item
-        ∣∣∣ ● ● ●
-  \item
-        ● ● ∣ ● ∣∣
-  \item
-        ∣∣ ●● ∣ ●
-  \item
-        ● ● ∣∣∣ ●
-  \item
-        ● ∣∣∣ ●●
-  \item
-        ∣ ● ● ● ∣∣
-  \item
-        ∣ ● ∣∣ ●●
-  \item
-        ∣ ●● ∣ ● ∣
-  \item
-        ● ∣ ● ∣ ● ∣
-  \item
-        ∣∣ ● ● ● ∣
-  \item
-        ● ∣∣ ● ∣ ●
-  \item
-        ● ∣ ●● ∣∣
-  \item
-        ∣∣ ● ∣ ●●
-  \item
-        ∣ ●● ∣∣ ●
-  \item
-        ● ∣ ● ∣∣ ●
-  \item
-        ● ∣∣ ●● ∣
-\end{enumerate}
-
-\begin{enumerate}
-  \def\labelenumi{\arabic{enumi}.}
-  \setcounter{enumi}{19}
-  \tightlist
-  \item
-        ∣ ● ∣ ● ∣ ●
-\end{enumerate}
-
-Combinatoria Notemos que este es el ``registro completo''. En la lista
-anterior, el caso 4 coincide con el caso donde seleccionábamos dos veces
-la bola 1 y una vez la bola 4. El inciso 9 coincide con el caso donde
-seleccionábamos la bola 3, tres veces. El caso 19 es el caso donde
-seleccionábamos la bola 1, la 3 y la 4. Ahora bien, observemos del
-listado anterior, que en realidad lo único que hicimos fue ordenar las
-bolas y las rayas. En total tenemos 6 objetos entre rayas y bolas,
-mismos que pueden ordenarse de 6! formas. Sin embargo, notemos que en
-cualquiera de los 20 arreglos podemos cambiar de lugar una bola por otra
-y el ``registro'' es el mismo. Lo mismo ocurre con las rayas, cambio una
-raya por otra y el ``registro'' es el mismo. Por lo tanto de los 6!
-posibles arreglos de bolas y rayas 3!3! están repetidos. En conclusión
-el número total de selecciones que podemos realizar es igual a: 6 6! = (
-) = 20 3 3!3!
-
-Combinatoria En general si tenemos un total de n bolas y hago m
-selecciones, un ``registro típico'' seria como sigue: ●● 1
-
-2
-
-●
-
-●●●
-
-●
-
-3
-
-n-2 n-1
-
-n
-
-Donde en total tenemos m bolas repartidas en las n casillas. Cada
-separación es un ``raya'' tenemos un total de n - 1 rayas. Con lo cual
-tenemos un total de n - 1 + m objetos entre bolas y rayas. Que pueden
-arreglarse sin orden de n+m-1 (n - 1 + m)! n+m-1 ) =( )= ( n-1 (n -
-1)!m! m formas.
-
-Combinatoria
-
-Con esto completamos la tabla que resume la forma de seleccionar m
-elementos a partir de un conjunto con n elementos: Con orden
-
-Sin orden
-
-Con reemplazo
-
-nm
-
-Sin reemplazo
-
-n! (n-m)!
-
-(n+m-1 ) m
-
-n n! (m ) = m!(n-m)!
-
-Recordemos que en los casos sin reemplazo es necesario que m \leq n.
 
 Probabilidad Condicional Empecemos este tema resolviendo (si podemos)
 un problema muy bonito, sencillo pero bonito. . .
