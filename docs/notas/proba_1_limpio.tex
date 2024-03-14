@@ -1,35 +1,80 @@
 \documentclass[14pt]{extreport}
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage{microtype}
-\setlength{\parskip}{1em}
+%\usepackage{microtype}
+%\setlength{\parskip}{1em}
 %\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
 \usepackage{array}
 \usepackage{booktabs}
 \usepackage{tikz}
-%\usepackage[most]{tcolorbox}
-%\usepackage{tabularx}
-%\newcounter{ejemplo}[chapter] % Define a new counter tied to the chapter
-
 \usetikzlibrary{babel}
 \usetikzlibrary {positioning}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathpazo}
 
+\usetikzlibrary{babel}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={160mm,245mm},
+ left=25mm,
+ top=20mm,
+ }
+
+%\usepackage{mdframed}
+%\usepackage[framemethod=TikZ]{mdframed}
+\usepackage[framemethod=TikZ]{mdframed}
+
+
+\newcounter{example}[chapter]
+\newenvironment{example}[1][]{\refstepcounter{example}\par\medskip
+   \noindent\textbf{Ejemplo~\thechapter.\theexample. #1 } \rmfamily\par\medskip}{\medskip}
+
+
+\newmdenv[linecolor=red,frametitle=Infobox]{infobox}
+
+ \newtheoremstyle{definicion}%
+    {3pt}%
+    {3pt}%
+    {}%
+    {}%
+    {\bfseries}%
+    {.}%
+    {\newline}%
+    {}%
+\theoremstyle{definicion}
 \newtheorem{definition}{Definición}[chapter]
 
-\newcounter{ejemplo}[chapter]
-\newenvironment{ejemplo}
-   {%
-    \par\medskip
-    \refstepcounter{ejemplo}%
-  \noindent
-  \textbf{Ejemplo \theejemplo.}
-  \par%
-  %\begin{quote}%
-   }{%
-   %\end{quote}%
-   \medskip
-   }
+\surroundwithmdframed[linewidth=1pt, roundcorner=10pt, backgroundcolor=gray!10]{definition}
+
+\newtheoremstyle{propiedad}%
+    {3pt}%
+    {3pt}%
+    {\itshape}% Fuente del cuerpo
+    {}%
+    {\bfseries}%  Fuente del encabezado
+    {.}%
+    {\newline}%
+    {}%
+\theoremstyle{propiedad}
+\newtheorem{propiedad}{Propiedad}[chapter]
+\surroundwithmdframed[linewidth=1pt, roundcorner=10pt, backgroundcolor=gray!10]{propiedad}
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+    \pushQED{\qed}%
+    \normalfont \topsep6\p@\@plus6\p@\relax
+    \trivlist
+    \item\relax
+            {\itshape
+        #1\@addpunct{.}}\hspace\labelsep\ignorespaces
+}{%
+    \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+
+\usepackage[skip=10pt plus1pt, indent=10pt]{parskip}
 \decimalpoint
 
 
@@ -37,609 +82,6 @@
 
 \begin{document}
 
-
-\chapter{Introducción}
-
-
-Existen multitud de fenómenos en la realidad que difícilmente pueden ser modelados con certeza. Ya sea por la complejidad de su naturaleza o
-porque efectivamente es imposible establecer algún modelo determinístico para el mismo. Ejemplos que nos vienen a la mente provienen directamente
-de juegos de azar tales como, El lanzamiento de una moneda, el lanzamiento de un par de dados, el resultado de seleccionar 5 cartas a partir de un mazo de 52 cartas, y un largo etcétera\ldots{}
-
-Si bien estos ejemplos son perfectamente válidos para ejemplificar un fenómeno aleatorio, la teoría de probabilidad puede ir mucho mas lejos. A decir verdad su rango de aplicabilidad solo esta sujeto a nuestra creatividad e imaginación. Aplicaciones en economía, finanzas, biología, física\dots{} abundan. También es importante notar que la Probabilidad es fundamento de muchas otras disciplinas, lo cual le confiere aun mayor relevancia.
-
-
-\section{Espacio Muestral}
-
-Empecemos por lo más básico. Al momento de modelar un fenómeno aleatorio, debemos empezar por delimitar las posibilidades. El ejemplo mas simple sería el lanzamiento de una moneda, típicamente podemos pensar que las únicas dos posibilidades es que la moneda caiga en una cara u otra. Esto lo podemos traducir diciendo que la moneda cae en ``sol''($S$) o bien cae en ``águila''($A$). Es decir el posible resultado de este sencillo experimento es alguno de los elementos del conjunto: $\Omega = \{A, S\}$ En el caso del lanzamiento de un par de dados, el conjunto $\Omega$ podría ser: $\Omega = \{(i , j), i , j = 1,\ldots , 6\}$
-
-En general, el espacio muestral de un fenómeno aleatorio, es el conjunto de resultados que consideramos posibles. No es imperativo pero si muy común, denotar al espacio muestral con $\Omega$, nosotros seguiremos esta costumbre. De acuerdo con esta definición, cualquier cosa que este fuera de $\Omega$ es para todos los fines de nuestro modelo, algo completamente imposible.
-
-Debemos hacer énfasis en que el espacio muestral que definamos es válido en un contexto muy específico. Es decir, estamos modelando y cualquier modelo tiene imperfecciones. Ningún modelo es un reflejo fiel de la realidad y en general no se espera que sea asi. Lo importante es que cuando proponemos un modelo para describir algún fenómeno social, natural o de cualquier índole, debemos hacer supuestos simplificadores que permitan atacar el problema de manera eficiente. Mas aun, podemos proponer mas de un modelo perfectamente válido para atacar un problema desde enfoques diferentes. Pensemos en la Ciudad de México, si queremos determinar una ruta aérea de la CDMX a Mérida, sería perfectamente válido y útil pensar que ambas ciudades son ``puntos'' en el mapa. Sin embargo seria una muy mala idea pensar del mismo modo si lo que deseamos es proponer un modelo que busque resolver el problema del tráfico en la ciudad.
-
-En un contexto de orden mas probabilístico; supongamos que un inversionista esta interesado en el comportamiento que tendrá el precio de un activo a lo largo de los tres días siguientes. Es claro que al dia de hoy conocemos el precio del activo. Pero desconocemos el precio que tendrá en los días subsecuentes. Este precio es aleatorio. Sin embargo aunque desconocemos los precios de los días venideros si podemos intentar definir algún modelo. ¿Que valores podrá tomar el activo? La primera observación es que el precio del activo es siempre no negativo. Además de ello ¿que podemos suponer con respecto del precio que tomara mañana o pasado mañana? Un modelo simple, pero de ningún modo despreciable supone que de un día a otro el precio solo puede tomar uno de dos valores. Uno de estos corresponde a un alza y el otro a una baja. Asi de simple
-
-Matemáticamente; si denotamos con $S_t$ al precio del activo al tiempo $t$ entonces proponemos el modelo:
-$$
-  S_{t+1} = \begin{cases}
-    uSt & u > 1     \\
-    dSt & 0 < d < 1
-  \end{cases}
-$$
-
-Si todo ``empieza'' al tiempo $t$ entonces $S_{t+3}$ es desconocida al tiempo $t$ pero sabemos que puede tomar cualquiera de los valores:  $S_{t+3}= u^id^{3-i}$, $i = 0,\ldots, 3$.
-
-El problema es que no sabemos cual de ellos tomará. No importa, podemos modelar el precio del activo al tiempo $t + 3$ como un experimento aleatorio. ¿cual sería en este caso el espacio muestral?
-
-No es la única posibilidad, pero una buen idea sería definir el espacio muestral en términos de las alzas y bajas del activo: $\Omega = \{w = (x_1 , x_2, x_3 ):x_i \in \{u, d\}, i = 1, 2, 3\}$. Así por ejemplo si $w = (u, u, d)$ entonces sabemos que en $t + 3$ el
-precio del activo es $u^2dSt$ . Pero si $w = (d, d, d)$ entonces $S_{t+3} = d^3St$ En resumen, el conjunto $\Omega$, reúne
-todos los escenarios posibles. De acuerdo con nuestro modelo, solo las alternativas que están en $\Omega$ pueden ocurrir. Cualquier otra cosa es imposible. Aun que no sabemos cual $w \in \Omega$ ocurrirá, al menos hemos
-delimitado las posibilidades.
-
-El modelo que hemos propuesto, si bien simple, es un modelo muy popular en el medio financiero. En la práctica se usa tal cual lo describimos, usualmente con un mayor número de periodos, pero fuera de ello sin cambio alguno. Por muy simple que parezca de primera instancia, es un modelo muy adecuado para resolver algunos tipos de problemas en finanzas. Claro esta que no es el único modelo de uso extendido para modelar precios de activos. Una alternativa quizás mas ambiciosa seria suponer que a lo largo de los tres días de operación, el activo puede tomar cualquier valor no negativo, en tal caso: $\Omega = R^+$. Sirva esto para hacer notar que $\Omega$ puede tomar formas muy variadas, desde conjuntos sencillos, pequeños y finitos, hasta conjuntos infinitos no numerables.
-
-En ciertas circunstancias una adecuada
-definición del espacio muestral, puede ser la diferencia entre resolver o no un problema. El siguiente es un buen ejemplo de esto
-
-\noindent\hrulefill
-
-Consideremos el juego de la ``Catafixia''. Un concursante llega al final de un programa cargado de premios. Sin embargo, se le ofrece la posibilidades de entrar a la ``catafixia''. Si entra entonces le son presentadas tres cortinas diferentes. Sabemos que detrás de una de ellas existe un premio sumamente deseable... el premio mayor digamos. Detrás de las dos restantes, existen premios indeseables. Si abrimos alguna de estas cortinas, perdemos los premios con los que llegamos al final del programa y nos vamos con cualquier cosa que hubiese detrás de la cortina seleccionada. ¿Entramos a la catafixia? Pensemos por un momento... si entramos tenemos un tercio de probabilidad de obtener el ``premio mayor'' ¿Estamos dispuestos a arriesgar los premios que ya ganamos?
-
-Decidimos entrar, seleccionamos una de la cortinas. Sin embargo, antes de abrir la cortina seleccionada, Chabelo nos ofrece una alternativa. Abre una de las dos cortinas que no fueron seleccionadas, una detrás de la cual se encuentra uno de los premios ``broma''. Nos encontramos entonces con una nueva situación; el premio mayor esta detrás de la cortina que seleccionamos o bien detrás de la cortina que Chabelo dejo cerrada. Se nos ofrece entonces la posibilidad de cambiar nuestra
-decisión ¿Lo hacemos? En realidad si llegamos a este punto cambiar de cortina es irrelevante,  ahora la posibilidad que tenemos de ganar es de un medio. Problema resuelto. ¿o no?
-
-Hasta el momento el único concepto de probabilidad que conocemos es el de Espacio Muestral. Bueno, entonces seguramente, tomar una decisión adecuada dependerá de una correcta elección de nuestro espacio muestral. Para ello supongamos que las cortinas están numeradas del 1 al 3. Para simplificar la situación supongamos además que el
-premio mayor se encuentra detrás de la cortina uno. ¿Como seria una elección típica en este juego? En realidad,depende... depende de la elección que tomemos, cuando llegue el momento ¿cambiamos de cortina? Hasta el momento, la conclusión ``obvia'' es que el cambio es
-irrelevante. Bueno, pensemos que pasaría si hacemos el cambio. Pase lo que pase, llegado el momento, nuestra estrategia es la de cambiar la cortina seleccionada. En este caso ¿como se vería nuestro espacio muestral?
-
-
-Para encontrar una respuesta satisfactoria, partamos
-del hecho, de que pase lo que pase, hemos decidido que llegado el momento cambiaremos nuestra
-selección . Luego, sabemos que en primera instancia,
-tenemos tres posibilidades a elegir, puerta 1, puerta 2 o puerta 3. Esta
-primera selección la hacemos de forma completamente aleatoria. En este
-momento no tenemos ninguna razón para seleccionar una cortina sobre
-otra. Después de esta primera selección, puede ocurrir una de las siguientes cosas
-
-\begin{enumerate}
-  \item Seleccionamos la cortina 1.
-        \begin{enumerate}
-          \item Chabelo abre la cortina 2. Cambiamos por la 3. Perdemos
-          \item Chabelo abre la
-                cortina 3. Cambiamos por la 2. Perdemos
-        \end{enumerate}
-  \item Seleccionamos la cortina 2. Chabelo abre la cortina 3. Cambiamos por la
-        1. ganamos
-  \item Seleccionamos la cortina 3. Chabelo abre la cortina 2. Cambiamos por la
-        1. ganamos
-\end{enumerate}
-
-Ante estas circunstancias, parece razonable el
-siguiente espacio muestral:
-$$\Omega = \{(1, 2, 3, P), (1, 3, 2, P), (2, 3, 1,
-  G ), (3, 2, 1, G )\}$$
-Efectivamente, si seleccionamos la cortina 2, es
-equivalente en nuestro espacio muestral a haber seleccionado: $\omega = (2, 3,
-  1, G )$ Es decir seleccionamos la cortina 2, nos abren la 3, cambiamos a
-la 1 y en consecuencia ganamos! Notemos que si seleccionamos la uno,
-entonces se derivan dos posibilidades, en función de la cortina que nos
-abran en segunda instancia.
-
-Bueno pues el problema esta resuelto, si estamos
-convencidos del espacio muestral elegido, entonces ganamos en dos de cuatro resultados posibles. En consecuencia, la probabilidad de ganar siguiendo nuestra estrategia de cambio de elección, es igual a $2/4 = 1/2$. Lo cual confirma nuestra hipótesis inicial. mmm Un momento... regresemos al principio... Antes del cambio seleccionamos la puerta 1, 2 o 3 de forma completamente aleatoria. Asi que cada una tiene $1/3$ de probabilidad de ser seleccionada. Notemos también que de acuerdo con
-nuestra elección de espacio muestral, perdemos si el resultado del concurso es $(1, 2, 3, P)$ o $(1, 3, 2, P)$. Pero esto es equivalente al haber elegido la cortina 1 desde un principio. Lo cual lo hacemos con
-probabilidad $1/3$.
-
-Por otro lado, ganamos si el resultado del concurso es
-$(2, 3, 1, G )$ o $(3, 2, 1, G )$. Pero esto es equivalente al haber seleccionado la cortina 2 o la cortina 3 desde un principio.
-Seleccionamos alguna de estas dos cortinas con probabilidad $1/3 + 1/3 = 2/3$. Conclusión: Si seguimos la estrategia de cambio, la probabilidad de ganar aumente de uno a dos tercios!!! :-)
-
-\noindent\hrulefill
-
-Una vez que hemos comprendido la idea de espacio muestral,
-debemos trabajar en establecer cierto orden sobre el mismo. Un orden que
-nos permita extraer información valiosa. Información que nos conduzca a
-cálculos mas precisos. Para este fin retomemos el ejemplo de los precios
-de activos. Habíamos propuesto el espacio de estados:
-$$
-  \Omega = \{w = (x_1, x_2, x_3 ) : x_i \in \{u, d\}, i = 1, 2, 3\}
-$$
-
-Para lo que intentamos exponer a continuación, conviene escribir este espacio de manera explícita:
-
-\begin{equation*}
-  \begin{split}
-    \Omega = & \left\{(uuu), (uud), (udu), (udd), \right.\\
-    & \phantom{\{}\left.(ddd), (ddu),(dud), (duu)\right\}
-  \end{split}
-\end{equation*}
-
-
-Una representación gráfica de este problema la tenemos a continuación:
-
-\begin{center}
-  \begin{tikzpicture}
-    [nodo/.style={}]
-    \node (o) at (0, 0)[nodo] {$S_t$};
-
-    \node (u) at (2, 2)[nodo] {$uS_t$};
-    \node (d) at (2,-2)[nodo] {$dS_t$};
-
-    \node (uu) at (4, 3) [nodo] {$uuS_t$};
-    \node (ud) at (4, 1) [nodo] {$udS_t$};
-    \node (du) at (4,-1) [nodo] {$duS_t$};
-    \node (dd) at (4,-3) [nodo] {$ddS_t$};
-
-    \node (uuu) at (7, 3.5) [nodo] {$uuuS_t$};
-    \node (uud) at (7, 2.5) [nodo] {$uudS_t$};
-    \node (udu) at (7, 1.5) [nodo] {$uduS_t$};
-    \node (udd) at (7,  .5) [nodo] {$uddS_t$};
-
-    \node (duu) at (7, -.5) [nodo] {$duuS_t$};
-    \node (dud) at (7,-1.5) [nodo] {$dudS_t$};
-    \node (ddu) at (7,-2.5) [nodo] {$dduS_t$};
-    \node (ddd) at (7,-3.5) [nodo] {$dddS_t$};
-
-    \draw[->] (o)--(u);
-    \draw[->] (o)--(d);
-
-    \draw[->] (u)--(uu);
-    \draw[->] (u)--(ud);
-    \draw[->] (d)--(du);
-    \draw[->] (d)--(dd);
-
-    \draw[->] (uu)--(uuu);
-    \draw[->] (uu)--(uud);
-    \draw[->] (ud)--(udu);
-    \draw[->] (ud)--(udd);
-    \draw[->] (du)--(duu);
-    \draw[->] (du)--(dud);
-    \draw[->] (dd)--(ddu);
-    \draw[->] (dd)--(ddd);
-
-    \node (t)   at (0,-4.5) [nodo]{$S_t$};
-    \node (t+1) at (2,-4.5) [nodo]{$S_{t+1}$};
-    \node (t+2) at (4,-4.5) [nodo]{$S_{t+2}$};
-    \node (t+3) at (7,-4.5) [nodo]{$S_{t+3}$};
-    \draw[-] (t)--(t+1)--(t+2) --(t+3);
-  \end{tikzpicture}
-\end{center}
-
-
-Consideremos el ejemplo donde $S_t = 4$, $u = 2$ y $d = 1/2$, con estos números el arbol resultante  Sería el siguiente:
-
-\begin{center}
-  \begin{tikzpicture}
-    [nodo/.style={}]
-    \node (o) at (0, 0)[nodo] {$4$};
-
-    \node (u) at (2, 2)[nodo] {$8$};
-    \node (d) at (2,-2)[nodo] {$2$};
-
-    \node (uu) at (4, 3) [nodo] {$16$};
-    \node (ud) at (4, 1) [nodo] {$4$};
-    \node (du) at (4,-1) [nodo] {$4$};
-    \node (dd) at (4,-3) [nodo] {$1$};
-
-    \node (uuu) at (7, 3.5) [nodo] {$32$};
-    \node (uud) at (7, 2.5) [nodo] {$8$};
-    \node (udu) at (7, 1.5) [nodo] {$8$};
-    \node (udd) at (7,  .5) [nodo] {$2$};
-
-    \node (duu) at (7, -.5) [nodo] {$8$};
-    \node (dud) at (7,-1.5) [nodo] {$2$};
-    \node (ddu) at (7,-2.5) [nodo] {$2$};
-    \node (ddd) at (7,-3.5) [nodo] {$1/2$};
-
-    \draw[->] (o)--(u);
-    \draw[->] (o)--(d);
-
-    \draw[->] (u)--(uu);
-    \draw[->] (u)--(ud);
-    \draw[->] (d)--(du);
-    \draw[->] (d)--(dd);
-
-    \draw[->] (uu)--(uuu);
-    \draw[->] (uu)--(uud);
-    \draw[->] (ud)--(udu);
-    \draw[->] (ud)--(udd);
-    \draw[->] (du)--(duu);
-    \draw[->] (du)--(dud);
-    \draw[->] (dd)--(ddu);
-    \draw[->] (dd)--(ddd);
-
-    \node (t)   at (0,-4.5) [nodo]{$S_t$};
-    \node (t+1) at (2,-4.5) [nodo]{$S_{t+1}$};
-    \node (t+2) at (4,-4.5) [nodo]{$S_{t+2}$};
-    \node (t+3) at (7,-4.5) [nodo]{$S_{t+3}$};
-    \draw[-] (t)--(t+1)--(t+2) --(t+3);
-  \end{tikzpicture}
-\end{center}
-
-Lo primero que debemos notar es que el espacio de probabilidad que hemos propuesto describe cada una de las rutas en el árbol. Bien nos podríamos preguntar si es que es necesario tanto detalle. A final de cuentas solo estamos interesados en el resultado final, el precio al término de los tres días. De acuerdo con los parámetros seleccionados, el precio del activo al tiempo t + 3 solo puede tomar uno de los cuatro valores: 64, 16, 4 o 1. En este sentido, podríamos proponer un espacio de estados alternativo:
-$$
-  \Omega = \{32, 16, 8, 4, 2, 1, 1/2\}
-$$
-¿Cuál es mejor? En realidad los dos pueden ser correctos, todo depende del problema que deseamos resolver. Sin embargo lo que si es claro es que el primer espacio que propusimos, contiene mayor información que el segundo.
-
-Pensemos por ejemplo, que ocurre si después de transcurridos los tres días, lo que ocurrió fueron tres alzas: $\omega = (u,
-  u, u)$. En términos de los precios, estamos diciendo que $St+3 = 64$. Si lo que ocurre es $\omega = (u, d, u )$entonces $S_{t+3} = 16$. De hecho observemos que
-si $\omega \in \{(u, u, d), (u, d, u), (d, u, u)\}$ entonces $S_{t+3} = 16$. De manera
-análoga, si $\omega \in \{(d, d, u), (d, u, d), (u, d, d)\}$ entonces $S_{t+3} = 4$.
-Pero podemos hacer aún mas; Consideremos por ejemplo los conjuntos:
-\begin{equation*}
-  \begin{split}
-    A_u & = \{(u, u, u), (u, u, d), (u, d, u), (u, d, d)\} \\
-    A_d & = \{(d, d, d), (d, d,u), (d, u, d), (d, u, u)\}
-  \end{split}
-\end{equation*}
-El conjunto Au contiene la información del primer dia. Si $\Omega \in A_u$ sabemos que el primer dia hubo una alza en el precio del activo, si $\Omega \in A_d$ entonces hubo una baja. Observemos sin embargo que ni $A_u$ , ni $A_d$ proporcionan información de lo que ocurrirá en el segundo o tercer día, aunque si acotan las posibilidades. Si sabemos que $\omega \in A_u$ automáticamente descartamos la posibilidad de que $\omega = (d, d,
-  d)$ por ejemplo.
-
-
-Continuando con el ejemplo; tomemos ahora los conjuntos:
-\begin{equation*}
-  \begin{split}
-    A_{uu} & = \{(u, u, u), (u, u, d)\} \\
-    A_{du} & = \{(d, u, u), (d, u, d)\} \\
-    A_{ud} & = \{(u, d, u), (u, d, d)\} \\
-    A_{dd} & = \{(d, d, u), (d, d, d)\} \\
-  \end{split}
-\end{equation*}
-La información que obtenemos de estos conjuntos esta relacionada con lo que ocurre en los dos primeros días. Si $\omega \in A_{uu}$ podemos afirmar que en los dos
-primeros días se registraron alzas de precios. Notemos ademas que ninguno de estos conjuntos determinan con certeza lo que ocurrirá en el tercer día. Aunque si limitan las posibilidades. Aquí viene algo interesante, notemos que decir que $S_{t+2} = 8$ es equivalente a decir que $\omega \in A_{ud} \cup A_{du}$ . O también por ejemplo decir que $St+2 \geq 2$ es
-equivalente a afirmar que $\omega \in A_{dd}$
-
-Tomemos ahora un ejemplo diferente, pensemos en el
-lanzamiento de dos dados. En este caso el espacio muestral parece muy natural; la colección de pares $(i, j)$ donde $i, j = 1,\ldots, 6$. Es decir:
-\begin{equation*}
-  \begin{split}
-    \Omega = \left\{\right.%
-    (1&, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), \\
-    (2&, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2, 6), \\
-    (3&, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), \\
-    (4&, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), \\
-    (5&, 1), (5, 2), (5, 3), (5, 4), (5, 5), (5, 6), \\
-    (6&, 1), (6, 2), (6, 3), (6, 4), (6,5), (6, 6) \left.\right\}
-  \end{split}
-\end{equation*}
-
-¿Cuales son los casos donde obtuvimos un 3 en el
-lanzamiento del primer dado? Esto lo resumimos en el siguiente conjunto:
-$$
-  A = \{(3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6)\}
-$$
-Mientras que el conjunto
-$$
-  B = \{(1, 3), (2, 3), (3, 3), (4, 3), (5, 3), (6, 3)\}
-$$
-representa los casos donde hubo un tres en el segundo dado. Algo un poco mas complejo, de forma coloquial decimos:
-$$
-  A \cup B = \text{sale 3 en primer dado o sale 3 en el segundo}
-$$
-a diferencia de
-$$
-  A \cap B = \text{sale 3 en el primer dado y sale 3 en el segundo dado}
-$$
-
-Las dos aseveraciones anteriores podemos escribirlas de manera equivalente como:
-$$
-  A \cup B = \text{obtuvimos al menos un 3}
-$$
-a diferencia de:
-$$
-  A \cap B = \text{obtuvimos 3 en ambos dados}
-$$
-En términos de conjuntos ¿cómo podríamos expresar la frase ``obtuvimos exactamente un 3''? Observemos que $A\cup B$ no es útil pues contiene a $(3, 3)$, en este elemento tenemos mas ocurrencias del 3 de las que necesitamos. $A \cap B = \{(3, 3)\}$ nos sirve
-aun menos, En realidad es el elemento que desearíamos eliminar de $A \cup B$ para obtener lo que estamos buscando. Esto es:
-$$
-  (A \cup B) \setminus (A \cap B) = \text{Obtenemos exactamente un tres}
-$$
-
-Recordemos que la diferencia simétrica de $A$ y $B$ se define como:
-\begin{equation*}
-  \begin{split}
-    A \triangle B & = (A \setminus B) \cup (B \setminus A) \\
-    & = (A \cup B) \setminus (A \cap B) 	\end{split}
-\end{equation*}
-
-Por lo tanto, en el ejemplo que estamos estudiando $A \triangle B$ es el conjunto donde ``obtenemos exactamente un tres''. ¿Que podemos decir entonces de la diferencia
-usual de conjuntos?
-$$
-  A \setminus B = \text{Obtuvimos 3 en el primer dado pero no en el segundo}
-$$
-Observemos que en esta última expresión estamos negando la ocurrencia de un 3 en el segundo dado, es decir:
-$$
-  B^c = \text{No obtuvimos 3 en el segundo dado}
-$$
-
-Todas estas divagaciones nos conducen a conclusiones interesantes. Por un lado como vimos, no existe una única forma de definir un espacio muestral, la forma adecuada dependerá en gran medida de las preguntas que necesitemos resolver. Por otro lado, debemos estar ya convencidos, que al reunir los elementos de $\Omega$ en subconjuntos, en realidad lo que logramos es organizar la información que eventualmente podamos extraer del experimento aleatorio. Estas ideas nos conducen a la siguiente definición.
-\begin{definition}[$\sigma$-álgebra]
-  Una colección $\mathcal{F}$ de subconjuntos de $\Omega$ se conoce como $\sigma$-álgebra de subconjuntos de $\Omega$ si:
-  \begin{enumerate}
-    \item $\Omega \in \mathcal{F}$
-    \item Si $A \in F$ entonces $A^c \in \mathcal{F}$
-    \item Si $\{A_n\}$ es una colección numerable de elementos de $\mathcal{F}$ entonces $\cup A_n \in \mathcal{F}$
-  \end{enumerate}
-\end{definition}
-
-Si $A \in F$ entonces se dice que $A$ es un evento. Decimos que un evento $A$ ocurre siempre y cuando el elemento $\omega \in \Omega$ que resulta después de ejecutado el experimento aleatorio es un elemento de $A$ esto es $\Omega \in A$.
-
-Ejemplos de $\sigma$-álgebra.
-
-Dado un espacio muestral $\Omega$, la $\sigma$-álgebra más simple y pequeña que podemos definir es $\mathcal{F}=\{\Omega, \emptyset\}$. Otro ejemplo simple lo conseguimos como sigue: si $A \subset \Omega$ entonces: $F = \{\Omega,\emptyset, A, A^c\}$ es una $\sigma$-álgebra. Y claro está, la $\sigma$-álgebra mas grande de todas $2^\Omega$. El conjunto potencia es una $\sigma$-álgebra que es útil en algunas aplicaciones, por ejemplo en el caso del lanzamiento de dos dados bien podemos usar al conjunto potencia como la $\sigma$-álgebra en nuestro experimento. En el ejemplo del precio de un activo también podríamos usar la potencia, sin embargo, podríamos jugar con algunas alternativas. Por ejemplo; para el tiempo $t$ donde desconocemos cualquier cosa que pueda ocurrir en el futuro, podríamos seleccionar la $\sigma$-álgebra: $\mathcal{F} = \{\Omega,\emptyset\}$.
-
-Ahora bien, si ya transcurrió un periodo, entonces tenemos conocimiento de lo ocurrido con el precio en el primer dia. Es decir, ya sabemos si $\omega \in A_u$ o si $\omega \in A_d$ . Podemos jugar con esta información y generar una $\sigma$-álgebra que denote el hecho que conocemos la historia del primer dia: $F = \{\emptyset, \Omega, A_u , A_d \}$ Notemos que en este caso $\mathcal{F}$ efectivamente es una $\sigma$-álgebra. Esto es fácil de ver dado que $A_u = A^c_d$. Transcurridos dos días tenemos conocemos aún mas información, por lo pronto sabemos si $\omega$ pertenece a alguno de los cuatro conjuntos: $A_{uu}$, $A_{ud}$, $A_{du}$ o $A_{dd}$ . Sin embargo: $C = \{\emptyset, \Omega, A_{uu}, A_{ud}, A_{du}, A_{dd} \}$ no es una $\sigma$-álgebra.
-
-Por lo pronto conjuntos como: $Au = A_{uu} \cup A_{ud}$ o $A^c_u$ no están considerados. De acuerdo con la definición de $\sigma$-álgebra ambos deberían estar incluídos. En ejemplos como este , no es difícil resolver la situación, basta con tomar al conjunto $C$ y enriquecerlo con los conjuntos que le hagan falta para completar una $\sigma$-álgebra. Añadimos todas las uniones y complementos que hagan falta y listo. Este mecanismo sin embargo sirve solo para casos sencillos, donde el conjunto $\Omega$ es pequeño y podemos ser exhaustivos al momento de enlistar los elementos de una $\sigma$-álgebra. Para concluir el ejemplo; transcurridos los tres días, conocemos la historia completa, en este caso si parece apropiada la potencia como la $\sigma$-álgebra que describa la situación de nuestro experimento.
-
-Es importante hacer notar sin embargo que en general la potencia de $\Omega$ es demasiado grande y puede dar lugar a problemas serios, asimismo cuando $\Omega$ es muy grande, no es posible ser explícitos al momento de construir una  $\sigma$-álgebra, en cambio, debemos optar por algún argumento mas descriptivo que constructivo al momento de determinar la $\sigma$-álgebra de nuestro experimento.
-
-El primer inciso de la definición, básicamente se asegura de que la $\sigma$-álgebra sea una colección no vacía. De hecho podríamos sustituirlo por el requerimiento de que $\mathcal{F}$ sea una colección no vacía. Notemos además que decir que $\omega \in \Omega$ es equivalente a ``no decir nada'', una afirmación así no nos provee de información adicional. En cambio, decir que $\Omega \in A^c$ es un tipo de negación, negamos el hecho de que $A$ haya ocurrido. Asimismo, podemos parafrasear $\omega \in A \cup B$ diciendo que ``ocurrió $A$ u ocurrió $B$''. De manera parecida si $\omega \in A \cap B$, entonces ocurrió $A$ y ocurrió $B$.
-
-En general, podemos concebir a una $\sigma$-álgebra como un mecanismo para ordenar la información contenida en el espacio muestral. Por lo pronto, el primer inciso en la definición de $\sigma$-álgebra garantiza que $\Omega$ es siempre un elemento de la misma, el segundo inciso implica que la $\sigma$-álgebra es cerrada bajo complementos, es decir; si sabemos que algo ocurrió también debemos saber si es que esto mismo, no ocurrió. El tercer inciso es el mas controvertido. La axiomática de la probabilidad que estudiaremos es la propuesta por Kolmogorov y no esta exenta de controversia. Hay probabilistas que afirman que una teoría de probabilidad debería considerar únicamente la cerradura bajo uniones finitas y no extenderlo al caso numerable. Lo cierto es que este último inciso es de vital importancia en la construcción de eventos que tienen que ver con algún comportamiento límite. No abundaremos más al respecto dado que es un tema correspondiente a un curso avanzado de probabilidad. Baste notar que el inciso tres implica no solo que una $\sigma$-álgebra es cerrada bajo uniones numerables, también es cerrada bajo uniones finitas.
-
-Para probar la cerradura bajo uniones finitas antes observemos que de los dos primeros incisos se concluye que $\emptyset \in \Omega$. De este modo, si $A$ y $B$ son dos eventos en $\mathcal{F}$ entonces$A \cup B = \cup_n A_n$ con $A = A_1$ y $B = A_2$, mientras que $A_i = \emptyset$ para $i \geq 3$. Usando el inciso tres se sigue que $A \cup B = \cup A_i \in \mathcal{F}$. Ahora bien, si $\{A_n \}$ es una colección numerable de eventos en $\mathcal{F}$ entonces $\{A^c_n \}$ también es una colección numerable en $\mathcal{F}$. Usando de manera conjunta el inciso 2 y el inciso 3 y echando mano de la ley de Morgan tenemos que $\cap_n A_n = \left(\cup_n A^c_n \right)^c \in \mathcal{F}$. Esto es, una $\sigma$-álgebra también es cerrada bajo intersecciones numerables. Con un argumento similar al que usamos para probar la cerradura bajo uniones finitas, podemos probar la cerradura bajo intersecciones finitas.
-
-Podemos continuar con propiedades del estilo de las que acabamos de exponer, dejemos algunas para los ejercicios. Lo importante que debemos recordar es que si bien una $\sigma$-álgebra es cerrada bajo uniones e intersecciones numerables, no lo es bajo uniones o intersecciones arbitrarias. Al par $(\Omega, \mathcal{F})$, se le conoce como espacio medible. En un espacio medible es que tiene sentido nuestra siguiente
-
-\begin{definition}[Medida de probabilidad]
-  Dado un espacio medible $(\Omega, \mathcal{F})$,decimos que una función $P : F \rightarrow [0,1]$ es una medida de probabilidad si:
-
-  \begin{enumerate}
-    \item $P(\Omega) = 1$
-    \item Si $\{A_n \}$ es una sucesión de eventos disjuntos, entonces:
-          $$P\left(\cup_n A_n \right) = \sum_n P(A_n)$$.
-  \end{enumerate}
-\end{definition}
-
-A la tercia $(\Omega, \mathcal{F}, P)$ se le conoce como espacio de probabilidad. Observemos el importantísimo papel de la $\sigma$-álgebra, no sólo es útil para definir cierto orden a la información que podemos extraer en un experimento aleatorio, también funciona como el dominio de una medida de probabilidad. Debemos ser enfáticos en esto; seremos capaces de calcular probabilidades sobre elementos F y nada mas. Si $A \subset \Omega$ pero $A \notin \mathcal{F}$ entonces $P$ es incapaz de trabajar con $A$. Algunas propiedades de la probabilidad vienen bien en este momento: $P(\emptyset) = 0$ Efectivamente, consideremos la sucesión $\{An \}$ donde $A_n = \emptyset$ para todo $n$. Evidentemente esta es una sucesión de eventos disjuntos, por lo tanto
-$$
-  P(\emptyset) = P\left(\cup_n A_n\right) = \sum_n P(A_n ) = P(\emptyset) + \sum_{n\geq2} P(A_n )
-$$
-
-De donde se sigue que: $0 = \sum_{n\geq 2} P(A_n) = P\left(\cup_{n\geq 2} A_n\right) = P(\emptyset)$
-
-Si $A$ y $B$ son dos elementos disjuntos de $\mathcal{F}$ entonces: $P\left(A \cup B\right) = P(A) + P(B)$. Básicamente estamos afirmando que una medida de probabilidad no solo es aditiva ante uniones numerables disjuntas, también lo es ante uniones finitas disjuntas. Para probar este resultado observemos que $A \cup B = \cup_n A_n$ Donde $A_1 = A, A_2 = B$ y $A_n = \emptyset$ para $n \geq 3$. Claramente $\{An \}$ es una sucesión de eventos disjuntos.
-
-Por lo tanto
-\begin{equation*}
-  \begin{split}
-    P(A \cup B) & = P\left(\cup_n A_n \right)\\
-    & = \sum_n P(A_n) \\
-    & = P(A) + P(B) + \sum_{n\geq 3} P(A_n) \\
-    & = P(A) + P(B)
-  \end{split}
-\end{equation*}
-
-Este resultado, nos conduce a la siguiente afirmación: Si $A \in \mathcal{F}$ entonces:
-$$
-  P(A^c) = 1 - P(A)
-$$
-
-Este resultado se sigue de que: $1 = P(\Omega) = P(A \cup A_c ) = P(A) + P(A_c)$
-
-Para dos eventos $A$ y $B$ tales que $A \subset B$ se tiene que:  $P(A) \leq P(B)$ Efectivamente; notemos que $B = A \cup (B \setminus A)$ por lo tanto:
-$$
-  P(B) = P(A \cup (B\setminus A)) = P(A) + P(B \setminus A) \geq P(A)
-$$
-
-La última igualdad se debe al hecho de que $P(B\setminus A) \geq 0$ Finalmente, una
-de las relaciones mas útiles: Dados los eventos $A$ y $B$:
-$$
-  P(A \cup B) = P(A) + P(B) - P(A \cap B)
-$$
-
-En la igualdad anterior estamos tomando eventos $A$ y $B$ arbitrarios, no necesariamente disjuntos, de ahí la necesidad de restar la probabilidad de la intersección. A
-
-Observemos primero que $A \cup B = A \cup (B \setminus A)$ y además $B = (A \cap B) \cup (B \setminus A)$ por lo tanto
-$$
-  P(A \cup B) = P(A) + P(B\setminus A)
-$$
-y
-$$
-  P(B) = P(A \cap B) + P(B \setminus A)
-$$
-Usando estas dos igualdades obtenemos la fórmula propuesta para la
-unión.
-
-Retomemos el ejercicio que consiste en el lanzamiento de dos
-dados. Sabemos que
-
-\begin{equation*}
-  \begin{split}
-    \Omega = \left\{\right.%
-    (1&, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), \\
-    (2&, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2, 6), \\
-    (3&, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), \\
-    (4&, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), \\
-    (5&, 1), (5, 2), (5, 3), (5, 4), (5, 5), (5, 6), \\
-    (6&, 1), (6, 2), (6, 3), (6, 4), (6,5), (6, 6) \left.\right\}
-  \end{split}
-\end{equation*}
-
-Si ambos dados son justos, si ninguno de ellos esta cargado y todas las caras son igualmente probables entonces cada cara tiene un sexto de probabilidad de aparecer. Derivado de $\Omega$ deducimos que cada combinación en el lanzamiento de los dados tiene $1/36$ de probabilidad de ocurrir. Retomando los ejemplos anteriores, si
-$$
-  A = \text{evento de obtener un 3 en el primer dado}
-$$
-entonces $P(A) = 6/36 = 1/6$. De manera análoga, si
-$$
-  B = \text{evento de obtener un 3 en el segundo dado}
-$$
-entonces $P(B) = 1/6$. A su vez:
-$$
-  A \cap B = \text{Evento de obtener 3 en ambos dados } = \{(3, 3)\}
-$$
-por lo cual $P(A \cap B) = 1/36$. Con estos elementos, calculamos la
-probabilidad de:
-$$
-  A \cup B = \text{Evento de obtener al menos un tres}
-$$
-esto es:
-$$
-  P(A \cup B) = P(A) + P(B) - P(A \cap B) =  1/6 + 1/ 6 - 1/36 = 11/36
-$$
-Esto lo verificamos al notar que:
-\begin{equation*}
-  \begin{split}
-    A \cup B = \left\{\right.(3&, 1), (3, 2), (3, 3), (3,4), (3, 5),\\
-    (3&, 6), (1, 3), (2, 3), (4, 3), (5, 3), (6, 3)\left.\right\}
-  \end{split}
-\end{equation*}
-Un ejemplo un poco mas complicado.c
-$$
-  A = (A \cap B) \cup (A \setminus B)
-$$
-con lo cual:
-$$
-  P(A \setminus B) = P(A) - P(A \cap B)
-$$
-análogamente:
-$$
-  P(B \setminus A) = P(B) - P(A \cap B)
-$$
-Por lo tanto:
-\begin{equation*}
-  \begin{split}
-    P(A \triangle B) & = P(A) + P(B) - 2P(A \cap B) \\
-    & = 1/6 + 1/6 -2/36 \\
-    & = 10/36
-  \end{split}
-\end{equation*}
-Lo cual se verifica al ver que:
-\begin{equation*}
-  \begin{split}
-    A \triangle B = \left\{\right. (3&, 1), (3, 2),(3, 4), (3, 5), (3, 6),\\
-    (1&, 3), (2, 3), (4, 3), (5, 3), (6, 3)\left.\right\}
-  \end{split}
-\end{equation*}
-La siguiente tabla puede ser de utilidad:
-\renewcommand{\arraystretch}{1.5}
-\begin{table}
-  \centering
-  \begin{tabular}{|c|l|}
-    \hline
-    $\Omega$       & Espacio Muestral                                              \\
-    $\emptyset$    & Evento imposible                                              \\
-    $\omega$       & Resultado del experimento aleatorio                           \\
-    $A$            & $A$ ocurre si $\omega \in A$                                  \\
-    $A^c$          & Negación de $A$. Si $\omega \in A^c$ entonces $A$ no ocurrió. \\
-    $A\cap B$      & $A$ y $B$                                                     \\
-    $A\cup B$      & $A$ o $B$                                                     \\
-    $A\setminus B$ & $A$ pero no $B$                                               \\
-    $A\triangle B$ & $A$ o $B$ pero no ambos. Exactamente uno de los dos           \\
-    $A\subset B$   & Si $A$ entonces $B$                                           \\
-    \hline
-  \end{tabular}
-  %\caption{Caption}
-  %\label{tab:my_label}
-\end{table}
-A continuación vemos algunos ejemplos adicionales. En el ejemplo del lanzamiento de dos dados, sea
-$$
-  A = \text{evento de obtener un par en el primer dado}
-$$
-y
-$$
-  B = \text{evento de obtener un par en el segundo dado}
-$$
-Tenemos entonces que
-\begin{equation*}
-  \begin{split}
-    A = \left\{\right.(2&, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2,6),  \\
-    (4&, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), \\
-    (6&, 1), (6, 2), (6, 3), (6, 4), (6, 5), (6, 6)   \left.\right\}
-  \end{split}
-\end{equation*}
-
-Por lo tanto: $P(A) = 18/36 = 1/2$. Análogamente deducimos que $P(B) = 1/2$.
-
-De lo anterior sigue además que
-$$
-  A^c = \text{evento de obtener un impar en el primer dado}
-$$
-y
-$$
-  B^c = \text{evento de obtener un impar en el primer dado}
-$$
-y claro:
-$$
-  P(A^c ) = 1 - P(A) = 1/2\quad \text{y} \quad P(B^c ) = 1 - P(B) = 1/2
-$$
-Siguiendo con la misma idea tenemos que:
-$$
-  A \cap B = \text{Obtenemos par en ambos dados }
-$$
-Es decir:
-\begin{equation*}
-  \begin{split}
-    A \cap B = \left\{\right. (2&, 2), (2, 4), (2, 6),\\
-    (4&, 2), (4, 4), (4, 6),\\
-    (6&, 2), (6, 4), (6, 6)\left.\right\}
-  \end{split}
-\end{equation*}
-De donde $P(A \cap B) = 9/36 = 1/4$. Con esto podemos calcular la probabilidad del evento:
-$$
-  A \cup B = \text{Obtenemos par en alguno de los dados}
-$$
-efecto:
-$$
-  P(A \cup B) = P(A) + P(B) - P(A \cap B) = 1/2 + 1/2 - 1/4 = 3/4
-$$
-Otro evento interesante:
-$$
-  A\setminus B = A \cap B^c = \text{El dado uno es par y el dado 2 es impar}
-$$
-Tenemos que:
-$$
-  P(A \setminus B) = P(A) - P(A \cap B) = 1/2 - 1/4 = 1/4
-$$
-Esto ultimo lo verificamos al ver que:
-\begin{equation*}
-  \begin{split}
-    A \setminus B = \left\{\right. (2&, 1),(2, 3), (2, 5),\\
-    (4&, 1), (4, 3), (4, 5),\\
-    (6&, 1), (6, 3), (6, 5)\left.\right\}
-  \end{split}
-\end{equation*}
-Osea, $P(A \setminus B) = 9/36 = 1/4$. Siguiendo en la misma linea:
-$$
-  A \triangle B = \text{obtenemos exactamente un par}
-$$
-en este caso
-$$
-  P(A \triangle B) = P(A \setminus B) + P(B \setminus A) = 1/4 + 1/4 = 1/2.
-$$
-Finalmente, un ejemplo un poco mas complejo:
-$$
-  C = \text{La suma de los dados es par}
-$$
-Podemos seguir dos rutas para encontrar la probabilidad de $C$ . Una es la de ``fuerza bruta'' y enlistar todos los elementos de $\Omega$ que cumplen con la condición. La otra es tratar de razonar la lógica del conjunto y expresarlo en términos de otros mas simples. Sigamos la segunda ruta y notemos que para que la suma de los dados sea par, es necesario que se cumpla que ambos dados sean pares o bien que ambos dados sean impares. Esto es:
-\begin{equation*}
-  \begin{split}
-    C & = (A \cap B) \cup (A^c \cap B^c ) \\
-    & = (A \cap B) \cup (A \cup B)^c
-  \end{split}
-\end{equation*}
-
-Adicionalmente, observemos que como $(A \cap B) \subset A \cup B$, entonces $A \cap B$ y $(A
-  \cup B)^c$ son disjuntos. En consecuencia:
-\begin{equation*}
-  \begin{split}
-    P(C ) & = P((A \cap B) \cup (A \cup B)^c ) \\
-    & = P(A \cap B) + P((A \cup B)^c )    \\
-    & = P(A \cap B) + (1 - P(A \cup B)) \\
-    & = 1/4 + (1-3/4)\\
-    & = 1/2
-  \end{split}
-\end{equation*}
-
-Esto lo verificamos usando la ``fuerza bruta'' y enlistamos todos los pares cuya suma es par donde verificamos que: $P(C ) = 18/36 = 1/2$.
-\begin{equation*}
-  \begin{split}
-    C = \left\{\right. (2&, 2), (4, 2), (6, 2),(1, 1), (3, 1), (5, 1),\\
-    (2&, 4), (4, 4), (6, 4),(1, 3), (3, 3), (5, 3),\\
-    (2&, 6), (4, 6), (6, 6),(1, 5), (3, 5), (5, 5)\left.\right\}
-  \end{split}
-\end{equation*}
 \chapter{Combinatoria}
 Frecuentemente el cálculo de probabilidades involucra el conteo de elementos en un conjunto. Sobre todo cuando consideramos que los resultados de un posible experimento son igualmente probables. En un caso así, la estrategia usual a seguir para el cálculo de las probabilidad de un evento es la de estimar el número de casos favorables y el número de casos totales en el experimento aleatorio. Por ejemplo en el caso del lanzamiento de dos dados, el número de casos totales es 36. Podemos obtener 36 parejas diferentes. sin embargo, responder la pregunta: ¿Cuál es la probabilidad de que la suma de los dados sea 7? implica el conteo de todas aquellas parejas cuya suma es 7 a saber:
 $$
@@ -1374,6 +816,614 @@ Con esto completamos la tabla que resume la forma de seleccionar $m$ elementos a
   \end{table}
 \end{center}
 Recordemos que en los casos sin reemplazo es necesario que $m \leq n$.
+
+
+\chapter{Probabilidad Axiomática}
+
+
+Existen multitud de fenómenos en la realidad que difícilmente pueden ser modelados con certeza. Ya sea por la complejidad de su naturaleza o
+porque efectivamente es imposible establecer algún modelo determinístico para el mismo. Ejemplos que nos vienen a la mente provienen directamente
+de juegos de azar tales como, El lanzamiento de una moneda, el lanzamiento de un par de dados, el resultado de seleccionar 5 cartas a partir de un mazo de 52 cartas, y un largo etcétera\ldots{}
+
+Si bien estos ejemplos son perfectamente válidos para ejemplificar un fenómeno aleatorio, la teoría de probabilidad puede ir mucho mas lejos. A decir verdad su rango de aplicabilidad solo esta sujeto a nuestra creatividad e imaginación. Aplicaciones en economía, finanzas, biología, física\dots{} abundan. También es importante notar que la Probabilidad es fundamento de muchas otras disciplinas, lo cual le confiere aun mayor relevancia.
+
+
+\section{Espacio Muestral}
+
+Empecemos por lo más básico. Al momento de modelar un fenómeno aleatorio, debemos empezar por delimitar las posibilidades. El ejemplo mas simple sería el lanzamiento de una moneda, típicamente podemos pensar que las únicas dos posibilidades es que la moneda caiga en una cara u otra. Esto lo podemos traducir diciendo que la moneda cae en ``sol''($S$) o bien cae en ``águila''($A$). Es decir el posible resultado de este sencillo experimento es alguno de los elementos del conjunto: $\Omega = \{A, S\}$ En el caso del lanzamiento de un par de dados, el conjunto $\Omega$ podría ser: $\Omega = \{(i , j), i , j = 1,\ldots , 6\}$
+
+En general, el espacio muestral de un fenómeno aleatorio, es el conjunto de resultados que consideramos posibles. No es imperativo pero si muy común, denotar al espacio muestral con $\Omega$, nosotros seguiremos esta costumbre. De acuerdo con esta definición, cualquier cosa que este fuera de $\Omega$ es para todos los fines de nuestro modelo, algo completamente imposible.
+
+Debemos hacer énfasis en que el espacio muestral que definamos es válido en un contexto muy específico. Es decir, estamos modelando y cualquier modelo tiene imperfecciones. Ningún modelo es un reflejo fiel de la realidad y en general no se espera que sea asi. Lo importante es que cuando proponemos un modelo para describir algún fenómeno social, natural o de cualquier índole, debemos hacer supuestos simplificadores que permitan atacar el problema de manera eficiente. Mas aun, podemos proponer mas de un modelo perfectamente válido para atacar un problema desde enfoques diferentes. Pensemos en la Ciudad de México, si queremos determinar una ruta aérea de la CDMX a Mérida, sería perfectamente válido y útil pensar que ambas ciudades son ``puntos'' en el mapa. Sin embargo seria una muy mala idea pensar del mismo modo si lo que deseamos es proponer un modelo que busque resolver el problema del tráfico en la ciudad.
+
+En un contexto de orden mas probabilístico; supongamos que un inversionista esta interesado en el comportamiento que tendrá el precio de un activo a lo largo de los tres días siguientes. Es claro que al dia de hoy conocemos el precio del activo. Pero desconocemos el precio que tendrá en los días subsecuentes. Este precio es aleatorio. Sin embargo aunque desconocemos los precios de los días venideros si podemos intentar definir algún modelo. ¿Que valores podrá tomar el activo? La primera observación es que el precio del activo es siempre no negativo. Además de ello ¿que podemos suponer con respecto del precio que tomara mañana o pasado mañana? Un modelo simple, pero de ningún modo despreciable supone que de un día a otro el precio solo puede tomar uno de dos valores. Uno de estos corresponde a un alza y el otro a una baja. Asi de simple
+
+Matemáticamente; si denotamos con $S_t$ al precio del activo al tiempo $t$ entonces proponemos el modelo:
+$$
+  S_{t+1} = \begin{cases}
+    uSt & u > 1     \\
+    dSt & 0 < d < 1
+  \end{cases}
+$$
+
+Si todo ``empieza'' al tiempo $t$ entonces $S_{t+3}$ es desconocida al tiempo $t$ pero sabemos que puede tomar cualquiera de los valores:  $S_{t+3}= u^id^{3-i}$, $i = 0,\ldots, 3$.
+
+El problema es que no sabemos cual de ellos tomará. No importa, podemos modelar el precio del activo al tiempo $t + 3$ como un experimento aleatorio. ¿cual sería en este caso el espacio muestral?
+
+No es la única posibilidad, pero una buen idea sería definir el espacio muestral en términos de las alzas y bajas del activo: $\Omega = \{w = (x_1 , x_2, x_3 ):x_i \in \{u, d\}, i = 1, 2, 3\}$. Así por ejemplo si $w = (u, u, d)$ entonces sabemos que en $t + 3$ el
+precio del activo es $u^2dSt$ . Pero si $w = (d, d, d)$ entonces $S_{t+3} = d^3St$ En resumen, el conjunto $\Omega$, reúne
+todos los escenarios posibles. De acuerdo con nuestro modelo, solo las alternativas que están en $\Omega$ pueden ocurrir. Cualquier otra cosa es imposible. Aun que no sabemos cual $w \in \Omega$ ocurrirá, al menos hemos
+delimitado las posibilidades.
+
+El modelo que hemos propuesto, si bien simple, es un modelo muy popular en el medio financiero. En la práctica se usa tal cual lo describimos, usualmente con un mayor número de periodos, pero fuera de ello sin cambio alguno. Por muy simple que parezca de primera instancia, es un modelo muy adecuado para resolver algunos tipos de problemas en finanzas. Claro esta que no es el único modelo de uso extendido para modelar precios de activos. Una alternativa quizás mas ambiciosa seria suponer que a lo largo de los tres días de operación, el activo puede tomar cualquier valor no negativo, en tal caso: $\Omega = R^+$. Sirva esto para hacer notar que $\Omega$ puede tomar formas muy variadas, desde conjuntos sencillos, pequeños y finitos, hasta conjuntos infinitos no numerables.
+
+En ciertas circunstancias una adecuada
+definición del espacio muestral, puede ser la diferencia entre resolver o no un problema. El siguiente es un buen ejemplo de esto
+
+\noindent\hrulefill
+
+Consideremos el juego de la ``Catafixia''. Un concursante llega al final de un programa cargado de premios. Sin embargo, se le ofrece la posibilidades de entrar a la ``catafixia''. Si entra entonces le son presentadas tres cortinas diferentes. Sabemos que detrás de una de ellas existe un premio sumamente deseable... el premio mayor digamos. Detrás de las dos restantes, existen premios indeseables. Si abrimos alguna de estas cortinas, perdemos los premios con los que llegamos al final del programa y nos vamos con cualquier cosa que hubiese detrás de la cortina seleccionada. ¿Entramos a la catafixia? Pensemos por un momento... si entramos tenemos un tercio de probabilidad de obtener el ``premio mayor'' ¿Estamos dispuestos a arriesgar los premios que ya ganamos?
+
+Decidimos entrar, seleccionamos una de la cortinas. Sin embargo, antes de abrir la cortina seleccionada, Chabelo nos ofrece una alternativa. Abre una de las dos cortinas que no fueron seleccionadas, una detrás de la cual se encuentra uno de los premios ``broma''. Nos encontramos entonces con una nueva situación; el premio mayor esta detrás de la cortina que seleccionamos o bien detrás de la cortina que Chabelo dejo cerrada. Se nos ofrece entonces la posibilidad de cambiar nuestra
+decisión ¿Lo hacemos? En realidad si llegamos a este punto cambiar de cortina es irrelevante,  ahora la posibilidad que tenemos de ganar es de un medio. Problema resuelto. ¿o no?
+
+Hasta el momento el único concepto de probabilidad que conocemos es el de Espacio Muestral. Bueno, entonces seguramente, tomar una decisión adecuada dependerá de una correcta elección de nuestro espacio muestral. Para ello supongamos que las cortinas están numeradas del 1 al 3. Para simplificar la situación supongamos además que el
+premio mayor se encuentra detrás de la cortina uno. ¿Como seria una elección típica en este juego? En realidad,depende... depende de la elección que tomemos, cuando llegue el momento ¿cambiamos de cortina? Hasta el momento, la conclusión ``obvia'' es que el cambio es
+irrelevante. Bueno, pensemos que pasaría si hacemos el cambio. Pase lo que pase, llegado el momento, nuestra estrategia es la de cambiar la cortina seleccionada. En este caso ¿como se vería nuestro espacio muestral?
+
+
+Para encontrar una respuesta satisfactoria, partamos
+del hecho, de que pase lo que pase, hemos decidido que llegado el momento cambiaremos nuestra
+selección . Luego, sabemos que en primera instancia,
+tenemos tres posibilidades a elegir, puerta 1, puerta 2 o puerta 3. Esta
+primera selección la hacemos de forma completamente aleatoria. En este
+momento no tenemos ninguna razón para seleccionar una cortina sobre
+otra. Después de esta primera selección, puede ocurrir una de las siguientes cosas
+
+\begin{enumerate}
+  \item Seleccionamos la cortina 1.
+        \begin{enumerate}
+          \item Chabelo abre la cortina 2. Cambiamos por la 3. Perdemos
+          \item Chabelo abre la
+                cortina 3. Cambiamos por la 2. Perdemos
+        \end{enumerate}
+  \item Seleccionamos la cortina 2. Chabelo abre la cortina 3. Cambiamos por la
+        1. ganamos
+  \item Seleccionamos la cortina 3. Chabelo abre la cortina 2. Cambiamos por la
+        1. ganamos
+\end{enumerate}
+
+Ante estas circunstancias, parece razonable el
+siguiente espacio muestral:
+$$\Omega = \{(1, 2, 3, P), (1, 3, 2, P), (2, 3, 1,
+  G ), (3, 2, 1, G )\}$$
+Efectivamente, si seleccionamos la cortina 2, es
+equivalente en nuestro espacio muestral a haber seleccionado: $\omega = (2, 3,
+  1, G )$ Es decir seleccionamos la cortina 2, nos abren la 3, cambiamos a
+la 1 y en consecuencia ganamos! Notemos que si seleccionamos la uno,
+entonces se derivan dos posibilidades, en función de la cortina que nos
+abran en segunda instancia.
+
+Bueno pues el problema esta resuelto, si estamos
+convencidos del espacio muestral elegido, entonces ganamos en dos de cuatro resultados posibles. En consecuencia, la probabilidad de ganar siguiendo nuestra estrategia de cambio de elección, es igual a $2/4 = 1/2$. Lo cual confirma nuestra hipótesis inicial. mmm Un momento... regresemos al principio... Antes del cambio seleccionamos la puerta 1, 2 o 3 de forma completamente aleatoria. Asi que cada una tiene $1/3$ de probabilidad de ser seleccionada. Notemos también que de acuerdo con
+nuestra elección de espacio muestral, perdemos si el resultado del concurso es $(1, 2, 3, P)$ o $(1, 3, 2, P)$. Pero esto es equivalente al haber elegido la cortina 1 desde un principio. Lo cual lo hacemos con
+probabilidad $1/3$.
+
+Por otro lado, ganamos si el resultado del concurso es
+$(2, 3, 1, G )$ o $(3, 2, 1, G )$. Pero esto es equivalente al haber seleccionado la cortina 2 o la cortina 3 desde un principio.
+Seleccionamos alguna de estas dos cortinas con probabilidad $1/3 + 1/3 = 2/3$. Conclusión: Si seguimos la estrategia de cambio, la probabilidad de ganar aumente de uno a dos tercios!!! :-)
+
+\noindent\hrulefill
+
+Una vez que hemos comprendido la idea de espacio muestral,
+debemos trabajar en establecer cierto orden sobre el mismo. Un orden que
+nos permita extraer información valiosa. Información que nos conduzca a
+cálculos mas precisos. Para este fin retomemos el ejemplo de los precios
+de activos. Habíamos propuesto el espacio de estados:
+$$
+  \Omega = \{w = (x_1, x_2, x_3 ) : x_i \in \{u, d\}, i = 1, 2, 3\}
+$$
+
+Para lo que intentamos exponer a continuación, conviene escribir este espacio de manera explícita:
+
+\begin{equation*}
+  \begin{split}
+    \Omega = & \left\{(uuu), (uud), (udu), (udd), \right.\\
+    & \phantom{\{}\left.(ddd), (ddu),(dud), (duu)\right\}
+  \end{split}
+\end{equation*}
+
+
+Una representación gráfica de este problema la tenemos a continuación:
+
+\begin{center}
+  \begin{tikzpicture}
+    [nodo/.style={}]
+    \node (o) at (0, 0)[nodo] {$S_t$};
+
+    \node (u) at (2, 2)[nodo] {$uS_t$};
+    \node (d) at (2,-2)[nodo] {$dS_t$};
+
+    \node (uu) at (4, 3) [nodo] {$uuS_t$};
+    \node (ud) at (4, 1) [nodo] {$udS_t$};
+    \node (du) at (4,-1) [nodo] {$duS_t$};
+    \node (dd) at (4,-3) [nodo] {$ddS_t$};
+
+    \node (uuu) at (7, 3.5) [nodo] {$uuuS_t$};
+    \node (uud) at (7, 2.5) [nodo] {$uudS_t$};
+    \node (udu) at (7, 1.5) [nodo] {$uduS_t$};
+    \node (udd) at (7,  .5) [nodo] {$uddS_t$};
+
+    \node (duu) at (7, -.5) [nodo] {$duuS_t$};
+    \node (dud) at (7,-1.5) [nodo] {$dudS_t$};
+    \node (ddu) at (7,-2.5) [nodo] {$dduS_t$};
+    \node (ddd) at (7,-3.5) [nodo] {$dddS_t$};
+
+    \draw[->] (o)--(u);
+    \draw[->] (o)--(d);
+
+    \draw[->] (u)--(uu);
+    \draw[->] (u)--(ud);
+    \draw[->] (d)--(du);
+    \draw[->] (d)--(dd);
+
+    \draw[->] (uu)--(uuu);
+    \draw[->] (uu)--(uud);
+    \draw[->] (ud)--(udu);
+    \draw[->] (ud)--(udd);
+    \draw[->] (du)--(duu);
+    \draw[->] (du)--(dud);
+    \draw[->] (dd)--(ddu);
+    \draw[->] (dd)--(ddd);
+
+    \node (t)   at (0,-4.5) [nodo]{$S_t$};
+    \node (t+1) at (2,-4.5) [nodo]{$S_{t+1}$};
+    \node (t+2) at (4,-4.5) [nodo]{$S_{t+2}$};
+    \node (t+3) at (7,-4.5) [nodo]{$S_{t+3}$};
+    \draw[-] (t)--(t+1)--(t+2) --(t+3);
+  \end{tikzpicture}
+\end{center}
+
+
+Consideremos el ejemplo donde $S_t = 4$, $u = 2$ y $d = 1/2$, con estos números el arbol resultante  Sería el siguiente:
+
+\begin{center}
+  \begin{tikzpicture}
+    [nodo/.style={}]
+    \node (o) at (0, 0)[nodo] {$4$};
+
+    \node (u) at (2, 2)[nodo] {$8$};
+    \node (d) at (2,-2)[nodo] {$2$};
+
+    \node (uu) at (4, 3) [nodo] {$16$};
+    \node (ud) at (4, 1) [nodo] {$4$};
+    \node (du) at (4,-1) [nodo] {$4$};
+    \node (dd) at (4,-3) [nodo] {$1$};
+
+    \node (uuu) at (7, 3.5) [nodo] {$32$};
+    \node (uud) at (7, 2.5) [nodo] {$8$};
+    \node (udu) at (7, 1.5) [nodo] {$8$};
+    \node (udd) at (7,  .5) [nodo] {$2$};
+
+    \node (duu) at (7, -.5) [nodo] {$8$};
+    \node (dud) at (7,-1.5) [nodo] {$2$};
+    \node (ddu) at (7,-2.5) [nodo] {$2$};
+    \node (ddd) at (7,-3.5) [nodo] {$1/2$};
+
+    \draw[->] (o)--(u);
+    \draw[->] (o)--(d);
+
+    \draw[->] (u)--(uu);
+    \draw[->] (u)--(ud);
+    \draw[->] (d)--(du);
+    \draw[->] (d)--(dd);
+
+    \draw[->] (uu)--(uuu);
+    \draw[->] (uu)--(uud);
+    \draw[->] (ud)--(udu);
+    \draw[->] (ud)--(udd);
+    \draw[->] (du)--(duu);
+    \draw[->] (du)--(dud);
+    \draw[->] (dd)--(ddu);
+    \draw[->] (dd)--(ddd);
+
+    \node (t)   at (0,-4.5) [nodo]{$S_t$};
+    \node (t+1) at (2,-4.5) [nodo]{$S_{t+1}$};
+    \node (t+2) at (4,-4.5) [nodo]{$S_{t+2}$};
+    \node (t+3) at (7,-4.5) [nodo]{$S_{t+3}$};
+    \draw[-] (t)--(t+1)--(t+2) --(t+3);
+  \end{tikzpicture}
+\end{center}
+
+Lo primero que debemos notar es que el espacio de probabilidad que hemos propuesto describe cada una de las rutas en el árbol. Bien nos podríamos preguntar si es que es necesario tanto detalle. A final de cuentas solo estamos interesados en el resultado final, el precio al término de los tres días. De acuerdo con los parámetros seleccionados, el precio del activo al tiempo t + 3 solo puede tomar uno de los cuatro valores: 64, 16, 4 o 1. En este sentido, podríamos proponer un espacio de estados alternativo:
+$$
+  \Omega = \{32, 16, 8, 4, 2, 1, 1/2\}
+$$
+¿Cuál es mejor? En realidad los dos pueden ser correctos, todo depende del problema que deseamos resolver. Sin embargo lo que si es claro es que el primer espacio que propusimos, contiene mayor información que el segundo.
+
+Pensemos por ejemplo, que ocurre si después de transcurridos los tres días, lo que ocurrió fueron tres alzas: $\omega = (u,
+  u, u)$. En términos de los precios, estamos diciendo que $St+3 = 64$. Si lo que ocurre es $\omega = (u, d, u )$entonces $S_{t+3} = 16$. De hecho observemos que
+si $\omega \in \{(u, u, d), (u, d, u), (d, u, u)\}$ entonces $S_{t+3} = 16$. De manera
+análoga, si $\omega \in \{(d, d, u), (d, u, d), (u, d, d)\}$ entonces $S_{t+3} = 4$.
+Pero podemos hacer aún mas; Consideremos por ejemplo los conjuntos:
+\begin{equation*}
+  \begin{split}
+    A_u & = \{(u, u, u), (u, u, d), (u, d, u), (u, d, d)\} \\
+    A_d & = \{(d, d, d), (d, d,u), (d, u, d), (d, u, u)\}
+  \end{split}
+\end{equation*}
+El conjunto Au contiene la información del primer dia. Si $\Omega \in A_u$ sabemos que el primer dia hubo una alza en el precio del activo, si $\Omega \in A_d$ entonces hubo una baja. Observemos sin embargo que ni $A_u$ , ni $A_d$ proporcionan información de lo que ocurrirá en el segundo o tercer día, aunque si acotan las posibilidades. Si sabemos que $\omega \in A_u$ automáticamente descartamos la posibilidad de que $\omega = (d, d,
+  d)$ por ejemplo.
+
+
+Continuando con el ejemplo; tomemos ahora los conjuntos:
+\begin{equation*}
+  \begin{split}
+    A_{uu} & = \{(u, u, u), (u, u, d)\} \\
+    A_{du} & = \{(d, u, u), (d, u, d)\} \\
+    A_{ud} & = \{(u, d, u), (u, d, d)\} \\
+    A_{dd} & = \{(d, d, u), (d, d, d)\} \\
+  \end{split}
+\end{equation*}
+La información que obtenemos de estos conjuntos esta relacionada con lo que ocurre en los dos primeros días. Si $\omega \in A_{uu}$ podemos afirmar que en los dos
+primeros días se registraron alzas de precios. Notemos ademas que ninguno de estos conjuntos determinan con certeza lo que ocurrirá en el tercer día. Aunque si limitan las posibilidades. Aquí viene algo interesante, notemos que decir que $S_{t+2} = 8$ es equivalente a decir que $\omega \in A_{ud} \cup A_{du}$ . O también por ejemplo decir que $St+2 \geq 2$ es
+equivalente a afirmar que $\omega \in A_{dd}$
+
+Tomemos ahora un ejemplo diferente, pensemos en el
+lanzamiento de dos dados. En este caso el espacio muestral parece muy natural; la colección de pares $(i, j)$ donde $i, j = 1,\ldots, 6$. Es decir:
+\begin{equation*}
+  \begin{split}
+    \Omega = \left\{\right.%
+    (1&, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), \\
+    (2&, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2, 6), \\
+    (3&, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), \\
+    (4&, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), \\
+    (5&, 1), (5, 2), (5, 3), (5, 4), (5, 5), (5, 6), \\
+    (6&, 1), (6, 2), (6, 3), (6, 4), (6,5), (6, 6) \left.\right\}
+  \end{split}
+\end{equation*}
+
+¿Cuales son los casos donde obtuvimos un 3 en el
+lanzamiento del primer dado? Esto lo resumimos en el siguiente conjunto:
+$$
+  A = \{(3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6)\}
+$$
+Mientras que el conjunto
+$$
+  B = \{(1, 3), (2, 3), (3, 3), (4, 3), (5, 3), (6, 3)\}
+$$
+representa los casos donde hubo un tres en el segundo dado. Algo un poco mas complejo, de forma coloquial decimos:
+$$
+  A \cup B = \text{sale 3 en primer dado o sale 3 en el segundo}
+$$
+a diferencia de
+$$
+  A \cap B = \text{sale 3 en el primer dado y sale 3 en el segundo dado}
+$$
+
+Las dos aseveraciones anteriores podemos escribirlas de manera equivalente como:
+$$
+  A \cup B = \text{obtuvimos al menos un 3}
+$$
+a diferencia de:
+$$
+  A \cap B = \text{obtuvimos 3 en ambos dados}
+$$
+En términos de conjuntos ¿cómo podríamos expresar la frase ``obtuvimos exactamente un 3''? Observemos que $A\cup B$ no es útil pues contiene a $(3, 3)$, en este elemento tenemos mas ocurrencias del 3 de las que necesitamos. $A \cap B = \{(3, 3)\}$ nos sirve
+aun menos, En realidad es el elemento que desearíamos eliminar de $A \cup B$ para obtener lo que estamos buscando. Esto es:
+$$
+  (A \cup B) \setminus (A \cap B) = \text{Obtenemos exactamente un tres}
+$$
+
+Recordemos que la diferencia simétrica de $A$ y $B$ se define como:
+\begin{equation*}
+  \begin{split}
+    A \triangle B & = (A \setminus B) \cup (B \setminus A) \\
+    & = (A \cup B) \setminus (A \cap B) 	\end{split}
+\end{equation*}
+
+Por lo tanto, en el ejemplo que estamos estudiando $A \triangle B$ es el conjunto donde ``obtenemos exactamente un tres''. ¿Que podemos decir entonces de la diferencia
+usual de conjuntos?
+$$
+  A \setminus B = \text{Obtuvimos 3 en el primer dado pero no en el segundo}
+$$
+Observemos que en esta última expresión estamos negando la ocurrencia de un 3 en el segundo dado, es decir:
+$$
+  B^c = \text{No obtuvimos 3 en el segundo dado}
+$$
+
+Todas estas divagaciones nos conducen a conclusiones interesantes. Por un lado como vimos, no existe una única forma de definir un espacio muestral, la forma adecuada dependerá en gran medida de las preguntas que necesitemos resolver. Por otro lado, debemos estar ya convencidos, que al reunir los elementos de $\Omega$ en subconjuntos, en realidad lo que logramos es organizar la información que eventualmente podamos extraer del experimento aleatorio. Estas ideas nos conducen a la siguiente definición.
+%\newpage
+\begin{definition}[$\sigma$-álgebra]
+  Una colección $\mathcal{F}$ de subconjuntos de $\Omega$ se conoce como $\sigma$-álgebra de subconjuntos de $\Omega$ si:
+  \begin{enumerate}
+    \item $\Omega \in \mathcal{F}$
+    \item Si $A \in F$ entonces $A^c \in \mathcal{F}$
+    \item Si $\{A_n\}$ es una colección numerable de elementos de $\mathcal{F}$ entonces 
+    $$
+    \bigcup A_n \in \mathcal{F}
+    $$
+  \end{enumerate}
+\end{definition}
+
+Si $A \in F$ entonces se dice que $A$ es un evento. Decimos que un evento $A$ ocurre siempre y cuando el elemento $\omega \in \Omega$ que resulta después de ejecutado el experimento aleatorio es un elemento de $A$ esto es $\Omega \in A$.
+
+Ejemplos de $\sigma$-álgebra.
+
+Dado un espacio muestral $\Omega$, la $\sigma$-álgebra más simple y pequeña que podemos definir es $\mathcal{F}=\{\Omega, \emptyset\}$. Otro ejemplo simple lo conseguimos como sigue: si $A \subset \Omega$ entonces: $F = \{\Omega,\emptyset, A, A^c\}$ es una $\sigma$-álgebra. Y claro está, la $\sigma$-álgebra mas grande de todas $2^\Omega$. El conjunto potencia es una $\sigma$-álgebra que es útil en algunas aplicaciones, por ejemplo en el caso del lanzamiento de dos dados bien podemos usar al conjunto potencia como la $\sigma$-álgebra en nuestro experimento. En el ejemplo del precio de un activo también podríamos usar la potencia, sin embargo, podríamos jugar con algunas alternativas. Por ejemplo; para el tiempo $t$ donde desconocemos cualquier cosa que pueda ocurrir en el futuro, podríamos seleccionar la $\sigma$-álgebra: $\mathcal{F} = \{\Omega,\emptyset\}$.
+
+Ahora bien, si ya transcurrió un periodo, entonces tenemos conocimiento de lo ocurrido con el precio en el primer dia. Es decir, ya sabemos si $\omega \in A_u$ o si $\omega \in A_d$ . Podemos jugar con esta información y generar una $\sigma$-álgebra que denote el hecho que conocemos la historia del primer dia: $F = \{\emptyset, \Omega, A_u , A_d \}$ Notemos que en este caso $\mathcal{F}$ efectivamente es una $\sigma$-álgebra. Esto es fácil de ver dado que $A_u = A^c_d$. Transcurridos dos días tenemos conocemos aún mas información, por lo pronto sabemos si $\omega$ pertenece a alguno de los cuatro conjuntos: $A_{uu}$, $A_{ud}$, $A_{du}$ o $A_{dd}$ . Sin embargo: $C = \{\emptyset, \Omega, A_{uu}, A_{ud}, A_{du}, A_{dd} \}$ no es una $\sigma$-álgebra.
+
+Por lo pronto conjuntos como: $Au = A_{uu} \cup A_{ud}$ o $A^c_u$ no están considerados. De acuerdo con la definición de $\sigma$-álgebra ambos deberían estar incluídos. En ejemplos como este , no es difícil resolver la situación, basta con tomar al conjunto $C$ y enriquecerlo con los conjuntos que le hagan falta para completar una $\sigma$-álgebra. Añadimos todas las uniones y complementos que hagan falta y listo. Este mecanismo sin embargo sirve solo para casos sencillos, donde el conjunto $\Omega$ es pequeño y podemos ser exhaustivos al momento de enlistar los elementos de una $\sigma$-álgebra. Para concluir el ejemplo; transcurridos los tres días, conocemos la historia completa, en este caso si parece apropiada la potencia como la $\sigma$-álgebra que describa la situación de nuestro experimento.
+
+Es importante hacer notar sin embargo que en general la potencia de $\Omega$ es demasiado grande y puede dar lugar a problemas serios, asimismo cuando $\Omega$ es muy grande, no es posible ser explícitos al momento de construir una  $\sigma$-álgebra, en cambio, debemos optar por algún argumento mas descriptivo que constructivo al momento de determinar la $\sigma$-álgebra de nuestro experimento.
+
+El primer inciso de la definición, básicamente se asegura de que la $\sigma$-álgebra sea una colección no vacía. De hecho podríamos sustituirlo por el requerimiento de que $\mathcal{F}$ sea una colección no vacía. Notemos además que decir que $\omega \in \Omega$ es equivalente a ``no decir nada'', una afirmación así no nos provee de información adicional. En cambio, decir que $\Omega \in A^c$ es un tipo de negación, negamos el hecho de que $A$ haya ocurrido. Asimismo, podemos parafrasear $\omega \in A \cup B$ diciendo que ``ocurrió $A$ u ocurrió $B$''. De manera parecida si $\omega \in A \cap B$, entonces ocurrió $A$ y ocurrió $B$.
+
+En general, podemos concebir a una $\sigma$-álgebra como un mecanismo para ordenar la información contenida en el espacio muestral. Por lo pronto, el primer inciso en la definición de $\sigma$-álgebra garantiza que $\Omega$ es siempre un elemento de la misma, el segundo inciso implica que la $\sigma$-álgebra es cerrada bajo complementos, es decir; si sabemos que algo ocurrió también debemos saber si es que esto mismo, no ocurrió. El tercer inciso es el mas controvertido. La axiomática de la probabilidad que estudiaremos es la propuesta por Kolmogorov y no esta exenta de controversia. Hay probabilistas que afirman que una teoría de probabilidad debería considerar únicamente la cerradura bajo uniones finitas y no extenderlo al caso numerable. Lo cierto es que este último inciso es de vital importancia en la construcción de eventos que tienen que ver con algún comportamiento límite. No abundaremos más al respecto dado que es un tema correspondiente a un curso avanzado de probabilidad. Baste notar que el inciso tres implica no solo que una $\sigma$-álgebra es cerrada bajo uniones numerables, también es cerrada bajo uniones finitas.
+
+Para probar la cerradura bajo uniones finitas antes observemos que de los dos primeros incisos se concluye que $\emptyset \in \Omega$. De este modo, si $A$ y $B$ son dos eventos en $\mathcal{F}$ entonces$A \cup B = \cup_n A_n$ con $A = A_1$ y $B = A_2$, mientras que $A_i = \emptyset$ para $i \geq 3$. Usando el inciso tres se sigue que $A \cup B = \cup A_i \in \mathcal{F}$. Ahora bien, si $\{A_n \}$ es una colección numerable de eventos en $\mathcal{F}$ entonces $\{A^c_n \}$ también es una colección numerable en $\mathcal{F}$. Usando de manera conjunta el inciso 2 y el inciso 3 y echando mano de la ley de Morgan tenemos que $\cap_n A_n = \left(\cup_n A^c_n \right)^c \in \mathcal{F}$. Esto es, una $\sigma$-álgebra también es cerrada bajo intersecciones numerables. Con un argumento similar al que usamos para probar la cerradura bajo uniones finitas, podemos probar la cerradura bajo intersecciones finitas.
+
+Podemos continuar con propiedades del estilo de las que acabamos de exponer, dejemos algunas para los ejercicios. Lo importante que debemos recordar es que si bien una $\sigma$-álgebra es cerrada bajo uniones e intersecciones numerables, no lo es bajo uniones o intersecciones arbitrarias. Al par $(\Omega, \mathcal{F})$, se le conoce como espacio medible. En un espacio medible es que tiene sentido nuestra siguiente
+
+\begin{definition}[Medida de probabilidad]
+  Dado un espacio medible $(\Omega, \mathcal{F})$,decimos que una función $P : F \rightarrow [0,1]$ es una medida de probabilidad si:
+
+  \begin{enumerate}
+    \item $P(\Omega) = 1$
+    \item Si $\{A_n \}$ es una sucesión de eventos disjuntos, entonces:
+          $$P\left(\cup_n A_n \right) = \sum_n P(A_n)$$.
+  \end{enumerate}changing
+\end{definition}
+
+A la tercia $(\Omega, \mathcal{F}, P)$ se le conoce como espacio de probabilidad. Observemos el importantísimo papel de la $\sigma$-álgebra, no sólo es útil para definir cierto orden a la información que podemos extraer en un experimento aleatorio, también funciona como el dominio de una medida de probabilidad. Debemos ser enfáticos en esto; seremos capaces de calcular probabilidades sobre elementos F y nada mas. Si $A \subset \Omega$ pero $A \notin \mathcal{F}$ entonces $P$ es incapaz de trabajar con $A$. Algunas propiedades de la probabilidad vienen bien en este momento: $P(\emptyset) = 0$ Efectivamente, consideremos la sucesión $\{An \}$ donde $A_n = \emptyset$ para todo $n$. Evidentemente esta es una sucesión de eventos disjuntos, por lo tanto
+$$
+  P(\emptyset) = P\left(\cup_n A_n\right) = \sum_n P(A_n ) = P(\emptyset) + \sum_{n\geq2} P(A_n )
+$$
+
+De donde se sigue que: $0 = \sum_{n\geq 2} P(A_n) = P\left(\cup_{n\geq 2} A_n\right) = P(\emptyset)$
+
+Si $A$ y $B$ son dos elementos disjuntos de $\mathcal{F}$ entonces: $P\left(A \cup B\right) = P(A) + P(B)$. Básicamente estamos afirmando que una medida de probabilidad no solo es aditiva ante uniones numerables disjuntas, también lo es ante uniones finitas disjuntas. Para probar este resultado observemos que $A \cup B = \cup_n A_n$ Donde $A_1 = A, A_2 = B$ y $A_n = \emptyset$ para $n \geq 3$. Claramente $\{An \}$ es una sucesión de eventos disjuntos.
+
+Por lo tanto
+\begin{equation*}
+  \begin{split}
+    P(A \cup B) & = P\left(\cup_n A_n \right)\\
+    & = \sum_n P(A_n) \\
+    & = P(A) + P(B) + \sum_{n\geq 3} P(A_n) \\
+    & = P(A) + P(B)
+  \end{split}
+\end{equation*}
+
+Este resultado, nos conduce a la siguiente afirmación: Si $A \in \mathcal{F}$ entonces:
+$$
+  P(A^c) = 1 - P(A)
+$$
+
+Este resultado se sigue de que: $1 = P(\Omega) = P(A \cup A_c ) = P(A) + P(A_c)$
+
+Para dos eventos $A$ y $B$ tales que $A \subset B$ se tiene que:  $P(A) \leq P(B)$ Efectivamente; notemos que $B = A \cup (B \setminus A)$ por lo tanto:
+$$
+  P(B) = P(A \cup (B\setminus A)) = P(A) + P(B \setminus A) \geq P(A)
+$$
+
+La última igualdad se debe al hecho de que $P(B\setminus A) \geq 0$ Finalmente, una
+de las relaciones mas útiles: Dados los eventos $A$ y $B$:
+$$
+  P(A \cup B) = P(A) + P(B) - P(A \cap B)
+$$
+
+En la igualdad anterior estamos tomando eventos $A$ y $B$ arbitrarios, no necesariamente disjuntos, de ahí la necesidad de restar la probabilidad de la intersección. A
+
+Observemos primero que $A \cup B = A \cup (B \setminus A)$ y además $B = (A \cap B) \cup (B \setminus A)$ por lo tanto
+$$
+  P(A \cup B) = P(A) + P(B\setminus A)
+$$
+y
+$$
+  P(B) = P(A \cap B) + P(B \setminus A)
+$$
+Usando estas dos igualdades obtenemos la fórmula propuesta para la
+unión.
+
+Retomemos el ejercicio que consiste en el lanzamiento de dos
+dados. Sabemos que
+
+\begin{equation*}
+  \begin{split}
+    \Omega = \left\{\right.%
+    (1&, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), \\
+    (2&, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2, 6), \\
+    (3&, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), \\
+    (4&, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), \\
+    (5&, 1), (5, 2), (5, 3), (5, 4), (5, 5), (5, 6), \\
+    (6&, 1), (6, 2), (6, 3), (6, 4), (6,5), (6, 6) \left.\right\}
+  \end{split}
+\end{equation*}
+
+Si ambos dados son justos, si ninguno de ellos esta cargado y todas las caras son igualmente probables entonces cada cara tiene un sexto de probabilidad de aparecer. Derivado de $\Omega$ deducimos que cada combinación en el lanzamiento de los dados tiene $1/36$ de probabilidad de ocurrir. Retomando los ejemplos anteriores, si
+$$
+  A = \text{evento de obtener un 3 en el primer dado}
+$$
+entonces $P(A) = 6/36 = 1/6$. De manera análoga, si
+$$
+  B = \text{evento de obtener un 3 en el segundo dado}
+$$
+entonces $P(B) = 1/6$. A su vez:
+$$
+  A \cap B = \text{Evento de obtener 3 en ambos dados } = \{(3, 3)\}
+$$
+por lo cual $P(A \cap B) = 1/36$. Con estos elementos, calculamos la
+probabilidad de:
+$$
+  A \cup B = \text{Evento de obtener al menos un tres}
+$$
+esto es:
+$$
+  P(A \cup B) = P(A) + P(B) - P(A \cap B) =  1/6 + 1/ 6 - 1/36 = 11/36
+$$
+Esto lo verificamos al notar que:
+\begin{equation*}
+  \begin{split}
+    A \cup B = \left\{\right.(3&, 1), (3, 2), (3, 3), (3,4), (3, 5),\\
+    (3&, 6), (1, 3), (2, 3), (4, 3), (5, 3), (6, 3)\left.\right\}
+  \end{split}
+\end{equation*}
+Un ejemplo un poco mas complicado.c
+$$
+  A = (A \cap B) \cup (A \setminus B)
+$$
+con lo cual:
+$$
+  P(A \setminus B) = P(A) - P(A \cap B)
+$$
+análogamente:
+$$
+  P(B \setminus A) = P(B) - P(A \cap B)
+$$
+Por lo tanto:
+\begin{equation*}
+  \begin{split}
+    P(A \triangle B) & = P(A) + P(B) - 2P(A \cap B) \\
+    & = 1/6 + 1/6 -2/36 \\
+    & = 10/36
+  \end{split}
+\end{equation*}
+Lo cual se verifica al ver que:
+\begin{equation*}
+  \begin{split}
+    A \triangle B = \left\{\right. (3&, 1), (3, 2),(3, 4), (3, 5), (3, 6),\\
+    (1&, 3), (2, 3), (4, 3), (5, 3), (6, 3)\left.\right\}
+  \end{split}
+\end{equation*}
+La siguiente tabla puede ser de utilidad:
+\renewcommand{\arraystretch}{1.5}
+\begin{table}
+  \centering
+  \begin{tabular}{|c|l|}
+    \hline
+    $\Omega$       & Espacio Muestral                                              \\
+    $\emptyset$    & Evento imposible                                              \\
+    $\omega$       & Resultado del experimento aleatorio                           \\
+    $A$            & $A$ ocurre si $\omega \in A$                                  \\
+    $A^c$          & Negación de $A$. Si $\omega \in A^c$ entonces $A$ no ocurrió. \\
+    $A\cap B$      & $A$ y $B$                                                     \\
+    $A\cup B$      & $A$ o $B$                                                     \\
+    $A\setminus B$ & $A$ pero no $B$                                               \\
+    $A\triangle B$ & $A$ o $B$ pero no ambos. Exactamente uno de los dos           \\
+    $A\subset B$   & Si $A$ entonces $B$                                           \\
+    \hline
+  \end{tabular}
+  %\caption{Caption}
+  %\label{tab:my_label}
+\end{table}
+A continuación vemos algunos ejemplos adicionales. En el ejemplo del lanzamiento de dos dados, sea
+$$
+  A = \text{evento de obtener un par en el primer dado}
+$$
+y
+$$
+  B = \text{evento de obtener un par en el segundo dado}
+$$
+Tenemos entonces que
+\begin{equation*}
+  \begin{split}
+    A = \left\{\right.(2&, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2,6),  \\
+    (4&, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), \\
+    (6&, 1), (6, 2), (6, 3), (6, 4), (6, 5), (6, 6)   \left.\right\}
+  \end{split}
+\end{equation*}
+
+Por lo tanto: $P(A) = 18/36 = 1/2$. Análogamente deducimos que $P(B) = 1/2$.
+
+De lo anterior sigue además que
+$$
+  A^c = \text{evento de obtener un impar en el primer dado}
+$$
+y
+$$
+  B^c = \text{evento de obtener un impar en el primer dado}
+$$
+y claro:
+$$
+  P(A^c ) = 1 - P(A) = 1/2\quad \text{y} \quad P(B^c ) = 1 - P(B) = 1/2
+$$
+Siguiendo con la misma idea tenemos que:
+$$
+  A \cap B = \text{Obtenemos par en ambos dados }
+$$
+Es decir:
+\begin{equation*}
+  \begin{split}
+    A \cap B = \left\{\right. (2&, 2), (2, 4), (2, 6),\\
+    (4&, 2), (4, 4), (4, 6),\\
+    (6&, 2), (6, 4), (6, 6)\left.\right\}
+  \end{split}
+\end{equation*}
+De donde $P(A \cap B) = 9/36 = 1/4$. Con esto podemos calcular la probabilidad del evento:
+$$
+  A \cup B = \text{Obtenemos par en alguno de los dados}
+$$
+efecto:
+$$
+  P(A \cup B) = P(A) + P(B) - P(A \cap B) = 1/2 + 1/2 - 1/4 = 3/4
+$$
+Otro evento interesante:
+$$
+  A\setminus B = A \cap B^c = \text{El dado uno es par y el dado 2 es impar}
+$$
+Tenemos que:
+$$
+  P(A \setminus B) = P(A) - P(A \cap B) = 1/2 - 1/4 = 1/4
+$$
+Esto ultimo lo verificamos al ver que:
+\begin{equation*}
+  \begin{split}
+    A \setminus B = \left\{\right. (2&, 1),(2, 3), (2, 5),\\
+    (4&, 1), (4, 3), (4, 5),\\
+    (6&, 1), (6, 3), (6, 5)\left.\right\}
+  \end{split}
+\end{equation*}
+Osea, $P(A \setminus B) = 9/36 = 1/4$. Siguiendo en la misma linea:
+$$
+  A \triangle B = \text{obtenemos exactamente un par}
+$$
+en este caso
+$$
+  P(A \triangle B) = P(A \setminus B) + P(B \setminus A) = 1/4 + 1/4 = 1/2.
+$$
+Finalmente, un ejemplo un poco mas complejo:
+$$
+  C = \text{La suma de los dados es par}
+$$
+Podemos seguir dos rutas para encontrar la probabilidad de $C$ . Una es la de ``fuerza bruta'' y enlistar todos los elementos de $\Omega$ que cumplen con la condición. La otra es tratar de razonar la lógica del conjunto y expresarlo en términos de otros mas simples. Sigamos la segunda ruta y notemos que para que la suma de los dados sea par, es necesario que se cumpla que ambos dados sean pares o bien que ambos dados sean impares. Esto es:
+\begin{equation*}
+  \begin{split}
+    C & = (A \cap B) \cup (A^c \cap B^c ) \\
+    & = (A \cap B) \cup (A \cup B)^c
+  \end{split}
+\end{equation*}
+
+Adicionalmente, observemos que como $(A \cap B) \subset A \cup B$, entonces $A \cap B$ y $(A
+  \cup B)^c$ son disjuntos. En consecuencia:
+\begin{equation*}
+  \begin{split}
+    P(C ) & = P((A \cap B) \cup (A \cup B)^c ) \\
+    & = P(A \cap B) + P((A \cup B)^c )    \\
+    & = P(A \cap B) + (1 - P(A \cup B)) \\
+    & = 1/4 + (1-3/4)\\
+    & = 1/2
+  \end{split}
+\end{equation*}
+
+Esto lo verificamos usando la ``fuerza bruta'' y enlistamos todos los pares cuya suma es par donde verificamos que: $P(C ) = 18/36 = 1/2$.
+\begin{equation*}
+  \begin{split}
+    C = \left\{\right. (2&, 2), (4, 2), (6, 2),(1, 1), (3, 1), (5, 1),\\
+    (2&, 4), (4, 4), (6, 4),(1, 3), (3, 3), (5, 3),\\
+    (2&, 6), (4, 6), (6, 6),(1, 5), (3, 5), (5, 5)\left.\right\}
+  \end{split}
+\end{equation*}
 
 \end{document}
 
