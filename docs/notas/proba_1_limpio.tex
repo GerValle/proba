@@ -1424,56 +1424,36 @@ Esto lo verificamos usando la ``fuerza bruta'' y enlistamos todos los pares cuya
     (2&, 6), (4, 6), (6, 6),(1, 5), (3, 5), (5, 5)\left.\right\}
   \end{split}
 \end{equation*}
+\chapter{Probabilidad Condicional}
+Empecemos este tema resolviendo (si podemos) un problema muy bonito, sencillo pero bonito. . .
+
+El problema es muy sencillo de plantear; sabemos que los padres del rey tuvieron dos hijos, ¿cuál es la probabilidad de que el otro hijo sea su hermana? Nada mas sencillo\ldots si los padres del rey tuvieron dos hijos y el rey es uno de ellos, entonces el otro hijo es su hermana con probabilidad $1/2$. ¿Cierto?
+
+Hay que pensar el tema con un poco de cuidado, no lleguemos tan pronto a conclusiones. Antes de dar una respuesta definitiva, pensemos en un problema un poco mas común. De nuevo consideremos el experimento donde tiramos dos dadas. En este experimento sabemos que el espacio muestral esta compuesto por todas las posibles parejas de resultados obtenidos al lanzar los dados, en total 36 casos posibles. Supongamos que nos interesa en particular, el evento de que la suma de las caras sea cinco. Los casos favorables serían los contenidos en el conjunto: 
+\begin{equation*}
+\begin{split}
+A & = \{(1, 4), (2, 3), (3, 2), (4, 1)\}\\
+  & = \text{``La suma de las caras es igual a 5''}
+\end{split}    
+\end{equation*}
+De aquí se sigue fácilmente que 
+$$
+P(A) =\frac{4}{36} = \frac{1}{9}
+$$
+El ejemplo anterior fue simple y la conclusión satisfactoria pero, ¿que pasa si incluimos información adicional? que tal por ejemplo si sabemos que el resultado del primer dado fue uno? ¿cómo cambia esto nuestra conclusión? Primero, notemos que el evento donde obtenemos uno en el primer dado, es el evento: 
+$$
+B = \{(1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6)\} 
+$$
+Es decir, si sabemos que en el primer dado salió uno, estamos diciendo que el evento $B$ ocurrió. Lo que no sabemos es cual de los elementos de $B$ es el que aprecio después de lanzar los dados. Y claro, la pregunta persiste ¿cual es la probabilidad de que la suma sea 5? Dado que sabemos que $B$ ocurrió, cualquier resultado que involucre a ambos dados debe estar en $B$. Para hacer énfasis en esto introducimos un nuevo concepto:
+\begin{definition}
+    Si $P(B)>0$ definimos la \emph{probabilidad condicional} de $A$ dado $B$ como: 
+    $$
+    P(A \vert B) := \frac{P(A \cap B)} {P(B)}
+    $$
+\end{definition}
 
 \end{document}
 
-
-
-
-
-Probabilidad Condicional Empecemos este tema resolviendo (si podemos)
-un problema muy bonito, sencillo pero bonito. . .
-
-El problema es muy sencillo de plantear; sabemos que los padres del rey
-tuvieron dos hijos, ¿cuál es la probabilidad de que el otro hijo sea su
-hermana? Nada mas sencillo. . . si los padres del rey tuvieron dos hijos
-y el rey es uno de ellos, entonces el otro hijo es su hermana con
-probabilidad 1/2. ¿Cierto?
-
-Probabilidad Condicional Hay que pensar el tema con un poco de cuidado,
-no lleguemos tan pronto a conclusiones. Antes de dar una respuesta
-definitiva, pensemos en un problema un poco mas común.~Supongamos que
-tiramos dos dados y estamos interesados en la suma de las caras. Si
-deseamos la probabilidad de que la suma sea 5. En este experimento
-sabemos que el espacio muestral esta compuesto por todas las posibles
-parejas de resultados obtenidos al lanzar los dados. En total tenemos 36
-casos posibles. Los casos favorables serían los contenidos en el
-conjunto: A = \{(1, 4), (2, 3), (3, 2), (4, 1)\}
-
-= La suma de las caras es igual a 5
-
-De aqui se sigue facilmente que P(A) =
-
-1 4 = 36 9
-
-Probabilidad Condicional El ejemplo anterior fue simple y la conclusión
-satisfactoria pero, ¿que pasa si incluimos información adicional? que
-tal por ejemplo si sabemos que el resultado del primer dado fue uno?
-¿cómo cambia esto nuestra conclusión? Primero, notemos que el evento
-donde obtenemos uno en el primer dado, es el evento: B = \{(1, 1), (1,
-2), (1, 3), (1, 4), (1, 5), (1, 6)\} Es decir, si sabemos que en el
-primer dado salió uno, estamos diciendo que el evento B ocurrió. Lo que
-no sabemos es cual de los elementos de B es el que aprecio después de
-lanzar los dados. Y claro, la pregunta persiste ¿cual es la probabilidad
-de que la suma sea 5? Dado que sabemos que B ocurrió, cualquier
-resultado que involucre a ambos dados debe estar en B. Para hacer
-énfasis en esto introducimos un nuevo concepto: (Facultad de Ciencias.
-UNAM)
-
-Probabilidad Condicional Probabilidad Condicional Definimos la
-Probabilidad Condicional de A dado B como: P(A ∣ B) :=
-
-P(A \cap B) P(B)
 
 La idea de probabilidad condicional resuelve la pregunta: ¿cuál es la
 probabilidad de A dado que conozco B? El experimento sigue siendo
