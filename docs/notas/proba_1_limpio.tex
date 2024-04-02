@@ -48,7 +48,7 @@
 \surroundwithmdframed[linewidth=1pt, roundcorner=10pt, backgroundcolor=gray!10]{definition}
 
 \newtheoremstyle{propiedad}%
-    {3pt}%
+    {-1pt}%
     {3pt}%
     {\itshape}% Fuente del cuerpo
     {}%
@@ -1173,7 +1173,7 @@ Podemos continuar con propiedades del estilo de las que acabamos de exponer, dej
     \item $P(\Omega) = 1$
     \item Si $\{A_n \}$ es una sucesión de eventos disjuntos, entonces:
           $$P\left(\cup_n A_n \right) = \sum_n P(A_n)$$.
-  \end{enumerate}changing
+  \end{enumerate}
 \end{definition}
 
 A la tercia $(\Omega, \mathcal{F}, P)$ se le conoce como espacio de probabilidad. Observemos el importantísimo papel de la $\sigma$-álgebra, no sólo es útil para definir cierto orden a la información que podemos extraer en un experimento aleatorio, también funciona como el dominio de una medida de probabilidad. Debemos ser enfáticos en esto; seremos capaces de calcular probabilidades sobre elementos F y nada mas. Si $A \subset \Omega$ pero $A \notin \mathcal{F}$ entonces $P$ es incapaz de trabajar con $A$. Algunas propiedades de la probabilidad vienen bien en este momento: $P(\emptyset) = 0$ Efectivamente, consideremos la sucesión $\{An \}$ donde $A_n = \emptyset$ para todo $n$. Evidentemente esta es una sucesión de eventos disjuntos, por lo tanto
@@ -1452,222 +1452,172 @@ Es decir, si sabemos que en el primer dado salió uno, estamos diciendo que el e
     $$
 \end{definition}
 
+La idea de probabilidad condicional resuelve la pregunta: ¿cuál es la probabilidad de $A$ dado que conozco $B$? El experimento sigue siendo aleatorio, pero ahora tenemos información adicional, ahora sabemos que $B$ ocurrió, lo cual pude ser sumamente relevante. En el ejercicio de los dados: $A \cap B = \{(1, 4)\}$
+
+En consecuencia:
+$$
+P(A \cap B) = \frac{1}{36}.
+$$
+y
+$$
+P(B) = \frac{6}{36} = \frac{1}{6}.
+$$
+Por lo tanto:
+$$
+P(A \vert B) = \frac{1/36}{1/6} = \frac{1}{6}.
+$$
+Observemos que el conocimiento de $B$ afecta considerablemente la probabilidad de que $A$ ocurra. Con esta idea a la mano, podemos regresar al problema del rey. Originalmente sabemos que los padres del rey tuvieron dos hijos, con lo cual podemos pensar en el espacio muestral: 
+$$
+\Omega = \{(B, B), (B, G ), (G , B), (G , G )\}
+$$
+
+Por otro lado sabemos que uno de los hijos es rey, esto ocurre solo si los padres del rey tuvieron al menos un hijo varón. Es decir, si ocurrió el evento: $B = \{(B, B), (B, G ), (G , B)\}$. Por otro lado queremos saber, cuál es la probabilidad de que el otro de los hijos sea la hermana del rey. Es decir que sus padres hayan tenido al menos una niña, este es el evento: $A = \{(B, G ), (G , B), (G , G )\}$ Finalmente, lo que en realidad nos interesa es la probabilidad: 
+$$
+P(A \vert B) = \frac{P(A\cap B)}{P(B)} = \frac{2/4}{3/4} = \frac{2}{3}
+$$
+
+La probabilidad condicional cumple con muchas propiedades de utilidad, por lo pronto notemos que $P(B \vert B) = 1$. Esto es claro, si sabemos que $B$ ocurrió, entonces la probabilidad de que $B$ ocurra es 1. Si sabemos que $B$ ocurrió, entonces cualquier ocurrencia del experimento debe estar en $B$ ya nada que este fuera de $B$ puede ocurrir. De algún modo el conjunto $B$ toma el lugar de $\Omega$. Esta idea nos conduce a afirmar que
+\begin{propiedad}
+  La probabilidad condicional es una medida de probabilidad.
+\end{propiedad}
+Esto es:
+\begin{enumerate}
+  \item $P(\Omega \vert B) = 1$
+  \item Para todo evento $A$, $0 \leq P(A \vert B) \leq 1$
+  \item Si $\{An \}$ es una sucesión de eventos disjuntos entonces: 
+  $$
+  P \left(\cup_n A_n \vert B\right) = \sum_n P(A_n \vert B)
+  $$
+\end{enumerate}
+La prueba de estos tres incisos, quedará como tarea\ldots{} :-)
+
+Va otro ejemplo interesante. . . El problema que veremos a continuación es tan popular que hasta nombre tiene; es conocido como ``el dilema del prisionero''.
+
+Supongamos que tenemos tres prisioneros:dos de ellos serán liberados, por lo cual el prisionero $A$ decide acercarse al guardia a preguntarle: ``Dime, ¿quién que no sea yo será liberado?'', el guardia se rehúsa a contestar bajo el siguiente argumento: ``Mira, ahora mismo tienes $2/3$ de probabilidad de ser liberado, si te digo por ejemplo que $B$ será liberado, entonces tu serás uno de los dos cuya destino sería incierto y en consecuencia tu probabilidad de ser liberado disminuiría a $1/2$.'' ¿Es correcto el razonamiento del guardia?
+
+Primero tratemos de razonar como lo hizo el guardia. Dado que de inicio afirmó que el prisionero $A$ tenía $2/3$ de probabilidad de ser liberado, en realidad esta dando por hecho que el espacio muestral del experimento es: 
+$$
+\Omega = \{(A, B), (A, C), (B, C)\}
+$$ 
+Luego supone que es igualmente probable la liberación de cualquiera de estas parejas por lo tanto su estimación inicial de $2/3$ es correct. Su segunda afirmación la escribiríamos como sigue: 
+$$
+P\left(A \text{ sea liberado} \vert \text{ el guardia dijo que } B \text{ será liberado}\right) =1/2
+$$
+El evento ``$A$ es liberado'' es el conjunto:
+$$ 
+\text{``$A$  es liberado''} = \{(A, B), (A, C )\} 
+$$
+eso está claro, pero el evento: ``el guardia dijo que $B$ será liberado'' ¿como lo escribimos?. Simplemente no hay forma dado el espacio muestral que seleccionó el guardia. Es necesario introducir la decision del guardia en la definición del espacio muestral. Que tal si componemos el espacio muestral con los siguientes resultados: 
+
+\begin{align*}
+  \omega_1 & = \{A, B, \text{ el guardia dice } B\}\\
+  \omega_2 & = \{A, C, \text{ el guardia dice } C\}\\
+  \omega_3 & = \{B, C, \text{ el guardia dice } B\}\\
+  \omega_4 & = \{B, C, \text{ el guardia dice } C\}    
+\end{align*}
+
+Con este nuevo espacio muestral, tenemos que: 
+$$
+E = \text{``$A$  es liberado''} = \left\{\omega_1, \omega_2\right\}
+$$
+mientras que:
+$$
+F = \text{``el guardia dice que $B$ será liberado''} = \left\{\omega_1, \omega_3\right\}
+$$
+Ahora queda un poco mas claro como calcular: 
+$$
+P(E \vert F ) = P(\text{$A$ sea liberado} \vert \text{el guardia dijo que $B$ será liberado}) 
+$$
+donde:
+$$
+P(E \vert F ) = \frac{P(E \cap F )}{P(F)}
+$$
+y tenemos que;
+$$
+E \cap F = \{\omega_1\}
+$$
+Antes de calcular $P(E \cap F)$ y $P(F)$ observemos lo siguiente:
+
+\begin{align*}
+  \{\omega_1 \} & = \text{``$A$ y $B$ son liberados''} \\
+  \{\omega_2 \} & = \text{``$A$ y $C$ son liberados''} \\
+  \{\omega_3 , \omega_4 \} & = \text{``$B$ y $C$ son liberados''}     
+\end{align*}
+
+Esto se debe al hecho de que cuando $A$ y $B$ son liberados el guardia no tiene mas alternativa que revelar a $B$ como el prisionero que será liberado, del mismo modo, cuando $A$ y $C$ son liberados el guardia no tiene opción, debe revelar a $C$ como el prisionero a ser liberado. En cambio, cuando $B$ y $C$ son liberados, el guardia puede decidir revelar a $B$ o revelar a $C$ como el prisionero a ser liberado. Esto nos conduce a lo siguiente:
+$$ 
+P(E \cap F ) = P(\{\omega_1 \}) = 1/3
+$$
+
+¿Que podemos decir de $P(F)$? 
+$$
+P(F ) = P(\{\omega1 ,\omega3 \}) = P(\{\omega_1 \}) + P(\{\omega_3 \}) = \frac{1}{3} + P(\{\omega3 \}) 
+$$
+¿que pasa con $P(\{\Omega3 \})$? con los elementos que tenemos a la mano no
+tenemos forma clara de calcularlo, por lo pronto sabemos que:
+$$
+\frac{1}{3} = P(\{\omega_3, \omega_4 \}) = P(\{\Omega3 \}) + P(\{\Omega4 \})  
+$$
+en este caso una suposición natural sería suponer que 
+$$
+P(\{\omega_3\}) = P(\{\omega_4\}) =\frac{1}{6}
+$$
+eso implicaría que si $B$ y $C$ son liberados el guardia decide decir que $B$ o $C$ serán liberados, ``tirando una moneda'' al aire, le es indistinto decir que $B$ será liberado o que $C$ sera liberado.
+En este caso:
+$$
+P(F) =\frac{1}{3} + P(\{\omega3 \}) = \frac{1}{3}+\frac{1}{6} = \frac{1}{2}
+$$
+y por lo tanto: 
+$$
+P(E \vert F ) = \frac{P(E \cap F )}{P(F)} = \frac{1/3}{1/3 + 1/6} = \frac{2}{3} 
+$$
+Hay dos cosas muy importantes que debemos notar aquí, primero esta estimación surgió del supuesto de que $\omega_3$ y $\omega_4$ eran igualmente probables:
+$$
+P(\{\omega_3 \}) = P(\{\omega_4 \}) =\frac{1}{6}
+$$
+dijimos que el guardia tiraba una moneda para decidir si decía $B$ o decía $C$ cuando $B$ y $C$ eran liberados. Pero lo que es cierto es que
+$$ 
+\frac{1}{3} = P(\{\omega_3 , \omega_4 \}) = P(\{\omega3 \}) + P(\{\omega4 \})
+$$
+yesto se cumple siempre y cuando 
+$$
+0 \leq P(\{\omega_3\}) \leq \frac{1}{3}
+$$
+Y
+$$
+P(\omega_4 ) = \frac{1}{3} - P(\{\omega_3 \}) 
+$$
+Esto nos conduciría a conclusiones muy diferentes en función del valor seleccionado, para $P(\{\omega3\})$. Por ejemplo si $P(\{\omega3\}) = 1/3$ entonces: 
+$$
+P(E \vert F ) =\frac{P(E \cap F )}{P(F)}= \frac{1/3}{1/3+1/3} = \frac{1}{2}
+$$
+Esto confirmaría el argumento del guardia, sin embargo aunque es matemáticamente correcto, parece increíble que la decision del guardia cambie de algún modo la probabilidades del prisionero $A$.
+
+En contraste, si $P(\{\omega3 \}) = 0$ entonces:
+$$
+P(E \vert F ) = 1
+$$
+lo cual aunque matemáticamente correcto, es en definitiva un sin sentido! El segundo punto importante que debemos notar viene de nuestra elección original para $P(\{\omega3 \}) = 1/6$. En este caso concluimos que
+$$
+P(E \vert F ) =\frac{2}{3}
+$$
+Es decir, en este caso la decisión del guardia no afecta para nada las probabilidad del prisionero $A$ de ser liberado. Esto en definitiva tiene mucho mas sentido, aunque no sea la única solución posible para este problema. En este caso, la información adicional es irrelevante. Lo cual nos lleva al siguiente concepto:
+
+
 \end{document}
 
 
-La idea de probabilidad condicional resuelve la pregunta: ¿cuál es la
-probabilidad de A dado que conozco B? El experimento sigue siendo
-aleatorio, pero ahora tenemos información adicional, ahora sabemos que B
-ocurrió, lo cual pude ser sumamente relevante. En el ejercicio de los
-dados: A \cap B = \{(1, 4)\}
 
-En consecuencia:
 
-P(A \cap B) =
 
-y
 
-P(B) =
 
-Por lo tanto:
 
-P(A ∣ B) =
-
-1 36
-
-1 6 = 36 6 1/36 = 1/6 1/6
-
-Observemos que el conocimiento de B afecta considerablemente la
-probabilidad de que A ocurra. Con esta idea a la mano, podemos regresar
-al problema del rey. originalmente sabemos que los padres del rey
-tuvieron dos hijos, con lo cual podemos pensar en el espacio muestral: \Omega
-= \{(B, B), (B, G ), (G , B), (G , G )\}
-
-Probabilida condicional Por otro lado sabemos que uno de los hijos es
-rey, eso ocurre solo si los padres del rey tuvieron al menos un hijo
-varón.~Es decir, si ocurrió el evento: B = \{(B, B), (B, G ), (G , B)\}
-por otro lado queremos saber, cuál es la probabilidad de que el otro de
-los hijos sea la hermana del rey. Es decir que sus padres hayan tenido
-al menos una niña, este es el evento: A = \{(B, G ), (G , B), (G , G )\}
-Finalmente, lo que en realidad nos interesa es la probabilidad: P(A ∣ B)
-=
-
-\hypertarget{pa-b-24}{%
-  \section{P(A \cap B) 2/4}\label{pa-b-24}}
-
-= 2/3 P(B) 3/4
-
-Probabilidad Condicional
-
-La probabilidad condicional cumple con muchas propiedades de utilidad,
-por lo pronto notemos que P(B ∣ B) = 1 Esto tiene todo el sentido del
-mundo, al momento de saber que B ocurrió, cualquier resultado \Omega del
-experimento aleatorio deb estar en B, de manera un tanto informal
-podemos decir que el espacio muestral original se ``redujo'', dado B,
-ahora todo lo que consideramos posible debe estar en B.
-
-Probabilidad Condicional Esto nos conduce a los siguiente
-
-Porbabilidad Condicional
-
-La probabilidad condicional P(\cdot ∣ B) es una probabilidad. Esto es: 1 2 3
-
-P(\Omega ∣ B) = 1
-
-Para todo evento A, 0 \leq P(A ∣ B) \leq 1
-
-Si \{An \} es una sucesión de eventos disjuntos entonces: P (\cupn An ∣ B)
-= \sum P(An ∣ B) n
-
-La prueba de estos tres incisos, quedará como tarea\ldots{} :-)
-
-Probabilidad Condicional Va otro ejemplo interesante. . . El problema
-que veremos a continuación es tan popular que hasta nombre tiene; es
-conocido como ``el dilema del prisionero''. Supongamos que tenemos tres
-prisioneros:
-
-Dos de ellos serán liberados, por lo cual el prisionero A decide
-acercarse al guardia a preguntarle: ``Dime, ¿quién que no sea yo será
-liberado?'', el guardia se rehúsa a contestar bajo el siguiente
-argumento: ``Mira, ahora mismo tienes 2/3 de probabilidad de ser
-liberado, si te digo por ejemplo que B será liberado, entonces tu serás
-uno de los dos cuya destino sería incierto y en consecuencia tu
-probabilidad de ser liberado disminuiría a 1/2.'' ¿Es correcto el
-razonamiento del guardia?
-
-Probabilidad Condicional Primero tratemos de razonar como lo hizo el
-guardia. Dado que de inicio afirmó que el prisionero A tenía 2/3 de
-probabilidad de ser liberado, en realidad esta dando por hecho que el
-espacio muestral del experimento es: \Omega = \{(A, B), (A, C ), (B, C )\}
-Donde las parejas en \Omega son pares no ordenados. Luego supone que es
-igualmente probable la liberación de cualquiera de estas parejas. Su
-estimación inicial de 2/3 en este contexto , es correcta. Si segunda
-afirmación la escribiríamos como sigue: P(A sea liberado ∣ el guardia
-dijo que B será liberado) =
-
-1 2
-
-Probabilidad Condicional El evento ``A es liberado'' es el conjunto: A
-es liberado = \{(A, B), (A, C )\} eso está claro, pero el evento: ``el
-guardia dijo que B será liberado'' ¿como lo escribimos?. Simplemente no
-hay forma dado el espacio muestral que seleccionó el guardia. Es
-necesario introducir la decision del guardia en la definición del
-espacio muestral. Que tal si componemos el espacio muestral con los
-siguientes resultados: \Omega1 = \{A, B, el guardia dice B\}
-
-\Omega2 = \{A, C , el guardia dice C \}
-
-\Omega3 = \{B, C , el guardia dice B\}
-
-\Omega4 = \{B, C , el guardia dice C \}
-
-Con este nuevo espacio muestral, tenemos que: E = A es liberado = \{\Omega1
-, \Omega2 \} mientras que:
-
-F = El guardia dice B = \{\Omega1 , \Omega3 \}
-
-Ahora queda un poco mas claro como calcular: P(E ∣ F ) = P(A sea
-liberado ∣ el guardia dijo que B será liberado) pero;
-
-y tenemos que;
-
-P(E ∣ F ) =
-
-P(E \cap F ) P(F )
-
-E \cap F = \{\Omega1 \}
-
-Probabilidad condicional Antes de calcular P(E \cap F ) y P(F ) observemos
-lo siguiente:
-
-\{\Omega1 \} = Evento de que A y B sean liberados \{\Omega2 \} = Evento de que A y
-C sean liberados
-
-\{\Omega3 , \Omega4 \} = Evento de que A y B sean liberados Esto se debe al hecho
-de que cuando A y B son liberados el guardia no tiene mas alternativa
-que revelar a B como el prisionero que será liberado, del mismo modo,
-cuando A y C son liberados el guardia no tiene opción, debe revelar a C
-como el prisionero a ser liberado. En cambio, cuando B y C son
-liberados, el guardia puede decidir revelar a B o revelar a C como el
-prisionero a ser liberado. Esto nos conduce a lo siguiente: P(E \cap F ) =
-P(\{\Omega1 \}) =
-
-1 3
-
-Probabilidad Condicional ¿Que podemos decir de P(F )? P(F ) = P(\{\Omega1 ,
-\Omega3 \}) = P(\{\Omega1 \}) + P(\{\Omega3 \}) =
-
-1 + P(\{\Omega3 \}) 3
-
-¿que pasa con P(\{\Omega3 \})? con los elementos que tenemos a la mano no
-tenemos forma clara de calcularlo, por lo pronto sabemos que; 1 = P(\{\Omega3
-, \Omega4 \}) = P(\{\Omega3 \}) + P(\{\Omega4 \}) 3 en este caso una suposición natural
-sería suponer que P(\{\Omega3 \}) = P(\{\Omega4 \}) =
-
-1 6
-
-eso implicaría que si B y C son liberados el guardia decide decir que B
-o C serán liberados, ``tirando una moneda'' al aire, le es indistinto
-decir que B o que C sera liberado.
-
-Probabilidad Condicional En este caso:
-
-P(F ) =
-
-1 1 1 1 + P(\{\Omega3 \}) = + = 3 3 6 2
-
-y por lo tanto: P(E ∣ F ) =
-
-1/3 2 P(E \cap F ) = = P(F ) 1/3 + 1/6 3
-
-Hay dos cosas muy importantes que debemos notar aquí, primero esta
-estimación surgio del supuesto de que \Omega3 y \Omega4 eran igualmente probables:
-P(\{\Omega3 \}) = P(\{\Omega4 \}) =
-
-1 6
-
-aquí dijimos que el guardia tiraba una moneda para decidir si decía B o
-decía C cuando B y C eran liberados. Pero lo que es cierto es que 1 =
-P(\{\Omega3 , \Omega4 \}) = P(\{\Omega3 \}) + P(\{\Omega4 \}) 3
-
-Probabilidad Condicional y esto se cumple siempre y cuando 0 \leq P(\{\Omega3
-\}) \leq y
-
-1 3
-
-P(\Omega4 ) =
-
-1 - P(\{\Omega3 \}) 3 Esto nos conduciría a conclusiones muy diferentes en
-función del valor seleccionado, para P(\{\Omega3 \}), por ejemplo si P(\{\Omega3
-\}) = 1/3 entonces: P(E ∣ F ) =
-
-1/3 1 P(E \cap F ) = = P(F ) 1/3 + 1/3 2
-
-Esto confirmaría el argumento del guardia, sin embargo aunque es
-matemáticamente correcto, parece increíble que la decision del guardia
-cambie de algún modo la probabilidades del prisionero A.
-
-En contraste, si P(\{\Omega3 \}) = 0 entonces:
-
-P(E ∣ F ) = 1
-
-lo cual aunque matemáticamente correcto, es en definitiva un sin
-sentido! El segundo punto importante que debemos notar viene de nuestra
-elección original para P(\{\Omega3 \}) = 1/6. En este caso concluimos que P(E
-∣ F ) =
-
-2 3
-
-Es decir, en este caso la decisión del guardia no afecta para nada las
-probabilidad del prisionero A de ser liberado. . . esto en definitiva
-tiene mucho mas sentido, aunque no sea la única solución posible para
-este problema. En este caso, la información adicional es irrelevante. Lo
-cual nos lleva al siguiente concepto:
 
 Probilidad Condicional Eventos independientes Decimos que dos eventos A
 y B son independientes si P(A \cap B) = P(A)P(B) Esto claro esta nos
 conduce inmediatamente al siguiente resultado; si B es un evento tal que
-P(B) \textgreater{} 0 y A y B son independientes entonces: P(A ∣ B) =
+P(B) \textgreater{} 0 y A y B son independientes entonces: P(A \vert B) =
 
 P(A \cap B) = P(A) P(B)
 
@@ -1711,14 +1661,14 @@ Probabilidad Condicional en conclusión:
 1 = P(A \cap B) 36 es decir; en este caso A y B son independientes! y se
 sigue entonces que: P(A)P(B) =
 
-P(A ∣ B) = P(A) Sea C el evento de que salga un 6 en el primer dado. Un
+P(A \vert B) = P(A) Sea C el evento de que salga un 6 en el primer dado. Un
 argumento análogo nos conduce a concluir que A y C son independientes.
 De hecho, también B y C son independientes. Por lo tanto: P(A \cap B) =
 P(A)P(B) P(A \cap B) = P(A)P(C ) P(B \cap C ) = P(B)P(C ) En situaciones como
 esta se dice que A, B y C son independientes dos a dos.
 
 Probabilidad Condicional Sin embargo, debemos tener cuidado, observemos
-que P(A ∣ B \cap C ) = 1 Por lo tanto A, B y C no son independientes en el
+que P(A \vert B \cap C ) = 1 Por lo tanto A, B y C no son independientes en el
 sentido de que: P(A \cap B \cap C ) ≠ P(A)P(B)P(C ) De aquí se sigue la
 definición:
 
@@ -1775,8 +1725,8 @@ utilidad, de algún modo nos permite , calcular la probabilidad de una
 serie de eventos, de manera separada; ``divide y venceras''.
 
 Regla de la multiplicación Sean A1 , A2 , . . . , An eventos definidos
-en un espacio de probabilidad. P(A1 , A2 , . . . , An ) = P(A1 )P(A2 ∣
-A1 )⋯P(An ∣ A1 , A2 , . . . , An-1 ) En el enunciado anterior hemos
+en un espacio de probabilidad. P(A1 , A2 , . . . , An ) = P(A1 )P(A2 \vert
+A1 )⋯P(An \vert A1 , A2 , . . . , An-1 ) En el enunciado anterior hemos
 usado una nueva notación: P(A1 , A2 , . . . , An ) := P(\capn1 Ai ) solo es
 nueva notación, que en casos como este es de mayor utilidad. Esta regla
 de multiplicación es particularmente útil cuando se estudian temas donde
@@ -1786,19 +1736,19 @@ ejemplo de ello es cuando se estudian Cadenas de Markov por ejemplo.
 Probabilidad Condicional La prueba de la regla de la multiplicación no
 es particularmente difícil, notemos que solo es el resultado de aplicar
 de forma recursiva la igualdad: P(A1 , A2 , ⋯, An-1 ) P(A1 , A2 , ⋯,
-An-1 ) = P(An ∣ A1 , A2 , ⋯, An-1 )P(A1 , A2 , ⋯, An-1 )
+An-1 ) = P(An \vert A1 , A2 , ⋯, An-1 )P(A1 , A2 , ⋯, An-1 )
 
 P(A1 , A2 , ⋯, An ) = P(A1 , A2 , ⋯, An )
 
-Por lo tanto: P(A1 , A2 , ⋯, An ) = P(An ∣ A1 , A2 , ⋯, An-1 )P(A1 , A2
+Por lo tanto: P(A1 , A2 , ⋯, An ) = P(An \vert A1 , A2 , ⋯, An-1 )P(A1 , A2
 , ⋯, An-1 ) ``Reciclando'' este argumento obtenemos que: P(A1 , A2 , ⋯,
-An-1 ) = P(An-1 ∣ A1 , A2 , ⋯, An-2 )P(A1 , A2 , ⋯, An-2 )
+An-1 ) = P(An-1 \vert A1 , A2 , ⋯, An-2 )P(A1 , A2 , ⋯, An-2 )
 
 Probabilidad Condicional
 
 por lo tanto: P(A1 , A2 , ⋯, An ) =
 
-P(An ∣ A1 , A2 , ⋯, An-1 )P(An-1 ∣ A1 , A2 , ⋯, An-2 )P(A1 , A2 , ⋯,
+P(An \vert A1 , A2 , ⋯, An-1 )P(An-1 \vert A1 , A2 , ⋯, An-2 )P(A1 , A2 , ⋯,
 An-2 )
 
 repitiendo el argumento las veces necesarias, obtenemos el resultado.
@@ -1820,7 +1770,7 @@ A4 = \{Los cuatro Ases los tienen jugadores diferentes \} Dados estos
 eventos, la probabilidad que buscamos es: P(A1 , A2 , A3 , A4 ) Para
 calcularla usaremos la regla de la multiplicación.~Primero el más fácil:
 P(A1 ) = 1 Creo que esto esta claro, pues en realidad no hemos puesto
-ninguna restricción en la repartición del mazo. ¿Cómo calculamos P(A2 ∣
+ninguna restricción en la repartición del mazo. ¿Cómo calculamos P(A2 \vert
 A1 )? en este caso debemos asegurarnos de que el As de espadas y el de
 corazones sean repartidos a jugadores diferentes: (Facultad de Ciencias.
 UNAM)
@@ -1846,7 +1796,7 @@ J4
 En la figura, las 13 primeras cartas le corresponden al jugador 1, las
 cartas de la 14 a la 26 al jugador 2, las cartas de la 27 al 39 al
 jugador 3 y las cartas de la 40 a la 53 al jugador 4. ¿Que es lo que
-pasa entonces con P(A2 ∣ A1 )? Supongamos que el As de espadas fue
+pasa entonces con P(A2 \vert A1 )? Supongamos que el As de espadas fue
 repartido al jugador 1. Una posibilidad es la siguiente: ♠ 1 2 \ldots{}
 
 13 14 . . .
@@ -1857,7 +1807,7 @@ repartido al jugador 1. Una posibilidad es la siguiente: ♠ 1 2 \ldots{}
 
 52
 
-Probabilidad Condicional Calcularemos P(A2 ∣ A1 ) haciendo el cociente
+Probabilidad Condicional Calcularemos P(A2 \vert A1 ) haciendo el cociente
 de casos favorables entre casos totales. Para ello observemos que el
 número de casos totales coincide con con las casillas en las cuales
 podemos colocar al As de corazones. Dado que el As de espadas ya fue
@@ -1875,26 +1825,26 @@ siguiente: ♠ 1 2 \ldots{}
 
 52
 
-Es decir, los casos favorables serían 39., por lo tanto: P(A2 ∣ A1 ) =
+Es decir, los casos favorables serían 39., por lo tanto: P(A2 \vert A1 ) =
 
 39 51
 
 Probabilidad Condicional
 
-El calculo de P(A3 ∣ A1 , A2 ) es similar, dado que el AS de espadas y
+El calculo de P(A3 \vert A1 , A2 ) es similar, dado que el AS de espadas y
 el de corazones ya fueron asignados, ahora tenemos 50 casillas
 disponibles (casos totales) para colocar el As de diamantes, pero solo
-26 dan lugar a una asignación favorable. Con lo cual: P(A3 ∣ A1 , A2 ) =
+26 dan lugar a una asignación favorable. Con lo cual: P(A3 \vert A1 , A2 ) =
 
 26 50
 
-de forma análoga concluimos que: P(A4 ∣ A1 , A2 , A3 ) =
+de forma análoga concluimos que: P(A4 \vert A1 , A2 , A3 ) =
 
 13 49
 
 En conclusión, la probabilidad de que los Ases sean asignados a
-jugadores diferentes es igual a P(A1 , A2 , A3 , A4 ) = P(A4 ∣ A1 , A2 ,
-A3 )P(A3 ∣ A1 , A2 )P(A2 ∣ A1 )P(A1 ) 13 26 39 = × × × 1 ≈ 0.105 49 50
+jugadores diferentes es igual a P(A1 , A2 , A3 , A4 ) = P(A4 \vert A1 , A2 ,
+A3 )P(A3 \vert A1 , A2 )P(A2 \vert A1 )P(A1 ) 13 26 39 = × × × 1 ≈ 0.105 49 50
 15
 
 Probabilidad Condicional Ejemplo. En un jurado de tres personas, dos de
@@ -1916,11 +1866,11 @@ y
 
 P(J3 ) = 1/2
 
-P(A ∣ J1 , J2 ) = 1 P(A ∣ J1c , J2 ) = P(A ∣ J1 , J2c ) = 1/2
+P(A \vert J1 , J2 ) = 1 P(A \vert J1c , J2 ) = P(A \vert J1 , J2c ) = 1/2
 
 además de que:
 
-P(A ∣ J1c , J2c ) = 0
+P(A \vert J1c , J2c ) = 0
 
 Esto nos permite usar una estrategia muy útil, notemos que: \Omega = (J1 \cap
 J2 ) \cup (J1c \cap J2 ) \cup (J1 \cap J2c ) \cup (J1c \cap J2c ) pero además obsérvese
@@ -1933,13 +1883,13 @@ que esta unión es una unión de disjuntos. Por lo tanto: P(A) =P(A \cap (J1
         P(A \cap (J1 \cap J2c )) + P(A \cap (J1c \cap J2c ))
 \end{itemize}
 
-Condicionando las probabilidades anteriores obtenemos: P(A) =P(A ∣ J1 ,
-J2 )P(J1 \cap J2 ) + P(A ∣ J1c , J2 )P(J1c \cap J2 )
+Condicionando las probabilidades anteriores obtenemos: P(A) =P(A \vert J1 ,
+J2 )P(J1 \cap J2 ) + P(A \vert J1c , J2 )P(J1c \cap J2 )
 
 \begin{itemize}
   \tightlist
   \item
-        P(A ∣ J1 , J2c )P(J1 \cap J2c ) + P(A ∣ J1c , J2c )P(J1c \cap J2c )
+        P(A \vert J1 , J2c )P(J1 \cap J2c ) + P(A \vert J1c , J2c )P(J1c \cap J2c )
 \end{itemize}
 
 Probabilidad Condicional Usando los valores obtenidos para las
@@ -1961,7 +1911,7 @@ probabilidad \Omega, entonces: P(A) = \sum P(A \cap Bi ) i
 
 Si además P(Bi ) \textgreater{} 0 para toda i , entonces
 
-P(A) = \sum P(A ∣ Bi )P(Bi ) i
+P(A) = \sum P(A \vert Bi )P(Bi ) i
 
 Son en verdad muchos,los problemas que se simplifican notablemente
 mediante el uso de esta relación.
@@ -1969,66 +1919,66 @@ mediante el uso de esta relación.
 Probabilidad Condicional Ejemplo. Un laboratorio esta diseñando una
 prueba de sangre para el Covid 19. La prueba es buena si detecta el
 virus con una probabilidad alta en un paciente que efectivamente tiene
-el virus. Es decir, si la probabilidad: P(la prueba es positiva ∣ la
+el virus. Es decir, si la probabilidad: P(la prueba es positiva \vert la
 enfermedad esta presente) es alta. Existen sin embargo dos casos donde
 la prueba nos puede conducir a conclusiones erróneas: P(la prueba es
-negativa ∣ la enfermedad esta presente) falso negativo P(la prueba es
-positiva ∣ la enfermedad esta ausente) falso positivo
+negativa \vert la enfermedad esta presente) falso negativo P(la prueba es
+positiva \vert la enfermedad esta ausente) falso positivo
 
 Probabilidad condicional Si la prueba identifica el virus con nu 95 \%
-de efectividad entonces: P(la prueba es positiva ∣ la enfermedad esta
-presente) = 0.95 por lo tanto P(la prueba es negativa ∣ la enfermedad
+de efectividad entonces: P(la prueba es positiva \vert la enfermedad esta
+presente) = 0.95 por lo tanto P(la prueba es negativa \vert la enfermedad
 esta presente) = 0.05 Esto tiene sentido, si la prueba es efectiva
 entonces la probabilidad de un falso negativo debe ser baja. Lo mismo
 debe ocurrir con un falso positivo, la probabilidad debe ser baja si es
 que la prueba es efectiva. Supongamos que la probabilidad de este falso
-positivo es también 0.05: P(la prueba es positiva ∣ la enfermedad esta
+positivo es también 0.05: P(la prueba es positiva \vert la enfermedad esta
 ausente) = 0.05
 
 Probabilidad Condicional Si definimos : y
 
 A = \{La prueba es positiva\} B = \{La enfermedad esta presente\}
 
-Entonces: P(A ∣ B) = 0.95
+Entonces: P(A \vert B) = 0.95
 
-P(Ac ∣ B) = 0.05 = P(A ∣ B c )
+P(Ac \vert B) = 0.05 = P(A \vert B c )
 
 Hasta aqui todo bien. . . si la prueba es efectiva y nos detecta Covid.
 . . casi seguro que tenemos la enfermedad. ¿o no? Somos muy desconfiados
-y nos preguntamos por al probabilidad: P(B ∣ A) = P(La enfermedad esta
-presente ∣ La prueba es positiva)
+y nos preguntamos por al probabilidad: P(B \vert A) = P(La enfermedad esta
+presente \vert La prueba es positiva)
 
 Probablidad Condicional Para calcular esta probabilidad echaremos mano
 de otro resultado de enorme importancia la Fórmula de Bayes
 
-Fórmula de Bayes Dados los eventos A y B; P(B ∣ A) =
+Fórmula de Bayes Dados los eventos A y B; P(B \vert A) =
 
-P(A ∣ B)P(B) P(A ∣ B)P(B) + P(A ∣ B c )P(B c )
+P(A \vert B)P(B) P(A \vert B)P(B) + P(A \vert B c )P(B c )
 
-La prueba de este resultado no es difícil, observemos que: P(B ∣ A) =
+La prueba de este resultado no es difícil, observemos que: P(B \vert A) =
 
-P(A \cap B) P(A) P(A \cap B) P(B) = P(B) P(A) P(A ∣ B)P(B) = P(A)
+P(A \cap B) P(A) P(A \cap B) P(B) = P(B) P(A) P(A \vert B)P(B) = P(A)
 
 Probabilidad Condicional Es decir
 
-P(B ∣ A) =
+P(B \vert A) =
 
-P(A ∣ B)P(B) P(A)
+P(A \vert B)P(B) P(A)
 
 Esta igualdad es en si misma de mucha utilidad. Para concluir, aplicamos
-probabilidad total sobre P(A): P(A) = P(A ∣ B)P(B) + P(A ∣ B c )P(B c )
-de modo que P(B ∣ A) =
+probabilidad total sobre P(A): P(A) = P(A \vert B)P(B) + P(A \vert B c )P(B c )
+de modo que P(B \vert A) =
 
-P(A ∣ B)P(B) P(A ∣ B)P(B) + P(A ∣ B c )P(B c )
+P(A \vert B)P(B) P(A \vert B)P(B) + P(A \vert B c )P(B c )
 
 Probabilidad Condicional Regresando al problema, buscamos la
-probabilidad; P(B ∣ A) = P(La enfermedad esta presente ∣ La prueba es
-positiva) sabiendo que: P(A ∣ B) = 0.95
+probabilidad; P(B \vert A) = P(La enfermedad esta presente \vert La prueba es
+positiva) sabiendo que: P(A \vert B) = 0.95
 
-P(Ac ∣ B) = 0.05 = P(A ∣ B c )
+P(Ac \vert B) = 0.05 = P(A \vert B c )
 
 Para usar Bayes, solo nos falta P(A). Supongamos que P(A) = 0.003,
-tenemos entonces que: P(B ∣ A) =
+tenemos entonces que: P(B \vert A) =
 
 (0.95)(0.003) ≈ 0.05 (0.95)(0.003) + (0.05)(0.997)
 
@@ -2043,16 +1993,16 @@ correctamente. ¿Cual es la probabilidad de que el estudiante realmente
 sepa la respuesta a la pregunta dado que respondió correctamente?
 Supongamos que A es el evento donde el alumno responde correctamente la
 pregunta y B el evento donde el estudiante conoce la respuesta a la
-pregunta, deseamos encontrar: P(B ∣ A)
+pregunta, deseamos encontrar: P(B \vert A)
 
 Probabilidad Condicional
 
-Usando Bayes: P(A ∣ B)P(B) P(A ∣ B)P(B) + P(A ∣ B c )P(B c ) 1×p = 1 × p
+Usando Bayes: P(A \vert B)P(B) P(A \vert B)P(B) + P(A \vert B c )P(B c ) 1×p = 1 × p
 + (1/n) × (1 - p) np = 1 + (n - 1)p
 
-P(B ∣ A) =
+P(B \vert A) =
 
-Por ejemplo; si n = 5 y p = 1/2, entonces P(B ∣ A) = 5/6.
+Por ejemplo; si n = 5 y p = 1/2, entonces P(B \vert A) = 5/6.
 
 Variables Aleatorias La teoría que hemos desarrollado hasta el momento,
 tiene como fundamento, la construcción de un espacio de probabilidad (\Omega,
@@ -2850,7 +2800,7 @@ es decir: C {[}2x 2 -
 
 2
 
-2x 3 {]}∣ = 1 3 0
+2x 3 {]}\vert = 1 3 0
 
 Variables Aleatorias Continuas Con lo cual concluimos que:
 
@@ -2925,7 +2875,7 @@ xf (x)dx
 
 x \cdot 2xdx
 
-2 31 2 x ∣ = 3 0 3
+2 31 2 x \vert = 3 0 3
 
 Variables Aleatorias Continuas Para la varianza calculamos: E {[}X 2
   {]} = ∫
@@ -2952,7 +2902,7 @@ x 2 f (x)dx
 
 2x 3 dx
 
-1 41 1 x ∣ = 2 0 2
+1 41 1 x \vert = 2 0 2
 
 Por lo tanto Var (X ) = E {[}X 2 {]} - E 2 {[}X {]} =
 
@@ -2979,7 +2929,7 @@ xf (x)dx xdx
 
 0 2 1
 
-x 1 ∣ = 2 0 2
+x 1 \vert = 2 0 2
 
 Variables Aleatorias Continuas Para calcular la varianza, calculamos
 primero el segundo momento: E {[}X 2 {]} = ∫ =∫ = por lo tanto:
@@ -2990,7 +2940,7 @@ x 2 f (x)dx x 2 dx
 
 0 3 1
 
-1 x ∣ = 3 0 3
+1 x \vert = 3 0 3
 
 Var (x) =
 
@@ -3064,7 +3014,7 @@ x k f (x)dx
 
 x k λe -λx dx
 
-= -x k e -λx ∣0 + ∫ ∞
+= -x k e -λx \vert0 + ∫ ∞
 
 0
 
@@ -3109,7 +3059,7 @@ Para responder el primer inciso calculamos: P(X \geq 10) = 1 - F (10) = e
 (10) = (1 - e -2 ) - (1 - e -1 ) ≈ 0.233
 
 Variables Aleatorias Continuas Decimos que una variable aleatoria no
-tiene memoria si: P (X \textgreater{} t + s ∣ X \textgreater{} t) = P (X
+tiene memoria si: P (X \textgreater{} t + s \vert X \textgreater{} t) = P (X
 \textgreater{} s) Esta igualdad es equivalente a P(X \textgreater{} t +
 s) = P(X \textgreater{} s)P(X \textgreater{} t) Esta propiedad de falta
 de memoria, puede interpretarse como sigue: si X es el tiempo de espera
@@ -3219,7 +3169,7 @@ r2
 
 re - 2 dr
 
-= -2πe - 2 ∣ r2
+= -2πe - 2 \vert r2
 
 r2
 
@@ -3258,12 +3208,12 @@ Supongamos ahora que Z ∼ N(0, 1), entonces: E {[}Z {]} = ∫
 
 xf (x)dx
 
-∞ x2 1 = √ ∫ xe - 2 dx 2π -∞ ∞ 1 - x2 2 = -√ e ∣ = 0 2π -∞
+∞ x2 1 = √ ∫ xe - 2 dx 2π -∞ ∞ 1 - x2 2 = -√ e \vert = 0 2π -∞
 
 Distribución Normal Por lo tanto:
 
 Var (Z ) = E {[}Z 2 {]} ∞ x2 1 = √ ∫ x 2 e - 2 dx 2π -∞ ∞ ∞ x2 x2 1 = √
-(-xe - 2 ∣ + ∫ e - 2 dx) -∞ 2π -∞ 2 ∞ x 1 = √ ∫ e - 2 dx 2π -∞ =1
+(-xe - 2 \vert + ∫ e - 2 dx) -∞ 2π -∞ 2 ∞ x 1 = √ ∫ e - 2 dx 2π -∞ =1
 
 En resumen, si Z ∼ N(0, 1) entonces E {[}Z {]} = 0 y Var (Z ) = 1. Ahora
 bien, sabemos que Z = \sigmaZ + µ ∼ N(µ, \sigma 2 ) pero: E {[}X {]} = \sigmaE {[}Z {]}
@@ -3288,7 +3238,7 @@ términos de la acumulada de una normal estándar.
 Distribución Normal
 
 Ejemplo. Sea X ∼ N(3, 9). Calcula P(2 \textless{} x \textless{} 5), P(X
-\textgreater{} 0) y P(∣X - 3∣ \textgreater{} 6) P(2 \textless{} X
+\textgreater{} 0) y P(\vertX - 3\vert \textgreater{} 6) P(2 \textless{} X
 \textless{} 5) = P (
 
 2-3 X -3 5-3 \textless{} \textless{} ) 3 3 3 1 X -3 2 \textless{} ) = P
@@ -3306,7 +3256,7 @@ entonces -Z ∼ N(0, 1)
 
 Distribución Normal
 
-Por último: P(∣X - 3∣ \textgreater{} 6) = P(X \textgreater{} 9) + P(X
+Por último: P(\vertX - 3\vert \textgreater{} 6) = P(X \textgreater{} 9) + P(X
 \textless{} -3) = P(Z \textgreater{} 2) + P(Z \textless{} -2) = 2P(Z
 \textless{} -2) ≈ 0.0456
 
