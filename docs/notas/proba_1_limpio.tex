@@ -73,6 +73,18 @@
 }
 \makeatother
 
+\newtheoremstyle{teorema}%
+    {-1pt}%
+    {3pt}%
+    {\itshape}% Fuente del cuerpo
+    {}%
+    {\bfseries}%  Fuente del encabezado
+    {.}%
+    {\newline}%
+    {}%
+\theoremstyle{teorema}
+\newtheorem{teorema}{Teorema}[chapter]
+\surroundwithmdframed[linewidth=1pt, roundcorner=10pt, backgroundcolor=gray!10]{teorema}
 
 %\usepackage[skip=10pt plus1pt, indent=10pt]{parskip}
 \decimalpoint
@@ -1551,12 +1563,12 @@ $$
 
 ¿Que podemos decir de $P(F)$? 
 $$
-P(F ) = P(\{\omega1 ,\omega3 \}) = P(\{\omega_1 \}) + P(\{\omega_3 \}) = \frac{1}{3} + P(\{\omega3 \}) 
+P(F ) = P(\{\omega_1 ,\omega_3 \}) = P(\{\omega_1 \}) + P(\{\omega_3 \}) = \frac{1}{3} + P(\{\omega3 \}) 
 $$
-¿que pasa con $P(\{\Omega3 \})$? con los elementos que tenemos a la mano no
+¿que pasa con $P(\{\omega_3 \})$? con los elementos que tenemos a la mano no
 tenemos forma clara de calcularlo, por lo pronto sabemos que:
 $$
-\frac{1}{3} = P(\{\omega_3, \omega_4 \}) = P(\{\Omega3 \}) + P(\{\Omega4 \})  
+\frac{1}{3} = P(\{\omega_3, \omega_4 \}) = P(\{\omega_3 \}) + P(\{\omega_4 \})  
 $$
 en este caso una suposición natural sería suponer que 
 $$
@@ -1565,7 +1577,7 @@ $$
 eso implicaría que si $B$ y $C$ son liberados el guardia decide decir que $B$ o $C$ serán liberados, ``tirando una moneda'' al aire, le es indistinto decir que $B$ será liberado o que $C$ sera liberado.
 En este caso:
 $$
-P(F) =\frac{1}{3} + P(\{\omega3 \}) = \frac{1}{3}+\frac{1}{6} = \frac{1}{2}
+P(F) =\frac{1}{3} + P(\{\omega_3 \}) = \frac{1}{3}+\frac{1}{6} = \frac{1}{2}
 $$
 y por lo tanto: 
 $$
@@ -1577,7 +1589,7 @@ P(\{\omega_3 \}) = P(\{\omega_4 \}) =\frac{1}{6}
 $$
 dijimos que el guardia tiraba una moneda para decidir si decía $B$ o decía $C$ cuando $B$ y $C$ eran liberados. Pero lo que es cierto es que
 $$ 
-\frac{1}{3} = P(\{\omega_3 , \omega_4 \}) = P(\{\omega3 \}) + P(\{\omega4 \})
+\frac{1}{3} = P(\{\omega_3 , \omega_4 \}) = P(\{\omega_3 \}) + P(\{\omega_4 \})
 $$
 yesto se cumple siempre y cuando 
 $$
@@ -1587,171 +1599,165 @@ Y
 $$
 P(\omega_4 ) = \frac{1}{3} - P(\{\omega_3 \}) 
 $$
-Esto nos conduciría a conclusiones muy diferentes en función del valor seleccionado, para $P(\{\omega3\})$. Por ejemplo si $P(\{\omega3\}) = 1/3$ entonces: 
+Esto nos conduciría a conclusiones muy diferentes en función del valor seleccionado, para $P(\{\omega_3\})$. Por ejemplo si $P(\{\omega_3\}) = 1/3$ entonces: 
 $$
 P(E \vert F ) =\frac{P(E \cap F )}{P(F)}= \frac{1/3}{1/3+1/3} = \frac{1}{2}
 $$
 Esto confirmaría el argumento del guardia, sin embargo aunque es matemáticamente correcto, parece increíble que la decision del guardia cambie de algún modo la probabilidades del prisionero $A$.
 
-En contraste, si $P(\{\omega3 \}) = 0$ entonces:
+En contraste, si $P(\{\omega_3 \}) = 0$ entonces:
 $$
 P(E \vert F ) = 1
 $$
-lo cual aunque matemáticamente correcto, es en definitiva un sin sentido! El segundo punto importante que debemos notar viene de nuestra elección original para $P(\{\omega3 \}) = 1/6$. En este caso concluimos que
+lo cual aunque matemáticamente correcto, es en definitiva un sin sentido! El segundo punto importante que debemos notar viene de nuestra elección original para $P(\{\omega_3 \}) = 1/6$. En este caso concluimos que
 $$
 P(E \vert F ) =\frac{2}{3}
 $$
 Es decir, en este caso la decisión del guardia no afecta para nada las probabilidad del prisionero $A$ de ser liberado. Esto en definitiva tiene mucho mas sentido, aunque no sea la única solución posible para este problema. En este caso, la información adicional es irrelevante. Lo cual nos lleva al siguiente concepto:
 
 
-\end{document}
+\begin{definition}[Eventos independientes ]
+Decimos que dos eventos $A$ y $B$ son independientes si 
+$$
+P(A \cap B) = P(A)P(B)
+$$     
+\end{definition} 
 
+Esto nos conduce inmediatamente al siguiente resultado; si $B$ es un evento tal que $P(B) \geq 0$ y $A$ y $B$ son independientes entonces: 
+$$
+P(A \vert B) =\frac{P(A \cap B)}{P(B)} =\frac{P(A)P(B)}{P(B)} = P(A) 
+$$
+es de aquí de donde se comprende mejor la idea de ``independencia'', al ser $A$ y $B$ independientes, el conocimiento de $B$ no afecta para nada la probabilidad de $A$.
 
-
-
-
-
-
-
-
-Probilidad Condicional Eventos independientes Decimos que dos eventos A
-y B son independientes si P(A \cap B) = P(A)P(B) Esto claro esta nos
-conduce inmediatamente al siguiente resultado; si B es un evento tal que
-P(B) \textgreater{} 0 y A y B son independientes entonces: P(A \vert B) =
-
-P(A \cap B) = P(A) P(B)
-
-es de aquí de donde se comprende mejor la idea de ``independencia'', al
-ser A y B independientes, el conocimiento de B no afecta para nada la
-probabilidad de A.
-
-Probabilidad Condicional Ejemplo. Un ejemplo sencillo de independencia
-lo encontramos en el lanzamiento de dos dados. Previamente calculamos la
-probabilidad que la suma de las caras fuera 5, esta probabilidad resulta
-ser igual a 1/9, mientras que la misma probabilidad pero condicionada
-con el evento de que el primer dado mostró 1 cambiaba notablemente a
-1/6. Pensemos ahora en un problema casi idéntico, pero esta vez
-calculemos la probabilidad de que la suma sea 7. El evento e cuestión
-sería: A = La suma de las caras es 7
-
-= \{(1, 6), (2, 5), (3, 4), (4, 3), (5, 2), (6, 1), \}
-
+\begin{example}
+Un ejemplo sencillo de independencia lo encontramos en el lanzamiento de dos dados. Previamente calculamos la probabilidad de que la suma de las caras fuera 5, esta probabilidad resulta ser igual a $1/9$, mientras que la misma probabilidad pero condicionada con el evento de que el primer dado mostró 1 cambiaba notablemente a $1/6$. Pensemos ahora en un problema casi idéntico, pero esta vez calculemos la probabilidad de que la suma sea 7. El evento e cuestión sería: 
+\begin{align*}
+A & = \text{``La suma de las caras es 7''}\\
+  & = \{(1, 6), (2, 5), (3, 4), (4, 3), (5, 2), (6, 1)\}    
+\end{align*}
 por lo tanto:
+$$
+P(A) =\frac{1}{6}
+$$
+$B$ es el mismo evento que definimos previamente, el evento de que el primer dado muestre 1: 
+$$
+B = \{(1, 6), (1, 2), (1, 3),(1, 4), (1, 5), (1, 6)\} 
+$$
+de modo que:
+$$
+P(B) =\frac{1}{6}
+$$
+Por otro lado: 
+$$
+A \cap B = \{(1, 6)\}
+$$
+y en consecuencia:
+$$
+ P(A \cap B) = \frac{1}{36}
+$$
+en conclusión:
+$$
+P(A \cap B) =P(A)P(B)= \frac{1}{36} 
+$$
+es decir; en este caso $A$ y $B$ son independientes! y se sigue que: 
+$$
+P(A \vert B) = P(A)
+$$
+Sea $C$ el evento de que salga un 6 en el primer dado. Un argumento análogo nos conduce a concluir que $A$ y $C$ son independientes. De hecho, también $B$ y $C$ son independientes también. Por lo tanto: 
+\begin{align*}
+P(A \cap B) & = P(A)P(B)\\ 
+P(A \cap C) & = P(A)P(C)\\ 
+P(B \cap C) & = P(B)P(C)     
+\end{align*}
 
-P(A) =
-
-1 6
-
-Probabilida Condicional B es el mismo evento que definimos previamente,
-el evento de que el primer dado muestre 1: B = \{(1, 6), (1, 2), (1, 3),
-(1, 4), (1, 5), (1, 6), \} de modo que:
-
-Por otro lado: y en consecuencia:
-
-P(B) =
-
-1 6
-
-A \cap B = \{(1, 6)\} P(A \cap B) =
-
-1 36
-
-Probabilidad Condicional en conclusión:
-
-1 = P(A \cap B) 36 es decir; en este caso A y B son independientes! y se
-sigue entonces que: P(A)P(B) =
-
-P(A \vert B) = P(A) Sea C el evento de que salga un 6 en el primer dado. Un
-argumento análogo nos conduce a concluir que A y C son independientes.
-De hecho, también B y C son independientes. Por lo tanto: P(A \cap B) =
-P(A)P(B) P(A \cap B) = P(A)P(C ) P(B \cap C ) = P(B)P(C ) En situaciones como
-esta se dice que A, B y C son independientes dos a dos.
-
-Probabilidad Condicional Sin embargo, debemos tener cuidado, observemos
-que P(A \vert B \cap C ) = 1 Por lo tanto A, B y C no son independientes en el
-sentido de que: P(A \cap B \cap C ) ≠ P(A)P(B)P(C ) De aquí se sigue la
+En situaciones como esta se dice que $A$, $B$ y $C$ son \emph{independientes dos a dos}.
+\end{example}
+Sin embargo, debemos tener cuidado, observemos que 
+$$
+P(A \vert B \cap C ) = 1 
+$$
+Por lo tanto $A$, $B$ y $C$ no son independientes en el sentido de que: $P(A \cap B \cap C ) \neq P(A)P(B)P(C)$. De aquí se sigue la
 definición:
-
-Independencia Decimos que A1 , A2 , . . . , An es una colección de
-eventos independientes si para toda r \leq n P(A1 \cap A2 \cap ⋯ \cap Ar ) = P(A1
-)P(A2 )⋯P(Ar )
-
-Probabilidad Condicional
-
-Si \{An \} es una colección infinita de eventos, decimos que ésta es
-independiente si cualquier cualquier subconjunto finito de esta
-colección es a su vez una colección de eventos independientes. Si A y B
-son independientes entonces A y B c son independientes.
-
-No es difícil probar este hecho: P(A) = P(A \cap (B \cup B c ))
-
-= P(A \cap B) + P(A \cap B c )
-
-Con lo cual: P(A \cap B c ) = P(A) - P(A \cap B)
-
-= P(A) - P(A)P(B) = P(A)(1 - P(B))
-
-= P(A)P(B c )
-
-Probabilidad Condicional Ejemplo. Supongamos que un experimento es
-repetido n veces. El resultado de un ensayo, no incide en el resultado
-de los demás, es decir se efectúan ensayos independientes. La
-probabilidad de éxito de cada ensayo es de p y la probabilidad de
-fracaso 1 - p. Si Ai es el evento de éxito del i -ésimo ensayo, entonces
-la colección \{Ai \} es una colección de eventos independientes. Pero
-también la colección \{Aci \} son independientes. Por lo tanto: n
-
-P(\capni=1 Ai ) = ∏ P(Ai ) = p n i =1
-
+\begin{definition}[Independencia]
+Decimos que $\left\{A_i\right\}_{i=1}^n$ es una colección de eventos independientes si para toda subcolección $\left\{A_{i_k}\right\}_{k=1}^m\subset\left\{A_i\right\}_{i=1}^n$:
+$$
+P(A_{i_1} \cap A_{i_2} \cap\cdots \cap A_{i_m} ) = P(A_{i_1})P(A{i_2})\cdots P(A_{i_m})    
+$$
+\end{definition}
+Si $\{A_n\}$ es una colección infinita de eventos, decimos que ésta es independiente si cualquier cualquier subconjunto finito de esta colección es a su vez una colección de eventos independientes. 
+\begin{propiedad}
+Si $A$ y $B$ son independientes entonces $A$ y $B^c$ son independientes.    
+\end{propiedad}
+\begin{proof}
+No es difícil probar este hecho: 
+\begin{align*}
+P(A) & = P(A \cap (B \cup B^c)) \\
+     & = P(A \cap B) + P(A \cap B^c)
+\end{align*}s
+Con lo cual: 
+\begin{align*}
+   P(A \cap B^c ) & = P(A) - P(A \cap B)\\
+                  & = P(A) - P(A)P(B) = P(A)(1 - P(B))\\
+                  & = P(A)P(B^c)
+\end{align*}
+\end{proof}
+\begin{example}
+Supongamos que un experimento es repetido $n$ veces. El resultado de un ensayo no incide en el resultado de los demás, es decir se efectúan ensayos independientes. La probabilidad de éxito de cada ensayo es de $p$ y la probabilidad de fracaso $1 - p$. Si $A_i$ es el evento de éxito del $i$-ésimo ensayo, entonces la colección $\{Ai \}$ es una colección de eventos independientes. Pero también la colección $\{A^c_i\}$ es una colección de eventos independientes.     
+Por lo tanto: 
+$$
+P(\cap_{i=1}^n A_i ) = \prod_{i=1}^n P(A_i) = p^n
+$$
 y
 
-n
+$$
+P(\cap_{i=1}^n A^c_i) = \prod_{i =1}^n P(A^c_i) = (1 - p)^n 
+$$
+La última igualdad es la probabilidad de que todos los ensayos sean un fracaso. Por lo tanto, la probabilidad de que exista al menos un éxito en los n ensayos es igual a: 
+$$
+1 - (1 - p)^n 
+$$
+Este resultado. esta relacionado con la pregunta: ¿Cuál es la probabilidad de que existan exactamente $i$ éxitos en los $n$ ensayos? Esto sería equivalente a seleccionar $i$ de los $n$ ensayos. Estos $i$ ensayos son un éxito con probabilidad $p$, el resto son fracaso con probabilidad $(1 - p)$. El número de selecciones de este estilo es igual a: $\binom{n}{i}$. Por lo tanto, la probabilidad de tener exactamente $i$ éxitos en $n$ ensayos es igual a: 
+$$
+\binom{n}{i} p^i (1 - p)^{n-i}
+$$
+\end{example}
+El siguiente resultado, es de particular utilidad, de algún modo nos permite calcular la probabilidad de una serie de eventos de manera separada.
+\begin{teorema}[Regla de la multiplicación]
+ Sean $A_1, A_2,\ldots , A_n$ eventos definidos en un espacio de probabilidad. 
+ $$
+ P(A_1, A_2 ,\ldots , A_n) = P(A_1 )P(A_2 \vert A_1 )\cdots P(A_n \vert A_1, A_2,\cdots, A_{n-1} )   
+$$
+\end{teorema}
+En el enunciado anterior hemos usado una nueva notación: 
+$$
+P(A_1, A_2,\ldots, A_n) := P(\cap_1^n A_i)
+$$
+solo es nueva notación, que en casos como este es de mayor utilidad. Esta regla de multiplicación es particularmente útil cuando se estudian temas donde las estructura de dependencia entre eventos es muy particular. Un ejemplo de ello es cuando se estudian Cadenas de Markov.
 
-P(\capni=1 Aci ) = ∏ P(Aci ) = (1 - p)n i =1
-
-La última igualdad es la probabilidad de que todos los ensayos sean un
-fracaso. Por lo tanto, la probabilidad de que exista al menos un éxito
-en los n ensayos es igual a: 1 - (1 - p)n Este resultado. esta
-relacionado con la pregunta: ¿Cuál es la probabilidad de que existan
-exactamente i éxitos en los n ensayos? Esto sería equivalente a
-seleccionar i de los n ensayos. Estos i ensayos son un éxito con
-probabilidad p, el resto son fracaso con probabilidad (1 - p). El número
-de selecciones de este estilo es igual a: n!/i !(n - i )!. Por lo tanto,
-la probabilidad de tener exactamente i exitos en n ensayos es igual a: n
-( )p i (1 - p)n-i i
-
-Probabilidad Condicional El siguiente resultado, es de particular
-utilidad, de algún modo nos permite , calcular la probabilidad de una
-serie de eventos, de manera separada; ``divide y venceras''.
-
-Regla de la multiplicación Sean A1 , A2 , . . . , An eventos definidos
-en un espacio de probabilidad. P(A1 , A2 , . . . , An ) = P(A1 )P(A2 \vert
-A1 )⋯P(An \vert A1 , A2 , . . . , An-1 ) En el enunciado anterior hemos
-usado una nueva notación: P(A1 , A2 , . . . , An ) := P(\capn1 Ai ) solo es
-nueva notación, que en casos como este es de mayor utilidad. Esta regla
-de multiplicación es particularmente útil cuando se estudian temas donde
-las estructura de dependencia entre eventos es muy particular. Un
-ejemplo de ello es cuando se estudian Cadenas de Markov por ejemplo.
-
-Probabilidad Condicional La prueba de la regla de la multiplicación no
-es particularmente difícil, notemos que solo es el resultado de aplicar
-de forma recursiva la igualdad: P(A1 , A2 , ⋯, An-1 ) P(A1 , A2 , ⋯,
-An-1 ) = P(An \vert A1 , A2 , ⋯, An-1 )P(A1 , A2 , ⋯, An-1 )
-
-P(A1 , A2 , ⋯, An ) = P(A1 , A2 , ⋯, An )
-
-Por lo tanto: P(A1 , A2 , ⋯, An ) = P(An \vert A1 , A2 , ⋯, An-1 )P(A1 , A2
-, ⋯, An-1 ) ``Reciclando'' este argumento obtenemos que: P(A1 , A2 , ⋯,
-An-1 ) = P(An-1 \vert A1 , A2 , ⋯, An-2 )P(A1 , A2 , ⋯, An-2 )
-
-Probabilidad Condicional
-
-por lo tanto: P(A1 , A2 , ⋯, An ) =
-
-P(An \vert A1 , A2 , ⋯, An-1 )P(An-1 \vert A1 , A2 , ⋯, An-2 )P(A1 , A2 , ⋯,
-An-2 )
-
+\begin{proof}
+La prueba de la regla de la multiplicación no es particularmente difícil, notemos que solo es el resultado de aplicar de forma recursiva la igualdad: 
+\begin{align*}
+P(A_1, A_2,\ldots, A_n) & =  P(A_1, A_2,\ldots, A_n)\frac{P(A_1, A_2 ,\ldots, A_{n-1})}{P(A_1, A_2 ,\ldots, A_{n-1})}\\
+                        & = P(A_n \vert A_1, A_2,\ldots, A_{n-1})P(A_1, A_2,\ldots, A_{n-1})
+\end{align*}
+Por lo tanto: 
+$$
+P(A_1, A_2,\ldots, A_n) = P(A_n \vert A_1, A_2,\ldots, A_{n-1} )P(A_1, A_2,\ldots, A_{n-1})
+$$
+``Reciclando'' este argumento obtenemos que: 
+$$
+P(A_1, A_2,\ldots, A_{n-1}) = P(A_{n-1} \vert A_1, A_2,\ldots, A_{n-2})P(A_1, A_2,\ldots, A_{n-2})
+$$
+con lo cual: 
+\begin{multline*}
+P(A_1, A_2,\ldots, A_n) = P(A_n \vert A_1, A_2,\ldots, A_{n-1})\\
+P(A_{n-1} \vert A_1, A_2 ,\ldots, A_{n-2})P(A_1, A_2 ,\ldots,A_{n-2})    
+\end{multline*}
 repitiendo el argumento las veces necesarias, obtenemos el resultado.
+\end{proof}
+
+\end{document}
+
 Ejemplo. Un mazo convencional de 52 cartas es barajado con cuidado. Las
 52 cartas son repartidas entre cuatro jugadores, de modo que cada
 jugador tenga 13 cartas. ¿Cuál es la probabilidad de que cada jugador
