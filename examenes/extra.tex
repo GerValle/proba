@@ -1,0 +1,100 @@
+\documentclass{report}
+    \usepackage[utf8]{inputenc}
+    \usepackage[spanish]{babel}
+    \usepackage{amsmath}
+    \usepackage{graphics}
+    \usepackage{amssymb}
+    \setlength{\oddsidemargin}{0.5cm}
+    \setlength{\evensidemargin}{0.5cm}
+    \setlength{\textwidth}{15cm}
+    \setlength{\topmargin}{-2cm}
+\begin{document}
+\begin{center}
+    \textsf{\Large Probabilidad 1}
+    \par\medskip
+    \textsf{\large Examen Extraordinario}
+    \end{center}
+    \hrule
+    \par\bigskip
+
+\begin{enumerate}
+    \item Una alumno debe vender 2 libros de una colección de 6 libros de matemáticas, 7 de ciencia y 4 de economía. De cuantas formas puede seleccionar los dos libros si:
+    \begin{enumerate}
+        \item Ambos libros son de la misma materia
+        \item Los libris son de diferente materia
+    \end{enumerate}
+    \item Una persona tiene 8 amigos, de los cuales 5 serán invitados a su fiesta. 
+    \begin{enumerate}
+        \item Cuantas elecciones puede hacer si dos de sus amigos se detestan y no pueden ser invitados de forma conjunta?
+        \item Cuantas elecciones puede hacer si existe una pareja que de ser inivitados, deben asistir ambos?
+    \end{enumerate}
+    \item Sean $E$, $F$ y $G$ eventos. Encuentra expresiones para las siguientes circunstancias:
+    \begin{enumerate}
+        \item Solo ocurre $E$.
+        \item Ocurren $E$ y $F$ pero no $G$.
+        \item Al menos dos eventos ocurren.
+        \item A lo mas dos eventos ocurren.
+        \item Exactamente dos eventos ocurren.
+    \end{enumerate}
+    \item Muesta que la probabilidad de que exactamente uno de los eventos $E$ o $F$ ocurra es igual a $P(E)+P(F)-2P(E\cap F)$.
+    \item Supongamos que en una población el 5\% de los hombres son portadores de cierta enfermedad y el 1\% de las mujeres también lo son. Se selecciona una persona al azar y se le hace una prueba para detectar la enfermedad. La prueba es positiva. ¿Cuál es la probabilidad de que la persona sea mujer? Supon que existen el mismo número de hombres y mujeres en la población. ¿Que pasa si la cantidad de hombres es el doble que la de mujeres?
+    
+    \item Sea $E$ independiente de $F$ y de $G$. Si $F\cap G = 0$, prueba que $E$ es independiente de $F\cup G$.
+    \item Sea $X$ es una variable aleatoria binomial con valor esperado 6 y varianza 2.4. Encuentra $P(X=5)$.
+    \item El número de huevos que un insecto deposita en una hoja de una planta es una variable aleatoria con distribución Poisson con parámetro $\lambda$. Sin embargo, esta variable aleatoria puede ser observada solo si es positiva ya que si el número de huevos es cero, no podemos saber si el insecto estuvo presente o no. Si $Y$ es el número de huevos observados, entonces:
+    $$
+    P(Y=k)=P(X=i\vert X > 0)
+    $$
+    donde $X$ es una variable aleatoria Poisson con parámetro $\lambda$. Encuentra $E[Y]$.
+ 
+    \item Sean $f_1(x)$ y $f_2(x)$ funciones de densidad de probabilidad, $\theta_1 > 0$ y $\theta_2 > 0$ constantes tales que $\theta_1 + \theta_2 = 1$. Si $f(x) = \theta_1 f_1(x) + \theta_2f_2(x)$, muestre que $f(x)$ es entonces una función de densidad.
+
+    \item Sea $X$ la diferencia entre el número de soles y el número de águilas obtenidos mediante $n$ volados de una moneda justa.
+          \begin{enumerate}
+              \item ¿Cuáles son los valores posibles de $X$?
+              \item Para n = 3, calcule la f. m. p. de X.
+          \end{enumerate}
+
+    \item De los consumidores de una estación de gas 30 \% seleccionan gasolina regular, 20 \% premium y 50 \% diesel. De 100 de los siguientes consumidores, ¿cuál es la media y la varianza del número de consumidores que seleccionan gasolina regular?
+
+    \item Sea X una v.a. con distribución Uniforme continua en el intervalo $(1, a)$, con $a > 1$. Si $E[X] = 6 Var(X)$, calcule el valor de $a$.
+
+    \item El costo inicial de cierta máquina es \$3. El tiempo de vida de dicha máquina tiene una distribución exponencial con media de 3 años. El fabricante está considerando ofrecer una garantía, la cual paga \$3 si la máquina se descompone durante el primer año, paga \$2 si se descompone durante el segundo año y paga \$1 si se descompone durante el tercer año (si la máquina se descompone después del tercer año, no paga nada). Calcule el pago esperado de la garantía.
+
+    \item Sea $X\sim N(\mu,\sigma^2)$. Encuentra el tercer ($E\left[X^3\right]$) y  cuarto momento ($E\left[X^4\right]$)  de $X$
+
+    \item Demuestra que si $X\sim N(0,1)$ entonces $Y = \sigma X + \mu \sim N(\mu,\sigma^2) $.
+    \item Muestra que la densidad de $X\sim N(\mu,\sigma^2)$ es simétrica al rededor de su media
+
+    \item Sea $X$ una variable aleatoria con densidad:
+          $$
+              f(x) = c\frac{1}{\sqrt{2\pi}}e^{-x^2/2}, \qquad \text{ para } x>0.
+          $$
+          Encuentra $c$ y calcula el valor esperado de $X$.
+    \item Sea $X$ una variable aleatoria con densidad:
+          $$
+              f(x)=c(1-x^2) \text{ para } -1 < x <1
+          $$
+          \begin{enumerate}
+              \item Encuentra $c$.
+              \item ¿Cuál es la función acumulada de $X$?
+          \end{enumerate}
+    \item Sea $X$ una variable aleatoria con densidad:
+          $$
+              f(x)= a+bx^2 \text{ para }0\leq x\leq 1
+          $$
+          Si $E[X]=3/5$ encuentra $a$ y $b$.
+
+    \item Si $X\sim N(10, 36)$, calcula:
+          \begin{itemize}
+              \item $P(X > 5)$
+              \item $P(4 < X < 16)$
+              \item $P(X<8)$
+              \item $P(\vert X\vert > 5)$
+          \end{itemize}
+    \item El número de años que una radio funciona se destribuye de forma exponencial con parámetro $\lambda=1/8$. Si Juan compra una radio usada, ¿cuál es la probabilidad de que siga funcionando despuede de 8 años adicionales?
+
+
+
+\end{enumerate}
+\end{document}
